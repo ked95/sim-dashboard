@@ -1,0 +1,708 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sto-Sim Tests</title>
+<style>
+:root{
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --surface-2: #f2f1ec;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --ink-muted: #898781;
+  --grid: #e1e0d9;
+  --border: rgba(11,11,11,0.10);
+  --border-strong: rgba(11,11,11,0.18);
+  --accent: #2a78d6;
+  --accent-wash: rgba(42,120,214,0.10);
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    color-scheme: dark;
+    --page: #0d0d0d;
+    --surface: #1a1a19;
+    --surface-2: #232321;
+    --ink: #ffffff;
+    --ink-2: #c3c2b7;
+    --ink-muted: #898781;
+    --grid: #2c2c2a;
+    --border: rgba(255,255,255,0.10);
+    --border-strong: rgba(255,255,255,0.20);
+    --accent: #3987e5;
+    --accent-wash: rgba(57,135,229,0.16);
+  }
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--page);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{
+  max-width:1180px;
+  margin:0 auto;
+  padding:32px 24px 80px;
+}
+header.top{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  margin-bottom:28px;
+}
+header.top h1{
+  font-size:1.55rem;
+  font-weight:700;
+  letter-spacing:-0.01em;
+  margin:0;
+  text-wrap:balance;
+}
+header.top p{
+  margin:0;
+  color:var(--ink-2);
+  font-size:0.92rem;
+}
+.meta-line{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 14px;
+  color:var(--ink-muted);
+  font-size:0.8rem;
+  margin-top:2px;
+}
+.meta-line span{white-space:nowrap;}
+
+.stat-row{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+  gap:10px;
+  margin-bottom:24px;
+}
+.stat-tile{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:14px 16px;
+}
+.stat-tile .num{
+  font-size:1.5rem;
+  font-weight:700;
+  font-variant-numeric:tabular-nums;
+  line-height:1.1;
+}
+.stat-tile .label{
+  color:var(--ink-2);
+  font-size:0.78rem;
+  margin-top:3px;
+}
+
+.panel{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:22px;
+  margin-bottom:20px;
+}
+.panel h2{
+  font-size:0.95rem;
+  font-weight:700;
+  margin:0 0 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:6px;
+}
+.panel h2 .hint{
+  font-weight:400;
+  color:var(--ink-muted);
+  font-size:0.78rem;
+}
+
+.chart-row{
+  display:flex;
+  gap:36px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.donut-wrap{
+  position:relative;
+  flex:0 0 auto;
+  width:220px;
+  height:220px;
+}
+.donut-wrap svg{display:block;width:100%;height:100%;}
+.donut-center{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
+  text-align:center;
+}
+.donut-center .n{
+  font-size:1.7rem;
+  font-weight:700;
+  font-variant-numeric:tabular-nums;
+  line-height:1.05;
+}
+.donut-center .l{
+  font-size:0.72rem;
+  color:var(--ink-2);
+  max-width:120px;
+  margin-top:2px;
+}
+path.seg{
+  cursor:pointer;
+  stroke:var(--surface);
+  stroke-width:2;
+  transition:opacity .15s ease, transform .15s ease;
+  transform-origin:110px 110px;
+}
+path.seg:hover{opacity:0.85;}
+path.seg.dim{opacity:0.28;}
+path.seg.sel{transform:scale(1.035);}
+
+.legend{
+  flex:1 1 280px;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  min-width:260px;
+}
+.legend-row{
+  display:grid;
+  grid-template-columns:12px 1fr auto auto;
+  align-items:center;
+  gap:10px;
+  padding:7px 8px;
+  border-radius:8px;
+  cursor:pointer;
+  border:1px solid transparent;
+  background:none;
+  text-align:left;
+  font:inherit;
+  color:inherit;
+  width:100%;
+}
+.legend-row:hover{background:var(--surface-2);}
+.legend-row.active{
+  background:var(--accent-wash);
+  border-color:var(--border-strong);
+}
+.legend-row.dim{opacity:0.45;}
+.legend-dot{
+  width:10px;height:10px;border-radius:3px;flex:none;
+}
+.legend-name{font-size:0.86rem;font-weight:600;}
+.legend-count{
+  font-variant-numeric:tabular-nums;
+  font-size:0.86rem;
+  color:var(--ink-2);
+}
+.legend-pct{
+  font-variant-numeric:tabular-nums;
+  font-size:0.78rem;
+  color:var(--ink-muted);
+  min-width:38px;
+  text-align:right;
+}
+
+.kind-bar{
+  display:flex;
+  height:10px;
+  border-radius:6px;
+  overflow:hidden;
+  margin-top:14px;
+  border:1px solid var(--border);
+}
+.kind-bar div{height:100%;}
+.kind-legend{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px 18px;
+  margin-top:10px;
+  font-size:0.78rem;
+  color:var(--ink-2);
+}
+.kind-legend span.sw{
+  display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:6px;
+}
+
+.controls{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+  margin-bottom:16px;
+}
+.chip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--accent-wash);
+  border:1px solid var(--border-strong);
+  color:var(--ink);
+  padding:6px 8px 6px 12px;
+  border-radius:20px;
+  font-size:0.82rem;
+  font-weight:600;
+}
+.chip button{
+  border:none;
+  background:rgba(0,0,0,0.08);
+  color:inherit;
+  width:18px;height:18px;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:0.75rem;
+  line-height:1;
+  display:flex;align-items:center;justify-content:center;
+}
+input[type=search]{
+  flex:1 1 220px;
+  min-width:160px;
+  background:var(--surface-2);
+  border:1px solid var(--border);
+  border-radius:9px;
+  padding:9px 12px;
+  font-size:0.86rem;
+  color:var(--ink);
+  font-family:var(--sans);
+}
+input[type=search]:focus{outline:2px solid var(--accent);outline-offset:-1px;}
+select{
+  background:var(--surface-2);
+  border:1px solid var(--border);
+  border-radius:9px;
+  padding:9px 10px;
+  font-size:0.82rem;
+  color:var(--ink);
+  font-family:var(--sans);
+}
+
+.results-summary{
+  font-size:0.8rem;
+  color:var(--ink-muted);
+  margin-bottom:12px;
+}
+
+.file-group{
+  border:1px solid var(--border);
+  border-radius:10px;
+  margin-bottom:10px;
+  overflow:hidden;
+}
+.file-head{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  background:var(--surface-2);
+  cursor:pointer;
+  user-select:none;
+}
+.file-head .dot{width:8px;height:8px;border-radius:2px;flex:none;}
+.file-head .path{
+  font-family:var(--mono);
+  font-size:0.78rem;
+  color:var(--ink);
+  overflow-wrap:anywhere;
+}
+.file-head .kind-badge{
+  font-size:0.68rem;
+  color:var(--ink-muted);
+  background:var(--surface);
+  border:1px solid var(--border);
+  padding:2px 7px;
+  border-radius:20px;
+  white-space:nowrap;
+}
+.file-head .count{
+  margin-left:auto;
+  font-size:0.76rem;
+  color:var(--ink-2);
+  font-variant-numeric:tabular-nums;
+  white-space:nowrap;
+}
+.file-head .chev{
+  transition:transform .15s ease;
+  color:var(--ink-muted);
+  flex:none;
+}
+.file-group.open .chev{transform:rotate(90deg);}
+.test-list{
+  list-style:none;
+  margin:0;
+  padding:4px 14px 10px 32px;
+  display:none;
+}
+.file-group.open .test-list{display:block;}
+.test-list li{
+  padding:6px 0;
+  font-size:0.85rem;
+  border-bottom:1px dashed var(--grid);
+  line-height:1.4;
+}
+.test-list li:last-child{border-bottom:none;}
+.test-list li mark{
+  background:var(--accent-wash);
+  color:inherit;
+  border-radius:3px;
+  padding:0 2px;
+}
+
+.empty-state, .load-state{
+  text-align:center;
+  color:var(--ink-muted);
+  padding:40px 20px;
+  font-size:0.88rem;
+}
+.load-state.error{color:#c0392b;}
+
+footer.foot{
+  margin-top:28px;
+  color:var(--ink-muted);
+  font-size:0.76rem;
+  text-align:center;
+}
+footer.foot a{color:inherit;}
+
+@media (max-width: 640px){
+  .chart-row{flex-direction:column;align-items:stretch;}
+  .donut-wrap{align-self:center;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>Sto-Sim &mdash; Automated Test Overview</h1>
+    <p>An inventory of the repository's automated tests (Playwright E2E + Vitest unit), grouped by category.</p>
+    <div class="meta-line">
+      <span id="meta-generated">Loading&hellip;</span>
+      <span>&middot;</span>
+      <span>Source: <code style="font-family:var(--mono)">Sto-Building-Solutions/Sto-Sim</code>, branch <code style="font-family:var(--mono)">main</code></span>
+    </div>
+  </header>
+
+  <div class="stat-row" id="stat-row"></div>
+
+  <section class="panel" id="chart-panel" style="display:none">
+    <h2>Test cases by category <span class="hint">click a slice or name to filter</span></h2>
+    <div class="chart-row">
+      <div class="donut-wrap">
+        <svg viewBox="0 0 220 220" id="donut"></svg>
+        <div class="donut-center" id="donut-center">
+          <div class="n" id="donut-n">0</div>
+          <div class="l" id="donut-l">test cases</div>
+        </div>
+      </div>
+      <div class="legend" id="legend"></div>
+    </div>
+    <div class="kind-bar" id="kind-bar"></div>
+    <div class="kind-legend" id="kind-legend"></div>
+  </section>
+
+  <section class="panel" id="list-panel" style="display:none">
+    <h2>Test case list</h2>
+    <div class="controls">
+      <div id="active-chip"></div>
+      <input type="search" id="search" placeholder="Search by file name or test case&hellip;">
+      <select id="kind-filter">
+        <option value="">All types</option>
+      </select>
+    </div>
+    <div class="results-summary" id="results-summary"></div>
+    <div id="results"></div>
+  </section>
+
+  <div id="load-state" class="load-state">Loading data/test-cases.json&hellip;</div>
+
+  <footer class="foot">A static snapshot based on the repo's contents &mdash; not a live test-run result. Update <code style="font-family:var(--mono)">data/test-cases.json</code> to refresh it (see README).</footer>
+</div>
+
+<script>
+const DATA_URL = 'data/test-cases.json';
+
+const SLOTS = [
+  ['#2a78d6','#3987e5'],
+  ['#eb6834','#d95926'],
+  ['#1baf7a','#199e70'],
+  ['#eda100','#c98500'],
+  ['#e87ba4','#d55181'],
+  ['#008300','#008300'],
+  ['#4a3aa7','#9085e9'],
+];
+const KIND_COLORS = {
+  'e2e (Playwright)': '#2a78d6',
+  'unit (Vitest, API)': '#1baf7a',
+  'unit (Vitest, Web)': '#eda100',
+  'unit (Vitest, Core)': '#4a3aa7',
+  'unit (Vitest)': '#898781',
+};
+
+fetch(DATA_URL, {cache:'no-cache'})
+  .then(r=>{ if(!r.ok) throw new Error(r.status+' '+r.statusText); return r.json(); })
+  .then(init)
+  .catch(err=>{
+    const el = document.getElementById('load-state');
+    el.classList.add('error');
+    el.textContent = `Could not load ${DATA_URL} (${err.message}). If you opened this file directly (file://), serve it over http instead — see README.`;
+  });
+
+function init(TESTS){
+  document.getElementById('load-state').remove();
+  document.getElementById('chart-panel').style.display = '';
+  document.getElementById('list-panel').style.display = '';
+  document.getElementById('meta-generated').textContent = `${TESTS.length.toLocaleString('en-US')} test files loaded`;
+
+  // ---- derive categories & kinds from the data ----
+  const byCat = {};
+  const byKind = {};
+  TESTS.forEach(f=>{
+    const c = byCat[f.category] || (byCat[f.category] = {files:0, tests:0});
+    c.files += 1; c.tests += f.tests.length;
+    const k = byKind[f.kind] || (byKind[f.kind] = {files:0, tests:0});
+    k.files += 1; k.tests += f.tests.length;
+  });
+  const totalTests = TESTS.reduce((a,f)=>a+f.tests.length,0);
+  const totalFiles = TESTS.length;
+
+  const CATS = Object.entries(byCat)
+    .sort((a,b)=>b[1].tests-a[1].tests)
+    .map(([name,v],i)=>({
+      name, tests:v.tests, files:v.files,
+      pct: Math.round(v.tests/totalTests*1000)/10,
+      light: SLOTS[i % SLOTS.length][0],
+      dark: SLOTS[i % SLOTS.length][1],
+    }));
+  const KINDS = Object.entries(byKind).map(([name,v])=>({name, files:v.files, tests:v.tests}));
+
+  // ---- stat tiles ----
+  const e2e = KINDS.filter(k=>k.name.startsWith('e2e')).reduce((a,k)=>a+k.tests,0);
+  const unit = totalTests - e2e;
+  const statRow = document.getElementById('stat-row');
+  [
+    [totalTests.toLocaleString('en-US'), 'test cases total'],
+    [totalFiles.toLocaleString('en-US'), 'test files'],
+    [e2e.toLocaleString('en-US'), 'E2E (Playwright)'],
+    [unit.toLocaleString('en-US'), 'Unit (Vitest)'],
+    [CATS.length.toLocaleString('en-US'), 'categories'],
+  ].forEach(([n,l])=>{
+    const d = document.createElement('div');
+    d.className='stat-tile';
+    d.innerHTML = '<div class="num">'+n+'</div><div class="label">'+l+'</div>';
+    statRow.appendChild(d);
+  });
+
+  // ---- donut ----
+  const cx=110, cy=110, r=88, rInner=54;
+  function polar(cx,cy,r,angle){
+    const a = (angle-90) * Math.PI/180;
+    return [cx + r*Math.cos(a), cy + r*Math.sin(a)];
+  }
+  function arcPath(startAngle,endAngle){
+    const [x1,y1]=polar(cx,cy,r,endAngle);
+    const [x2,y2]=polar(cx,cy,r,startAngle);
+    const [x3,y3]=polar(cx,cy,rInner,startAngle);
+    const [x4,y4]=polar(cx,cy,rInner,endAngle);
+    const large = endAngle-startAngle > 180 ? 1 : 0;
+    return `M${x1},${y1} A${r},${r} 0 ${large} 0 ${x2},${y2} L${x3},${y3} A${rInner},${rInner} 0 ${large} 1 ${x4},${y4} Z`;
+  }
+  const isDark = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const donutSvg = document.getElementById('donut');
+  let angleAcc = 0;
+  const segs = [];
+  CATS.forEach(c=>{
+    const sweep = c.tests/totalTests*360;
+    const start = angleAcc, end = angleAcc+sweep;
+    angleAcc = end;
+    const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+    path.setAttribute('d', arcPath(start,end));
+    path.setAttribute('class','seg');
+    path.dataset.cat = c.name;
+    path.addEventListener('click', ()=>toggleCategory(c.name));
+    path.addEventListener('mouseenter', ()=>hoverCategory(c.name));
+    path.addEventListener('mouseleave', ()=>hoverCategory(null));
+    donutSvg.appendChild(path);
+    segs.push(path);
+  });
+  function paintDonut(){
+    const dark = isDark();
+    CATS.forEach((c,i)=>segs[i].setAttribute('fill', dark ? c.dark : c.light));
+  }
+  paintDonut();
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', paintDonut);
+
+  // ---- legend ----
+  const legendEl = document.getElementById('legend');
+  const legendRows = [];
+  CATS.forEach(c=>{
+    const btn = document.createElement('button');
+    btn.className='legend-row';
+    btn.innerHTML = `<span class="legend-dot"></span>
+      <span class="legend-name">${escapeHtml(c.name)}</span>
+      <span class="legend-count">${c.tests}</span>
+      <span class="legend-pct">${c.pct}%</span>`;
+    const dot = btn.querySelector('.legend-dot');
+    dot.dataset.light = c.light; dot.dataset.dark = c.dark;
+    btn.addEventListener('click', ()=>toggleCategory(c.name));
+    btn.addEventListener('mouseenter', ()=>hoverCategory(c.name));
+    btn.addEventListener('mouseleave', ()=>hoverCategory(null));
+    legendEl.appendChild(btn);
+    legendRows.push({el:btn, name:c.name});
+  });
+  function paintLegendDots(){
+    const dark = isDark();
+    document.querySelectorAll('.legend-dot').forEach(d=>{
+      d.style.background = dark ? d.dataset.dark : d.dataset.light;
+    });
+  }
+  paintLegendDots();
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', paintLegendDots);
+
+  function hoverCategory(name){
+    if(selectedCategory) return;
+    segs.forEach(s=>s.classList.toggle('dim', name && s.dataset.cat!==name));
+    legendRows.forEach(r=>r.el.classList.toggle('dim', name && r.name!==name));
+  }
+
+  // ---- kind bar ----
+  const kindBar = document.getElementById('kind-bar');
+  const kindLegend = document.getElementById('kind-legend');
+  const kindFilterSel = document.getElementById('kind-filter');
+  KINDS.slice().sort((a,b)=>b.tests-a.tests).forEach(k=>{
+    const seg = document.createElement('div');
+    seg.style.width = (k.tests/totalTests*100)+'%';
+    seg.style.background = KIND_COLORS[k.name] || '#898781';
+    kindBar.appendChild(seg);
+    const li = document.createElement('span');
+    li.innerHTML = `<span class="sw" style="background:${KIND_COLORS[k.name]||'#898781'}"></span>${escapeHtml(k.name)} &middot; ${k.tests}`;
+    kindLegend.appendChild(li);
+    const opt = document.createElement('option');
+    opt.value = k.name; opt.textContent = k.name;
+    kindFilterSel.appendChild(opt);
+  });
+
+  // ---- filtering & results ----
+  let selectedCategory = null;
+  const searchEl = document.getElementById('search');
+  const kindFilterEl = document.getElementById('kind-filter');
+  const resultsEl = document.getElementById('results');
+  const summaryEl = document.getElementById('results-summary');
+  const chipEl = document.getElementById('active-chip');
+  const donutN = document.getElementById('donut-n');
+  const donutL = document.getElementById('donut-l');
+
+  function escapeHtml(s){
+    return s.replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  }
+  function highlight(text, q){
+    if(!q) return escapeHtml(text);
+    const idx = text.toLowerCase().indexOf(q.toLowerCase());
+    if(idx===-1) return escapeHtml(text);
+    return escapeHtml(text.slice(0,idx)) + '<mark>' + escapeHtml(text.slice(idx,idx+q.length)) + '</mark>' + escapeHtml(text.slice(idx+q.length));
+  }
+
+  function toggleCategory(name){
+    selectedCategory = selectedCategory===name ? null : name;
+    segs.forEach(s=>s.classList.toggle('sel', s.dataset.cat===selectedCategory));
+    segs.forEach(s=>s.classList.remove('dim'));
+    legendRows.forEach(r=>{
+      r.el.classList.toggle('active', r.name===selectedCategory);
+      r.el.classList.remove('dim');
+    });
+    updateDonutCenter();
+    render();
+  }
+
+  function updateDonutCenter(){
+    if(selectedCategory){
+      const c = CATS.find(c=>c.name===selectedCategory);
+      donutN.textContent = c.tests.toLocaleString('en-US');
+      donutL.textContent = c.name;
+    } else {
+      donutN.textContent = totalTests.toLocaleString('en-US');
+      donutL.textContent = 'test cases total';
+    }
+  }
+  updateDonutCenter();
+
+  function render(){
+    chipEl.innerHTML = '';
+    if(selectedCategory){
+      const chip = document.createElement('span');
+      chip.className='chip';
+      chip.innerHTML = escapeHtml(selectedCategory) + ' <button aria-label="Clear filter">&times;</button>';
+      chip.querySelector('button').addEventListener('click', ()=>toggleCategory(selectedCategory));
+      chipEl.appendChild(chip);
+    }
+
+    const q = searchEl.value.trim().toLowerCase();
+    const kindQ = kindFilterEl.value;
+
+    const files = TESTS.filter(f=>{
+      if(selectedCategory && f.category!==selectedCategory) return false;
+      if(kindQ && f.kind!==kindQ) return false;
+      return true;
+    }).map(f=>{
+      let tests = f.tests;
+      if(q){
+        tests = tests.filter(t=>t.name.toLowerCase().includes(q) || f.file.toLowerCase().includes(q));
+      }
+      return {...f, tests};
+    }).filter(f=>f.tests.length>0);
+
+    const catMeta = Object.fromEntries(CATS.map(c=>[c.name, c]));
+    const totalShown = files.reduce((a,f)=>a+f.tests.length,0);
+    summaryEl.textContent = `${totalShown.toLocaleString('en-US')} test cases in ${files.length.toLocaleString('en-US')} files`;
+
+    resultsEl.innerHTML='';
+    if(files.length===0){
+      resultsEl.innerHTML = '<div class="empty-state">No test cases match this filter.</div>';
+      return;
+    }
+
+    const openByDefault = files.length <= 6;
+    files.forEach(f=>{
+      const meta = catMeta[f.category] || {light:'#898781'};
+      const group = document.createElement('div');
+      group.className='file-group' + (openByDefault ? ' open':'');
+      const head = document.createElement('div');
+      head.className='file-head';
+      head.innerHTML = `<svg class="chev" width="10" height="10" viewBox="0 0 10 10"><path d="M2 1l5 4-5 4" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
+        <span class="dot" style="background:${meta.light}"></span>
+        <span class="path">${escapeHtml(f.file)}</span>
+        <span class="kind-badge">${escapeHtml(f.kind)}</span>
+        <span class="count">${f.tests.length}</span>`;
+      head.addEventListener('click', ()=>group.classList.toggle('open'));
+      const list = document.createElement('ul');
+      list.className='test-list';
+      f.tests.forEach(t=>{
+        const li = document.createElement('li');
+        li.innerHTML = highlight(t.name, q) + (t.modifier ? ` <span style="color:var(--ink-muted)">[${t.modifier}]</span>` : '');
+        list.appendChild(li);
+      });
+      group.appendChild(head);
+      group.appendChild(list);
+      resultsEl.appendChild(group);
+    });
+  }
+
+  searchEl.addEventListener('input', render);
+  kindFilterEl.addEventListener('change', render);
+  render();
+}
+</script>
+</body>
+</html>

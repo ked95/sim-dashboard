@@ -1,0 +1,5699 @@
+[
+  {
+    "file": "apps/api/test/auth.test.ts",
+    "category": "Auth & Projekt-Backend",
+    "kind": "unit (Vitest, API)",
+    "tests": [
+      {
+        "name": "meldet authRequired=true, wenn Auth an ist",
+        "modifier": null
+      },
+      {
+        "name": "geschützte Route ohne Token → 401",
+        "modifier": null
+      },
+      {
+        "name": "Ordner- und Papierkorb-Route ohne Token → 401",
+        "modifier": null
+      },
+      {
+        "name": "nicht-API-Pfad (SPA) ist NICHT 401 — die SPA muss ohne Token laden",
+        "modifier": null
+      },
+      {
+        "name": "falsches Passwort → 401, kein Token",
+        "modifier": null
+      },
+      {
+        "name": "korrekter Login → Token, damit Zugriff auf geschützte Route",
+        "modifier": null
+      },
+      {
+        "name": "health nennt den Config-Owner genau im Modus off",
+        "modifier": null
+      },
+      {
+        "name": "Modus off (lokal/Tests): kein Login nötig, authRequired=false",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/api/test/blobs.test.ts",
+    "category": "Auth & Projekt-Backend",
+    "kind": "unit (Vitest, API)",
+    "tests": [
+      {
+        "name": "die Kopie liest die Bytes unter IHRER Projekt-id",
+        "modifier": null
+      },
+      {
+        "name": "Quelle endgültig löschen lässt die Kopie intakt",
+        "modifier": null
+      },
+      {
+        "name": "umgekehrt: Kopie löschen lässt die Quelle intakt",
+        "modifier": null
+      },
+      {
+        "name": "Projekt ohne Blobs lässt sich kopieren (kein ENOENT)",
+        "modifier": null
+      },
+      {
+        "name": "Referenz ohne Bytes → 409 blob missing, nichts bleibt zurück",
+        "modifier": null
+      },
+      {
+        "name": "Familie duplizieren: Referenz ohne Bytes → 409 blob missing, nichts bleibt zurück",
+        "modifier": null
+      },
+      {
+        "name": "die Variante liest den IFC des Projekts — ohne eigene Kopie",
+        "modifier": null
+      },
+      {
+        "name": "Upload aus einer Variante landet in der Familienwurzel",
+        "modifier": null
+      },
+      {
+        "name": "Variante endgültig löschen lässt die Blobs des Projekts stehen",
+        "modifier": null
+      },
+      {
+        "name": "endgültig gelöschtes Wurzelprojekt entfernt die Blobs der ganzen Familie",
+        "modifier": null
+      },
+      {
+        "name": "Kopie einer Variante nimmt nur ihre eigenen Blobs mit",
+        "modifier": null
+      },
+      {
+        "name": "POST → GET liefert die Bytes byte-identisch zurück",
+        "modifier": null
+      },
+      {
+        "name": "Einzel-Blob-DELETE existiert nicht mehr → 404",
+        "modifier": null
+      },
+      {
+        "name": "Upload auf fremdes/unbekanntes Projekt → 404",
+        "modifier": null
+      },
+      {
+        "name": "unbekannter Blob bei existierendem Projekt → 404",
+        "modifier": null
+      },
+      {
+        "name": "Oversize-Upload → 413 und KEINE (truncierte) Datei auf der Platte",
+        "modifier": null
+      },
+      {
+        "name": "sind weder les- noch beschreibbar",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/api/test/folders.test.ts",
+    "category": "Auth & Projekt-Backend",
+    "kind": "unit (Vitest, API)",
+    "tests": [
+      {
+        "name": "POST → GET: Ordner erscheint in der Liste des Owners",
+        "modifier": null
+      },
+      {
+        "name": "Liste kommt alphabetisch, nicht in Anlagereihenfolge",
+        "modifier": null
+      },
+      {
+        "name": "leerer oder rein aus Leerzeichen bestehender Name → 400",
+        "modifier": null
+      },
+      {
+        "name": "Name wird getrimmt",
+        "modifier": null
+      },
+      {
+        "name": "PATCH benennt um",
+        "modifier": null
+      },
+      {
+        "name": "DELETE entfernt den Ordner",
+        "modifier": null
+      },
+      {
+        "name": "unbekannte id → 404, kaputte id → 400",
+        "modifier": null
+      },
+      {
+        "name": "fremder Ordner ist unsichtbar und nicht änderbar (404, kein 403)",
+        "modifier": null
+      },
+      {
+        "name": "Ordner löschen lässt die enthaltenen Projekte stehen — sie erscheinen als „ungeordnet\"",
+        "modifier": null
+      },
+      {
+        "name": "ein zurückgeholter Ordner überlebt ein gleichzeitiges endgültiges Löschen",
+        "modifier": null
+      },
+      {
+        "name": "zwei gleichzeitige endgültige Löschungen ergeben nie einen 500",
+        "modifier": null
+      },
+      {
+        "name": "kopiert alle enthaltenen Familien samt ihrer Stände",
+        "modifier": null
+      },
+      {
+        "name": "ein leerer Ordner ergibt einen leeren Ordner",
+        "modifier": null
+      },
+      {
+        "name": "nimmt gelöschte Projekte nicht mit",
+        "modifier": null
+      },
+      {
+        "name": "überspringt eine Familie mit toter Blob-Referenz, der Rest des Ordners entsteht",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/api/test/oidc.test.ts",
+    "category": "Auth & Projekt-Backend",
+    "kind": "unit (Vitest, API)",
+    "tests": [
+      {
+        "name": "/auth/config nennt Modus, Issuer und Client-ID (das SPA hardcodiert nichts)",
+        "modifier": null
+      },
+      {
+        "name": "gültiges Token → Zugriff, req.user.id ist der sub",
+        "modifier": null
+      },
+      {
+        "name": "Anzeigename fällt auf preferred_username und zuletzt auf den sub zurück",
+        "modifier": null
+      },
+      {
+        "name": "kein Token → 401 und KEIN stiller Rückfall auf den dev_user",
+        "modifier": null
+      },
+      {
+        "name": "Ordner- und Papierkorb-Route ohne Token → 401",
+        "modifier": null
+      },
+      {
+        "name": "fremd signiertes Token → 401",
+        "modifier": null
+      },
+      {
+        "name": "abgelaufenes Token → 401",
+        "modifier": null
+      },
+      {
+        "name": "falscher Issuer → 401",
+        "modifier": null
+      },
+      {
+        "name": "falsche Audience → 401 (Token einer anderen Anwendung desselben Realms)",
+        "modifier": null
+      },
+      {
+        "name": "Dev-Token (HS256, eigenes Secret) wird im OIDC-Modus nicht akzeptiert",
+        "modifier": null
+      },
+      {
+        "name": "Token ohne sub → 401 (ohne Owner kein Projekt-Scoping)",
+        "modifier": null
+      },
+      {
+        "name": "Discovery und JWKS werden gecacht, nicht pro Anfrage geladen",
+        "modifier": null
+      },
+      {
+        "name": "SPA-Pfade bleiben ohne Token erreichbar — der Login passiert IM SPA",
+        "modifier": null
+      },
+      {
+        "name": "Token unserer Client-ID wird akzeptiert — auch mit fremder aud",
+        "modifier": null
+      },
+      {
+        "name": "Token einer anderen Anwendung desselben Realms → 401",
+        "modifier": null
+      },
+      {
+        "name": "Token ganz ohne azp → 401 (keine prüfbare Zugehörigkeit)",
+        "modifier": null
+      },
+      {
+        "name": "Rolle als Client-Rolle (wie in Stos Realm) → Zugriff",
+        "modifier": null
+      },
+      {
+        "name": "Rolle als Realm-Rolle (wie im PP248-Beispiel) → Zugriff",
+        "modifier": null
+      },
+      {
+        "name": "ohne Rolle → 403, nicht 401 — der Nutzer ist angemeldet, ihm fehlt die Freigabe",
+        "modifier": null
+      },
+      {
+        "name": "Rolle eines FREMDEN Clients zählt nicht",
+        "modifier": null
+      },
+      {
+        "name": "ungültiges Token bleibt 401 (die Rollenprüfung kommt erst danach)",
+        "modifier": null
+      },
+      {
+        "name": "ohne gesetzte Rolle wird nicht geprüft (Umgebungen ohne Rollenpflege)",
+        "modifier": null
+      },
+      {
+        "name": "AUTH_MODE=oidc ohne Issuer/Client-ID startet nicht",
+        "modifier": null
+      },
+      {
+        "name": "fehlende Audience allein ist KEIN Startfehler mehr (Realm ohne Mapper)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/api/test/papierkorb.test.ts",
+    "category": "Auth & Projekt-Backend",
+    "kind": "unit (Vitest, API)",
+    "tests": [
+      {
+        "name": "verschwindet aus der Liste, liegt aber im Papierkorb",
+        "modifier": null
+      },
+      {
+        "name": "ist danach nicht mehr direkt ladbar (es liegt im Papierkorb)",
+        "modifier": null
+      },
+      {
+        "name": "Wiederherstellen bringt es zurück",
+        "modifier": null
+      },
+      {
+        "name": "Wiederherstellen behält die Ordnerzuordnung",
+        "modifier": null
+      },
+      {
+        "name": "endgültiges Löschen entfernt die Zeile wirklich",
+        "modifier": null
+      },
+      {
+        "name": "Blobs bleiben im Papierkorb erhalten und gehen erst beim endgültigen Löschen",
+        "modifier": null
+      },
+      {
+        "name": "endgültiges Löschen geht nur aus dem Papierkorb (409 für ein lebendes Projekt)",
+        "modifier": null
+      },
+      {
+        "name": "ein Projekt nimmt seine Varianten mit und bringt sie zurück",
+        "modifier": null
+      },
+      {
+        "name": "holt keine Variante zurück, die schon vorher einzeln gelöscht war",
+        "modifier": null
+      },
+      {
+        "name": "eine einzeln gelöschte Variante steht als eigener Eintrag im Papierkorb",
+        "modifier": null
+      },
+      {
+        "name": "ein gelöschter Ordner behält seine Projekte — sie erscheinen als ungeordnet",
+        "modifier": null
+      },
+      {
+        "name": "endgültig gelöschter Ordner löst seine Projekte heraus, löscht sie aber nicht",
+        "modifier": null
+      },
+      {
+        "name": "ein Projekt lässt sich nicht in einen Ordner im Papierkorb schieben",
+        "modifier": null
+      },
+      {
+        "name": "PUT, PATCH und /ifc antworten 404 wie das Lesen",
+        "modifier": null
+      },
+      {
+        "name": "nach dem Wiederherstellen greift wieder alles",
+        "modifier": null
+      },
+      {
+        "name": "entfernt alles Gelöschte endgültig — und nur das",
+        "modifier": null
+      },
+      {
+        "name": "räumt die Blobs der geleerten Projekte ab",
+        "modifier": null
+      },
+      {
+        "name": "nimmt Varianten mit, lässt fremde Papierkörbe unberührt",
+        "modifier": null
+      },
+      {
+        "name": "auf einem leeren Papierkorb ist es ein No-op",
+        "modifier": null
+      },
+      {
+        "name": "Wiederherstellen einer Variante holt auch das Projekt aus dem Papierkorb",
+        "modifier": null
+      },
+      {
+        "name": "bringt aber nicht die Geschwister mit",
+        "modifier": null
+      },
+      {
+        "name": "zeigt nur eigene Einträge",
+        "modifier": null
+      },
+      {
+        "name": "ein gelöschtes Projekt taucht in keiner abgeleiteten Sicht auf",
+        "modifier": null
+      },
+      {
+        "name": "Papierkorb leeren lässt die Blobs einer lebenden Familie unberührt",
+        "modifier": null
+      },
+      {
+        "name": "ein zurückgeholtes Projekt überlebt ein gleichzeitiges „Papierkorb leeren\"",
+        "modifier": null
+      },
+      {
+        "name": "ein zurückgeholtes Projekt überlebt ein gleichzeitiges endgültiges Löschen",
+        "modifier": null
+      },
+      {
+        "name": "zwei gleichzeitige Aufrufe scheitern nicht am schon Gelöschten",
+        "modifier": null
+      },
+      {
+        "name": "der letzte endgültig gelöschte Stand nimmt seine leere Wurzel mit",
+        "modifier": null
+      },
+      {
+        "name": "eine Wurzel, für die kein Stand zurückkäme, bleibt im Papierkorb",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/api/test/projects.test.ts",
+    "category": "Auth & Projekt-Backend",
+    "kind": "unit (Vitest, API)",
+    "tests": [
+      {
+        "name": "POST → GET: Aggregat kommt unverändert zurück, version=0",
+        "modifier": null
+      },
+      {
+        "name": "PUT /projects/:id/ifc setzt building.ifc ohne Versions-Bump",
+        "modifier": null
+      },
+      {
+        "name": "PUT /projects/:id/ifc funktioniert auch ohne vorhandenes building",
+        "modifier": null
+      },
+      {
+        "name": "PUT /projects/:id/ifc speichert die Klassifizierung mit (sonst rehydriert nichts)",
+        "modifier": null
+      },
+      {
+        "name": "PUT /projects/:id/ifc speichert den Modellstand mit",
+        "modifier": null
+      },
+      {
+        "name": "PUT /projects/:id/ifc auf fremdes/unbekanntes Projekt → 404",
+        "modifier": null
+      },
+      {
+        "name": "PUT /projects/:id/ifc weist kaputte Referenzen ab",
+        "modifier": null
+      },
+      {
+        "name": "jede Variante bekommt Referenz UND Klassifizierung",
+        "modifier": null
+      },
+      {
+        "name": "der Modellstand geht familienweit mit — ein alter fällt beim Wechsel ohne neuen weg",
+        "modifier": null
+      },
+      {
+        "name": "ein Wechsel ohne Klassifizierung räumt die alte weg, statt sie stehen zu lassen",
+        "modifier": null
+      },
+      {
+        "name": "eine Variante, die während eines Modellwechsels entsteht, trägt das neue Modell",
+        "modifier": null
+      },
+      {
+        "name": "ein Wechsel überschreibt auch eine abweichende Variante",
+        "modifier": null
+      },
+      {
+        "name": "der Import darf aus einer Variante heraus passieren — er trifft die ganze Familie",
+        "modifier": null
+      },
+      {
+        "name": "bumpt die version des importierenden Standes nicht",
+        "modifier": null
+      },
+      {
+        "name": "entwertet die Stände der Geschwister, statt sie still überschreiben zu lassen",
+        "modifier": null
+      },
+      {
+        "name": "eine wiederhergestellte Variante übernimmt das aktuelle Modell der Familie",
+        "modifier": null
+      },
+      {
+        "name": "ein folgenloser Papierkorb-Ausflug lässt den Mengen-Schnappschuss stehen",
+        "modifier": null
+      },
+      {
+        "name": "ein Modellwechsel löscht den Mengen-Schnappschuss (ifcFacade) in der ganzen Familie",
+        "modifier": null
+      },
+      {
+        "name": "meldet, wie viele Hand-Mengen der Familie vom Wechsel betroffen sind",
+        "modifier": null
+      },
+      {
+        "name": "meldet null, wenn keine Hand-Mengen existieren",
+        "modifier": null
+      },
+      {
+        "name": "rührt Varianten im Papierkorb nicht an",
+        "modifier": null
+      },
+      {
+        "name": "Dokument über 1 MB lässt sich speichern (kein 413)",
+        "modifier": null
+      },
+      {
+        "name": "zu großes Dokument → 413 (das Limit greift wirklich)",
+        "modifier": null
+      },
+      {
+        "name": "Umschlag-Spalten (ADR-0008 P2): name/anwendungskontext aus dem doc abgeleitet",
+        "modifier": null
+      },
+      {
+        "name": "PUT mit korrekter version erhöht sie und speichert",
+        "modifier": null
+      },
+      {
+        "name": "PUT mit veralteter version → 409, Daten unverändert",
+        "modifier": null
+      },
+      {
+        "name": "ein Dokument ohne building bricht das Kopieren nicht ab",
+        "modifier": null
+      },
+      {
+        "name": "Kopie ist eigenständig: eigene id, version 0, Aggregat identisch",
+        "modifier": null
+      },
+      {
+        "name": "Kopie bekommt einen eindeutigen Namen, in doc UND Spalte",
+        "modifier": null
+      },
+      {
+        "name": "Quelle bleibt unberührt (version, updatedAt, Name)",
+        "modifier": null
+      },
+      {
+        "name": "Kopie einer Variante landet im Ordner der Familie",
+        "modifier": null
+      },
+      {
+        "name": "Umschlag-Spalten werden neu abgeleitet, nicht von der Quelle geerbt",
+        "modifier": null
+      },
+      {
+        "name": "fremdes Projekt → 404, kaputte id → 400",
+        "modifier": null
+      },
+      {
+        "name": "Variante hängt am Projekt, trägt eigenes data und version 0",
+        "modifier": null
+      },
+      {
+        "name": "Variante einer Variante wird ein Geschwister, keine Enkelin",
+        "modifier": null
+      },
+      {
+        "name": "Variantennamen zählen je Familie, nicht global",
+        "modifier": null
+      },
+      {
+        "name": "Variante erbt den Ordner über den Parent und trägt selbst NULL",
+        "modifier": null
+      },
+      {
+        "name": "Variante in einen Ordner verschieben → 409",
+        "modifier": null
+      },
+      {
+        "name": "Projekt löschen entfernt seine Varianten mit (Kaskade)",
+        "modifier": null
+      },
+      {
+        "name": "Variante löschen lässt das Projekt stehen, solange Geschwister leben",
+        "modifier": null
+      },
+      {
+        "name": "die letzte Variante nimmt ihr Hauptprojekt mit in den Papierkorb",
+        "modifier": null
+      },
+      {
+        "name": "Stände divergieren unabhängig",
+        "modifier": null
+      },
+      {
+        "name": "GET /projects liefert parentId mit",
+        "modifier": null
+      },
+      {
+        "name": "fremdes Projekt → 404, kaputte id → 400",
+        "modifier": null
+      },
+      {
+        "name": "zuordnen → GET /projects zeigt die folderId",
+        "modifier": null
+      },
+      {
+        "name": "folderId: null löst wieder heraus",
+        "modifier": null
+      },
+      {
+        "name": "lässt version und updatedAt unangetastet",
+        "modifier": null
+      },
+      {
+        "name": "fremder Ordner → 404, und das Projekt bleibt ungeordnet",
+        "modifier": null
+      },
+      {
+        "name": "fremdes Projekt → 404",
+        "modifier": null
+      },
+      {
+        "name": "unbekannter Ordner → 404, kaputte ids → 400",
+        "modifier": null
+      },
+      {
+        "name": "liefert genau die Felder der rechten Seitenleiste",
+        "modifier": null
+      },
+      {
+        "name": "bleibt klein, auch wenn das Dokument groß ist",
+        "modifier": null
+      },
+      {
+        "name": "fremdes Projekt → 404, kaputte id → 400",
+        "modifier": null
+      },
+      {
+        "name": "GET auf unbekannte id → 404",
+        "modifier": null
+      },
+      {
+        "name": "GET /projects listet den Owner (name + updatedAt), neueste zuerst",
+        "modifier": null
+      },
+      {
+        "name": "GET /projects: Projekt ohne projektname → \"Neues Projekt\"",
+        "modifier": null
+      },
+      {
+        "name": "GET/PUT auf kaputte (nicht-UUID) id → 400, kein 500",
+        "modifier": null
+      },
+      {
+        "name": "DELETE /projects/:id → 204; Projekt weg, kaputte id → 400",
+        "modifier": null
+      },
+      {
+        "name": "zwei PUTs auf denselben Stand: einer 200, einer 409 (kein Lost Update)",
+        "modifier": null
+      },
+      {
+        "name": "POST /projects legt Container und Variante 1 in einem Zug an — Antwort ist die Variante",
+        "modifier": null
+      },
+      {
+        "name": "PUT auf den Container → 409, auf die Variante → 200",
+        "modifier": null
+      },
+      {
+        "name": "POST /projects/:id/copy legt auch für die Kopie Container + Variante an",
+        "modifier": null
+      },
+      {
+        "name": "zwei gleichzeitige Varianten-Löschungen lassen keine verwaiste Wurzel zurück",
+        "modifier": null
+      },
+      {
+        "name": "eine Variante, die während des Löschens der Wurzel entsteht, bleibt nicht lebend zurück",
+        "modifier": null
+      },
+      {
+        "name": "/copy gegen endgültiges Löschen der Quellfamilie hinterlässt keine Kopie mit toter blobId",
+        "modifier": null
+      },
+      {
+        "name": "/copy: fällt die Quelle NACH der Byte-Kopie, verschwinden die kopierten Bytes wieder",
+        "modifier": null
+      },
+      {
+        "name": "/copy liest nicht an einer offenen Löschtransaktion vorbei (die Familien-Sperre trägt)",
+        "modifier": null
+      },
+      {
+        "name": "/copy gegen einen Modellwechsel während der Byte-Kopie: keine Kopie mit dem alten Modell",
+        "modifier": null
+      },
+      {
+        "name": "POST /projects/:id/varianten auf den Container → 409, auf die Variante → 201",
+        "modifier": null
+      },
+      {
+        "name": "nimmt beide Namen unabhängig an",
+        "modifier": null
+      },
+      {
+        "name": "GET /projects/:id liefert den Namen des Hauptprojekts mit",
+        "modifier": null
+      },
+      {
+        "name": "leitet ohne Angabe weiter aus dem Projektnamen ab",
+        "modifier": null
+      },
+      {
+        "name": "behandelt einen leeren Variantennamen wie keine Angabe",
+        "modifier": null
+      },
+      {
+        "name": "schreibt `variantenname` nicht ins Dokument",
+        "modifier": null
+      },
+      {
+        "name": "GET /projects/:id auf den Container → 404, auf die Variante → 200",
+        "modifier": null
+      },
+      {
+        "name": "PUT ohne oder mit kaputter version → 400, Dokument unverändert",
+        "modifier": null
+      },
+      {
+        "name": "der Mengen-Hinweis zählt nur erreichbare Stände, nicht die Vorlage des Containers",
+        "modifier": null
+      },
+      {
+        "name": "POST /copy auf den Container → 409, auf den Stand → 201",
+        "modifier": null
+      },
+      {
+        "name": "POST /copy antwortet mit dem Stand der neuen Familie",
+        "modifier": null
+      },
+      {
+        "name": "das Angleichen beim Wiederherstellen bumpt die version der angeglichenen Zeile",
+        "modifier": null
+      },
+      {
+        "name": "PATCH setzt den Namen auch in einem Dokument ohne settings",
+        "modifier": null
+      },
+      {
+        "name": "POST /projects weist einen Body ab, der kein Objekt ist (400 statt 500)",
+        "modifier": null
+      },
+      {
+        "name": "zwei gleichzeitig angelegte Varianten bekommen verschiedene Namen",
+        "modifier": null
+      },
+      {
+        "name": "fremde Projekte sind weder lesbar noch änderbar",
+        "modifier": null
+      },
+      {
+        "name": "bricht mit 409 ab, wenn sich die Quelle während des Kopierens ändert",
+        "modifier": null
+      },
+      {
+        "name": "legt für eine Wurzel ohne lebenden Stand NICHTS an",
+        "modifier": null
+      },
+      {
+        "name": "erzeugt eine neue Familie mit gleich vielen Ständen",
+        "modifier": null
+      },
+      {
+        "name": "behält die Variantennamen und benennt nur die Klammer um",
+        "modifier": null
+      },
+      {
+        "name": "an einer Variante → 409, nicht stillschweigend die Familie",
+        "modifier": null
+      },
+      {
+        "name": "nimmt Stände aus dem Papierkorb NICHT mit",
+        "modifier": null
+      },
+      {
+        "name": "erbt den Ordner der Quelle",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/api/test/projektZeitzone.test.ts",
+    "category": "Auth & Projekt-Backend",
+    "kind": "unit (Vitest, API)",
+    "tests": [
+      {
+        "name": "die Sitzung läuft wirklich in einer Zeitzone abseits von UTC",
+        "modifier": null
+      },
+      {
+        "name": "Umbenennen schreibt updated_at nicht in die Zukunft",
+        "modifier": null
+      },
+      {
+        "name": "Setzen der IFC-Referenz schreibt updated_at nicht in die Zukunft",
+        "modifier": null
+      },
+      {
+        "name": "Umbenennen und regulärer Schreibpfad benutzen dieselbe Zeitrechnung",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/anstrich-durchstich.spec.ts",
+    "category": "Mengen & Formeln",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Renovierung-Anstrich out-of-the-box: IFC → Anstrich-LV → GAEB-Export",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/anwendungskontext.spec.ts",
+    "category": "Markt & Systemlogik",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Renovierung-Anstrich blendet WDVS-Systeme aus; Override und Settings-Wechsel zeigen sie",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/aufmassblatt.spec.ts",
+    "category": "Mengen & Formeln",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Aufmaßblatt-Excel: GUID-Bezug, übermessen-Kennzeichnung, Abrechnungsmenge == LV-Menge",
+        "modifier": null
+      },
+      {
+        "name": "Aufmaßblatt-PDF: Pflichtinhalte vorhanden, Belege zweier Exporte identisch",
+        "modifier": null
+      },
+      {
+        "name": "Bezugsfläche: das Modell mit WDVS-Wand liefert das Fertigmaß gemessen",
+        "modifier": null
+      },
+      {
+        "name": "Bezugsfläche: das Rohbaumodell weist Rohbaumaß aus, statt eine Systemdicke zu raten",
+        "modifier": null
+      },
+      {
+        "name": "OZ-Bindung: das Aufmaßblatt trägt die OZ der gewählten LV-Gliederung (#208)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/ausschreibungsart.spec.ts",
+    "category": "Markt & Systemlogik",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Ausschreibungsart umschalten: „oder gleichwertig\" erreicht X83 und PDF",
+        "modifier": null
+      },
+      {
+        "name": "Ausschreibungsart neutral: X83 und PDF nennen kein Fabrikat mehr",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/bauteilliste.spec.ts",
+    "category": "Mengen & Formeln",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Bauteilliste: Element abwählen ändert die LV-Menge bis zum Export",
+        "modifier": null
+      },
+      {
+        "name": "Bauteilliste: Gruppen mit Zwischensumme, Detailspalten, Nebenflächen, Filter",
+        "modifier": null
+      },
+      {
+        "name": "Bauteilliste: IFC-Eigenschaften des gewählten Elements, per Haken schaltbar",
+        "modifier": null
+      },
+      {
+        "name": "Bauteilliste: Mehrfachauswahl und kategorie-getrennte Aggregation",
+        "modifier": null
+      },
+      {
+        "name": "Bauteilliste: Umklassifizieren wirkt sofort bis in die LV-Menge",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/bedarfsposition.spec.ts",
+    "category": "Mengen & Formeln",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Zulage aus Vorlage einfügen, als Bedarf markieren — Summe und Kennzeichnung bis in die X83",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/daemmdicke-aus-modell.spec.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Dämmdicke aus dem Materialaufbau füllt die Plattendicke-Lücke (#212)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/detailgrad.spec.ts",
+    "category": "UI & Bedienung",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Detailgrad umschalten: weniger Positionen, gleiche Angebotssumme, und zurück",
+        "modifier": null
+      },
+      {
+        "name": "Der verdichtete Systemtext landet im GAEB-Export",
+        "modifier": null
+      },
+      {
+        "name": "Marktüblich: das PDF weist die eingeschmolzenen Leistungen in den Vorbemerkungen aus",
+        "modifier": null
+      },
+      {
+        "name": "Mengenregel VOB: Mengen ändern sich nachvollziehbar, das PDF vereinbart die Regeln",
+        "modifier": null
+      },
+      {
+        "name": "Mengenregel VOB ohne Öffnungsdaten: Hinweis statt stiller Vereinbarung",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/eingangspruefung.spec.ts",
+    "category": "Markt & Systemlogik",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Eingangsprüfung meldet Befunde, ohne den Import zu blockieren",
+        "modifier": null
+      },
+      {
+        "name": "Flächenabgleich: falsche Qto-Basismenge wird gemeldet, korrekte bestätigen die Messung (#216)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/einzelnachweis.spec.ts",
+    "category": "UI & Bedienung",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Bauteilliste zeigt GUID und Quelle; Excel-Export enthält beide",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/export-varianten.spec.ts",
+    "category": "GAEB / LV-Export",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Excel, Word und PDF laden ohne Rückfrage herunter",
+        "modifier": null
+      },
+      {
+        "name": "GAEB-Phasenwahl schlägt auf Dateiname und Inhalt durch",
+        "modifier": null
+      },
+      {
+        "name": "Zahnrad öffnet die Optionen; Kurztext-LV und DA11 stecken unter „Erweitert\"",
+        "modifier": null
+      },
+      {
+        "name": "Word-Optionen: ohne Preise bleiben EP/GP als Leerfelder",
+        "modifier": null
+      },
+      {
+        "name": "Preis-Schranke: „ohne Preise\" sperrt den Kostenanschlag, die Umschalt-Aktion öffnet ihn",
+        "modifier": null
+      },
+      {
+        "name": "Der Block ist über die Menüzeile zugeklappt und über das Zahnrad bereits offen",
+        "modifier": null
+      },
+      {
+        "name": "Zusätzliche Exporteinstellungen: GAEB 1990 liefert die D-Datei im Festformat",
+        "modifier": null
+      },
+      {
+        "name": "Mengenermittlung als X31 landet im ZIP",
+        "modifier": null
+      },
+      {
+        "name": "Excel-Zusatzoptionen wirken tatsächlich: Formeln und Projektdaten-Blatt landen in der Datei",
+        "modifier": null
+      },
+      {
+        "name": "Abgebrochener Excel-Dialog wirkt sich nicht auf den nächsten Sofort-Export aus",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/fenstersitz.spec.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Mauerwerksbündiger Sitz nimmt die Leibungsdämmung aus X83 und PDF",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/folders.spec.ts",
+    "category": "Auth & Projekt-Backend",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Home: Ordner anlegen, umbenennen, löschen",
+        "modifier": null
+      },
+      {
+        "name": "Home: Ordner löschen lässt die Projekte stehen",
+        "modifier": null
+      },
+      {
+        "name": "Home: Projekt in einen Ordner verschieben und wieder heraus",
+        "modifier": null
+      },
+      {
+        "name": "Home: Suche findet ein Projekt in einem Ordner",
+        "modifier": null
+      },
+      {
+        "name": "Home: Suche zeigt ein Projekt in einem ZUGEKLAPPTEN Ordner",
+        "modifier": null
+      },
+      {
+        "name": "Home: Suche findet Ordner und Projekte",
+        "modifier": null
+      },
+      {
+        "name": "Home: Ordner-Dialog bricht mit Escape ab, ohne anzulegen",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/formel-bausteine.spec.ts",
+    "category": "UI & Bedienung",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Grundfläche und Attika stehen als Formel-Baustein bereit und rechnen",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/home.spec.ts",
+    "category": "UI & Bedienung",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Home: Projekt anlegen, benennen, in der Liste sehen, öffnen und löschen",
+        "modifier": null
+      },
+      {
+        "name": "Ein fehlgeschlagener Teilvorgang lässt die Liste stehen",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/homePolish.spec.ts",
+    "category": "UI & Bedienung",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Home: inline umbenennen und suchen filtert",
+        "modifier": null
+      },
+      {
+        "name": "Home: eine Aktion aus dem Kebab-Menü behält den Fokus auf der Zeile",
+        "modifier": null
+      },
+      {
+        "name": "Home: Anlege-Dialog vergibt Projekt- und Variantennamen unabhängig",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/ifc-mengen-reveal.spec.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Weitere Mengen: gepaarte Reihenfolge + Reveals auswählbar, Zuordnen-Toggle ausgegraut",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/ifc-parser-kopplung.spec.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Wandöffnung wird aus der Fassadenfläche geschnitten (#279)",
+        "modifier": null
+      },
+      {
+        "name": "Die geschnittene Öffnung trägt Fenster- und Laibungsmengen (#279)",
+        "modifier": null
+      },
+      {
+        "name": "Umlaut-Escapes im Wandnamen tragen die Fassaden-Klassifikation (#279)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/ifcRehydrate.spec.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "IFC wird nach Projektwechsel automatisch aus dem Blob geladen",
+        "modifier": null
+      },
+      {
+        "name": "IFC bleibt auch OHNE „In Konfigurator übernehmen\" erhalten",
+        "modifier": null
+      },
+      {
+        "name": "IFC überlebt sofortigen Wechsel zur Übersicht (Autosave-Flush beim Verlassen)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/importAbsicherung.spec.ts",
+    "category": "UI & Bedienung",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "IsExternal entscheidet die Fassade, wo der Typname sie als Innenwand ausweist",
+        "modifier": null
+      },
+      {
+        "name": "ohne Pset behauptet die Oberfläche keine Absicherung",
+        "modifier": null
+      },
+      {
+        "name": "während der Absicherung sind Import und Dateiwahl gesperrt",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/innenhof.spec.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Innenhof: Hofseiten zählen, Innenseiten und verdeckte Stöße nicht",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/kopieren.spec.ts",
+    "category": "UI & Bedienung",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Kopie behält das Planbild — auch nachdem das Original gelöscht wurde",
+        "modifier": null
+      },
+      {
+        "name": "Kopie zählt weiter und landet im Ordner der Quelle",
+        "modifier": null
+      },
+      {
+        "name": "Durchstich: die Kopie läuft bis GAEB X83 + PDF",
+        "modifier": null
+      },
+      {
+        "name": "Duplizieren: abzweigen bleibt in der Familie, am Projekt entsteht eine neue",
+        "modifier": null
+      },
+      {
+        "name": "Duplizieren: Ordner samt Inhalt",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/laibung-je-tiefe.spec.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Getrennte Laibungspositionen je Tiefe erreichen GAEB X83 und PDF",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/laibungstiefe-wirtswand.spec.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Laibungstiefe folgt der Wirtswand je Öffnung, kein Median (#211)",
+        "modifier": null
+      },
+      {
+        "name": "Bauteilliste zeigt die Laibungstiefe je Öffnung, nicht eine repräsentative (#269)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/markt.spec.ts",
+    "category": "Markt & Systemlogik",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Das Adressland belegt den Markt vor, die eigene Wahl überschreibt ihn dauerhaft",
+        "modifier": null
+      },
+      {
+        "name": "Bewusst gewähltes Deutschland überlebt ein französisches Adressland",
+        "modifier": null
+      },
+      {
+        "name": "Im Markt Schweiz trägt das LV CHF — auf dem Schirm und im PDF, ohne Euro-Rest",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/marktAbweichung.spec.ts",
+    "category": "Markt & Systemlogik",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Abweichender Markt wird benannt, nicht umgestellt — an allen drei Orten",
+        "modifier": null
+      },
+      {
+        "name": "Ein Land ohne eigenen Markt löst keinen Hinweis aus",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/modellstand.spec.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Flächenübersicht zeigt den Modellstand des importierten IFC",
+        "modifier": null
+      },
+      {
+        "name": "Rehydrierung trägt einen fehlenden Modellstand ins Dokument nach",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/oeffnungsbreite-gedreht.spec.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "gedrehtes Gebäude: entdrehte Messung bestätigt das Attributmaß",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/oeffnungshoehe-typname.spec.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Typnamen-Höhe ersetzt die aufgeblähte Bauteilhöhe (#220)",
+        "modifier": null
+      },
+      {
+        "name": "Eingangsprüfung meldet die Höhenabweichung als Hinweis (#220)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/orca-mengen.spec.ts",
+    "category": "Mengen & Formeln",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Korrigierte Mengen-Defaults erreichen GAEB X83 und PDF",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/papierkorb.spec.ts",
+    "category": "Auth & Projekt-Backend",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Papierkorb: Stand mit Projekt-Präfix, Projekt mit Anzahl der Stände",
+        "modifier": null
+      },
+      {
+        "name": "Papierkorb: Familie löschen, wiederherstellen, Variante öffnen",
+        "modifier": null
+      },
+      {
+        "name": "Papierkorb: endgültig löschen entfernt es wirklich",
+        "modifier": null
+      },
+      {
+        "name": "Papierkorb: gelöschter Ordner gibt seine Projekte frei und nimmt sie zurück",
+        "modifier": null
+      },
+      {
+        "name": "Papierkorb leeren entfernt alles auf einmal, lässt Lebendes stehen",
+        "modifier": null
+      },
+      {
+        "name": "Papierkorb: Wurzel ohne zurückholbaren Stand zeigt die Führung zur Variante",
+        "modifier": null
+      },
+      {
+        "name": "Papierkorb: bricht die Verbindung bei der Aktion ab, bleibt es beim Offline-Zustand",
+        "modifier": null
+      },
+      {
+        "name": "Papierkorb: der 404 einer gegenstandslosen Aktion spricht nicht von der Verbindung",
+        "modifier": null
+      },
+      {
+        "name": "Papierkorb: ein Hauptprojekt nimmt seine Varianten mit und bringt sie zurück",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/persistence.spec.ts",
+    "category": "Auth & Projekt-Backend",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "F1: frisches Projekt ist schlank, Systeme lösen auf, Edit überlebt Reload",
+        "modifier": null
+      },
+      {
+        "name": "Konflikt (409): Reload korrumpiert das Modell nicht, kein Livelock",
+        "modifier": null
+      },
+      {
+        "name": "F2: Planbild landet im Blob (kein Base64 im Dokument), rehydriert nach Reload",
+        "modifier": null
+      },
+      {
+        "name": "Online-Pflicht: ohne Backend zeigt die Übersicht einen Fehler-/Retry-Zustand",
+        "modifier": null
+      },
+      {
+        "name": "Online-Pflicht: Editor ohne Backend zeigt Offline-/Retry-Zustand statt stiller Navigation",
+        "modifier": null
+      },
+      {
+        "name": "Online-Pflicht: unbekannte Projekt-id zeigt „nicht gefunden\"",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/projectConfigurator.spec.ts",
+    "category": "UI & Bedienung",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Project Configurator: Bereich-Auswahl hebt im 3D hervor",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/ringwand.spec.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Bestandsring als ein Element misst den vollen Außenmantel",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/seitenleiste.spec.ts",
+    "category": "UI & Bedienung",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Seitenleiste: gewählter Ordner nimmt das neue Projekt auf",
+        "modifier": null
+      },
+      {
+        "name": "Seitenleiste: Projekt per Drag & Drop in einen Ordner und wieder heraus",
+        "modifier": null
+      },
+      {
+        "name": "Auswahl: angeklickter Ordner nimmt das neue Projekt auf",
+        "modifier": null
+      },
+      {
+        "name": "Auswahl: ein Projekt im Ordner bleibt gewählt, abgewählt wird neben der Liste",
+        "modifier": null
+      },
+      {
+        "name": "Auswahl: ein Klick daneben schließt nur das Menü, er wählt nicht ab",
+        "modifier": null
+      },
+      {
+        "name": "Seitenleiste: „Abmelden\" steht am Fuß und wirft die Sitzung weg",
+        "modifier": null
+      },
+      {
+        "name": "Mehrfachauswahl: Strg und Shift markieren mehrere Projekte",
+        "modifier": null
+      },
+      {
+        "name": "Mehrfachauswahl: neben der Liste lässt sich eine Auswahl aufziehen",
+        "modifier": null
+      },
+      {
+        "name": "Mehrfachauswahl: ein Zug verschiebt alle markierten Projekte",
+        "modifier": null
+      },
+      {
+        "name": "Mehrfachauswahl: eine unmarkierte Zeile zieht nur sich selbst",
+        "modifier": null
+      },
+      {
+        "name": "Auswahl: Klick auf die Ordnerzeile klappt nicht mehr um",
+        "modifier": null
+      },
+      {
+        "name": "Drag & Drop: während des Ziehens sind die möglichen Ziele markiert",
+        "modifier": null
+      },
+      {
+        "name": "Auswahl: gelöschtes Projekt räumt die Seitenleiste ab",
+        "modifier": null
+      },
+      {
+        "name": "Auswahl: gelöschter Ordner räumt die Auswahl ab",
+        "modifier": null
+      },
+      {
+        "name": "Auswahl: Zeilen sind mit der Tastatur erreichbar und wählbar",
+        "modifier": null
+      },
+      {
+        "name": "Auswahl: Tasten in inneren Elementen der Zeile bleiben unberührt",
+        "modifier": null
+      },
+      {
+        "name": "Übersicht: Zeilentyp und Knopf-Beschriftung sind ablesbar",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/systemAmpel.spec.ts",
+    "category": "Markt & Systemlogik",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "System-Auswahl überlebt das Neuladen, Ampel steuert die Zuweisbarkeit",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/systemlogik.spec.ts",
+    "category": "Markt & Systemlogik",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Systemlogik: Schicht-Highlight, Legende und Tooltip",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/topbarSettings.spec.ts",
+    "category": "UI & Bedienung",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Top-Bar spiegelt die leistungsbestimmenden Settings und führt zu ihnen",
+        "modifier": null
+      },
+      {
+        "name": "Mengenregel-Zeile zeigt die wirksame Regel, nicht die gewählte",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/ui-galerie.spec.ts",
+    "category": "UI & Bedienung",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "UI-Katalog: jede Komponenten-Sektion ist vorhanden, die #118/#119-Zustände stehen drin",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/varianten.spec.ts",
+    "category": "UI & Bedienung",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Varianten: anlegen, zählen, unabhängig benennen",
+        "modifier": null
+      },
+      {
+        "name": "Varianten teilen das Planbild des Projekts",
+        "modifier": null
+      },
+      {
+        "name": "Varianten: die Suche findet ein Projekt über den Namen eines Standes",
+        "modifier": null
+      },
+      {
+        "name": "Varianten: erst Variante, dann IFC am Projekt — die Variante bekommt es mit",
+        "modifier": null
+      },
+      {
+        "name": "Varianten: Löschen des Hauptprojekts warnt vor den Varianten und nimmt sie mit",
+        "modifier": null
+      },
+      {
+        "name": "Varianten: Umbenennen, Duplizieren und Löschen am Stand",
+        "modifier": null
+      },
+      {
+        "name": "Varianten: die Zusammenfassung gehört dem gewählten Stand",
+        "modifier": null
+      },
+      {
+        "name": "Varianten: Löschen des letzten Standes kündigt an, dass das Hauptprojekt mitgeht",
+        "modifier": null
+      },
+      {
+        "name": "Varianten: „Verschieben nach …\" gibt es am Projekt",
+        "modifier": null
+      },
+      {
+        "name": "Durchstich: eine Variante läuft bis GAEB X83 + PDF",
+        "modifier": null
+      },
+      {
+        "name": "Modellwechsel meldet von Hand gesetzte Mengen",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e-oidc/login.spec.ts",
+    "category": "Auth & Projekt-Backend",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "unangemeldet → Keycloak → zurück in die App mit geladener Projektliste",
+        "modifier": null
+      },
+      {
+        "name": "tiefer Link überlebt den Login (Ziel-URL reist im state mit)",
+        "modifier": null
+      },
+      {
+        "name": "Projekte sind an den angemeldeten Nutzer gebunden — ein zweiter sieht sie nicht",
+        "modifier": null
+      },
+      {
+        "name": "ohne Zugangsrolle: angemeldet, aber klar abgewiesen statt „Backend nicht erreichbar\"",
+        "modifier": null
+      },
+      {
+        "name": "Abmelden beendet die Sitzung — der nächste Aufruf verlangt wieder Anmeldung",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/aufmassExport.test.ts",
+    "category": "Mengen & Formeln",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "trägt die Pflicht-Kopfdaten: Projekt, AG/AN, Gewerk, Aufsteller, Mengenregel, Modellstand",
+        "modifier": null
+      },
+      {
+        "name": "führt jede Aussparung einzeln mit Kennzeichnung und die GUID jeder Zeile",
+        "modifier": null
+      },
+      {
+        "name": "Quellenspalte je Zeile: „Attribut\" an der Öffnung, „gemessen\" an den Wänden (#215)",
+        "modifier": null
+      },
+      {
+        "name": "weist die Abrechnungsmenge aus und der Verweis ersetzt den doppelten Nachweis",
+        "modifier": null
+      },
+      {
+        "name": "benennt die Belege unter dem Bild und deklariert Rundungsregel + Parameterblatt",
+        "modifier": null
+      },
+      {
+        "name": "trägt den Feststellungs-Block und fortlaufende Blatt-Nummern",
+        "modifier": null
+      },
+      {
+        "name": "vier Blätter aus derselben Datenquelle: Aufmaß, Belege, Methoden & Parameter, Farbcodes",
+        "modifier": null
+      },
+      {
+        "name": "Aufmaß-Blatt: GUID, Kennzeichnung und Werte als Rohzahlen mit deklarierter Rundung",
+        "modifier": null
+      },
+      {
+        "name": "Aufmaß-Blatt: Quellenspalte trägt „Modell-Attribut\" bzw. „gemessen\" (#215)",
+        "modifier": null
+      },
+      {
+        "name": "Feststellungs-Block und Verweis stehen im Aufmaß-Blatt",
+        "modifier": null
+      },
+      {
+        "name": "deklariert das Verfahren und benennt die Abweichung vom Merkblatt-Rechenweg",
+        "modifier": null
+      },
+      {
+        "name": "sichert das Fertigmaß nicht mehr pauschal in der Mengenregel zu",
+        "modifier": null
+      },
+      {
+        "name": "nennt das gemessene Fertigmaß als Modelleigenschaft, nicht als Aufschlag",
+        "modifier": null
+      },
+      {
+        "name": "weist den Aufschlag mit Formel und Herkunft der Dicke aus",
+        "modifier": null
+      },
+      {
+        "name": "sagt Rohbaumaß, wenn keine Dicke hinterlegt ist — statt eine zu raten",
+        "modifier": null
+      },
+      {
+        "name": "nennt den gemessenen WDVS-Flächenanteil, damit die Näherung sichtbar ist",
+        "modifier": null
+      },
+      {
+        "name": "macht einen übernommenen Alt-Stand als solchen kenntlich",
+        "modifier": null
+      },
+      {
+        "name": "die Laibungstiefe behauptet keinen Aufschlag, wo keiner stattfand",
+        "modifier": null
+      },
+      {
+        "name": "weist uneinheitliche Tiefen als Spanne aus, statt einen Mittelwert als Maß zu drucken (#211, AC6)",
+        "modifier": null
+      },
+      {
+        "name": "weist die tatsächlich verwendete OZ-Gliederung aus, nicht eine fest verdrahtete",
+        "modifier": null
+      },
+      {
+        "name": "nennt bei einheitlicher Tiefe das Einzelmaß, keine Spanne",
+        "modifier": null
+      },
+      {
+        "name": "mauerwerksbündig: nennt die Dämmebene und dass die Wirtswand nicht trägt",
+        "modifier": null
+      },
+      {
+        "name": "vorgelagert: weist die Systemdicke ausdrücklich als Obergrenze aus",
+        "modifier": null
+      },
+      {
+        "name": "einsitzend und ohne Angabe bleiben bei der Wirtswand-Herleitung",
+        "modifier": null
+      },
+      {
+        "name": "ohne Plattendicke weist es den Rückfall auf die Wirtswand-Regel aus",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/bauteillisteExport.test.ts",
+    "category": "Mengen & Formeln",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "führt GUID und Quelle als Spalten",
+        "modifier": null
+      },
+      {
+        "name": "Gruppenkopf trägt Titel und Kennzahl-Summe, Beiträge summieren sich darauf",
+        "modifier": null
+      },
+      {
+        "name": "Öffnung: Quelle Modell-Attribut, kleinste Maße B×H",
+        "modifier": null
+      },
+      {
+        "name": "Nebenflächen sind je Öffnung zerlegt: Lfm × Tiefe = m²",
+        "modifier": null
+      },
+      {
+        "name": "Beitrag-Spalte trägt Rohwerte mit der deklarierten Rundung #,##0.00",
+        "modifier": null
+      },
+      {
+        "name": "trennt Modellstand (Zeile 3) und Exportdatum (Zeile 4)",
+        "modifier": null
+      },
+      {
+        "name": "meldet ohne gespeicherten Modellstand „unbekannt\"",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/flaechenExport.test.ts",
+    "category": "Mengen & Formeln",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "bricht den Modellstand um, damit die Prüfsumme im Dokument bleibt",
+        "modifier": null
+      },
+      {
+        "name": "weist das Exportdatum samt App-Version als eigene Zeile aus",
+        "modifier": null
+      },
+      {
+        "name": "meldet bei Bestandsprojekten ohne Header „Modellstand unbekannt\"",
+        "modifier": null
+      },
+      {
+        "name": "trennt Modellstand (Zeile 3) und Exportdatum (Zeile 4)",
+        "modifier": null
+      },
+      {
+        "name": "meldet bei Bestandsprojekten ohne Header „Modellstand unbekannt\"",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/geometryVars.test.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "die Öffnungsrichtungen ändern keine Menge — gleiche wie verschiedene",
+        "modifier": null
+      },
+      {
+        "name": "die Öffnungsrichtungen erreichen auch die Element-Beiträge — Ortsbezug unter exakt",
+        "modifier": null
+      },
+      {
+        "name": "unter exakt entsteht keine Datenspur für die Belegzeilen",
+        "modifier": null
+      },
+      {
+        "name": "ohne jede Geometrie: vars null, nicht ready, keine Quelle",
+        "modifier": null
+      },
+      {
+        "name": "mit gezeichnetem Massing: vars non-null, ready, Quelle massing",
+        "modifier": null
+      },
+      {
+        "name": "mit persistiertem IFC-Stand (ohne lebendes Modell): vars non-null, ready, Quelle ifc",
+        "modifier": null
+      },
+      {
+        "name": "mit lebender IFC-Szene: vars non-null, ready, Quelle ifc — ohne Massing",
+        "modifier": null
+      },
+      {
+        "name": "mit IFC-Szene UND Massing: Quelle ifc, Mengen deckungsgleich mit demselben Projekt ohne Massing",
+        "modifier": null
+      },
+      {
+        "name": "mit persistiertem IFC-Stand UND Massing: nur die übernommenen Größen, keine aus dem Massing",
+        "modifier": null
+      },
+      {
+        "name": "unter vob trägt die Öffnungsliste des aktiven Eingangs — nicht beide zusammen",
+        "modifier": null
+      },
+      {
+        "name": "persistierter Stand unter vob: keine Übermessung, aber der Fertigmaß-Zuschlag bleibt",
+        "modifier": null
+      },
+      {
+        "name": "persistierter Stand: bündiger Sitz rechnet die Lauflängen auf die Systemdicke um",
+        "modifier": null
+      },
+      {
+        "name": "persistierter Stand: Rückschalten auf einsitzend meldet die fremde Tiefe",
+        "modifier": null
+      },
+      {
+        "name": "persistierter Stand ohne Lauflänge: keine halbe Umrechnung ohne Meldung",
+        "modifier": null
+      },
+      {
+        "name": "ready ist genau dann true, wenn vars non-null ist — über ALLE Eingangsarten",
+        "modifier": null
+      },
+      {
+        "name": "entstehen auch unter der Mengenregel exakt",
+        "modifier": null
+      },
+      {
+        "name": "folgen unter vob der Übermessung — die kleine Öffnung fällt heraus",
+        "modifier": null
+      },
+      {
+        "name": "bleiben beim persistierten IFC-Stand leer — er trägt nur Summen, keine Öffnungen",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcModellstand.test.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "liest Header und Prüfsumme aus der realen IFC-Datei",
+        "modifier": null
+      },
+      {
+        "name": "findet den Header auch, wenn er hinter dem Lesefenster beginnt",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/lvExport.test.ts",
+    "category": "GAEB / LV-Export",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "legt LV- und Mengenermittlungs-Blatt an",
+        "modifier": null
+      },
+      {
+        "name": "hängt den Langtext als letzte Spalte an die bekannte Anordnung an",
+        "modifier": null
+      },
+      {
+        "name": "schreibt den Langtext mehrzeilig und mit Zeilenumbruch",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Langtext-Zelle leer, wenn sie nur den Kurztext wiederholen würde",
+        "modifier": null
+      },
+      {
+        "name": "führt Langtexte auch ohne Preise mit",
+        "modifier": null
+      },
+      {
+        "name": "behält den Rechenansatz im Mengenermittlungs-Blatt",
+        "modifier": null
+      },
+      {
+        "name": "setzt den AutoFilter exakt auf die Kopfzeile (Zeile 5, Spalten A-G)",
+        "modifier": null
+      },
+      {
+        "name": "setzt keinen AutoFilter ohne die Option",
+        "modifier": null
+      },
+      {
+        "name": "schreibt GP und Summen als echte Formeln mit gecachtem Ergebnis",
+        "modifier": null
+      },
+      {
+        "name": "bleibt ohne Formel-Option bei reinen Werten",
+        "modifier": null
+      },
+      {
+        "name": "legt auf Wunsch das Projektdaten-Blatt mit den Kopfdaten an",
+        "modifier": null
+      },
+      {
+        "name": "lässt das Projektdaten-Blatt ohne Option weg",
+        "modifier": null
+      },
+      {
+        "name": "trennt Mengenherkunft (Zeile 3) und Exportdatum (Zeile 4)",
+        "modifier": null
+      },
+      {
+        "name": "nennt ohne IFC-Mengen nur das Exportdatum",
+        "modifier": null
+      },
+      {
+        "name": "führt die Mengenherkunft auch im Projektdaten-Blatt",
+        "modifier": null
+      },
+      {
+        "name": "kennzeichnet sie in beiden Blättern",
+        "modifier": null
+      },
+      {
+        "name": "lässt ihre GP-Zelle leer und damit aus Bereichs- und Endsumme heraus",
+        "modifier": null
+      },
+      {
+        "name": "hält die Summenformel über die Spalte — die leere Zelle zählt nicht mit",
+        "modifier": null
+      },
+      {
+        "name": "behält Unicode-Buchstaben und zieht Trennzeichen zusammen",
+        "modifier": null
+      },
+      {
+        "name": "fällt auf einen Namen zurück, wenn nichts Verwertbares bleibt",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/navigation.test.ts",
+    "category": "UI & Bedienung",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "ohne jede Geometrie: beide Eingänge stehen offen",
+        "modifier": null
+      },
+      {
+        "name": "mit gezeichnetem Grundriss: kein IFC-Import mehr",
+        "modifier": null
+      },
+      {
+        "name": "mit lebender IFC-Szene: nur IFC-Import, kein Elevation, Bauteilliste da",
+        "modifier": null
+      },
+      {
+        "name": "mit übernommenem Stand ohne lebende Szene: Entweder-oder gilt, Bauteilliste nicht",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/pdfExporter.test.ts",
+    "category": "GAEB / LV-Export",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "führt den Modellstand umgebrochen und innerhalb des Satzspiegels",
+        "modifier": null
+      },
+      {
+        "name": "weist das Exportdatum samt App-Version getrennt vom Modellstand aus",
+        "modifier": null
+      },
+      {
+        "name": "lässt das Deckblatt ohne IFC-Mengen unverändert",
+        "modifier": null
+      },
+      {
+        "name": "druckt Kurztext und den vollen Systemtext",
+        "modifier": null
+      },
+      {
+        "name": "rechnet den Gesamtpreis aus der verdichteten Menge",
+        "modifier": null
+      },
+      {
+        "name": "kennzeichnet sie im Positionstext",
+        "modifier": null
+      },
+      {
+        "name": "druckt ihren Gesamtbetrag nicht und lässt ihn aus der Summe",
+        "modifier": null
+      },
+      {
+        "name": "listet die eingeschmolzenen Leistungen mit Einheit, wortgleich zum Word-Export",
+        "modifier": null
+      },
+      {
+        "name": "lässt den Abschnitt im detaillierten Detailgrad weg",
+        "modifier": null
+      },
+      {
+        "name": "zeigt ihn nicht, wenn die Vorbemerkungen ganz abgewählt sind",
+        "modifier": null
+      },
+      {
+        "name": "behält Schriftgröße und Farbe über den Seitenumbruch hinweg",
+        "modifier": null
+      },
+      {
+        "name": "druckt die Vereinbarung bei VOB",
+        "modifier": null
+      },
+      {
+        "name": "lässt sie bei exakter Mengenermittlung weg",
+        "modifier": null
+      },
+      {
+        "name": "druckt die Öffnungsklausel bei „Fabrikat oder gleichwertig\"",
+        "modifier": null
+      },
+      {
+        "name": "lässt sie fabrikatsbezogen weg",
+        "modifier": null
+      },
+      {
+        "name": "druckt Attributblock und Bieterzeile, ohne Marke im ganzen Dokument",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/pdfSafe.test.ts",
+    "category": "GAEB / LV-Export",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "erhält die Übermessungs-Kennzeichnung, die MB-A-01 4.2 verlangt",
+        "modifier": null
+      },
+      {
+        "name": "bildet die übrigen Symbole der Fach-Texte ab statt sie zu streichen",
+        "modifier": null
+      },
+      {
+        "name": "lässt Latin-1 unangetastet — Umlaute, ², ³, · und × bleiben",
+        "modifier": null
+      },
+      {
+        "name": "ersetzt Unbekanntes sichtbar durch „?\" statt es zu verschlucken",
+        "modifier": null
+      },
+      {
+        "name": "normalisiert Typografie, die jsPDF sonst als UTF-16-Salat rendert",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/pruefberichtExport.test.ts",
+    "category": "GAEB / LV-Export",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "weist Umfang und Befundzahlen je Stufe aus",
+        "modifier": null
+      },
+      {
+        "name": "nennt den Modellstand getrennt vom Exportdatum",
+        "modifier": null
+      },
+      {
+        "name": "meldet ohne gespeicherten Modellstand „unbekannt\"",
+        "modifier": null
+      },
+      {
+        "name": "nennt Meldung und betroffene Elemente über die GlobalId (nicht die expressID)",
+        "modifier": null
+      },
+      {
+        "name": "hält auch ohne Befunde fest, dass geprüft wurde",
+        "modifier": null
+      },
+      {
+        "name": "weist eine abgebrochene Prüfung als nicht abgeschlossen aus (nicht als „keine Befunde\")",
+        "modifier": null
+      },
+      {
+        "name": "schreibt deutschen Text ohne Ersatzschreibweisen",
+        "modifier": null
+      },
+      {
+        "name": "schreibt Einzahl bei genau einem Befund einer Stufe",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Betroffen-Zeile bei einem Befund ohne Elemente weg",
+        "modifier": null
+      },
+      {
+        "name": "führt die Befunde als Anhang mit",
+        "modifier": null
+      },
+      {
+        "name": "nennt den Modellstand auf der Anhangseite selbst",
+        "modifier": null
+      },
+      {
+        "name": "lässt den Anhang weg, wenn keine Prüfung vorliegt",
+        "modifier": null
+      },
+      {
+        "name": "meldet im Anhang, wenn die Prüfung abgebrochen ist",
+        "modifier": null
+      },
+      {
+        "name": "sagt im Anhang, wenn die Prüfung zum Exportzeitpunkt noch lief",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/standardAnsichten.test.ts",
+    "category": "UI & Bedienung",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "hängt an Modellmaß, Nordrichtung und Gebäudedrehung — an nichts sonst",
+        "modifier": null
+      },
+      {
+        "name": "die Gebäudedrehung wirkt nur modulo 90° — vier Wandnormalen, viermal dieselben",
+        "modifier": null
+      },
+      {
+        "name": "liefert Übersicht + N/O/S/W mit benannten Ansichten",
+        "modifier": null
+      },
+      {
+        "name": "Nord steht bei northDeg 0 auf +Z, Süd gegenüber; der Abstand fasst die Bounding-Sphäre bei fov 45",
+        "modifier": null
+      },
+      {
+        "name": "die Nordrichtung dreht die Ansichten mit (gerastert auf echte Wandnormalen)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/vobRegel.test.ts",
+    "category": "Markt & Systemlogik",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "misst den Flächenanteil, nicht den Anteil an der Wandzahl",
+        "modifier": null
+      },
+      {
+        "name": "zählt nur Wände der Fassadenauswahl",
+        "modifier": null
+      },
+      {
+        "name": "leere Auswahl ergibt 0 statt NaN",
+        "modifier": null
+      },
+      {
+        "name": "überwiegend WDVS → das Modell trägt das Fertigmaß",
+        "modifier": null
+      },
+      {
+        "name": "überwiegend Rohbau → Rohbaumaß, auch wenn WDVS-Reste vorhanden sind",
+        "modifier": null
+      },
+      {
+        "name": "genau auf der Schwelle gilt noch als Rohbau — der Zuschlag wird nicht behauptet",
+        "modifier": null
+      },
+      {
+        "name": "WDVS-Reste allein machen aus einem Rohbaumodell kein gedämmtes",
+        "modifier": null
+      },
+      {
+        "name": "ohne Szene und ohne übernommenen Stand gilt der gezeichnete Pfad",
+        "modifier": null
+      },
+      {
+        "name": "ein übernommener Stand ohne Befund bleibt unbekannt, statt einen zu erfinden",
+        "modifier": null
+      },
+      {
+        "name": "ein übernommener Stand mit Befund trägt ihn weiter",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/wdvsCatalog.test.ts",
+    "category": "Markt & Systemlogik",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "jede Schicht-Komponente ist an eine Katalog-Variante gebunden (kein Regex-Miss)",
+        "modifier": null
+      },
+      {
+        "name": "enthält Grundierung und Fassadenfarbe als eigene Schritte",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/anwendungskontext.test.ts",
+    "category": "Markt & Systemlogik",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "neubau ergibt neubau — unabhängig von der (nur bei Renovierung sichtbaren) Maßnahme",
+        "modifier": null
+      },
+      {
+        "name": "renovierung + anstrich ergibt renovierung-anstrich",
+        "modifier": null
+      },
+      {
+        "name": "renovierung + wdvs ergibt renovierung-wdvs",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/aufmassblatt.test.ts",
+    "category": "Mengen & Formeln",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "die Herleitung jeder nachgewiesenen Position führt exakt auf die LV-Menge",
+        "modifier": null
+      },
+      {
+        "name": "Wand-Nachweis: Maßkette Netto → Brutto → Aussparungen → Fertigmaß",
+        "modifier": null
+      },
+      {
+        "name": "jede Aussparung einzeln: übermessen mit 0,00, Abzug mit Minusbetrag, kleinste Maße als Kette",
+        "modifier": null
+      },
+      {
+        "name": "auch die Aussparungszeilen tragen Geschoss, Richtung und Quelle",
+        "modifier": null
+      },
+      {
+        "name": "eine zusammengefasste Aussparung behauptet keine Verortung, die ihre Teile nicht teilen",
+        "modifier": null
+      },
+      {
+        "name": "jede Wand- und Öffnungszeile trägt GUID, Geschoss und Quelle",
+        "modifier": null
+      },
+      {
+        "name": "Leibungen: nur Abzugs-Aussparungen (Unteroption), Kette 2×H×Tiefe, GUID-Bezug",
+        "modifier": null
+      },
+      {
+        "name": "gleicher Nachweis wird nicht wiederholt: Folgeposition verweist auf die erste OZ",
+        "modifier": null
+      },
+      {
+        "name": "Stück-Positionen: je Element eine Zeile mit Wert 1",
+        "modifier": null
+      },
+      {
+        "name": "Faktor-Formeln fallen ehrlich auf den LV-Rechenansatz zurück",
+        "modifier": null
+      },
+      {
+        "name": "alle Öffnungen erscheinen als Abzug, kein Übermessen, kein Fertigmaß",
+        "modifier": null
+      },
+      {
+        "name": "die Herleitung führt auf die exakte LV-Menge (Netto der gemessenen Wände)",
+        "modifier": null
+      },
+      {
+        "name": "zeigt je Teilposition nur die Öffnungen ihrer Tiefenklasse — mit GUID, Maßkette und Verortung",
+        "modifier": null
+      },
+      {
+        "name": "die Blocksumme jeder Teilposition ist ihre LV-Menge — keine gemeldete Abweichung",
+        "modifier": null
+      },
+      {
+        "name": "Σ über die Teilpositionen ist der Nachweis, den die ungeteilte Position trug",
+        "modifier": null
+      },
+      {
+        "name": "führt keine Öffnung in zwei Klassen",
+        "modifier": null
+      },
+      {
+        "name": "eine Öffnung ohne eigene Wirtswand fällt auf die repräsentative Stärke — Nachweis wie Menge",
+        "modifier": null
+      },
+      {
+        "name": "lässt die ungeteilte Position bei ihrem Element-Nachweis",
+        "modifier": null
+      },
+      {
+        "name": "mauerwerksbündig führt alle Öffnungen in EINER Klasse — der Systemdicke",
+        "modifier": null
+      },
+      {
+        "name": "Nachweis und LV-Menge tragen dieselbe Tiefe — die Kette rechnet EINE Regel",
+        "modifier": null
+      },
+      {
+        "name": "die beschichtete Menge folgt der Systemdicke, nicht der Wirtswand",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Fassadenfläche unberührt",
+        "modifier": null
+      },
+      {
+        "name": "unter VOB trägt der Nachweis dieselbe Tiefe wie die LV-Menge",
+        "modifier": null
+      },
+      {
+        "name": "zwei Leibungstiefen ergeben zwei getrennte Blöcke",
+        "modifier": null
+      },
+      {
+        "name": "ohne Öffnungen im Modell behauptet das Blatt keine Leibungstiefe",
+        "modifier": null
+      },
+      {
+        "name": "eine von Hand überschriebene Menge wird gesagt statt als Modellmenge ausgegeben",
+        "modifier": null
+      },
+      {
+        "name": "gezeichnete Teilflächen bekommen keinen Modell-Nachweis (custom-Bereich)",
+        "modifier": null
+      },
+      {
+        "name": "bleibt aus, wenn nichts aufzuschlagen ist — der Regelfall des IFC-Pfads",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/autoBereiche.test.ts",
+    "category": "Mengen & Formeln",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "legt nur vorhandene Kategorien an und weist Fassade/Öffnungen das erste WDVS-System zu, Dach nicht",
+        "modifier": null
+      },
+      {
+        "name": "weist auch dem Sockel-Bereich das WDVS-System zu",
+        "modifier": null
+      },
+      {
+        "name": "nimmt das erste Nicht-Anstrich-Bauteil, wenn kein systemArt gesetzt ist",
+        "modifier": null
+      },
+      {
+        "name": "WDVS-Kontext wählt NICHT das Anstrich-System, obwohl dessen Name „Fassade\" enthält",
+        "modifier": null
+      },
+      {
+        "name": "erhält bestehende Zuweisung, Name und eigene Bereiche",
+        "modifier": null
+      },
+      {
+        "name": "renovierung-anstrich: Anstrich-System wird NUR dem wand-Bereich zugewiesen",
+        "modifier": null
+      },
+      {
+        "name": "renovierung-anstrich ohne Anstrich-System: keine Zuweisung (kein WDVS-Fallback)",
+        "modifier": null
+      },
+      {
+        "name": "renovierung-anstrich: explizite Nutzer-Zuweisung bleibt erhalten",
+        "modifier": null
+      },
+      {
+        "name": "renovierung-wdvs verhält sich wie ohne Kontext",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/b11_systempreisVsLv.test.ts",
+    "category": "Markt & Systemlogik",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "minimalfall: die Dach-Schicht bläht die Kennzahl NICHT mehr auf",
+        "modifier": null
+      },
+      {
+        "name": "echter katalog: das erste Sto-System konvergiert (kein Divergenz-Aufschlag)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/baueLv.test.ts",
+    "category": "GAEB / LV-Export",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "ohne gesetzte Gliederung nach Bereich — Bestandsprojekte laden ohne Migration",
+        "modifier": null
+      },
+      {
+        "name": "folgt der Gliederung aus den Settings — andere Gliederung, andere OZ",
+        "modifier": null
+      },
+      {
+        "name": "liefert für dasselbe Projekt zweimal dasselbe LV — Estimation und Aufmaßblatt können nicht divergieren",
+        "modifier": null
+      },
+      {
+        "name": "ohne Geometrie tragen die von Hand gesetzten Positionen",
+        "modifier": null
+      },
+      {
+        "name": "gleiches vars → gleiches LV; vars entscheidet über Formel- statt manualPositions-Pfad",
+        "modifier": null
+      },
+      {
+        "name": "reicht im Detailgrad detailliert keine Nebenleistungen durch",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/bauteilStatus.test.ts",
+    "category": "Mengen & Formeln",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "unverändertes Katalogsystem mit offenen Angaben ist grau",
+        "modifier": null
+      },
+      {
+        "name": "vom Nutzer bearbeitet, aber noch offene Angaben → gelb",
+        "modifier": null
+      },
+      {
+        "name": "alle Ausschreibungsangaben gewählt → grün",
+        "modifier": null
+      },
+      {
+        "name": "abgewählte Alternativschichten (aktiv=false) zählen nicht — sie fließen nicht ins LV",
+        "modifier": null
+      },
+      {
+        "name": "0 offene Angaben schlägt „unberührt\" — grün gewinnt auch ohne Bearbeitung",
+        "modifier": null
+      },
+      {
+        "name": "System eines nicht mehr vorhandenen Katalogsystems ist nicht grau (keine Vorlage zum Vergleich)",
+        "modifier": null
+      },
+      {
+        "name": "ohne geladenen Katalog ist kein System grau — sonst wären alle unzuweisbar",
+        "modifier": null
+      },
+      {
+        "name": "eigenes System (kein Katalogsystem) ist nie grau",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/bedarfsposition.test.ts",
+    "category": "Mengen & Formeln",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "hat keinen Gesamtbetrag und fehlt deshalb in der Angebotssumme",
+        "modifier": null
+      },
+      {
+        "name": "trägt die Angebotssumme ohne Flag unverändert — Bestandsprojekte rechnen wie bisher",
+        "modifier": null
+      },
+      {
+        "name": "reicht das Flag von der Hand-Eingabe bis in die LV-Position durch",
+        "modifier": null
+      },
+      {
+        "name": "nimmt manuelle Positionen mit gesetztem Flag genauso aus der Summe",
+        "modifier": null
+      },
+      {
+        "name": "schreibt an einer abgeleiteten Position in den Override, an einer manuellen direkt",
+        "modifier": null
+      },
+      {
+        "name": "lässt vorhandene Hand-Eingaben derselben Position stehen",
+        "modifier": null
+      },
+      {
+        "name": "nimmt die markierte Position aus `positionsTotal(buildLvPositions(...))`",
+        "modifier": null
+      },
+      {
+        "name": "nimmt sie auch aus der Systemkennzahl — sonst verspricht B11 mehr, als es hält",
+        "modifier": null
+      },
+      {
+        "name": "schmilzt eine als Bedarf markierte Leitgrößen-Position nicht ein",
+        "modifier": null
+      },
+      {
+        "name": "hält die Angebotssumme über beide Detailgrade — auch mit Bedarfsposition",
+        "modifier": null
+      },
+      {
+        "name": "lässt ein Projekt ohne Bedarfspositionen unverändert",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/buildingGeometry.test.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "summiert Geschosshöhe × Wiederholung + Attika",
+        "modifier": null
+      },
+      {
+        "name": "erzeugt vier Wände mit korrekten Längen und Himmelsrichtungen",
+        "modifier": null
+      },
+      {
+        "name": "klassifiziert Wandrichtungen auch bei konkavem (L-)Grundriss korrekt",
+        "modifier": null
+      },
+      {
+        "name": "liefert null ohne gültigen Grundriss",
+        "modifier": null
+      },
+      {
+        "name": "stapelt Geschosse mit kumulierten Höhen und richtet am Origin aus",
+        "modifier": null
+      },
+      {
+        "name": "überspringt Einträge ohne gezeichneten Grundriss, summiert aber die Höhe",
+        "modifier": null
+      },
+      {
+        "name": "liefert null, wenn kein Eintrag einen gültigen Grundriss hat",
+        "modifier": null
+      },
+      {
+        "name": "glättet kleine Versätze: OG rastet auf die EG-Ecken",
+        "modifier": null
+      },
+      {
+        "name": "lässt größere Versätze (echter Rücksprung) unangetastet",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/calculator.test.ts",
+    "category": "Mengen & Formeln",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "verteilt die Wandfläche auf die Himmelsrichtungen",
+        "modifier": null
+      },
+      {
+        "name": "zieht Öffnungen je Richtung von der Nettofläche ab",
+        "modifier": null
+      },
+      {
+        "name": "erzeugt je Komponente eine Position mit Menge aus der Formel",
+        "modifier": null
+      },
+      {
+        "name": "bildet Menge und Ansatz aus denselben gerundeten Maßen",
+        "modifier": null
+      },
+      {
+        "name": "ignoriert nicht zugewiesene Bereiche",
+        "modifier": null
+      },
+      {
+        "name": "routet jede Schicht in den Bereich ihrer Kategorie — gleiches System, keine Doppelzählung",
+        "modifier": null
+      },
+      {
+        "name": "Fassade-Bereich zieht nur Fassade-Schichten (Sockel/Öffnung bleiben außen vor)",
+        "modifier": null
+      },
+      {
+        "name": "eigener (custom) Bereich nimmt das ganze System",
+        "modifier": null
+      },
+      {
+        "name": "deaktivierte Schicht (abgewählte Schlussbeschichtung) fließt NICHT ins LV",
+        "modifier": null
+      },
+      {
+        "name": "eigener Bereich mit Freihand-Fläche: gezeichnete Fläche ersetzt hauptflaeche, übrige Größen → 0",
+        "modifier": null
+      },
+      {
+        "name": "ohne Overrides identisch zu buildPositions",
+        "modifier": null
+      },
+      {
+        "name": "Override überschreibt EP/Menge/Bezeichnung der passenden Position",
+        "modifier": null
+      },
+      {
+        "name": "manuelle Positionen werden angehängt",
+        "modifier": null
+      },
+      {
+        "name": "hängt den Zusatz an die Produktzeilen — auch ohne getroffene Auswahl",
+        "modifier": null
+      },
+      {
+        "name": "ohne Langtext bleibt undefined — der LV-Rückfall auf den Kurztext hängt daran",
+        "modifier": null
+      },
+      {
+        "name": "fabrikat (Default) bleibt zeichengleich zum heutigen Stand",
+        "modifier": null
+      },
+      {
+        "name": "ein Override (text/menge/ep) lässt den Zusatz im Langtext stehen",
+        "modifier": null
+      },
+      {
+        "name": "zählt unentschiedene Produktblöcke je Positions-id",
+        "modifier": null
+      },
+      {
+        "name": "mit Auswahl getroffen → 0 offen",
+        "modifier": null
+      },
+      {
+        "name": "deaktivierte Schicht erscheint nicht",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/daemmdicke.test.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "liest das Set direkt am IfcMaterialLayerSet",
+        "modifier": null
+      },
+      {
+        "name": "liest es auch über IfcMaterialLayerSetUsage → ForLayerSet",
+        "modifier": null
+      },
+      {
+        "name": "bestimmt die Dicke ohne Namensheuristik — die dickste Lage gewinnt",
+        "modifier": null
+      },
+      {
+        "name": "verträgt rohe Zahlen statt {value} und ignoriert Lagen ohne Dicke",
+        "modifier": null
+      },
+      {
+        "name": "liefert 0, wo das Modell kein Layer-Set trägt — kein geratener Wert",
+        "modifier": null
+      },
+      {
+        "name": "läuft sich an einem zyklischen Objektbaum nicht fest",
+        "modifier": null
+      },
+      {
+        "name": "nimmt die flächenmäßig überwiegende Dicke, nicht den Mittelwert",
+        "modifier": null
+      },
+      {
+        "name": "fasst Rundungsreste desselben Exports zu einer Lage zusammen",
+        "modifier": null
+      },
+      {
+        "name": "führt innerhalb der Toleranz den Wert des flächengrößten Mitglieds — nicht des zuerst gesehenen",
+        "modifier": null
+      },
+      {
+        "name": "meldet einheitlich, wenn nur eine Dicke im Modell steht",
+        "modifier": null
+      },
+      {
+        "name": "ohne verwertbare Wände bleibt die Dicke 0 — kein geratener Wert",
+        "modifier": null
+      },
+      {
+        "name": "rechnet in Zentimeter mit deutschem Dezimalzeichen",
+        "modifier": null
+      },
+      {
+        "name": "nimmt Bereiche an, auch mit Einheit oder ohne Leerzeichen",
+        "modifier": null
+      },
+      {
+        "name": "nimmt Aufzählungen an",
+        "modifier": null
+      },
+      {
+        "name": "ohne Angabe gilt keine Schranke — der Katalog nennt dann keinen Bereich",
+        "modifier": null
+      },
+      {
+        "name": "mehrere Angaben: eine passende genügt",
+        "modifier": null
+      },
+      {
+        "name": "JEDES Katalogsystem trägt eine beschreibbare Plattendicke-Lücke",
+        "modifier": null
+      },
+      {
+        "name": "schreibt in JEDES System eine katalogkonforme Dicke, zurücklesbar über systemDickeAusBauteil",
+        "modifier": null
+      },
+      {
+        "name": "lässt Laibung/Sturz, Eckausbildung und Brandriegel unberührt",
+        "modifier": null
+      },
+      {
+        "name": "${schicht.name} ${k.name}",
+        "modifier": null
+      },
+      {
+        "name": "schreibt nichts, wo die Dicke den Katalogbereich verlässt — lieber offen als falsch",
+        "modifier": null
+      },
+      {
+        "name": "kennzeichnet jeden übernommenen Wert als aus dem Modell stammend",
+        "modifier": null
+      },
+      {
+        "name": "überschreibt einen von Hand eingetragenen Wert nie",
+        "modifier": null
+      },
+      {
+        "name": "ohne Dicke aus dem Modell bleibt die Lücke leer — kein geratener Wert im Vertragstext",
+        "modifier": null
+      },
+      {
+        "name": "lässt Sockel-, Detail- und Fensterbank-Lücken unberührt",
+        "modifier": null
+      },
+      {
+        "name": "die übernommene Dicke steht im gerenderten LV-Langtext",
+        "modifier": null
+      },
+      {
+        "name": "buildLvPositions trägt sie in den Positions-Langtext",
+        "modifier": null
+      },
+      {
+        "name": "füllt nur die leeren Lücken und lässt die belegte stehen",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/einheiten.test.ts",
+    "category": "Mengen & Formeln",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "bildet die im Katalog vorkommenden Einheiten auf sonderzeichenfreie Kürzel ab",
+        "modifier": null
+      },
+      {
+        "name": "lässt Einheiten ohne Sonderzeichen unverändert",
+        "modifier": null
+      },
+      {
+        "name": "ersetzt ² und ³ auch in unbekannten Einheiten über den Fallback",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/f1_catalogDiff.test.ts",
+    "category": "Markt & Systemlogik",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "Roundtrip: resolveFromCatalog(stripToDiff(b)) == b",
+        "modifier": null
+      },
+      {
+        "name": "stripToDiff lässt pristine Systeme weg (S2) und behält editierte (S1/S3) + manuelle",
+        "modifier": null
+      },
+      {
+        "name": "stripToDiff entfernt Default-Langtext, behält editierten und freien",
+        "modifier": null
+      },
+      {
+        "name": "leeres Projekt: stripToDiff wirft alle pristine Systeme raus (3 Katalog + Anstrich)",
+        "modifier": null
+      },
+      {
+        "name": "Bagatelle #1: Langtext an anderer Key-Position wird trotzdem als pristine erkannt (kein Bloat)",
+        "modifier": null
+      },
+      {
+        "name": "Bagatelle #3: doppelte catalogSystemId geht nicht verloren (als manuell behalten)",
+        "modifier": null
+      },
+      {
+        "name": "istPristineBauteil: unveränderte Vorlage true, jede Bearbeitung false",
+        "modifier": null
+      },
+      {
+        "name": "aktivesBauteilId (Systemwahl) überlebt Speicherform und Laden",
+        "modifier": null
+      },
+      {
+        "name": "D4: catalogVersion gepinnt; Katalog-Wechsel detektierbar, editiert überlebt, Default folgt",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/f1_deterministicIds.test.ts",
+    "category": "Markt & Systemlogik",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "IDs sind aus Katalog-IDs abgeleitet (sys:/lay:/var:)",
+        "modifier": null
+      },
+      {
+        "name": "zweimalige Instanziierung ist byte-gleich (Pristine-Basis)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/facadeDecomposition.test.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "Brutto-, Öffnungs- und Hauptflächen",
+        "modifier": null
+      },
+      {
+        "name": "Laibung/Sturz/Fensterbank aus Fenstersitz (mittig → 0,15 m bei t=0,3)",
+        "modifier": null
+      },
+      {
+        "name": "Balkon-Teilflächen getrennt",
+        "modifier": null
+      },
+      {
+        "name": "Längen, Ecken und Zähler",
+        "modifier": null
+      },
+      {
+        "name": "Systemdicke vergrößert die Laibungsfläche nachweislich",
+        "modifier": null
+      },
+      {
+        "name": "Sockelband reduziert die Hauptfläche",
+        "modifier": null
+      },
+      {
+        "name": "konkave (L-)Grundrisse liefern Innenecken",
+        "modifier": null
+      },
+      {
+        "name": "füllt jeden Baustein aus FORMULA_VARIABLES mit einer Zahl",
+        "modifier": null
+      },
+      {
+        "name": "geneigtes Dach: Dachfläche = Grundfläche / cos(Neigung)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/fenstersitz.test.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "einsitzend: volle Wirtswand-Stärke plus Fertigmaß-Zuschlag — heutiges Verhalten",
+        "modifier": null
+      },
+      {
+        "name": "ohne Angabe wie einsitzend — Bestandsprojekte rechnen unverändert",
+        "modifier": null
+      },
+      {
+        "name": "mauerwerksbündig: die Systemdicke, unabhängig von der Wirtswand",
+        "modifier": null
+      },
+      {
+        "name": "vorgelagert: die Systemdicke als Obergrenze",
+        "modifier": null
+      },
+      {
+        "name": "fällt ohne bekannte Systemdicke auf die Wirtswand-Regel zurück",
+        "modifier": null
+      },
+      {
+        "name": "nimmt bei bündigem Sitz die Systemdicke auch ohne Fertigmaß-Zuschlag",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/fenstersitzKuration.test.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "mauerwerksbündig: die Leibungsdämmung entsteht gar nicht erst",
+        "modifier": null
+      },
+      {
+        "name": "mauerwerksbündig: die Beschichtungen derselben Leibung bleiben",
+        "modifier": null
+      },
+      {
+        "name": "einsitzend, vorgelagert und ohne Angabe behalten sie — heutiges Verhalten",
+        "modifier": null
+      },
+      {
+        "name": "ein unter bündig abgeleitetes Bauteil ist unter einsitzend NICHT mehr pristine",
+        "modifier": null
+      },
+      {
+        "name": "zieht unberührte Systeme auf den neuen Sitz nach",
+        "modifier": null
+      },
+      {
+        "name": "lässt von Hand bearbeitete Systeme unangetastet",
+        "modifier": null
+      },
+      {
+        "name": "marktüblich: weder Position noch Ausklinkungs-Hinweis, detailliert ebenso wenig",
+        "modifier": null
+      },
+      {
+        "name": "meldet eine behaltene Leibungsdämmung bei bündigem Sitz",
+        "modifier": null
+      },
+      {
+        "name": "der Rückweg holt sie wieder — die Wahl ist verlustfrei",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/fertigmass.test.ts",
+    "category": "Mengen & Formeln",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "trägt das Modell WDVS als eigene Wand, ist die gemessene Fläche schon Fertigmaß",
+        "modifier": null
+      },
+      {
+        "name": "ein Rohbaumodell bekommt den Zuschlag mit der Dicke des zugewiesenen Systems",
+        "modifier": null
+      },
+      {
+        "name": "ohne hinterlegte Systemdicke bleibt es beim Rohbaumaß, statt eine Dicke zu raten",
+        "modifier": null
+      },
+      {
+        "name": "ein persistierter Stand ohne Modellbefund weist Rohbaumaß aus, statt zu raten",
+        "modifier": null
+      },
+      {
+        "name": "der gezeichnete Pfad rechnet weiter mit der Handeingabe",
+        "modifier": null
+      },
+      {
+        "name": "Anstrich braucht keinen Sonderfall: ohne Dämmschicht gibt es keine Dicke",
+        "modifier": null
+      },
+      {
+        "name": "liest die Plattendicke aus der Bietertext-Ergänzung des zugewiesenen Systems",
+        "modifier": null
+      },
+      {
+        "name": "nimmt die Sockeldämmung nicht für die Fassade — sie trägt ihre eigene Dicke",
+        "modifier": null
+      },
+      {
+        "name": "bei mehreren Wand-Lücken gewinnt die dickste Lage — ein Brandriegel liegt bündig in der Dämmung",
+        "modifier": null
+      },
+      {
+        "name": "akzeptiert das deutsche Dezimalkomma",
+        "modifier": null
+      },
+      {
+        "name": "eine abgewählte Dämmebene zählt nicht mit",
+        "modifier": null
+      },
+      {
+        "name": "ohne ausgefüllte Lücke bleibt die Dicke 0 statt geraten",
+        "modifier": null
+      },
+      {
+        "name": "nimmt das System des Wand-Bereichs, nicht das erstbeste zugewiesene",
+        "modifier": null
+      },
+      {
+        "name": "die dickste Wand-Lage gewinnt unabhängig von der Reihenfolge im Bauteil",
+        "modifier": null
+      },
+      {
+        "name": "greift nur Lücken in cm und nur solche, die eine Plattendicke benennen",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/formulaEngine.test.ts",
+    "category": "Mengen & Formeln",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "beachtet Punkt-vor-Strich",
+        "modifier": null
+      },
+      {
+        "name": "beachtet Klammern",
+        "modifier": null
+      },
+      {
+        "name": "rechnet mit Variablen",
+        "modifier": null
+      },
+      {
+        "name": "akzeptiert × · ÷ und Komma-Dezimalzahlen",
+        "modifier": null
+      },
+      {
+        "name": "unterstützt unäres Minus",
+        "modifier": null
+      },
+      {
+        "name": "leere Formel → value null ohne Fehler",
+        "modifier": null
+      },
+      {
+        "name": "unbekannte Größe → Fehler",
+        "modifier": null
+      },
+      {
+        "name": "Division durch 0 → Fehler",
+        "modifier": null
+      },
+      {
+        "name": "Syntaxfehler → Fehler",
+        "modifier": null
+      },
+      {
+        "name": "liefert die referenzierten Größen ohne Dubletten",
+        "modifier": null
+      },
+      {
+        "name": "mappt die Decomposition auf Formel-Variablen",
+        "modifier": null
+      },
+      {
+        "name": "setzt Variablenwerte in die Formel ein",
+        "modifier": null
+      },
+      {
+        "name": "lässt reine Zahlenformeln unverändert",
+        "modifier": null
+      },
+      {
+        "name": "ersetzt nur ganze Bezeichner, nicht Namensteile",
+        "modifier": null
+      },
+      {
+        "name": "rundet die eingesetzten Maße auf 3 Nachkommastellen",
+        "modifier": null
+      },
+      {
+        "name": "lässt unbekannte Größen stehen (Formel bleibt lesbar)",
+        "modifier": null
+      },
+      {
+        "name": "rundet eingesetzte Werte auf 3 Nachkommastellen (kein Float-Rauschen)",
+        "modifier": null
+      },
+      {
+        "name": "liefert bei leerer Formel einen leeren String",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/gaeb90Exporter.test.ts",
+    "category": "GAEB / LV-Export",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "schreibt Sätze mit exakt 80 Zeichen, CRLF und fortlaufender Zeilennummer",
+        "modifier": null
+      },
+      {
+        "name": "belegt die Felder des Positionssatzes nach Referenzlayout",
+        "modifier": null
+      },
+      {
+        "name": "schreibt Preissätze nur in der Phase x82 und rechnet GP kaufmännisch",
+        "modifier": null
+      },
+      {
+        "name": "passt Einheiten immer an (Festformat ohne Sonderzeichen)",
+        "modifier": null
+      },
+      {
+        "name": "zählt die Positionssätze im Endesatz",
+        "modifier": null
+      },
+      {
+        "name": "trägt Kurztexte über 72 Zeichen auf mehrere 25-Sätze fort, ohne Textverlust",
+        "modifier": null
+      },
+      {
+        "name": "nennt sie im Kurztext, weil das Format kein belegtes Kennzeichenfeld hat",
+        "modifier": null
+      },
+      {
+        "name": "bekommt keinen Preissatz — der Satz trägt EP und Gesamtbetrag zusammen, und einen hat sie nicht",
+        "modifier": null
+      },
+      {
+        "name": "rechnet GP aus dem gerundeten EP, nicht aus dem Rohwert (kein Widerspruch in der Datei)",
+        "modifier": null
+      },
+      {
+        "name": "schreibt negative Mengen/Preise mit führendem Minus statt verschobener Nullen",
+        "modifier": null
+      },
+      {
+        "name": "kodiert die deutschen Sonderzeichen wie die Referenzdateien",
+        "modifier": null
+      },
+      {
+        "name": "ersetzt nicht abbildbare Zeichen durch Fragezeichen",
+        "modifier": null
+      },
+      {
+        "name": "kodiert weitere in echten Katalognamen vorkommende Sonderzeichen",
+        "modifier": null
+      },
+      {
+        "name": "schreibt die Marktwährung in Satz 08, ohne die Feldbreiten zu verschieben",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/gaebCuration.test.ts",
+    "category": "GAEB / LV-Export",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "Dämmplatten: behält Platte + EINE Verdübelung + Leibung, verwirft Alternativen und Zulagen",
+        "modifier": null
+      },
+      {
+        "name": "Putzbeschichtung: genau EIN Oberputz, Voranstrich bleibt, Leibung getrennt",
+        "modifier": null
+      },
+      {
+        "name": "Farbbeschichtung: Grundierung bleibt, genau EINE Fassadenfarbe",
+        "modifier": null
+      },
+      {
+        "name": "Leibungs-Armierung fliegt aus dem Standard-Aufbau, Hauptflächen-Armierung bleibt",
+        "modifier": null
+      },
+      {
+        "name": "Detailausbildungen: komplementäre Positionen bleiben alle erhalten",
+        "modifier": null
+      },
+      {
+        "name": "verwirft nicht alles: fällt auf die erste Position zurück",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/gaebExporter.test.ts",
+    "category": "GAEB / LV-Export",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "erzeugt GAEB DA XML 3.2 mit Header, Projekt, Menge, Einheit und Texten",
+        "modifier": null
+      },
+      {
+        "name": "ist strukturell schema-konform: Itemlist, Pflicht-IDs, DP, Gliederungsschema",
+        "modifier": null
+      },
+      {
+        "name": "deklariert eine REB-taugliche OZ-Maske: Positionsteil 4-stellig plus Index-Stelle",
+        "modifier": null
+      },
+      {
+        "name": "vergibt dokumentweit eindeutige IDs",
+        "modifier": null
+      },
+      {
+        "name": "ordnet DetailTxt vor OutlineText (Schema-Sequenz von CompleteText)",
+        "modifier": null
+      },
+      {
+        "name": "bildet mehrzeilige Langtexte als eigene Absätze ab statt roher Newlines",
+        "modifier": null
+      },
+      {
+        "name": "formatiert die Menge mit drei Nachkommastellen",
+        "modifier": null
+      },
+      {
+        "name": "escaped XML-Sonderzeichen in Texten",
+        "modifier": null
+      },
+      {
+        "name": "schaltet Namespace und DP gemeinsam um",
+        "modifier": null
+      },
+      {
+        "name": "schreibt Preise nur im Kostenanschlag X82 — UP/IT vor Description",
+        "modifier": null
+      },
+      {
+        "name": "nutzt X83 als Vorgabe (bisheriges Verhalten)",
+        "modifier": null
+      },
+      {
+        "name": "trägt Provis WithoutTotal vor der Menge — und nur an der Bedarfsposition",
+        "modifier": null
+      },
+      {
+        "name": "lässt den Positionstext unberührt — das Kennzeichen steht in der Struktur",
+        "modifier": null
+      },
+      {
+        "name": "gibt der Bedarfsposition im X82 einen Einheitspreis, aber keinen Gesamtbetrag",
+        "modifier": null
+      },
+      {
+        "name": "schreibt die LV-Summe nur im Kostenanschlag X82",
+        "modifier": null
+      },
+      {
+        "name": "lässt im Kurztext-LV die Langtexte weg und meldet das über OutlCompl",
+        "modifier": null
+      },
+      {
+        "name": "lässt Preis-Elemente an Positionen ohne Einheitspreis weg",
+        "modifier": null
+      },
+      {
+        "name": "Round-Trip: der eigene Importer liest Bereiche, Kurz-/Langtexte und Einheiten zurück",
+        "modifier": null
+      },
+      {
+        "name": "wechselt mit version:\"xml33\" Namespace, Version und VersDate auf 3.3, Rest unverändert",
+        "modifier": null
+      },
+      {
+        "name": "passt Einheiten nur mit einheitenAnpassen an; ohne Option bleibt m² unverändert",
+        "modifier": null
+      },
+      {
+        "name": "deklariert die Währung des Marktes, nicht fest EUR",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/gaebImporter.test.ts",
+    "category": "GAEB / LV-Export",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "baut den Kategoriebaum mit Items, Einheit und Langtext-Umbrüchen",
+        "modifier": null
+      },
+      {
+        "name": "mappt L-System → Schichten → Varianten",
+        "modifier": null
+      },
+      {
+        "name": "entwickelt hart umbrochene Langtexte beim Übernehmen in den Katalog",
+        "modifier": null
+      },
+      {
+        "name": "liefert alle Items flach (Variantenpool)",
+        "modifier": null
+      },
+      {
+        "name": "wandelt Absätze/Umbrüche in Zeilenumbrüche und strippt Tags",
+        "modifier": null
+      },
+      {
+        "name": "löst Hex-Entities und doppelt kodierte Entities auf (GAEB-Langtexte)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/ifcAggregation.test.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "summiert je Kategorie und reicht die Footprint-Statik durch",
+        "modifier": null
+      },
+      {
+        "name": "Element ausschließen ändert die aggregierte Menge",
+        "modifier": null
+      },
+      {
+        "name": "Elemente ohne Messdaten tragen nichts bei",
+        "modifier": null
+      },
+      {
+        "name": "gestapelte Dach-Schichten zählen einmal (projizierte Vereinigung)",
+        "modifier": null
+      },
+      {
+        "name": "Balkonböden: projizierte Vereinigung und Anzahl aus der Zuordnung",
+        "modifier": null
+      },
+      {
+        "name": "Balkonseiten und -untersicht bleiben aus dem IFC unbestimmt",
+        "modifier": null
+      },
+      {
+        "name": "summiert Laibung/Sturz/Fensterbank je Öffnung mit ihrer Wirtswand-Tiefe (exakt, kein Mittelwert)",
+        "modifier": null
+      },
+      {
+        "name": "fällt für Öffnungen ohne Wirtswand-Treffer auf repThicknessM zurück",
+        "modifier": null
+      },
+      {
+        "name": "jede gelieferte Kennzahl ist durch Beiträge belegt oder ausdrücklich davon ausgenommen",
+        "modifier": null
+      },
+      {
+        "name": "gestapelte Dach-/Balkonschichten teilen sich die Fläche gleichmäßig",
+        "modifier": null
+      },
+      {
+        "name": "führt GlobalId, Name, Geschoss und Richtung am Beitrag mit",
+        "modifier": null
+      },
+      {
+        "name": "Öffnungs-Beiträge tragen die mitgelieferte Richtung",
+        "modifier": null
+      },
+      {
+        "name": "Öffnungen tragen kleinste Maße und die Attribut-vs-Geometrie-Quelle",
+        "modifier": null
+      },
+      {
+        "name": "Laibung/Sturz/Fensterbank sind je Öffnung zerlegbar (Lfm je Element)",
+        "modifier": null
+      },
+      {
+        "name": "führt die Wirtswand-Tiefe je Öffnung am Beitrag mit",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Tiefe offen, wo das Modell keine kennt",
+        "modifier": null
+      },
+      {
+        "name": "ohne Zusatzdaten bleibt der Beitrag schlank (id/beitrag/quelle)",
+        "modifier": null
+      },
+      {
+        "name": "Element abwählen reduziert die zugehörige LV-Positionsmenge",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/ifcEingangspruefung.test.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "meldet Wände ohne Basismengen als kritisch",
+        "modifier": null
+      },
+      {
+        "name": "schweigt, wenn NetSideArea vorliegt",
+        "modifier": null
+      },
+      {
+        "name": "nennt bei fehlenden Basismengen das Vorhangfassaden-Qto, nicht Qto_WallBaseQuantities",
+        "modifier": null
+      },
+      {
+        "name": "schweigt bei vorhandenen Basismengen",
+        "modifier": null
+      },
+      {
+        "name": "flaggt den (nicht eingelesenen) leeren Typnamen nicht als Konventionsverstoß",
+        "modifier": null
+      },
+      {
+        "name": "meldet Hüllbauteile ohne IsExternal als Warnung",
+        "modifier": null
+      },
+      {
+        "name": "schweigt, wenn IsExternal gesetzt ist und dem Aufmaß nicht widerspricht",
+        "modifier": null
+      },
+      {
+        "name": "meldet IsExternal = false an einer als Außenfläche abgerechneten Wand",
+        "modifier": null
+      },
+      {
+        "name": "erkennt die BaseQuantities-Namen beider IFC-Welten",
+        "modifier": null
+      },
+      {
+        "name": "lehnt gewöhnliche Psets ab",
+        "modifier": null
+      },
+      {
+        "name": "meldet Bauteile ohne Geschoss als kritisch",
+        "modifier": null
+      },
+      {
+        "name": "meldet mehrdeutige Geschosszuordnung als kritisch",
+        "modifier": null
+      },
+      {
+        "name": "schweigt bei genau einem Geschoss je Bauteil",
+        "modifier": null
+      },
+      {
+        "name": "nimmt Teilbauteile von der Geschossregel aus",
+        "modifier": null
+      },
+      {
+        "name": "meldet fehlende oder unplausible Attributmaße als Warnung",
+        "modifier": null
+      },
+      {
+        "name": "meldet Attributmaße, die die Geometrie nicht bestätigt (Revit: 0,51 statt 2,20)",
+        "modifier": null
+      },
+      {
+        "name": "schweigt, wenn die Geometrie die Attributmaße bestätigt",
+        "modifier": null
+      },
+      {
+        "name": "meldet als Hinweis, wenn OverallHeight über dem Typnamen-Maß liegt (Rolladenkasten)",
+        "modifier": null
+      },
+      {
+        "name": "schweigt, wenn OverallHeight und Typnamen-Maß übereinstimmen",
+        "modifier": null
+      },
+      {
+        "name": "schweigt ohne Typnamen-Maß",
+        "modifier": null
+      },
+      {
+        "name": "meldet auch den unstimmigen Fall: Typnamen-Maß höher als das Bauteil selbst",
+        "modifier": null
+      },
+      {
+        "name": "trennt die beiden Richtungen in eigene Befunde",
+        "modifier": null
+      },
+      {
+        "name": "meldet doppelte GlobalIds als kritisch (Einzelnachweis nicht eindeutig)",
+        "modifier": null
+      },
+      {
+        "name": "schweigt bei durchweg eindeutigen GlobalIds",
+        "modifier": null
+      },
+      {
+        "name": "meldet Geschossnamen außerhalb des Schemas als Hinweis, mit den Bauteilen des Geschosses",
+        "modifier": null
+      },
+      {
+        "name": "schweigt bei Geschossnamen nach Schema",
+        "modifier": null
+      },
+      {
+        "name": "meldet Typnamen außerhalb <Funktion>_<Dicke>_<Material>_<Lage> als Hinweis",
+        "modifier": null
+      },
+      {
+        "name": "schweigt bei Typnamen nach Konvention",
+        "modifier": null
+      },
+      {
+        "name": "sortiert kritisch vor warnung vor hinweis",
+        "modifier": null
+      },
+      {
+        "name": "meldet Wände, deren gemessene Seitenfläche > 5 % von NetSideArea abweicht",
+        "modifier": null
+      },
+      {
+        "name": "schweigt ohne Messwert oder ohne NetSideArea",
+        "modifier": null
+      },
+      {
+        "name": "vergleicht die Langseite — der Stirnanteil der Messung zählt nicht als Abweichung",
+        "modifier": null
+      },
+      {
+        "name": "Umfang × Höhe ist eine obere Schranke: reale Unterschreitung (Rücksprünge, UG) ist still",
+        "modifier": null
+      },
+      {
+        "name": "mehr Fläche als die Hülle → Doppelzählungs-Verdacht",
+        "modifier": null
+      },
+      {
+        "name": "unter 40 % der Hülle → Größenordnungs-Bruch (z. B. halbleeres Fassadenset)",
+        "modifier": null
+      },
+      {
+        "name": "schweigt ohne Mengenabgleich-Daten",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/ifcFacade.test.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "bildet die Achsenrichtungen ab (x=Ost, z=Nord)",
+        "modifier": null
+      },
+      {
+        "name": "berücksichtigt die Nordrichtung",
+        "modifier": null
+      },
+      {
+        "name": "misst Außenseite plus freie Stirnseiten einer ost-orientierten Wand (#213)",
+        "modifier": null
+      },
+      {
+        "name": "erkennt Nord- und West-Wände",
+        "modifier": null
+      },
+      {
+        "name": "Nordrichtung dreht die Zuordnung ohne Neumessung",
+        "modifier": null
+      },
+      {
+        "name": "zählt die Außenseite nicht doppelt (gegenüberliegende Großflächen)",
+        "modifier": null
+      },
+      {
+        "name": "Orakel ist höhenbewusst: Obergeschoss-Flächen scheitern nicht an Erdgeschoss-Wänden (#216)",
+        "modifier": null
+      },
+      {
+        "name": "freie Langseite zählt immer voll — nie nur Höhe × Dicke (#216)",
+        "modifier": null
+      },
+      {
+        "name": "nur die Stirn frei: Fläche ehrlich klein, Richtung bleibt die Langseiten-Achse (#216)",
+        "modifier": null
+      },
+      {
+        "name": "halb verdeckte Stirnseite zählt anteilig, nicht alles-oder-nichts (#213)",
+        "modifier": null
+      },
+      {
+        "name": "Orakel hat Vorrang vor dem Zentrum: verdeckte Flächen bleiben draußen",
+        "modifier": null
+      },
+      {
+        "name": "geflutete Innenluft zählt die Rückseite nicht doppelt (Leck im Modell, #216)",
+        "modifier": null
+      },
+      {
+        "name": "geschlossener Bestandsring (EIN Element): beide Achsseiten zählen — der Rückseiten-Schutz gilt nur wandartig dünnen Elementen (#213 Renovierung)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/ifcFootprint.test.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "Rechteck: 1 Polygon, 4 Außenecken, kollineare Kanten gemergt, Umfang = 2·(b+h)",
+        "modifier": null
+      },
+      {
+        "name": "Zellgröße & Ursprung skalieren Umfang und Koordinaten",
+        "modifier": null
+      },
+      {
+        "name": "L-Form: 5 Außenecken, 1 Innenecke, Umfang wie volles Rechteck",
+        "modifier": null
+      },
+      {
+        "name": "gedrehtes Rechteck (Treppen-Raster): bleibt bei 4 Außenecken, keine Schein-Innenecken",
+        "modifier": null
+      },
+      {
+        "name": "gedrehtes L (echter Rücksprung): Stufe bleibt erhalten, wird nicht zur Diagonale verschmolzen",
+        "modifier": null
+      },
+      {
+        "name": "Innenhof (Loch): 4 Außenecken + 4 Innenecken, zwei Polygone",
+        "modifier": null
+      },
+      {
+        "name": "zählt überlappende (gestapelte) Flächen nur einmal",
+        "modifier": null
+      },
+      {
+        "name": "liefert den Umriss-Umfang (≈ Attika) der Vereinigung",
+        "modifier": null
+      },
+      {
+        "name": "leere Eingabe → Nullwerte",
+        "modifier": null
+      },
+      {
+        "name": "teilt überlappte Zellen unabhängig von den expressIDs auf",
+        "modifier": null
+      },
+      {
+        "name": "vollständig überdeckte Schichten teilen sich die Fläche, statt leer auszugehen",
+        "modifier": null
+      },
+      {
+        "name": "gedrehtes L (26°, Dach-Raster 0,12): Innenecke ohne Diagonal-Abschrägung",
+        "modifier": null
+      },
+      {
+        "name": "gedrehtes L (20°, Dach-Raster 0,12): Außenecke ohne Diagonal-Abschrägung",
+        "modifier": null
+      },
+      {
+        "name": "gedrehtes L (31°/41°): Innenecke ohne Diagonal-Abschrägung (weitere Rasterphasen)",
+        "modifier": null
+      },
+      {
+        "name": "Default: Außenring + Loch + kleiner Block = 3 Polygone (Footprint unverändert)",
+        "modifier": null
+      },
+      {
+        "name": "dropHoles verwirft das innenliegende Loch",
+        "modifier": null
+      },
+      {
+        "name": "minRingAreaSqm verwirft zusätzlich den kleinen Block → nur Außenring",
+        "modifier": null
+      },
+      {
+        "name": "misst je Ecke die Y-Spanne der nahen Wand-Vertices",
+        "modifier": null
+      },
+      {
+        "name": "Ecke ohne nahe Vertices faellt auf die Gesamtspanne zurueck",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/ifcGrouping.test.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "trennt Außenwände nach Material und erkennt Innenwände (nur Name)",
+        "modifier": null
+      },
+      {
+        "name": "IsExternal sichert die Außen/Innen-Zuordnung ab (autoritativ)",
+        "modifier": null
+      },
+      {
+        "name": "ordnet Öffnungen, Dach und Decken nach Klasse/PredefinedType",
+        "modifier": null
+      },
+      {
+        "name": "trennt Außen- von Innenfenstern (Name + IsExternal); Default ist außen",
+        "modifier": null
+      },
+      {
+        "name": "trennt Außen- von Innentüren (Name + IsExternal); Default ist innen",
+        "modifier": null
+      },
+      {
+        "name": "erkennt Terrassen-/Balkonböden als Außenhülle (auch bei PredefinedType FLOOR)",
+        "modifier": null
+      },
+      {
+        "name": "bündelt Vorhangfassade, Geländer, Verkleidung und Sonstiges",
+        "modifier": null
+      },
+      {
+        "name": "Balkongeländer bleiben Fassade trotz IsExternal=false (Revit-Default unzuverlässig)",
+        "modifier": null
+      },
+      {
+        "name": "nur klar innenliegende Geländer (Treppenhaus) werden gefiltert",
+        "modifier": null
+      },
+      {
+        "name": "erkennt Balkon-/Terrassenplatten als Außenhülle, auch als IfcBuildingElementPart",
+        "modifier": null
+      },
+      {
+        "name": "Attikablech (Proxy) zählt zur Außenhülle (Verkleidung), nicht zu Sonstiges",
+        "modifier": null
+      },
+      {
+        "name": "Vordach (BuildingElementPart) zählt zur Außenhülle, nicht zu Sonstiges",
+        "modifier": null
+      },
+      {
+        "name": "gruppiert IDs je Leaf, leere Leaves entfallen",
+        "modifier": null
+      },
+      {
+        "name": "verschachtelt dieselben Leaves je nach Modus unterschiedlich",
+        "modifier": null
+      },
+      {
+        "name": "Default-Auswahl ist fassadenrelevant; selectedIds sammelt expressIDs",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/ifcHeader.test.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "liest Revit-IFC2X3-Header: Datum, Software, Schema; leere Listen bleiben leer",
+        "modifier": null
+      },
+      {
+        "name": "liest Autor/Organisation-Listen und dekodiert STEP-Escapes",
+        "modifier": null
+      },
+      {
+        "name": "fällt bei leerem originating_system NICHT auf einen leeren String zurück",
+        "modifier": null
+      },
+      {
+        "name": "nutzt preprocessor_version als Software-Fallback, wenn originating_system leer ist",
+        "modifier": null
+      },
+      {
+        "name": "liefert bei Text ohne IFC-Header keine Felder",
+        "modifier": null
+      },
+      {
+        "name": "baut die einzeilige Modellstand-Angabe mit gekürzter Prüfsumme",
+        "modifier": null
+      },
+      {
+        "name": "reicht einen abweichend geschriebenen Zeitstempel unverändert durch",
+        "modifier": null
+      },
+      {
+        "name": "nennt Autor und Organisation aus dem Header",
+        "modifier": null
+      },
+      {
+        "name": "sagt bei leerem Header, dass er nichts hergab, statt Felder zu verschlucken",
+        "modifier": null
+      },
+      {
+        "name": "weist eine fehlende Prüfsumme aus, statt sie wegzulassen",
+        "modifier": null
+      },
+      {
+        "name": "meldet ohne gespeicherten Modellstand „unbekannt\" (Bestandsprojekte)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/ifcQuantities.test.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "mappt Roh-Aggregate auf die Formel-Variablen",
+        "modifier": null
+      },
+      {
+        "name": "Laibung/Sturz/Fensterbank = Wirtswand-Summe (ohne Zuschlag)",
+        "modifier": null
+      },
+      {
+        "name": "Zuschlag skaliert nur mit der Lauflänge",
+        "modifier": null
+      },
+      {
+        "name": "nutzt die exakte Summe, nicht Lauflänge × Mittelwert",
+        "modifier": null
+      },
+      {
+        "name": "Lauflängen bleiben von Tiefe und Zuschlag unberührt",
+        "modifier": null
+      },
+      {
+        "name": "mauerwerksbündig: Lauflänge × Systemdicke statt Wirtswand-Summe",
+        "modifier": null
+      },
+      {
+        "name": "mauerwerksbündig: unabhängig von den gemessenen Wirtswand-Summen",
+        "modifier": null
+      },
+      {
+        "name": "vorgelagert: die Systemdicke als deklarierte Obergrenze",
+        "modifier": null
+      },
+      {
+        "name": "fällt ohne Systemdicke auf die Wirtswand-Regel zurück",
+        "modifier": null
+      },
+      {
+        "name": "einsitzend und ohne Angabe rechnen unverändert wie bisher",
+        "modifier": null
+      },
+      {
+        "name": "Attribut zählt, wenn die Geometrie es bestätigt",
+        "modifier": null
+      },
+      {
+        "name": "weicht das Attribut von der Geometrie ab, gewinnt die Geometrie (Revit: 0,51 statt 2,20)",
+        "modifier": null
+      },
+      {
+        "name": "unplausibles Attribut (Rahmentiefe ~0,08) fällt auf die Geometrie zurück",
+        "modifier": null
+      },
+      {
+        "name": "ohne Geometrie zählt das plausible Attribut, sonst nichts",
+        "modifier": null
+      },
+      {
+        "name": "übernimmt die Höhe aus dem Typnamen, wenn die Namensbreite die Breite bestätigt (#220)",
+        "modifier": null
+      },
+      {
+        "name": "behält die schon gemessene Breite, nur die Höhe kommt aus dem Typnamen (#220)",
+        "modifier": null
+      },
+      {
+        "name": "ignoriert das Typnamen-Maß, wenn die Namensbreite die Breite nicht bestätigt (#220)",
+        "modifier": null
+      },
+      {
+        "name": "ohne bestätigte Breite (weder Attribut noch Geometrie) zählt der Typname nicht (#220)",
+        "modifier": null
+      },
+      {
+        "name": "unplausibles Typnamen-Maß ändert nichts (#220)",
+        "modifier": null
+      },
+      {
+        "name": "korrigiert nur nach unten: ein HÖHERES Typnamen-Maß bläht die Öffnung nicht auf (#220)",
+        "modifier": null
+      },
+      {
+        "name": "Typnamen-Höhe kippt die VOB-Bewertung von Abzug zu übermessen (#220 AC4)",
+        "modifier": null
+      },
+      {
+        "name": "liest Breite × Höhe (mm) aus dem Revit-Typnamen",
+        "modifier": null
+      },
+      {
+        "name": "akzeptiert × und fehlende Leerzeichen",
+        "modifier": null
+      },
+      {
+        "name": "gibt null zurück, wenn kein Maßpaar im Namen steht",
+        "modifier": null
+      },
+      {
+        "name": "greift nicht auf Materialkürzel wie 220_XPS zu",
+        "modifier": null
+      },
+      {
+        "name": "nimmt im WDVS-Stand die dickste durchdrungene Wand, nicht die Tragschale dahinter",
+        "modifier": null
+      },
+      {
+        "name": "nimmt im Rohbau-Stand die Tragschale, nicht die dickere Wand der Tiefgarageneinfahrt",
+        "modifier": null
+      },
+      {
+        "name": "fällt ohne Durchdringung auf die nächste Wand zurück statt auf die dickste im Modell",
+        "modifier": null
+      },
+      {
+        "name": "meldet ohne jede Wand null, statt eine Tiefe zu erfinden",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/katalogKorrekturen.test.ts",
+    "category": "GAEB / LV-Export",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "setzt „Leibungen/Sturz Oberputz\" auf lfm, den Sockel-Oberputz lässt sie in m²",
+        "modifier": null
+      },
+      {
+        "name": "hängt den Sockelanstrich an einen anstreichbaren Sockel — mit dem Text aus dem Farb-Pool",
+        "modifier": null
+      },
+      {
+        "name": "lässt einen Sockel ohne Oberputz unangetastet",
+        "modifier": null
+      },
+      {
+        "name": "fügt keinen zweiten Anstrich hinzu, wo schon einer steht",
+        "modifier": null
+      },
+      {
+        "name": "ist idempotent und mutiert die Eingabe nicht",
+        "modifier": null
+      },
+      {
+        "name": "bricht ab, wenn der Farb-Pool die Textquelle nicht mehr hergibt",
+        "modifier": null
+      },
+      {
+        "name": "keine einzige Leibungs-Oberputz-Position mehr in m²",
+        "modifier": null
+      },
+      {
+        "name": "jeder anstreichbare Sockel trägt genau einen Anstrich, jeder ohne Oberputz keinen",
+        "modifier": null
+      },
+      {
+        "name": "rechnet Kantenschutz, Dichtband und Leibungs-Oberputz mit den neuen Formeln",
+        "modifier": null
+      },
+      {
+        "name": "X83: Sockel-Anstrich und lfm-Leibungs-Oberputz drin, Leibungs-Armierung draußen",
+        "modifier": null
+      },
+      {
+        "name": "das bearbeitete System kommt unverändert zurück, das unberührte folgt dem Katalog",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/laibungsSplit.test.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "trennt am ERSTEN Doppelpunkt — Katalog-Komponenten tragen selbst welche",
+        "modifier": null
+      },
+      {
+        "name": "schneidet das Tiefen-Suffix geteilter Laibungspositionen ab",
+        "modifier": null
+      },
+      {
+        "name": "lässt ohne Tiefenverteilung alles wie bisher — samt Positions-id und Text",
+        "modifier": null
+      },
+      {
+        "name": "nennt die Tiefe schon bei EINER Klasse, ohne die Positions-id zu ändern",
+        "modifier": null
+      },
+      {
+        "name": "teilt bei zwei Tiefen nur die reine Laibungsposition und nennt die Tiefe im Kurztext",
+        "modifier": null
+      },
+      {
+        "name": "erhält die Summe: die Teilmengen ergeben die ungeteilte Menge",
+        "modifier": null
+      },
+      {
+        "name": "verteilt den Rundungsrest, statt ihn zu verlieren",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine Größe, die keine Klasse kennt, vollständig in einer Position stehen",
+        "modifier": null
+      },
+      {
+        "name": "gibt jeder Teilposition ihren eigenen Rechenansatz",
+        "modifier": null
+      },
+      {
+        "name": "hängt Laibungspositionen an die Öffnungs-Gruppe, auch ungeteilt",
+        "modifier": null
+      },
+      {
+        "name": "nimmt den Namen eines umbenannten Öffnungs-Bereichs, statt eine zweite Gruppe zu bilden",
+        "modifier": null
+      },
+      {
+        "name": "findet die offenen Angaben jeder Teilposition wieder",
+        "modifier": null
+      },
+      {
+        "name": "führt beide Tiefen als eigene Positionen mit eigener Menge",
+        "modifier": null
+      },
+      {
+        "name": "hält die Gesamtmenge gegenüber dem ungeteilten Export",
+        "modifier": null
+      },
+      {
+        "name": "stellt die Laibungspositionen unter die Öffnungs-Gruppe, nicht unter die Fassade",
+        "modifier": null
+      },
+      {
+        "name": "hält Menge und Angebotssumme in jedem der 15 Katalogsysteme",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/langtextSlots.test.ts",
+    "category": "GAEB / LV-Export",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "Produktblock mit allen Optionen",
+        "modifier": null
+      },
+      {
+        "name": "erkennt ' '-Platzhalter mit Einheit + Auswahlliste und ohne",
+        "modifier": null
+      },
+      {
+        "name": "typografische Apostrophe und „Label: cm\" (ohne Platzhalter)",
+        "modifier": null
+      },
+      {
+        "name": "„Produkt:\"/„Technische Kennwerte:\" sind keine Lücken",
+        "modifier": null
+      },
+      {
+        "name": "unentschiedener Produktblock + leere Lücken",
+        "modifier": null
+      },
+      {
+        "name": "ausgewähltes Produkt + gefüllte Lücken = erledigt",
+        "modifier": null
+      },
+      {
+        "name": "ohne Resolution unverändert",
+        "modifier": null
+      },
+      {
+        "name": "Ausschreibungsart „oder gleichwertig\": Zusatz an der behaltenen Produktzeile",
+        "modifier": null
+      },
+      {
+        "name": "ohne Auswahl bekommt jede Produktzeile den Zusatz — nicht nur die gewählte",
+        "modifier": null
+      },
+      {
+        "name": "doppelt den Zusatz nicht, wo der Katalog ihn schon führt",
+        "modifier": null
+      },
+      {
+        "name": "auch nicht, wenn der Zusatz mitten in der Zeile steht",
+        "modifier": null
+      },
+      {
+        "name": "der Zusatz gilt nur Produktzeilen, nicht Wert-Lücken oder Fließtext",
+        "modifier": null
+      },
+      {
+        "name": "behält nur das ausgewählte Produkt",
+        "modifier": null
+      },
+      {
+        "name": "setzt Werte ein, Auswahl-Hinweis entfällt",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/lvFromPositions.test.ts",
+    "category": "GAEB / LV-Export",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "gliedert nach Gewerk mit OZ-Nummerierung",
+        "modifier": null
+      },
+      {
+        "name": "gliedert alternativ nach System (eine Gruppe)",
+        "modifier": null
+      },
+      {
+        "name": "ist als GAEB XML 3.2 exportierbar",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/lvGenerator.test.ts",
+    "category": "GAEB / LV-Export",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "erzeugt einen Bereich mit einer Anstrich-Position; Menge = Fläche",
+        "modifier": null
+      },
+      {
+        "name": "übernimmt die Fläche aus dem kanonischen Modell als Menge",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/markt.test.ts",
+    "category": "Markt & Systemlogik",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "führt genau die fünf geplanten Märkte in der Reihenfolge ihrer Versorgung",
+        "modifier": null
+      },
+      {
+        "name": "nur Deutschland ist versorgt",
+        "modifier": null
+      },
+      {
+        "name": "unversorgt heißt: Katalog, Format, Sprache oder Normbezug fehlen ausdrücklich",
+        "modifier": null
+      },
+      {
+        "name": "Einheiten und Währung stehen für jeden Eintrag",
+        "modifier": null
+      },
+      {
+        "name": "leitet aus dem ISO-Code ab, Schreibweise und Leerraum egal",
+        "modifier": null
+      },
+      {
+        "name": "kennt kein Land außerhalb der Tabelle",
+        "modifier": null
+      },
+      {
+        "name": "Währung folgt dem Markt",
+        "modifier": null
+      },
+      {
+        "name": "nur die USA rechnen imperial",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/marktAbweichung.test.ts",
+    "category": "Markt & Systemlogik",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "benennt beide Seiten, wenn die Wahl vom Adressland abweicht",
+        "modifier": null
+      },
+      {
+        "name": "keine Abweichung, wenn die Wahl das Adressland trifft",
+        "modifier": null
+      },
+      {
+        "name": "ohne Adressland kein Hinweis, auch nach ausdrücklicher Wahl",
+        "modifier": null
+      },
+      {
+        "name": "ein Land ohne Markteintrag erzeugt keinen Hinweis",
+        "modifier": null
+      },
+      {
+        "name": "ohne ausdrückliche Wahl kann keine Abweichung entstehen",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/marktHerkunft.test.ts",
+    "category": "Markt & Systemlogik",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "ohne alles: Deutschland",
+        "modifier": null
+      },
+      {
+        "name": "Adressland schlägt den Default",
+        "modifier": null
+      },
+      {
+        "name": "die ausdrückliche Wahl schlägt das Adressland",
+        "modifier": null
+      },
+      {
+        "name": "unbekanntes oder leeres Adressland fällt auf Deutschland zurück",
+        "modifier": null
+      },
+      {
+        "name": "fehlend heißt metrisch, unabhängig vom Markt",
+        "modifier": null
+      },
+      {
+        "name": "die gespeicherte Wahl gilt",
+        "modifier": null
+      },
+      {
+        "name": "ohne Markt und ohne Land: Deutschland, versorgt, metrisch",
+        "modifier": null
+      },
+      {
+        "name": "migrateDoc bleibt die Identität — kein Bestandsprojekt bekommt ein Land verpasst",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/mengenExporter.test.ts",
+    "category": "Mengen & Formeln",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "reproduziert die ORCA-Referenzdatei byte-genau (bis auf die REB-OZ-Spalte)",
+        "modifier": null
+      },
+      {
+        "name": "schreibt Sätze mit exakt 80 Zeichen und CRLF",
+        "modifier": null
+      },
+      {
+        "name": "belegt die Satzfelder nach REB-VB 23.003",
+        "modifier": null
+      },
+      {
+        "name": "zählt die Blattadresse hoch und wechselt nach Z das Blatt",
+        "modifier": null
+      },
+      {
+        "name": "kappt überlange OZ auf die 9 Feldzeichen, statt das Festformat zu verschieben",
+        "modifier": null
+      },
+      {
+        "name": "trägt dieselbe OZ wie der GAEB-Export (Positionsteil 4-stellig)",
+        "modifier": null
+      },
+      {
+        "name": "gibt Mengen ohne überflüssige Nullen aus (wie ORCA)",
+        "modifier": null
+      },
+      {
+        "name": "reproduziert das Ansatz-Erwartungs-Fixture byte-genau (Maßkette, Fortsetzung, Fallback)",
+        "modifier": null
+      },
+      {
+        "name": "schließt das Ansatzfeld mit \"=\" ab und schreibt nichts dahinter",
+        "modifier": null
+      },
+      {
+        "name": "trägt OZ und Formelkennzeichen in jede Fortsetzungszeile (FN 91 je Zeile)",
+        "modifier": null
+      },
+      {
+        "name": "zerteilt beim Umbruch keinen Rechenwert und hält den Abschluss \"=\" bei der Kette",
+        "modifier": null
+      },
+      {
+        "name": "bricht Maßketten ohne Leerzeichen an Operator-Grenzen um",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine Maßkette weg, die nicht auf die Menge der Position führt",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine Maßkette mit unaufgelöster Größe weg (nicht nachrechenbar)",
+        "modifier": null
+      },
+      {
+        "name": "fällt bei mehr als 20 Zeilen auf die Ergebniszeile zurück",
+        "modifier": null
+      },
+      {
+        "name": "zählt die Blattadresse je Zeile weiter, auch über Positionen hinweg",
+        "modifier": null
+      },
+      {
+        "name": "jede exportierte Maßkette rechnet auf die Menge ihrer Position",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/mengenregel.test.ts",
+    "category": "Mengen & Formeln",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "schließt den Grenzfall ein (DIN-Wortlaut „bis\")",
+        "modifier": null
+      },
+      {
+        "name": "schlägt die Systemdicke an den Außenecken auf die Fassadenfläche auf",
+        "modifier": null
+      },
+      {
+        "name": "schlägt nichts auf, solange keine Fassadenfläche gemessen ist",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine übermessene Öffnung in der Fassadenfläche stehen",
+        "modifier": null
+      },
+      {
+        "name": "zieht eine große Öffnung mit ihren kleinsten Maßen ab",
+        "modifier": null
+      },
+      {
+        "name": "behandelt den Grenzfall exakt 2,5 m² als übermessen",
+        "modifier": null
+      },
+      {
+        "name": "lässt fremde Variablen und die realen Elementgrößen unverändert",
+        "modifier": null
+      },
+      {
+        "name": "fasst berührende Öffnungen zu EINER Aussparung zusammen — und kippt sie über die Schwelle",
+        "modifier": null
+      },
+      {
+        "name": "zieht bei versetzten Nachbarn nur die wirklich fehlende Fläche ab, nicht den Umriss",
+        "modifier": null
+      },
+      {
+        "name": "lässt getrennte Öffnungen getrennt",
+        "modifier": null
+      },
+      {
+        "name": "fasst nicht über Fassaden hinweg zusammen",
+        "modifier": null
+      },
+      {
+        "name": "stets-gesondert: alle Öffnungen liefern Leibungs-/Sturz-Längen",
+        "modifier": null
+      },
+      {
+        "name": "abzugs-oeffnungen: nur die abgezogenen liefern Längen (MB-A-01 Rechenbeispiel)",
+        "modifier": null
+      },
+      {
+        "name": "rechnet die m²-Größen mit der Laibungstiefe der Öffnung",
+        "modifier": null
+      },
+      {
+        "name": "rechnet den Umfang als 2×H + B und streicht Sohlbank-Größen",
+        "modifier": null
+      },
+      {
+        "name": "erhält fremde Anteile — der Balkon bleibt im Öffnungsumfang und im Flächenabzug",
+        "modifier": null
+      },
+      {
+        "name": "lässt einen persistierten IFC-Anteil ohne Öffnungsliste unangetastet",
+        "modifier": null
+      },
+      {
+        "name": "clampt nie unter null",
+        "modifier": null
+      },
+      {
+        "name": "erkennt bodentief an y = 0 und an Türen",
+        "modifier": null
+      },
+      {
+        "name": "überspringt Balkone",
+        "modifier": null
+      },
+      {
+        "name": "trennt die Fassaden über die Gruppe, nicht über die Lage",
+        "modifier": null
+      },
+      {
+        "name": "übernimmt die Laibungstiefe aus Fenstersitz und Systemdicke",
+        "modifier": null
+      },
+      {
+        "name": "erkennt bodentiefe Fenster an der Erdgeschoss-Oberkante, Türen immer",
+        "modifier": null
+      },
+      {
+        "name": "nutzt die GlobalId als Element-Identität, wenn vorhanden",
+        "modifier": null
+      },
+      {
+        "name": "überspringt Elemente ohne Maße — wie die Aggregation",
+        "modifier": null
+      },
+      {
+        "name": "lässt Fenster ohne Kasten weder bodentief noch zusammenfassbar werden",
+        "modifier": null
+      },
+      {
+        "name": "führt die Verortung durch die Verschmelzung — und lässt sie fallen, wo die Teile sich unterscheiden",
+        "modifier": null
+      },
+      {
+        "name": "reicht die Verortung einer einzelnen Öffnung unverändert durch",
+        "modifier": null
+      },
+      {
+        "name": "erkennt die Wandebene an der bekannten Breite, nicht an der größeren Spanne",
+        "modifier": null
+      },
+      {
+        "name": "trennt Öffnungen senkrecht zueinander stehender Wände, auch wenn sie sich an der Ecke berühren",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/migrateDoc.test.ts",
+    "category": "Auth & Projekt-Backend",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "aktuelle Schemaversion ist 1",
+        "modifier": null
+      },
+      {
+        "name": "v1: gibt das doc unverändert zurück (Identität)",
+        "modifier": null
+      },
+      {
+        "name": "unbekannt kleine from-Version bricht (noch) nicht, sondern reicht das doc durch",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/neutraleTexte.test.ts",
+    "category": "GAEB / LV-Export",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "hält „Stoß…\", „Stollen\", „Stoff\" für keine Marke",
+        "modifier": null
+      },
+      {
+        "name": "erkennt die echten Schreibweisen weiter",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine Stoß-Zeile im Langtext stehen — und ohne Bieterzeile",
+        "modifier": null
+      },
+      {
+        "name": "entstellt einen Kurztext mit „Stoß\" nicht",
+        "modifier": null
+      },
+      {
+        "name": "löst die Marke aus ihrem Gerüst, statt den Namen zu verwerfen",
+        "modifier": null
+      },
+      {
+        "name": "streift „Sto-\" ab und behält den Gattungsbegriff",
+        "modifier": null
+      },
+      {
+        "name": "lässt einen markenfreien Namen zeichengleich",
+        "modifier": null
+      },
+      {
+        "name": "ersetzt den Produktblock durch die Bieterzeile",
+        "modifier": null
+      },
+      {
+        "name": "verwirft eine markenbehaftete Fließtextzeile ganz",
+        "modifier": null
+      },
+      {
+        "name": "lässt einen markenfreien Langtext unverändert und ohne Bieterzeile",
+        "modifier": null
+      },
+      {
+        "name": "hält die Punktlinie CP850-tauglich",
+        "modifier": null
+      },
+      {
+        "name": "bildet die Kennwerte aus Dämm- und Putzschritt",
+        "modifier": null
+      },
+      {
+        "name": "lässt weg, was der Text nicht hergibt",
+        "modifier": null
+      },
+      {
+        "name": "liest den Dämmstoff nicht aus dem Brandriegel",
+        "modifier": null
+      },
+      {
+        "name": "nimmt die Dämmstoffdicke aus der ausgefüllten Bietertext-Lücke, nicht aus der offenen",
+        "modifier": null
+      },
+      {
+        "name": "ersetzt den Markennamen durch Gattung und Dämmstoff",
+        "modifier": null
+      },
+      {
+        "name": "lässt nichts vom Markennamen stehen, auch ohne erkennbaren Dämmstoff",
+        "modifier": null
+      },
+      {
+        "name": "lässt einen markenfreien Systemnamen unangetastet",
+        "modifier": null
+      },
+      {
+        "name": "macht jedes Textfeld markenfrei",
+        "modifier": null
+      },
+      {
+        "name": "rührt Menge, Preis, id und Rechenansatz nicht an",
+        "modifier": null
+      },
+      {
+        "name": "gibt allen Positionen desselben Systems dieselbe Bezeichnung",
+        "modifier": null
+      },
+      {
+        "name": "neutralisiert auch manuelle Positionen und Hand-Eingaben",
+        "modifier": null
+      },
+      {
+        "name": "trägt den Attributblock und die System-Bieterzeile in die verdichtete Hauptposition",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Positions-Bieterzeilen aus der verdichteten Hauptposition heraus",
+        "modifier": null
+      },
+      {
+        "name": "gibt im detaillierten Detailgrad jeder offenen Position ihre eigene Bieterzeile",
+        "modifier": null
+      },
+      {
+        "name": "liefert schon aus buildLvPositions neutrale Texte",
+        "modifier": null
+      },
+      {
+        "name": "ändert an der Angebotssumme nichts",
+        "modifier": null
+      },
+      {
+        "name": "lässt die fabrikatsbezogene Ausgabe zeichengleich",
+        "modifier": null
+      },
+      {
+        "name": "führt in keinem der 15 Systeme eine Marke im LV",
+        "modifier": null
+      },
+      {
+        "name": "führt sie fabrikatsbezogen sehr wohl",
+        "modifier": null
+      },
+      {
+        "name": "synthetisiert den Dämmstoff passend zur Katalog-Gruppe",
+        "modifier": null
+      },
+      {
+        "name": "behält die markenfreien Vertragszeilen, die nur zufällig „Sto\" beginnen",
+        "modifier": null
+      },
+      {
+        "name": "gibt ein markenfreies X83 aus",
+        "modifier": null
+      },
+      {
+        "name": "hält die Angebotssumme in jedem Katalogsystem unverändert",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/openings.test.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "rechnet ein Öffnungsrechteck maßstäblich in m² um",
+        "modifier": null
+      },
+      {
+        "name": "ist richtungsunabhängig (Ecken in beliebiger Reihenfolge)",
+        "modifier": null
+      },
+      {
+        "name": "zieht die Summe der Öffnungen von der Bruttofläche ab",
+        "modifier": null
+      },
+      {
+        "name": "begrenzt die Nettofläche auf 0 (keine negativen Flächen)",
+        "modifier": null
+      },
+      {
+        "name": "führt die Netto-Hauptfläche als LV-Menge",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/openingsGeometry.test.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "multipliziert Breite × Höhe",
+        "modifier": null
+      },
+      {
+        "name": "ist nie negativ",
+        "modifier": null
+      },
+      {
+        "name": "summiert nur die Öffnungen der gewählten Richtung",
+        "modifier": null
+      },
+      {
+        "name": "mappt ein normiertes Bildrechteck auf Fassaden-Meter (y von unten)",
+        "modifier": null
+      },
+      {
+        "name": "ist eckunabhängig (Punkte in beliebiger Reihenfolge)",
+        "modifier": null
+      },
+      {
+        "name": "Preset: außen=0, mittig=t/2, innen=t",
+        "modifier": null
+      },
+      {
+        "name": "expliziter Abstand hat Vorrang und wird auf die Wandstärke begrenzt",
+        "modifier": null
+      },
+      {
+        "name": "ohne Angabe bündig außen (0)",
+        "modifier": null
+      },
+      {
+        "name": "trennt Boden, Decke und Seiten",
+        "modifier": null
+      },
+      {
+        "name": "liefert 0 ohne Tiefe",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/polygon3d.test.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "Rechteck in der XY-Ebene",
+        "modifier": null
+      },
+      {
+        "name": "Rechteck in einer senkrechten Fassadenebene (z konstant)",
+        "modifier": null
+      },
+      {
+        "name": "Dreieck schräg im Raum",
+        "modifier": null
+      },
+      {
+        "name": "< 3 Punkte → 0",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/projektKopie.test.ts",
+    "category": "Auth & Projekt-Backend",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "hängt „(Kopie)\" an",
+        "modifier": null
+      },
+      {
+        "name": "zählt weiter, wenn der Name schon belegt ist",
+        "modifier": null
+      },
+      {
+        "name": "füllt eine Lücke in der Zählung",
+        "modifier": null
+      },
+      {
+        "name": "kopiert eine Kopie ohne den Zusatz zu stapeln",
+        "modifier": null
+      },
+      {
+        "name": "lässt fremde Klammern in Ruhe",
+        "modifier": null
+      },
+      {
+        "name": "kommt mit leerem Namen klar",
+        "modifier": null
+      },
+      {
+        "name": "streift einen Variantenzusatz der Quelle ab",
+        "modifier": null
+      },
+      {
+        "name": "erste Variante ist Nummer 1",
+        "modifier": null
+      },
+      {
+        "name": "zählt an vorhandenen Varianten weiter",
+        "modifier": null
+      },
+      {
+        "name": "füllt eine Lücke in der Zählung",
+        "modifier": null
+      },
+      {
+        "name": "aus einer Variante wird ein Geschwister, kein „Variante 1 – Variante 1\"",
+        "modifier": null
+      },
+      {
+        "name": "lässt einen Kopie-Zusatz im Stamm stehen",
+        "modifier": null
+      },
+      {
+        "name": "kommt mit leerem Namen klar",
+        "modifier": null
+      },
+      {
+        "name": "leeres Modell → keine Blobs",
+        "modifier": null
+      },
+      {
+        "name": "sammelt Planbilder, Ansichten und die IFC-Datei",
+        "modifier": null
+      },
+      {
+        "name": "dedupliziert — dasselbe Bild kann an zwei Stellen hängen",
+        "modifier": null
+      },
+      {
+        "name": "ignoriert Einträge ohne blobId",
+        "modifier": null
+      },
+      {
+        "name": "verträgt fehlende Listen",
+        "modifier": null
+      },
+      {
+        "name": "verträgt ein Dokument ganz ohne building",
+        "modifier": null
+      },
+      {
+        "name": "lässt einen Varianten-Zusatz im Ordnernamen stehen",
+        "modifier": null
+      },
+      {
+        "name": "zählt Kollisionen weiter hoch",
+        "modifier": null
+      },
+      {
+        "name": "Default-Verhalten bleibt unverändert",
+        "modifier": null
+      },
+      {
+        "name": "setzt beide Namen zusammen",
+        "modifier": null
+      },
+      {
+        "name": "nimmt den Projektnamen auch bei der Default-Variante mit",
+        "modifier": null
+      },
+      {
+        "name": "kommt ohne Projektnamen aus",
+        "modifier": null
+      },
+      {
+        "name": "kommt ohne Variantennamen aus",
+        "modifier": null
+      },
+      {
+        "name": "kürzt den Projektteil, nicht den Variantenteil",
+        "modifier": null
+      },
+      {
+        "name": "behält die Variante, wenn sie allein schon die Grenze sprengt",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/roofGeometry.test.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "senkrechter Abstand zu einer Strecke",
+        "modifier": null
+      },
+      {
+        "name": "Abstand zum Endpunkt, wenn das Lot außerhalb liegt",
+        "modifier": null
+      },
+      {
+        "name": "Minimum über mehrere Strecken — First liegt mittig",
+        "modifier": null
+      },
+      {
+        "name": "leere Strecken-Liste → unendlich",
+        "modifier": null
+      },
+      {
+        "name": "Giebelseite: dreieckiges Profil, Spitze mittig, korrekte Fläche",
+        "modifier": null
+      },
+      {
+        "name": "Traufseite: kein Giebel (rise 0, Fläche 0)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/scaleCalibration.test.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "rastet auf 90° relativ ein, wenn innerhalb der Toleranz",
+        "modifier": null
+      },
+      {
+        "name": "lässt freien Winkel unverändert, wenn außerhalb der Toleranz",
+        "modifier": null
+      },
+      {
+        "name": "misst relativ zur vorherigen Linie (base 90° → +45° = 135° absolut)",
+        "modifier": null
+      },
+      {
+        "name": "snappt auf 45° und behält die Länge",
+        "modifier": null
+      },
+      {
+        "name": "snappt fast-horizontal auf 0°",
+        "modifier": null
+      },
+      {
+        "name": "misst Abweichung vom 45°-Raster",
+        "modifier": null
+      },
+      {
+        "name": "rechter Winkel = 90°, gerade = 180°",
+        "modifier": null
+      },
+      {
+        "name": "Referenzstrecke: Meter pro Pixel = reale Länge / Pixelabstand",
+        "modifier": null
+      },
+      {
+        "name": "Direkte Maßstabseingabe: Papier-m/px × Maßstabsnenner",
+        "modifier": null
+      },
+      {
+        "name": "Beide Wege ergeben denselben Umrechnungsfaktor",
+        "modifier": null
+      },
+      {
+        "name": "berechnet den euklidischen Abstand",
+        "modifier": null
+      },
+      {
+        "name": "rastet auf die Horizontale, wenn dx überwiegt",
+        "modifier": null
+      },
+      {
+        "name": "rastet auf die Vertikale, wenn dy überwiegt",
+        "modifier": null
+      },
+      {
+        "name": "rechnet ein Rechteck maßstäblich in m² um",
+        "modifier": null
+      },
+      {
+        "name": "ist unabhängig von der Umlaufrichtung",
+        "modifier": null
+      },
+      {
+        "name": "liefert 0 für weniger als drei Punkte",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/systemlogik.test.ts",
+    "category": "Markt & Systemlogik",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "liest mehrere Klassen aus dem Namen",
+        "modifier": null
+      },
+      {
+        "name": "fällt ohne Angabe im Namen auf die Gruppe zurück",
+        "modifier": null
+      },
+      {
+        "name": "erkennt die Sondereigenschaft schlagsicher",
+        "modifier": null
+      },
+      {
+        "name": "erkennt kombinierte Dämmstoffe",
+        "modifier": null
+      },
+      {
+        "name": "nimmt EPS an, wenn nichts genannt ist",
+        "modifier": null
+      },
+      {
+        "name": "fasst Systeme derselben Produktlinie zusammen",
+        "modifier": null
+      },
+      {
+        "name": "sortiert die Sammelschicht in die Schrittfolge und hängt Unbekanntes hinten an",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine leere Sammelschicht unverändert",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/tiefenklassen.test.ts",
+    "category": "Mengen & Formeln",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "trennt zwei Tiefen und verteilt Längen anders als Flächen",
+        "modifier": null
+      },
+      {
+        "name": "summiert je Größe auf genau 1 — die Summeninvariante hängt daran",
+        "modifier": null
+      },
+      {
+        "name": "fasst gleiche Tiefen zu einer Klasse zusammen",
+        "modifier": null
+      },
+      {
+        "name": "rundet auf ganze Zentimeter — Tessellierungsrauschen bildet keine eigene Klasse",
+        "modifier": null
+      },
+      {
+        "name": "lässt unter vob die übermessene Öffnung außen vor, unter exakt nicht",
+        "modifier": null
+      },
+      {
+        "name": "behält die Tiefe einer bodentiefen Öffnung — nur ihre Fensterbank fällt weg",
+        "modifier": null
+      },
+      {
+        "name": "liefert ohne Öffnungen keine Klassen",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/unwrapLangtext.test.ts",
+    "category": "GAEB / LV-Export",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "fügt mitten im Satz umbrochene Zeilen zusammen",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Titelzeile stehen, auch wenn sie ohne Satzzeichen endet",
+        "modifier": null
+      },
+      {
+        "name": "behält Leerzeilen als Absatzgrenzen",
+        "modifier": null
+      },
+      {
+        "name": "lässt Produktzeilen (*) und die Produkt:-Zeile unangetastet",
+        "modifier": null
+      },
+      {
+        "name": "behält Schlüssel-Wert-Zeilen als eigene Zeilen",
+        "modifier": null
+      },
+      {
+        "name": "verändert die Bietertext-Slots nicht (Produkte, Lücken, offene Angaben)",
+        "modifier": null
+      },
+      {
+        "name": "fügt Aufzählungszeilen (•, -) nicht zusammen",
+        "modifier": null
+      },
+      {
+        "name": "erkennt Produktzeilen auch mit führendem Leerzeichen",
+        "modifier": null
+      },
+      {
+        "name": "verschmilzt Überschriften nicht mit dem Fließtext",
+        "modifier": null
+      },
+      {
+        "name": "fügt am Bindestrich getrennte Komposita ohne Leerzeichen zusammen",
+        "modifier": null
+      },
+      {
+        "name": "erkennt Koordinations-Bindestriche und fügt mit Leerzeichen",
+        "modifier": null
+      },
+      {
+        "name": "ist idempotent",
+        "modifier": null
+      },
+      {
+        "name": "lässt Text ohne Artefakte unverändert",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/verdichtung.test.ts",
+    "category": "Mengen & Formeln",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "macht aus den Leitgrößen-Positionen eine Hauptposition je Bereich",
+        "modifier": null
+      },
+      {
+        "name": "lässt Dübel-Komponenten als eigene Position stehen (ADR-0013)",
+        "modifier": null
+      },
+      {
+        "name": "lässt Leibungspositionen stehen, obwohl sie in m² rechnen",
+        "modifier": null
+      },
+      {
+        "name": "rührt Stückzahl- und Laufmeter-Positionen nicht an",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine Gruppe mit nur einem Kandidaten unverändert",
+        "modifier": null
+      },
+      {
+        "name": "behält manuell ergänzte Positionen unverändert bei, auch bei Schlüsselwörtern im Text",
+        "modifier": null
+      },
+      {
+        "name": "hält die Angebotssumme im Minimalfall exakt",
+        "modifier": null
+      },
+      {
+        "name": "hält die Summe in jedem Katalogsystem exakt",
+        "modifier": null
+      },
+      {
+        "name": "bleibt bei Hand-Eingaben innerhalb der Rundungsschranke",
+        "modifier": null
+      },
+      {
+        "name": "gibt der Hauptposition einen Rechenansatz, der auf ihre Menge führt",
+        "modifier": null
+      },
+      {
+        "name": "meldet die eingeschmolzenen Kleinleistungen als Nebenleistungen",
+        "modifier": null
+      },
+      {
+        "name": "nennt das System im Kurztext und die Schichtfolge im Langtext",
+        "modifier": null
+      },
+      {
+        "name": "wiederholt den Positionsnamen nicht, wenn der Langtext ihn schon trägt",
+        "modifier": null
+      },
+      {
+        "name": "übernimmt die aufgelösten Produkt- und Maßangaben der Einzelpositionen",
+        "modifier": null
+      },
+      {
+        "name": "gibt den Ausklinkungs-Hinweis genau einmal, an der Leibungsdämmung",
+        "modifier": null
+      },
+      {
+        "name": "vorgelagert: der Hinweis wird zur Feststellung",
+        "modifier": null
+      },
+      {
+        "name": "einsitzend und ohne Angabe behalten den bedingten Satz — zeichengleich",
+        "modifier": null
+      },
+      {
+        "name": "mauerwerksbündig: kein Hinweis, auch an einer behaltenen Position nicht",
+        "modifier": null
+      },
+      {
+        "name": "gibt ihn nicht an die Beschichtungsschritte derselben Leibung",
+        "modifier": null
+      },
+      {
+        "name": "vergibt ihn auch bei mehreren Dämmschritten nur einmal je Bereich",
+        "modifier": null
+      },
+      {
+        "name": "hält den Kurztext der Hauptposition CP850-tauglich",
+        "modifier": null
+      },
+      {
+        "name": "gibt ihn NICHT an Positionen, die nur ein Schlüsselwort im Namen tragen",
+        "modifier": null
+      },
+      {
+        "name": "trennt Laibungselemente von Sturzelementen, obwohl beide dieselbe Formel tragen",
+        "modifier": null
+      },
+      {
+        "name": "verdichtet nicht, wenn die Leitgröße 0 ist",
+        "modifier": null
+      },
+      {
+        "name": "hält alle Werte endlich, wenn jede Menge 0 ist",
+        "modifier": null
+      },
+      {
+        "name": "hält die Bezugsmenge, wenn eine Hand-Menge sie überstimmen würde",
+        "modifier": null
+      },
+      {
+        "name": "verdichtet einen eigenen Bereich auf seiner gezeichneten Fläche",
+        "modifier": null
+      },
+      {
+        "name": "gibt der Hauptposition ein eigenes Gewerk statt des ersten eingeschmolzenen",
+        "modifier": null
+      },
+      {
+        "name": "macht die Hauptpositionen über den Bereich im Kurztext unterscheidbar",
+        "modifier": null
+      },
+      {
+        "name": "trägt die Angebotssumme unverändert in den Kostenanschlag X82",
+        "modifier": null
+      },
+      {
+        "name": "gibt den Systemtext als Langtext in die Angebotsaufforderung X83",
+        "modifier": null
+      },
+      {
+        "name": "erzeugt für jede Position der Mengenermittlung einen REB-Satz",
+        "modifier": null
+      },
+      {
+        "name": "liefert bei der Rückfahrt exakt die Ausgangspositionen",
+        "modifier": null
+      },
+      {
+        "name": "gibt die Eingabe unverändert zurück, wenn kein Bereich einschmelzbar ist",
+        "modifier": null
+      },
+      {
+        "name": "lässt beide Teilpositionen als eigene Positionen stehen",
+        "modifier": null
+      },
+      {
+        "name": "gibt den Ausklinkungs-Hinweis an JEDE Teilposition der Dämmung",
+        "modifier": null
+      },
+      {
+        "name": "gibt ihn weiterhin nicht an die Beschichtung derselben Leibung",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/vorbemerkungen.test.ts",
+    "category": "GAEB / LV-Export",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "liefert Kapitel, Nachsatz und ZTV mit Überschriften für beide Exporter",
+        "modifier": null
+      },
+      {
+        "name": "nennt das Kapitel ohne einengenden Klammerzusatz",
+        "modifier": null
+      },
+      {
+        "name": "führt ohne Detailgrad marktüblich keinen Nebenleistungs-Abschnitt",
+        "modifier": null
+      },
+      {
+        "name": "listet die eingeschmolzenen Leistungen mit Bezeichnung und Einheit",
+        "modifier": null
+      },
+      {
+        "name": "sagt im Einleitungssatz, dass die Leistungen in den Einheitspreisen stecken",
+        "modifier": null
+      },
+      {
+        "name": "führt eine Leistung nur einmal auf, auch wenn sie mehrfach gemeldet wird",
+        "modifier": null
+      },
+      {
+        "name": "trennt gleichnamige Leistungen mit unterschiedlicher Einheit",
+        "modifier": null
+      },
+      {
+        "name": "behält die Reihenfolge der Schichtfolge bei",
+        "modifier": null
+      },
+      {
+        "name": "fällt ohne Nebenleistungen auf den Grundbestand zurück",
+        "modifier": null
+      },
+      {
+        "name": "fehlt bei exakter Mengenermittlung und ohne Angabe",
+        "modifier": null
+      },
+      {
+        "name": "vereinbart bei VOB die 2,5-m²-Regel und die kleinsten Maße ausdrücklich",
+        "modifier": null
+      },
+      {
+        "name": "nennt die Leibungs-Konvention der gewählten Unteroption",
+        "modifier": null
+      },
+      {
+        "name": "kombiniert mit dem Nebenleistungs-Abschnitt, ohne ihn zu verdrängen",
+        "modifier": null
+      },
+      {
+        "name": "sichert das Fertigmaß nicht mehr pauschal zu — es sagt, woher es kommt",
+        "modifier": null
+      },
+      {
+        "name": "nennt Rohbaumaß, wo keines aufgeschlagen wurde",
+        "modifier": null
+      },
+      {
+        "name": "ohne Angabe gilt der konservative Fall statt einer Behauptung",
+        "modifier": null
+      },
+      {
+        "name": "fabrikat (Default): keine Öffnungsklausel, Systembindung bleibt",
+        "modifier": null
+      },
+      {
+        "name": "fabrikat-gleichwertig: Öffnungsklausel als eigener Abschnitt, Wortlaut sonst unverändert",
+        "modifier": null
+      },
+      {
+        "name": "neutral: keine Systembindung, keine Produktbezüge, ZTV-Nummern rücken nach",
+        "modifier": null
+      },
+      {
+        "name": "neutral verliert die Schutz-Substanz nicht: die Merkblätter-Pflicht bleibt",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/wallGeometry.test.ts",
+    "category": "IFC-Import & Geometrie",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "vergrößert das Polygon bei positivem Abstand (nach außen)",
+        "modifier": null
+      },
+      {
+        "name": "verkleinert nach innen — unabhängig von der Umlaufrichtung",
+        "modifier": null
+      },
+      {
+        "name": "liefert eine Kopie ohne Abstand",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/wdvsHeuristics.test.ts",
+    "category": "Markt & Systemlogik",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "Fensterbank: Stück → anzahlFenster, Meter → fensterbreite",
+        "modifier": null
+      },
+      {
+        "name": "Tropfkantenprofil folgt der Einheit: m → Sturzlänge, m² → Sturzfläche",
+        "modifier": null
+      },
+      {
+        "name": "Elastische Fuge an Laibungen: weiterhin oeffnungUmfang",
+        "modifier": null
+      },
+      {
+        "name": "Leibung/Sturz: Stück → Anzahl, m² → Flächen, m → Lauflängen",
+        "modifier": null
+      },
+      {
+        "name": "Kantenschutz: Gebäudeecken + Laibungskanten; reine Ecken-Positionen bleiben bei aussenecken",
+        "modifier": null
+      },
+      {
+        "name": "Kantenschutz im Brandschutz-Layer behält aussenecken",
+        "modifier": null
+      },
+      {
+        "name": "Fugendichtband: fensterbreite + attika; Anputzleiste und Bewegungsfugen unverändert",
+        "modifier": null
+      },
+      {
+        "name": "Kantenschutz und Dichtband folgen der Einheit: Stück → Count-Formel",
+        "modifier": null
+      },
+      {
+        "name": "echter Katalog: jede Count-Einheit bekommt eine Count-Formel",
+        "modifier": null
+      },
+      {
+        "name": "liefert positive Preise je Einheit; Count-Fallback = 4",
+        "modifier": null
+      },
+      {
+        "name": "istWdvsSystem erkennt nur wdvs",
+        "modifier": null
+      },
+      {
+        "name": "renovierung-anstrich: WDVS-zugewiesener Bereich erscheint; sonst leer",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/wordExporter.test.ts",
+    "category": "GAEB / LV-Export",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "liefert die Pflichtteile eines gültigen .docx",
+        "modifier": null
+      },
+      {
+        "name": "meldet Kopf- und Fußzeilen in Content-Types und Beziehungen an",
+        "modifier": null
+      },
+      {
+        "name": "schreibt Projektname, Bereiche, Positionen und Texte",
+        "modifier": null
+      },
+      {
+        "name": "trägt Deckblatt mit LV-Bezeichnung, System und Kontakten",
+        "modifier": null
+      },
+      {
+        "name": "legt ein echtes TOC-Feld an, das Word mit Seitenzahlen füllt",
+        "modifier": null
+      },
+      {
+        "name": "hinterlegt die Überschriften als Feldergebnis statt eines Hinweistextes",
+        "modifier": null
+      },
+      {
+        "name": "baut die Einträge als echte Verzeichniszeilen mit Seitenzahl und Sprungziel",
+        "modifier": null
+      },
+      {
+        "name": "schließt das TOC-Feld im letzten Eintrag, ohne leeren Absatz",
+        "modifier": null
+      },
+      {
+        "name": "setzt das Deckblatt-Datum vor den Titel, nicht mittig unter die Kontaktdaten",
+        "modifier": null
+      },
+      {
+        "name": "übernimmt Nachsatz und ZTV aus denselben Texten wie das PDF",
+        "modifier": null
+      },
+      {
+        "name": "hält die Reihenfolge Deckblatt → Inhalt → Vorbemerkungen → Bereiche → Zusammenstellung",
+        "modifier": null
+      },
+      {
+        "name": "beginnt jeden Bereich auf einer neuen Seite und lässt das Deckblatt ohne Kopfzeile",
+        "modifier": null
+      },
+      {
+        "name": "setzt Seitenkopf mit Spaltenüberschriften und Fußzeile mit Seitenzahl",
+        "modifier": null
+      },
+      {
+        "name": "gibt allen Runs der Seitenzahl-Felder dieselbe Fußzeilen-Formatierung",
+        "modifier": null
+      },
+      {
+        "name": "schließt jeden Bereich mit Summe, MwSt. und Bruttosumme ab — wie das PDF",
+        "modifier": null
+      },
+      {
+        "name": "kennzeichnet die Bedarfsposition und lässt ihren Betrag aus allen Summen",
+        "modifier": null
+      },
+      {
+        "name": "zeigt Beträge nur mit withPrices",
+        "modifier": null
+      },
+      {
+        "name": "stellt die Mengenzeile hinter den Langtext",
+        "modifier": null
+      },
+      {
+        "name": "zeichnet als Vorgabe Leerfelder auf der Schriftlinie, nicht auf halber Höhe",
+        "modifier": null
+      },
+      {
+        "name": "legt auf Wunsch Rich-Text-Inhaltssteuerelemente für EP und GP an",
+        "modifier": null
+      },
+      {
+        "name": "ignoriert die Feldwahl, sobald Preise ausgegeben werden",
+        "modifier": null
+      },
+      {
+        "name": "lässt im Kurztext-LV die Langtexte weg",
+        "modifier": null
+      },
+      {
+        "name": "sortiert die Kinder von pPr, rPr, sectPr, style und sdtPr schema-konform",
+        "modifier": null
+      },
+      {
+        "name": "escaped XML-Sonderzeichen und lässt keine rohen Steuerzeichen zu",
+        "modifier": null
+      },
+      {
+        "name": "formatiert die Seitenzahl-Felder wie den übrigen Fußzeilentext",
+        "modifier": null
+      },
+      {
+        "name": "escaped Anführungszeichen (esc dient auch Attributwerten)",
+        "modifier": null
+      },
+      {
+        "name": "entfernt Steuerzeichen, an denen Word das Dokument verwirft",
+        "modifier": null
+      },
+      {
+        "name": "schreibt Titel, Einleitung und Posten samt Einheit ins Dokument",
+        "modifier": null
+      },
+      {
+        "name": "führt keinen eigenen Kapitel-Eintrag im Inhaltsverzeichnis (er gehört zu den Vorbemerkungen)",
+        "modifier": null
+      },
+      {
+        "name": "lässt den Abschnitt ohne Nebenleistungen weg",
+        "modifier": null
+      },
+      {
+        "name": "schreibt Titel und Vereinbarung bei VOB",
+        "modifier": null
+      },
+      {
+        "name": "lässt den Abschnitt bei exakter Mengenermittlung weg",
+        "modifier": null
+      },
+      {
+        "name": "schreibt die Öffnungsklausel bei „fabrikat-gleichwertig\"",
+        "modifier": null
+      },
+      {
+        "name": "lässt den Abschnitt fabrikatsbezogen weg",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/x31Exporter.test.ts",
+    "category": "GAEB / LV-Export",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "trägt Namespace, DP und Methodenbeschreibung der DA31-Referenz",
+        "modifier": null
+      },
+      {
+        "name": "deklariert die OZ-Maske des X83 direkt unter BoQ, ohne BoQInfo",
+        "modifier": null
+      },
+      {
+        "name": "gibt den Items weder Menge noch Texte — nur den REB-Satz als Row",
+        "modifier": null
+      },
+      {
+        "name": "baut die Row als D11-Satz mit geleerten OZ-Spalten",
+        "modifier": null
+      },
+      {
+        "name": "nummeriert die Blattadressen bereichsübergreifend fortlaufend",
+        "modifier": null
+      },
+      {
+        "name": "verteilt mehrzeilige Ansätze auf je ein QDetermItem und bleibt zeichengleich zur D11",
+        "modifier": null
+      },
+      {
+        "name": "deklariert dieselbe OZ-Maskenlänge wie der zugehörige X83, auch bei mehrstelligen OZ",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/zulagen.test.ts",
+    "category": "Markt & Systemlogik",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "rechnet den Mengen-Vorschlag aus der Geometrie",
+        "modifier": null
+      },
+      {
+        "name": "behauptet keinen Rechenansatz, den sie nicht mehr einlöst — nennt aber die Herkunft",
+        "modifier": null
+      },
+      {
+        "name": "ist von Haus aus Bedarfsposition — sie zählt nicht in die Angebotssumme",
+        "modifier": null
+      },
+      {
+        "name": "bleibt bei 0, wenn das Modell die Größe nicht liefert — kein erfundener Vorschlag",
+        "modifier": null
+      },
+      {
+        "name": "trägt in allen drei Gliederungen dieselbe Gruppe, damit die Zulagen zusammenbleiben",
+        "modifier": null
+      },
+      {
+        "name": "nennt in keinem Vorlagentext eine Marke — die Zulage muss auch neutral ausschreibbar sein",
+        "modifier": null
+      },
+      {
+        "name": "deckt die im Issue genannten Fälle ab und vergibt jede id nur einmal",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "scripts/pruefeAdrs.test.mjs",
+    "category": "Repo-Tooling",
+    "kind": "unit (Vitest)",
+    "tests": [
+      {
+        "name": "lässt einen sauberen Bestand durch",
+        "modifier": null
+      },
+      {
+        "name": "erkennt eine fehlende Indexzeile auch dann, wenn der Slug Endstück eines eingetragenen ist",
+        "modifier": null
+      },
+      {
+        "name": "meldet einen Index-Eintrag ohne Datei",
+        "modifier": null
+      },
+      {
+        "name": "erkennt das Nummernpräfix auch in einem Unterordner",
+        "modifier": null
+      },
+      {
+        "name": "erkennt eine doppelte Nummer über Verzeichnisgrenzen hinweg",
+        "modifier": null
+      },
+      {
+        "name": "lehnt eine Nummer ohne Trennzeichen ab",
+        "modifier": null
+      },
+      {
+        "name": "ignoriert Links auf Dateien außerhalb von docs/adr",
+        "modifier": null
+      },
+      {
+        "name": "lässt Ziffern innerhalb des Slugs zu",
+        "modifier": null
+      },
+      {
+        "name": "meldet eine doppelt vergebene Nummer aus dem eingefrorenen Bestand",
+        "modifier": null
+      },
+      {
+        "name": "wertet Prosa ohne Link nicht als Indexeintrag",
+        "modifier": null
+      },
+      {
+        "name": "jede Fehlermeldung nennt einen Fix",
+        "modifier": null
+      }
+    ]
+  }
+]
