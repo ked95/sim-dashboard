@@ -1,7 +1,7 @@
 [
   {
     "file": "apps/api/test/auth.test.ts",
-    "category": "Auth & Projekt-Backend",
+    "category": "API Integration Tests (Vitest + Supertest)",
     "kind": "unit (Vitest, API)",
     "tests": [
       {
@@ -40,7 +40,7 @@
   },
   {
     "file": "apps/api/test/blobs.test.ts",
-    "category": "Auth & Projekt-Backend",
+    "category": "API Integration Tests (Vitest + Supertest)",
     "kind": "unit (Vitest, API)",
     "tests": [
       {
@@ -115,7 +115,7 @@
   },
   {
     "file": "apps/api/test/folders.test.ts",
-    "category": "Auth & Projekt-Backend",
+    "category": "API Integration Tests (Vitest + Supertest)",
     "kind": "unit (Vitest, API)",
     "tests": [
       {
@@ -182,7 +182,7 @@
   },
   {
     "file": "apps/api/test/oidc.test.ts",
-    "category": "Auth & Projekt-Backend",
+    "category": "API Integration Tests (Vitest + Supertest)",
     "kind": "unit (Vitest, API)",
     "tests": [
       {
@@ -285,7 +285,7 @@
   },
   {
     "file": "apps/api/test/papierkorb.test.ts",
-    "category": "Auth & Projekt-Backend",
+    "category": "API Integration Tests (Vitest + Supertest)",
     "kind": "unit (Vitest, API)",
     "tests": [
       {
@@ -408,7 +408,7 @@
   },
   {
     "file": "apps/api/test/projects.test.ts",
-    "category": "Auth & Projekt-Backend",
+    "category": "API Integration Tests (Vitest + Supertest)",
     "kind": "unit (Vitest, API)",
     "tests": [
       {
@@ -779,7 +779,7 @@
   },
   {
     "file": "apps/api/test/projektZeitzone.test.ts",
-    "category": "Auth & Projekt-Backend",
+    "category": "API Integration Tests (Vitest + Supertest)",
     "kind": "unit (Vitest, API)",
     "tests": [
       {
@@ -802,7 +802,7 @@
   },
   {
     "file": "apps/web/e2e/anstrich-durchstich.spec.ts",
-    "category": "Mengen & Formeln",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -813,7 +813,7 @@
   },
   {
     "file": "apps/web/e2e/anwendungskontext.spec.ts",
-    "category": "Markt & Systemlogik",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -824,7 +824,7 @@
   },
   {
     "file": "apps/web/e2e/aufmassblatt.spec.ts",
-    "category": "Mengen & Formeln",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -851,7 +851,7 @@
   },
   {
     "file": "apps/web/e2e/ausschreibungsart.spec.ts",
-    "category": "Markt & Systemlogik",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -866,7 +866,7 @@
   },
   {
     "file": "apps/web/e2e/bauteilliste.spec.ts",
-    "category": "Mengen & Formeln",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -893,7 +893,7 @@
   },
   {
     "file": "apps/web/e2e/bedarfsposition.spec.ts",
-    "category": "Mengen & Formeln",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -904,7 +904,7 @@
   },
   {
     "file": "apps/web/e2e/daemmdicke-aus-modell.spec.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -915,7 +915,7 @@
   },
   {
     "file": "apps/web/e2e/detailgrad.spec.ts",
-    "category": "UI & Bedienung",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -942,7 +942,7 @@
   },
   {
     "file": "apps/web/e2e/eingangspruefung.spec.ts",
-    "category": "Markt & Systemlogik",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -957,7 +957,7 @@
   },
   {
     "file": "apps/web/e2e/einzelnachweis.spec.ts",
-    "category": "UI & Bedienung",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -968,7 +968,7 @@
   },
   {
     "file": "apps/web/e2e/export-varianten.spec.ts",
-    "category": "GAEB / LV-Export",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1015,7 +1015,7 @@
   },
   {
     "file": "apps/web/e2e/fenstersitz.spec.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1026,7 +1026,7 @@
   },
   {
     "file": "apps/web/e2e/folders.spec.ts",
-    "category": "Auth & Projekt-Backend",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1061,7 +1061,7 @@
   },
   {
     "file": "apps/web/e2e/formel-bausteine.spec.ts",
-    "category": "UI & Bedienung",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1072,7 +1072,7 @@
   },
   {
     "file": "apps/web/e2e/home.spec.ts",
-    "category": "UI & Bedienung",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1087,7 +1087,7 @@
   },
   {
     "file": "apps/web/e2e/homePolish.spec.ts",
-    "category": "UI & Bedienung",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1106,7 +1106,7 @@
   },
   {
     "file": "apps/web/e2e/ifc-mengen-reveal.spec.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1117,7 +1117,7 @@
   },
   {
     "file": "apps/web/e2e/ifc-parser-kopplung.spec.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1136,7 +1136,7 @@
   },
   {
     "file": "apps/web/e2e/ifcRehydrate.spec.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1155,7 +1155,7 @@
   },
   {
     "file": "apps/web/e2e/importAbsicherung.spec.ts",
-    "category": "UI & Bedienung",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1174,7 +1174,7 @@
   },
   {
     "file": "apps/web/e2e/innenhof.spec.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1185,7 +1185,7 @@
   },
   {
     "file": "apps/web/e2e/kopieren.spec.ts",
-    "category": "UI & Bedienung",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1212,7 +1212,7 @@
   },
   {
     "file": "apps/web/e2e/laibung-je-tiefe.spec.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1223,7 +1223,7 @@
   },
   {
     "file": "apps/web/e2e/laibungstiefe-wirtswand.spec.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1238,7 +1238,7 @@
   },
   {
     "file": "apps/web/e2e/markt.spec.ts",
-    "category": "Markt & Systemlogik",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1257,7 +1257,7 @@
   },
   {
     "file": "apps/web/e2e/marktAbweichung.spec.ts",
-    "category": "Markt & Systemlogik",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1272,7 +1272,7 @@
   },
   {
     "file": "apps/web/e2e/modellstand.spec.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1287,7 +1287,7 @@
   },
   {
     "file": "apps/web/e2e/oeffnungsbreite-gedreht.spec.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1298,7 +1298,7 @@
   },
   {
     "file": "apps/web/e2e/oeffnungshoehe-typname.spec.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1313,7 +1313,7 @@
   },
   {
     "file": "apps/web/e2e/orca-mengen.spec.ts",
-    "category": "Mengen & Formeln",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1324,7 +1324,7 @@
   },
   {
     "file": "apps/web/e2e/papierkorb.spec.ts",
-    "category": "Auth & Projekt-Backend",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1367,7 +1367,7 @@
   },
   {
     "file": "apps/web/e2e/persistence.spec.ts",
-    "category": "Auth & Projekt-Backend",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1398,7 +1398,7 @@
   },
   {
     "file": "apps/web/e2e/projectConfigurator.spec.ts",
-    "category": "UI & Bedienung",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1409,7 +1409,7 @@
   },
   {
     "file": "apps/web/e2e/ringwand.spec.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1420,7 +1420,7 @@
   },
   {
     "file": "apps/web/e2e/seitenleiste.spec.ts",
-    "category": "UI & Bedienung",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1495,7 +1495,7 @@
   },
   {
     "file": "apps/web/e2e/systemAmpel.spec.ts",
-    "category": "Markt & Systemlogik",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1506,7 +1506,7 @@
   },
   {
     "file": "apps/web/e2e/systemlogik.spec.ts",
-    "category": "Markt & Systemlogik",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1517,7 +1517,7 @@
   },
   {
     "file": "apps/web/e2e/topbarSettings.spec.ts",
-    "category": "UI & Bedienung",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1532,7 +1532,7 @@
   },
   {
     "file": "apps/web/e2e/ui-galerie.spec.ts",
-    "category": "UI & Bedienung",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1543,7 +1543,7 @@
   },
   {
     "file": "apps/web/e2e/varianten.spec.ts",
-    "category": "UI & Bedienung",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1594,7 +1594,7 @@
   },
   {
     "file": "apps/web/e2e-oidc/login.spec.ts",
-    "category": "Auth & Projekt-Backend",
+    "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
@@ -1621,7 +1621,7 @@
   },
   {
     "file": "apps/web/src/aufmassExport.test.ts",
-    "category": "Mengen & Formeln",
+    "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
     "tests": [
       {
@@ -1728,7 +1728,7 @@
   },
   {
     "file": "apps/web/src/bauteillisteExport.test.ts",
-    "category": "Mengen & Formeln",
+    "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
     "tests": [
       {
@@ -1763,7 +1763,7 @@
   },
   {
     "file": "apps/web/src/flaechenExport.test.ts",
-    "category": "Mengen & Formeln",
+    "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
     "tests": [
       {
@@ -1790,7 +1790,7 @@
   },
   {
     "file": "apps/web/src/geometryVars.test.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
     "tests": [
       {
@@ -1869,7 +1869,7 @@
   },
   {
     "file": "apps/web/src/ifcModellstand.test.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
     "tests": [
       {
@@ -1884,7 +1884,7 @@
   },
   {
     "file": "apps/web/src/lvExport.test.ts",
-    "category": "GAEB / LV-Export",
+    "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
     "tests": [
       {
@@ -1971,7 +1971,7 @@
   },
   {
     "file": "apps/web/src/navigation.test.ts",
-    "category": "UI & Bedienung",
+    "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
     "tests": [
       {
@@ -1994,7 +1994,7 @@
   },
   {
     "file": "apps/web/src/pdfExporter.test.ts",
-    "category": "GAEB / LV-Export",
+    "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
     "tests": [
       {
@@ -2065,7 +2065,7 @@
   },
   {
     "file": "apps/web/src/pdfSafe.test.ts",
-    "category": "GAEB / LV-Export",
+    "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
     "tests": [
       {
@@ -2092,7 +2092,7 @@
   },
   {
     "file": "apps/web/src/pruefberichtExport.test.ts",
-    "category": "GAEB / LV-Export",
+    "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
     "tests": [
       {
@@ -2155,7 +2155,7 @@
   },
   {
     "file": "apps/web/src/standardAnsichten.test.ts",
-    "category": "UI & Bedienung",
+    "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
     "tests": [
       {
@@ -2182,7 +2182,7 @@
   },
   {
     "file": "apps/web/src/vobRegel.test.ts",
-    "category": "Markt & Systemlogik",
+    "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
     "tests": [
       {
@@ -2229,7 +2229,7 @@
   },
   {
     "file": "apps/web/src/wdvsCatalog.test.ts",
-    "category": "Markt & Systemlogik",
+    "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
     "tests": [
       {
@@ -2244,7 +2244,7 @@
   },
   {
     "file": "packages/core/test/anwendungskontext.test.ts",
-    "category": "Markt & Systemlogik",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -2263,7 +2263,7 @@
   },
   {
     "file": "packages/core/test/aufmassblatt.test.ts",
-    "category": "Mengen & Formeln",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -2382,7 +2382,7 @@
   },
   {
     "file": "packages/core/test/autoBereiche.test.ts",
-    "category": "Mengen & Formeln",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -2425,7 +2425,7 @@
   },
   {
     "file": "packages/core/test/b11_systempreisVsLv.test.ts",
-    "category": "Markt & Systemlogik",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -2440,7 +2440,7 @@
   },
   {
     "file": "packages/core/test/baueLv.test.ts",
-    "category": "GAEB / LV-Export",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -2471,7 +2471,7 @@
   },
   {
     "file": "packages/core/test/bauteilStatus.test.ts",
-    "category": "Mengen & Formeln",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -2510,7 +2510,7 @@
   },
   {
     "file": "packages/core/test/bedarfsposition.test.ts",
-    "category": "Mengen & Formeln",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -2561,7 +2561,7 @@
   },
   {
     "file": "packages/core/test/buildingGeometry.test.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -2604,7 +2604,7 @@
   },
   {
     "file": "packages/core/test/calculator.test.ts",
-    "category": "Mengen & Formeln",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -2691,7 +2691,7 @@
   },
   {
     "file": "packages/core/test/daemmdicke.test.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -2810,7 +2810,7 @@
   },
   {
     "file": "packages/core/test/einheiten.test.ts",
-    "category": "Mengen & Formeln",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -2829,7 +2829,7 @@
   },
   {
     "file": "packages/core/test/f1_catalogDiff.test.ts",
-    "category": "Markt & Systemlogik",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -2872,7 +2872,7 @@
   },
   {
     "file": "packages/core/test/f1_deterministicIds.test.ts",
-    "category": "Markt & Systemlogik",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -2887,7 +2887,7 @@
   },
   {
     "file": "packages/core/test/facadeDecomposition.test.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -2930,7 +2930,7 @@
   },
   {
     "file": "packages/core/test/fenstersitz.test.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -2961,7 +2961,7 @@
   },
   {
     "file": "packages/core/test/fenstersitzKuration.test.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -3004,7 +3004,7 @@
   },
   {
     "file": "packages/core/test/fertigmass.test.ts",
-    "category": "Mengen & Formeln",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -3071,7 +3071,7 @@
   },
   {
     "file": "packages/core/test/formulaEngine.test.ts",
-    "category": "Mengen & Formeln",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -3150,7 +3150,7 @@
   },
   {
     "file": "packages/core/test/gaeb90Exporter.test.ts",
-    "category": "GAEB / LV-Export",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -3213,7 +3213,7 @@
   },
   {
     "file": "packages/core/test/gaebCuration.test.ts",
-    "category": "GAEB / LV-Export",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -3244,7 +3244,7 @@
   },
   {
     "file": "packages/core/test/gaebExporter.test.ts",
-    "category": "GAEB / LV-Export",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -3335,7 +3335,7 @@
   },
   {
     "file": "packages/core/test/gaebImporter.test.ts",
-    "category": "GAEB / LV-Export",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -3366,7 +3366,7 @@
   },
   {
     "file": "packages/core/test/ifcAggregation.test.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -3445,7 +3445,7 @@
   },
   {
     "file": "packages/core/test/ifcEingangspruefung.test.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -3596,7 +3596,7 @@
   },
   {
     "file": "packages/core/test/ifcFacade.test.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -3655,7 +3655,7 @@
   },
   {
     "file": "packages/core/test/ifcFootprint.test.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -3738,7 +3738,7 @@
   },
   {
     "file": "packages/core/test/ifcGrouping.test.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -3805,7 +3805,7 @@
   },
   {
     "file": "packages/core/test/ifcHeader.test.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -3856,7 +3856,7 @@
   },
   {
     "file": "packages/core/test/ifcQuantities.test.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -3979,7 +3979,7 @@
   },
   {
     "file": "packages/core/test/katalogKorrekturen.test.ts",
-    "category": "GAEB / LV-Export",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -4030,7 +4030,7 @@
   },
   {
     "file": "packages/core/test/laibungsSplit.test.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -4101,7 +4101,7 @@
   },
   {
     "file": "packages/core/test/langtextSlots.test.ts",
-    "category": "GAEB / LV-Export",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -4164,7 +4164,7 @@
   },
   {
     "file": "packages/core/test/lvFromPositions.test.ts",
-    "category": "GAEB / LV-Export",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -4183,7 +4183,7 @@
   },
   {
     "file": "packages/core/test/lvGenerator.test.ts",
-    "category": "GAEB / LV-Export",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -4198,7 +4198,7 @@
   },
   {
     "file": "packages/core/test/markt.test.ts",
-    "category": "Markt & Systemlogik",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -4237,7 +4237,7 @@
   },
   {
     "file": "packages/core/test/marktAbweichung.test.ts",
-    "category": "Markt & Systemlogik",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -4264,7 +4264,7 @@
   },
   {
     "file": "packages/core/test/marktHerkunft.test.ts",
-    "category": "Markt & Systemlogik",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -4303,7 +4303,7 @@
   },
   {
     "file": "packages/core/test/mengenExporter.test.ts",
-    "category": "Mengen & Formeln",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -4378,7 +4378,7 @@
   },
   {
     "file": "packages/core/test/mengenregel.test.ts",
-    "category": "Mengen & Formeln",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -4505,7 +4505,7 @@
   },
   {
     "file": "packages/core/test/migrateDoc.test.ts",
-    "category": "Auth & Projekt-Backend",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -4524,7 +4524,7 @@
   },
   {
     "file": "packages/core/test/neutraleTexte.test.ts",
-    "category": "GAEB / LV-Export",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -4667,7 +4667,7 @@
   },
   {
     "file": "packages/core/test/openings.test.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -4694,7 +4694,7 @@
   },
   {
     "file": "packages/core/test/openingsGeometry.test.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -4741,7 +4741,7 @@
   },
   {
     "file": "packages/core/test/polygon3d.test.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -4764,7 +4764,7 @@
   },
   {
     "file": "packages/core/test/projektKopie.test.ts",
-    "category": "Auth & Projekt-Backend",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -4883,7 +4883,7 @@
   },
   {
     "file": "packages/core/test/roofGeometry.test.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -4914,7 +4914,7 @@
   },
   {
     "file": "packages/core/test/scaleCalibration.test.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -4985,7 +4985,7 @@
   },
   {
     "file": "packages/core/test/systemlogik.test.ts",
-    "category": "Markt & Systemlogik",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -5024,7 +5024,7 @@
   },
   {
     "file": "packages/core/test/tiefenklassen.test.ts",
-    "category": "Mengen & Formeln",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -5059,7 +5059,7 @@
   },
   {
     "file": "packages/core/test/unwrapLangtext.test.ts",
-    "category": "GAEB / LV-Export",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -5118,7 +5118,7 @@
   },
   {
     "file": "packages/core/test/verdichtung.test.ts",
-    "category": "Mengen & Formeln",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -5273,7 +5273,7 @@
   },
   {
     "file": "packages/core/test/vorbemerkungen.test.ts",
-    "category": "GAEB / LV-Export",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -5360,7 +5360,7 @@
   },
   {
     "file": "packages/core/test/wallGeometry.test.ts",
-    "category": "IFC-Import & Geometrie",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -5379,7 +5379,7 @@
   },
   {
     "file": "packages/core/test/wdvsHeuristics.test.ts",
-    "category": "Markt & Systemlogik",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -5434,7 +5434,7 @@
   },
   {
     "file": "packages/core/test/wordExporter.test.ts",
-    "category": "GAEB / LV-Export",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -5577,7 +5577,7 @@
   },
   {
     "file": "packages/core/test/x31Exporter.test.ts",
-    "category": "GAEB / LV-Export",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -5612,7 +5612,7 @@
   },
   {
     "file": "packages/core/test/zulagen.test.ts",
-    "category": "Markt & Systemlogik",
+    "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
@@ -5647,7 +5647,7 @@
   },
   {
     "file": "scripts/pruefeAdrs.test.mjs",
-    "category": "Repo-Tooling",
+    "category": "Repo Tooling Tests (Vitest)",
     "kind": "unit (Vitest)",
     "tests": [
       {

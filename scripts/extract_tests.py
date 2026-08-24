@@ -30,20 +30,6 @@ DIRS = [
     "scripts",
 ]
 
-# Category rules: matched against the test file's base name (no extension).
-# Add a new tuple here to introduce a category, or extend a pattern to catch
-# a new file name — order matters, first match wins.
-RULES = [
-    ("IFC-Import & Geometrie", r"^(ifc|wallgeometry|roofgeometry|buildinggeometry|polygon3d|facadedecomposition|openingsgeometry|openings$|scalecalibration|daemmdicke|oeffnung|laibung|fenstersitz|innenhof|ringwand|modellstand|geometryvars|ifcrehydrate)"),
-    ("Mengen & Formeln", r"^(formulaengine|mengenregel|mengenexporter|aufmassblatt|aufmassexport|bedarfsposition|fertigmass|autobereiche|einheiten|tiefenklassen|orca-mengen|bauteilstatus|bauteilliste|flaechenexport|calculator|verdichtung|anstrich-durchstich)"),
-    ("GAEB / LV-Export", r"^(gaeb|lvgenerator|lvfrompositions|lvexport|x31exporter|wordexporter|vorbemerkungen|langtextslots|neutraletexte|unwraplangtext|katalogkorrekturen|export-varianten|bauelv|pdfexporter|pdfsafe|pruefberichtexport)"),
-    ("Markt & Systemlogik", r"^(markt|marktabweichung|marktherkunft|anwendungskontext|ausschreibungsart|systemampel|systemlogik|wdvsheuristics|wdvscatalog|vobregel|eingangspruefung|b11_systempreisvslv|zulagen|katalog|f1_catalogdiff|f1_deterministicids)"),
-    ("Auth & Projekt-Backend", r"^(auth|oidc|projects$|folders|papierkorb|blobs|projektzeitzone|projektkopie|persistence|login|migratedoc)"),
-    ("UI & Bedienung", r"^(home|homepolish|seitenleiste|topbarsettings|ui-galerie|kopieren|varianten|projectconfigurator|standardansichten|navigation|detailgrad|formel-bausteine|einzelnachweis|importabsicherung)"),
-    ("Repo-Tooling", r"^(pruefeadrs)"),
-]
-RULES = [(cat, re.compile(pat, re.IGNORECASE)) for cat, pat in RULES]
-
 TEST_RE = re.compile(
     r"\b(?:test|it)(?:\.(only|skip|todo|fixme|fail|slow))?\s*\(\s*(['\"`])((?:\\.|(?!\2).)*)\2"
 )
@@ -62,11 +48,15 @@ def kind_of(rel):
 
 
 def categorize(rel):
-    base = re.sub(r"\.(test|spec)\.(ts|tsx|mjs)$", "", os.path.basename(rel))
-    for cat, rgx in RULES:
-        if rgx.search(base):
-            return cat
-    return "Sonstiges"
+    if "/e2e/" in rel or "/e2e-oidc/" in rel:
+        return "E2E Tests (Playwright)"
+    if rel.startswith("apps/api/"):
+        return "API Integration Tests (Vitest + Supertest)"
+    if rel.startswith("packages/core/"):
+        return "Core Unit Tests (Vitest)"
+    if rel.startswith("apps/web/src/"):
+        return "Web Unit Tests (Vitest)"
+    return "Repo Tooling Tests (Vitest)"
 
 
 def find_test_files(root):

@@ -37,6 +37,34 @@
     --accent-wash: rgba(57,135,229,0.16);
   }
 }
+:root[data-theme="light"]{
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --surface-2: #f2f1ec;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --ink-muted: #898781;
+  --grid: #e1e0d9;
+  --border: rgba(11,11,11,0.10);
+  --border-strong: rgba(11,11,11,0.18);
+  --accent: #2a78d6;
+  --accent-wash: rgba(42,120,214,0.10);
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --page: #0d0d0d;
+  --surface: #1a1a19;
+  --surface-2: #232321;
+  --ink: #ffffff;
+  --ink-2: #c3c2b7;
+  --ink-muted: #898781;
+  --grid: #2c2c2a;
+  --border: rgba(255,255,255,0.10);
+  --border-strong: rgba(255,255,255,0.20);
+  --accent: #3987e5;
+  --accent-wash: rgba(57,135,229,0.16);
+}
 
 *{box-sizing:border-box;}
 body{
@@ -57,6 +85,12 @@ header.top{
   gap:6px;
   margin-bottom:28px;
 }
+.top-row{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
 header.top h1{
   font-size:1.55rem;
   font-weight:700;
@@ -64,6 +98,22 @@ header.top h1{
   margin:0;
   text-wrap:balance;
 }
+.theme-toggle{
+  flex:none;
+  width:36px;
+  height:36px;
+  border-radius:9px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--ink);
+  font-size:1rem;
+  line-height:1;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.theme-toggle:hover{background:var(--surface-2);}
 header.top p{
   margin:0;
   color:var(--ink-2);
@@ -377,16 +427,46 @@ footer.foot{
 }
 footer.foot a{color:inherit;}
 
+.header-actions{
+  flex:none;
+  display:flex;
+  gap:8px;
+}
+.download-btn{
+  display:none;
+  align-items:center;
+  gap:7px;
+  height:36px;
+  padding:0 14px;
+  border-radius:9px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:0.82rem;
+  font-weight:600;
+  cursor:pointer;
+  white-space:nowrap;
+}
+.download-btn:hover{background:var(--surface-2);}
+
 @media (max-width: 640px){
   .chart-row{flex-direction:column;align-items:stretch;}
   .donut-wrap{align-self:center;}
 }
 </style>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
 </head>
 <body>
 <div class="wrap">
   <header class="top">
-    <h1>Sto-Sim &mdash; Automated Test Overview</h1>
+    <div class="top-row">
+      <h1>Sto-Sim &mdash; Automated Test Overview</h1>
+      <div class="header-actions">
+        <button id="download-btn" class="download-btn" title="Download as Excel (.xlsx)">⬇ Download Excel</button>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle light/dark theme">🌓</button>
+      </div>
+    </div>
     <p>Dashboard of the repository's automated tests (Playwright E2E + Vitest unit), grouped by category.</p>
     <div class="meta-line">
       <span id="meta-generated">Loading&hellip;</span>
@@ -451,6 +531,23 @@ const KIND_COLORS = {
   'unit (Vitest)': '#898781',
 };
 
+// ---- theme toggle (light/dark, overrides OS preference, remembered via localStorage) ----
+const themeRepaintFns = [];
+(function setupTheme(){
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const saved = localStorage.getItem('theme');
+  if(saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
+  toggle.addEventListener('click', ()=>{
+    const current = root.getAttribute('data-theme')
+      || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    themeRepaintFns.forEach(fn=>fn());
+  });
+})();
+
 fetch(DATA_URL, {cache:'no-cache'})
   .then(r=>{ if(!r.ok) throw new Error(r.status+' '+r.statusText); return r.json(); })
   .then(init)
@@ -488,6 +585,77 @@ function init(TESTS){
     }));
   const KINDS = Object.entries(byKind).map(([name,v])=>({name, files:v.files, tests:v.tests}));
 
+  // ---- Excel export (Summary + All Test Cases + one sheet per category) ----
+  const SHEET_NAME_MAP = {
+    'API Integration Tests (Vitest + Supertest)': 'API Tests',
+    'E2E Tests (Playwright)': 'E2E Tests',
+    'Web Unit Tests (Vitest)': 'Web Unit Tests',
+    'Core Unit Tests (Vitest)': 'Core Unit Tests',
+    'Repo Tooling Tests (Vitest)': 'Repo Tooling',
+  };
+  function safeSheetName(name, used){
+    let base = (SHEET_NAME_MAP[name] || name).replace(/[\\/?*\[\]:]/g, '').slice(0, 31);
+    let candidate = base, i = 2;
+    while(used.has(candidate)){
+      candidate = (base.slice(0, 28) + '_' + i).slice(0, 31);
+      i++;
+    }
+    used.add(candidate);
+    return candidate;
+  }
+  function buildWorkbook(){
+    const wb = XLSX.utils.book_new();
+    const usedNames = new Set();
+
+    const summaryRows = [
+      ['Sto-Sim - Automated Test Overview'],
+      [`Generated from repository source code: ${totalFiles} test files, ${totalTests} test cases`],
+      [],
+      ['Category', 'Test Files', 'Test Cases'],
+      ...CATS.map(c => [c.name, c.files, c.tests]),
+      ['TOTAL', totalFiles, totalTests],
+    ];
+    const summarySheet = XLSX.utils.aoa_to_sheet(summaryRows);
+    summarySheet['!cols'] = [{wch: 46}, {wch: 12}, {wch: 12}];
+    XLSX.utils.book_append_sheet(wb, summarySheet, safeSheetName('Summary', usedNames));
+
+    function testRows(files, withCategory){
+      const header = withCategory
+        ? ['#', 'Category', 'Test File', 'Test Case', 'Modifier']
+        : ['#', 'Test File', 'Test Case', 'Modifier'];
+      const rows = [header];
+      let n = 1;
+      files.forEach(f=>{
+        f.tests.forEach(t=>{
+          rows.push(withCategory
+            ? [n++, f.category, f.file, t.name, t.modifier || '']
+            : [n++, f.file, t.name, t.modifier || '']);
+        });
+      });
+      return rows;
+    }
+
+    const allSheet = XLSX.utils.aoa_to_sheet(testRows(TESTS, true));
+    allSheet['!cols'] = [{wch: 6}, {wch: 34}, {wch: 40}, {wch: 70}, {wch: 10}];
+    XLSX.utils.book_append_sheet(wb, allSheet, safeSheetName('All Test Cases', usedNames));
+
+    CATS.forEach(c=>{
+      const files = TESTS.filter(f=>f.category === c.name);
+      const sheet = XLSX.utils.aoa_to_sheet(testRows(files, false));
+      sheet['!cols'] = [{wch: 6}, {wch: 40}, {wch: 70}, {wch: 10}];
+      XLSX.utils.book_append_sheet(wb, sheet, safeSheetName(c.name, usedNames));
+    });
+
+    return wb;
+  }
+  const downloadBtn = document.getElementById('download-btn');
+  if(typeof XLSX !== 'undefined'){
+    downloadBtn.style.display = 'inline-flex';
+    downloadBtn.addEventListener('click', ()=>{
+      XLSX.writeFile(buildWorkbook(), 'StoSim_Automated_TestingOverview.xlsx');
+    });
+  }
+
   // ---- stat tiles ----
   const e2e = KINDS.filter(k=>k.name.startsWith('e2e')).reduce((a,k)=>a+k.tests,0);
   const unit = totalTests - e2e;
@@ -519,7 +687,12 @@ function init(TESTS){
     const large = endAngle-startAngle > 180 ? 1 : 0;
     return `M${x1},${y1} A${r},${r} 0 ${large} 0 ${x2},${y2} L${x3},${y3} A${rInner},${rInner} 0 ${large} 1 ${x4},${y4} Z`;
   }
-  const isDark = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const isDark = () => {
+    const t = document.documentElement.getAttribute('data-theme');
+    if(t==='dark') return true;
+    if(t==='light') return false;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  };
   const donutSvg = document.getElementById('donut');
   let angleAcc = 0;
   const segs = [];
@@ -543,6 +716,7 @@ function init(TESTS){
   }
   paintDonut();
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', paintDonut);
+  themeRepaintFns.push(paintDonut);
 
   // ---- legend ----
   const legendEl = document.getElementById('legend');
@@ -570,6 +744,7 @@ function init(TESTS){
   }
   paintLegendDots();
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', paintLegendDots);
+  themeRepaintFns.push(paintLegendDots);
 
   function hoverCategory(name){
     if(selectedCategory) return;
