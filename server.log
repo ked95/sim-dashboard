@@ -1,5 +1,0 @@
-::1 - - [24/Aug/2026 10:55:15] "GET /index.html HTTP/1.1" 200 -
-::1 - - [24/Aug/2026 10:55:30] "GET /index.html HTTP/1.1" 200 -
-::1 - - [24/Aug/2026 10:55:30] "GET /data/test-cases.json HTTP/1.1" 200 -
-::1 - - [24/Aug/2026 10:55:30] code 404, message File not found
-::1 - - [24/Aug/2026 10:55:30] "GET /favicon.ico HTTP/1.1" 404 -
