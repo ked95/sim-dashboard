@@ -135,8 +135,8 @@ header.top p{
 .donut-wrap{
   position:relative;
   flex:0 0 auto;
-  width:220px;
-  height:220px;
+  width:280px;
+  height:280px;
 }
 .donut-wrap svg{display:block;width:100%;height:100%;}
 .donut-center{
@@ -616,11 +616,13 @@ function init(TESTS){
 
   function toggleCategory(name){
     selectedCategory = selectedCategory===name ? null : name;
-    segs.forEach(s=>s.classList.toggle('sel', s.dataset.cat===selectedCategory));
-    segs.forEach(s=>s.classList.remove('dim'));
+    segs.forEach(s=>{
+      s.classList.toggle('sel', s.dataset.cat===selectedCategory);
+      s.classList.toggle('dim', !!selectedCategory && s.dataset.cat!==selectedCategory);
+    });
     legendRows.forEach(r=>{
       r.el.classList.toggle('active', r.name===selectedCategory);
-      r.el.classList.remove('dim');
+      r.el.classList.toggle('dim', !!selectedCategory && r.name!==selectedCategory);
     });
     updateDonutCenter();
     render();
