@@ -440,11 +440,11 @@
         "modifier": null
       },
       {
-        "name": "jede Variante bekommt Referenz UND Klassifizierung",
+        "name": "die Geschwister bleiben unberührt — Referenz und Klassifizierung landen nur im adressierten Stand",
         "modifier": null
       },
       {
-        "name": "der Modellstand geht familienweit mit — ein alter fällt beim Wechsel ohne neuen weg",
+        "name": "ein Wechsel ohne Modellstand räumt den alten des Stands weg",
         "modifier": null
       },
       {
@@ -452,15 +452,11 @@
         "modifier": null
       },
       {
-        "name": "eine Variante, die während eines Modellwechsels entsteht, trägt das neue Modell",
+        "name": "eine Variante behält ihr eigenes Modell, wenn ein Geschwister wechselt",
         "modifier": null
       },
       {
-        "name": "ein Wechsel überschreibt auch eine abweichende Variante",
-        "modifier": null
-      },
-      {
-        "name": "der Import darf aus einer Variante heraus passieren — er trifft die ganze Familie",
+        "name": "der Import aus einer Variante heraus trifft nur diese Variante",
         "modifier": null
       },
       {
@@ -468,11 +464,11 @@
         "modifier": null
       },
       {
-        "name": "entwertet die Stände der Geschwister, statt sie still überschreiben zu lassen",
+        "name": "lässt die Stände der Geschwister gültig (kein Bump)",
         "modifier": null
       },
       {
-        "name": "eine wiederhergestellte Variante übernimmt das aktuelle Modell der Familie",
+        "name": "eine wiederhergestellte Variante behält ihr eigenes Modell",
         "modifier": null
       },
       {
@@ -480,11 +476,11 @@
         "modifier": null
       },
       {
-        "name": "ein Modellwechsel löscht den Mengen-Schnappschuss (ifcFacade) in der ganzen Familie",
+        "name": "ein Modellwechsel löscht den Mengen-Schnappschuss (ifcFacade) nur im adressierten Stand",
         "modifier": null
       },
       {
-        "name": "meldet, wie viele Hand-Mengen der Familie vom Wechsel betroffen sind",
+        "name": "meldet, wie viele Hand-Mengen dieses Stands vom Wechsel betroffen sind",
         "modifier": null
       },
       {
@@ -492,7 +488,11 @@
         "modifier": null
       },
       {
-        "name": "rührt Varianten im Papierkorb nicht an",
+        "name": "erreicht Varianten im Papierkorb nicht",
+        "modifier": null
+      },
+      {
+        "name": "weist den Container ab — die nächste Variante erbt kein untergeschobenes Modell",
         "modifier": null
       },
       {
@@ -696,6 +696,10 @@
         "modifier": null
       },
       {
+        "name": "GET /projects/:id zählt die lebenden Varianten der Klammer",
+        "modifier": null
+      },
+      {
         "name": "leitet ohne Angabe weiter aus dem Projektnamen ab",
         "modifier": null
       },
@@ -716,7 +720,7 @@
         "modifier": null
       },
       {
-        "name": "der Mengen-Hinweis zählt nur erreichbare Stände, nicht die Vorlage des Containers",
+        "name": "der Mengen-Hinweis zählt die Overrides des kopierten Standes",
         "modifier": null
       },
       {
@@ -728,7 +732,7 @@
         "modifier": null
       },
       {
-        "name": "das Angleichen beim Wiederherstellen bumpt die version der angeglichenen Zeile",
+        "name": "das Wiederherstellen bumpt nichts und gleicht kein Modell an",
         "modifier": null
       },
       {
@@ -796,6 +800,92 @@
       },
       {
         "name": "Umbenennen und regulärer Schreibpfad benutzen dieselbe Zeitrechnung",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/api/test/spaFallback.test.ts",
+    "category": "API Integration Tests (Vitest + Supertest)",
+    "kind": "unit (Vitest, API)",
+    "tests": [
+      {
+        "name": "Singular gehört der Oberfläche, Plural der API",
+        "modifier": null
+      },
+      {
+        "name": "/bin gehört der Oberfläche, /trash der API",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/api/test/spracheBeimIdp.test.ts",
+    "category": "API Integration Tests (Vitest + Supertest)",
+    "kind": "unit (Vitest, API)",
+    "tests": [
+      {
+        "name": "gültige Sprache → 204, locale steht als Attribut beim IdP",
+        "modifier": null
+      },
+      {
+        "name": "die Pflichtfelder des Nutzers überleben den Schreibvorgang",
+        "modifier": null
+      },
+      {
+        "name": "vorhandene fremde Attribute bleiben erhalten, nur locale wird ersetzt",
+        "modifier": null
+      },
+      {
+        "name": "geschrieben wird der sub AUS DEM TOKEN — ein sub im Body wird ignoriert",
+        "modifier": null
+      },
+      {
+        "name": "das Nutzer-Token erreicht die Admin-API nicht — dort gilt das Service-Token",
+        "modifier": null
+      },
+      {
+        "name": "nicht unterstützte oder fehlende Sprache → 400, ohne IdP-Aufruf",
+        "modifier": null
+      },
+      {
+        "name": "ohne Token → 401 (die Route liegt in DATENPFADE)",
+        "modifier": null
+      },
+      {
+        "name": "IdP nicht erreichbar → 502, nicht 500",
+        "modifier": null
+      },
+      {
+        "name": "Realm verwirft locale still → 501, nicht 204",
+        "modifier": null
+      },
+      {
+        "name": "Service-Account ohne manage-users → 501, nicht 502",
+        "modifier": null
+      },
+      {
+        "name": "entwertetes Dienst-Token wird einmal erneuert, der Schreibvorgang gelingt",
+        "modifier": null
+      },
+      {
+        "name": "dauerhaft entwertetes Dienst-Token → genau ein Neuversuch, dann 502",
+        "modifier": null
+      },
+      {
+        "name": "unbekannter Nutzer beim IdP → 502 (der GET scheitert, es wird nichts angelegt)",
+        "modifier": null
+      },
+      {
+        "name": "das Service-Account-Token wird gecacht, nicht pro Anfrage geholt",
+        "modifier": null
+      },
+      {
+        "name": "→ 501, und das Frontend erfährt damit, dass die Wahl nicht dauerhaft ist",
+        "modifier": null
+      },
+      {
+        "name": "eine unsinnige Sprache bleibt auch hier 400 — die Prüfung kommt zuerst",
         "modifier": null
       }
     ]
@@ -956,6 +1046,17 @@
     ]
   },
   {
+    "file": "apps/web/e2e/einstellungen-breite.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Einstellungen: kein Bedienelement schneidet ab (${breite} px)",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/e2e/einzelnachweis.spec.ts",
     "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
@@ -992,7 +1093,7 @@
         "modifier": null
       },
       {
-        "name": "Der Block ist über die Menüzeile zugeklappt und über das Zahnrad bereits offen",
+        "name": "Der Block ist über die Formatzeile zugeklappt und über das Zahnrad bereits offen",
         "modifier": null
       },
       {
@@ -1008,7 +1109,7 @@
         "modifier": null
       },
       {
-        "name": "Abgebrochener Excel-Dialog wirkt sich nicht auf den nächsten Sofort-Export aus",
+        "name": "Zugeklappte Excel-Optionen wirken sich nicht auf den nächsten Sofort-Export aus",
         "modifier": null
       }
     ]
@@ -1135,6 +1236,29 @@
     ]
   },
   {
+    "file": "apps/web/e2e/ifcLoeschen.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Löschen entfernt das Modell aus dem Stand — ein neuer Import geht ohne neues Projekt",
+        "modifier": null
+      },
+      {
+        "name": "Löschen in einer Variante lässt das Modell der anderen stehen",
+        "modifier": null
+      },
+      {
+        "name": "Löschen greift schon in der Vorschau — vor dem Import",
+        "modifier": null
+      },
+      {
+        "name": "Löschen ohne „Übernehmen\" räumt die persistierte Referenz",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/e2e/ifcRehydrate.spec.ts",
     "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
@@ -1250,7 +1374,7 @@
         "modifier": null
       },
       {
-        "name": "Im Markt Schweiz trägt das LV CHF — auf dem Schirm und im PDF, ohne Euro-Rest",
+        "name": "Im Markt Schweiz trägt das LV CHF auf dem Schirm — die Vertragsunterlagen sind gesperrt",
         "modifier": null
       }
     ]
@@ -1419,6 +1543,45 @@
     ]
   },
   {
+    "file": "apps/web/e2e/route.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Adresse: Deep-Link, Reload und Zurück führen durch die Ansichten",
+        "modifier": null
+      },
+      {
+        "name": "Adresse: unbekannte Segmente führen auf den Einstieg",
+        "modifier": null
+      },
+      {
+        "name": "Adresse: eine für den Datenstand unmögliche Ansicht wird kanonisiert",
+        "modifier": null
+      },
+      {
+        "name": "Adresse: Deep-Link auf die Elemente überlebt die Rehydrierung",
+        "modifier": null
+      },
+      {
+        "name": "Übersicht: Papierkorb und Einstellungen haben eine Adresse",
+        "modifier": null
+      },
+      {
+        "name": "Übersicht: der Wechsel der Sicht lädt die Listen nicht neu",
+        "modifier": null
+      },
+      {
+        "name": "Übersicht: ein Ordner ist als Adresse ansprechbar und zeigt nur seinen Inhalt",
+        "modifier": null
+      },
+      {
+        "name": "Übersicht: ein Ordner, den es nicht gibt, führt zurück auf Alle Projekte",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/e2e/seitenleiste.spec.ts",
     "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
@@ -1441,6 +1604,10 @@
       },
       {
         "name": "Auswahl: ein Klick daneben schließt nur das Menü, er wählt nicht ab",
+        "modifier": null
+      },
+      {
+        "name": "Seitenleiste: „Einstellungen\" öffnet die Seite mit der Sprache",
         "modifier": null
       },
       {
@@ -1494,6 +1661,53 @@
     ]
   },
   {
+    "file": "apps/web/e2e/sprache.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "schaltet Rahmen und Navigation um, ohne die Navigation zu brechen",
+        "modifier": null
+      },
+      {
+        "name": "Settings trägt keinen deutschen Rest mehr",
+        "modifier": null
+      },
+      {
+        "name": "Systemlogik: übersetzte Chrome und Fachlabels, heile Gliederung",
+        "modifier": null
+      },
+      {
+        "name": "Konfigurator: Formel-Bausteine übersetzt, Formel bleibt sprachfrei",
+        "modifier": null
+      },
+      {
+        "name": "Calculator: übersetzte Tabelle samt Positionskürzeln",
+        "modifier": null
+      },
+      {
+        "name": "Konfiguratoren bleiben auf Französisch bedienbar",
+        "modifier": null
+      },
+      {
+        "name": "Export-Dialog: übersetzte Optionen, deutsche GAEB-Phasennamen",
+        "modifier": null
+      },
+      {
+        "name": "Zahlenfeld: Punkt im englischen Menü, Komma bleibt lesbar",
+        "modifier": null
+      },
+      {
+        "name": "IFC-Auswahlbaum: übersetzte Kategorien, heile Gruppierung",
+        "modifier": null
+      },
+      {
+        "name": "überlebt Reload und den Wechsel in die Projektübersicht",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/e2e/systemAmpel.spec.ts",
     "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
@@ -1525,6 +1739,10 @@
         "modifier": null
       },
       {
+        "name": "Top-Bar: die Werte stehen im breiten Fenster, das Zeichen erst im schmalen",
+        "modifier": null
+      },
+      {
         "name": "Mengenregel-Zeile zeigt die wirksame Regel, nicht die gewählte",
         "modifier": null
       }
@@ -1546,6 +1764,10 @@
     "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
+      {
+        "name": "Topbar: eine Variante zeigt nur den Projektnamen, ab zwei stehen beide",
+        "modifier": null
+      },
       {
         "name": "Varianten: anlegen, zählen, unabhängig benennen",
         "modifier": null
@@ -1603,6 +1825,14 @@
       },
       {
         "name": "tiefer Link überlebt den Login (Ziel-URL reist im state mit)",
+        "modifier": null
+      },
+      {
+        "name": "tiefer Link in den Editor überlebt den Login — samt Sektion und Unterseite",
+        "modifier": null
+      },
+      {
+        "name": "/login/callback gehört dem Login, nicht der Projekt-Route",
         "modifier": null
       },
       {
@@ -1789,6 +2019,21 @@
     ]
   },
   {
+    "file": "apps/web/src/gaebDateien.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "der Dateiname trägt die Austauschphase, nicht .xml",
+        "modifier": null
+      },
+      {
+        "name": "mit Mengen entstehen ZWEI Dateien, das LV zuerst",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/src/geometryVars.test.ts",
     "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
@@ -1970,24 +2215,136 @@
     ]
   },
   {
-    "file": "apps/web/src/navigation.test.ts",
+    "file": "apps/web/src/nav.test.ts",
     "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
     "tests": [
       {
-        "name": "ohne jede Geometrie: beide Eingänge stehen offen",
+        "name": "IFC-Mengen: die IFC-Kette, der gezeichnete Eingang ist weg",
         "modifier": null
       },
       {
-        "name": "mit gezeichnetem Grundriss: kein IFC-Import mehr",
+        "name": "gezeichneter Grundriss: die gezeichnete Kette, der IFC-Import ist weg",
         "modifier": null
       },
       {
-        "name": "mit lebender IFC-Szene: nur IFC-Import, kein Elevation, Bauteilliste da",
+        "name": "beides gesetzt: der IFC-Stand entscheidet",
         "modifier": null
       },
       {
-        "name": "mit übernommenem Stand ohne lebende Szene: Entweder-oder gilt, Bauteilliste nicht",
+        "name": "ohne Quelle: beide Ketten, der IFC-Eingang zuerst",
+        "modifier": null
+      },
+      {
+        "name": "ohne Quelle steht jede Unterseite genau einmal",
+        "modifier": null
+      },
+      {
+        "name": "ohne lebende Szene bleiben Elemente und Mengen sichtbar",
+        "modifier": null
+      },
+      {
+        "name": "die lebende Szene blendet nichts mehr aus",
+        "modifier": null
+      },
+      {
+        "name": "Konfiguration und Ausschreibung tragen immer ihre vollen Ketten",
+        "modifier": null
+      },
+      {
+        "name": "gültige Segmente bleiben unverändert und sind kanonisch",
+        "modifier": null
+      },
+      {
+        "name": "ohne Unterseite: erste der Sektion ergänzt, nicht kanonisch",
+        "modifier": null
+      },
+      {
+        "name": "ohne Sektion: Einstieg ist das Modell, nicht die erste Sektion der Liste",
+        "modifier": null
+      },
+      {
+        "name": "unbekannte Segmente führen auf den Einstieg",
+        "modifier": null
+      },
+      {
+        "name": "die Ausschreibung trägt ihre Unterseite",
+        "modifier": null
+      },
+      {
+        "name": "eine überzählige Unterseite an der Ausschreibung fällt auf ihre erste",
+        "modifier": null
+      },
+      {
+        "name": "für den Datenstand unsichtbare Unterseite fällt auf die erste der Sektion",
+        "modifier": null
+      },
+      {
+        "name": "die abgelösten Segmente führen auf den Einstieg statt ins Leere",
+        "modifier": null
+      },
+      {
+        "name": "dieselbe Adresse wird kanonisch, sobald der Datenstand sie trägt",
+        "modifier": null
+      },
+      {
+        "name": "Sektion und Unterseite als zwei Segmente",
+        "modifier": null
+      },
+      {
+        "name": "die Verfahrensachse in der Adresse",
+        "modifier": null
+      },
+      {
+        "name": "ohne Unterseite endet die Adresse an der Sektion",
+        "modifier": null
+      },
+      {
+        "name": "erkennt sein Segment und nur dieses",
+        "modifier": null
+      },
+      {
+        "name": "ein rohes Segment wird zu einem gültigen Bereich",
+        "modifier": null
+      },
+      {
+        "name": "die zwei Blöcke der Leiste ergeben zusammen genau die Bereiche",
+        "modifier": null
+      },
+      {
+        "name": "die Adresse trägt den Bereich, der Rückweg hängt als Query daran",
+        "modifier": null
+      },
+      {
+        "name": "der Rückweg führt zurück, wo er trägt",
+        "modifier": null
+      },
+      {
+        "name": "ohne Rückweg führt der Knopf auf den Einstieg",
+        "modifier": null
+      },
+      {
+        "name": "ein für den Datenstand unmöglicher Rückweg führt auf den Einstieg",
+        "modifier": null
+      },
+      {
+        "name": "ein zerlegter oder fremder Rückweg fällt ebenfalls auf den Einstieg",
+        "modifier": null
+      },
+      {
+        "name": "die Adressen selbst",
+        "modifier": null
+      },
+      {
+        "name": "die Ordner-id liegt hinter /folder/, nicht an erster Stelle",
+        "modifier": null
+      },
+      {
+        "name": "alles andere ist „Alle Projekte\"",
+        "modifier": null
+      },
+      {
+        "name": "greift nicht in den API-Namensraum",
         "modifier": null
       }
     ]
@@ -2086,6 +2443,37 @@
       },
       {
         "name": "normalisiert Typografie, die jsPDF sonst als UTF-16-Salat rendert",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/projectApi.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "ein Dokument ohne bauteile und ohne Settings ergibt ein benutzbares Projekt",
+        "modifier": null
+      },
+      {
+        "name": "ein explizites null bei bauteile überschreibt den Default nicht",
+        "modifier": null
+      },
+      {
+        "name": "verschachtelte Objekte mit null oder Lücken fallen auf die Defaults",
+        "modifier": null
+      },
+      {
+        "name": "ohne variantenZahl/hauptprojektname vom Server gelten 1 und null",
+        "modifier": null
+      },
+      {
+        "name": "gelieferte variantenZahl und hauptprojektname werden durchgereicht",
+        "modifier": null
+      },
+      {
+        "name": "ein vollständiges Dokument bleibt unverändert",
         "modifier": null
       }
     ]
@@ -2238,6 +2626,56 @@
       },
       {
         "name": "enthält Grundierung und Fassadenfarbe als eigene Schritte",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/i18n/kompass.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "${sprache}: alle vier Richtungen gesetzt",
+        "modifier": null
+      },
+      {
+        "name": "${sprache}: Würfel und Tooltip nennen dieselben Buchstaben",
+        "modifier": null
+      },
+      {
+        "name": "Ost heißt außer auf Deutsch E, West nur im Englischen W",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/i18n/zahl.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "setzt das Trennzeichen der Sprache und trennt keine Tausender",
+        "modifier": null
+      },
+      {
+        "name": "liest beide Dezimaltrennzeichen",
+        "modifier": null
+      },
+      {
+        "name": "erkennt bei zwei Zeichen das letzte als Dezimaltrennzeichen",
+        "modifier": null
+      },
+      {
+        "name": "wirft Einheiten und Währungszeichen weg",
+        "modifier": null
+      },
+      {
+        "name": "meldet Unlesbares als null, statt eine Zahl zu erfinden",
+        "modifier": null
+      },
+      {
+        "name": "behält das Vorzeichen",
         "modifier": null
       }
     ]
@@ -2419,6 +2857,14 @@
       },
       {
         "name": "renovierung-wdvs verhält sich wie ohne Kontext",
+        "modifier": null
+      },
+      {
+        "name": "liefert für dieselbe Kategorie dieselbe Id, denselben Namen und dieselbe Farbe",
+        "modifier": null
+      },
+      {
+        "name": "behält die Kategorie als sprachfreien Anker neben dem deutschen Namen",
         "modifier": null
       }
     ]
@@ -3790,6 +4236,54 @@
         "modifier": null
       },
       {
+        "name": "trennt Wand-Untertypen auch englisch (WDVS/Sockel/Mauerwerk/Innen)",
+        "modifier": null
+      },
+      {
+        "name": "trennt Wand-Untertypen auch französisch und spanisch",
+        "modifier": null
+      },
+      {
+        "name": "trennt Öffnungen auch englisch, bei unveränderten Defaults",
+        "modifier": null
+      },
+      {
+        "name": "ein Herstellername wie Internorm macht kein Element zum Innen-Element",
+        "modifier": null
+      },
+      {
+        "name": "Unterstrich und Ziffer trennen wie ein Leerzeichen",
+        "modifier": null
+      },
+      {
+        "name": "erkennt Balkon-/Terrassenböden auch englisch, spanisch und französisch",
+        "modifier": null
+      },
+      {
+        "name": "trennt Innen- von Außengeländern auch englisch",
+        "modifier": null
+      },
+      {
+        "name": "trennt Innen- von Außenverkleidung auch englisch",
+        "modifier": null
+      },
+      {
+        "name": "erkennt Attikablech und Vordach auch englisch",
+        "modifier": null
+      },
+      {
+        "name": "lässt IsExternal und PredefinedType auch bei fremdsprachigen Namen gewinnen",
+        "modifier": null
+      },
+      {
+        "name": "liest den Revit-Standardtyp „Mur de base\" nicht als Sockel",
+        "modifier": null
+      },
+      {
+        "name": "fällt bei unbekanntem Vokabular auf den Klassen-Default, nicht ins Leere",
+        "modifier": null
+      },
+      {
         "name": "gruppiert IDs je Leaf, leere Leaves entfallen",
         "modifier": null
       },
@@ -3973,6 +4467,33 @@
       },
       {
         "name": "meldet ohne jede Wand null, statt eine Tiefe zu erfinden",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/katalogGruppen.test.ts",
+    "category": "Core Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "erkennt in JEDEM System eine Schlussbeschichtung",
+        "modifier": null
+      },
+      {
+        "name": "nutzt jede Gruppen-Id, die es gibt — keine ist toter Code",
+        "modifier": null
+      },
+      {
+        "name": "führt Systeme mit echter Auswahl — sonst wäre die Ausschluss-Logik unbelegt",
+        "modifier": null
+      },
+      {
+        "name": "lässt beim Instanziieren je Schicht nur eine Alternative übrig",
+        "modifier": null
+      },
+      {
+        "name": "lässt beim Instanziieren je Gruppe genau eine Schicht aktiv",
         "modifier": null
       }
     ]
@@ -4297,6 +4818,33 @@
       },
       {
         "name": "migrateDoc bleibt die Identität — kein Bestandsprojekt bekommt ein Land verpasst",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/marktLuecken.test.ts",
+    "category": "Core Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "ist genau dann leer, wenn der Markt versorgt ist",
+        "modifier": null
+      },
+      {
+        "name": "Deutschland ist versorgt und hat keine Lücke",
+        "modifier": null
+      },
+      {
+        "name": "die unversorgten Märkte nennen alle drei Lücken",
+        "modifier": null
+      },
+      {
+        "name": "die Reihenfolge ist stabil",
+        "modifier": null
+      },
+      {
+        "name": "die Währung zählt nicht als Lücke",
         "modifier": null
       }
     ]
@@ -4796,6 +5344,14 @@
         "modifier": null
       },
       {
+        "name": "erkennt beide Vorbelegungen",
+        "modifier": null
+      },
+      {
+        "name": "lässt einen selbst vergebenen Namen stehen",
+        "modifier": null
+      },
+      {
         "name": "erste Variante ist Nummer 1",
         "modifier": null
       },
@@ -4979,6 +5535,33 @@
       },
       {
         "name": "liefert 0 für weniger als drei Punkte",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/schichtArt.test.ts",
+    "category": "Core Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "leitet Schlussbeschichtung und Dämmpfad je Katalog-Ebene ab",
+        "modifier": null
+      },
+      {
+        "name": "überlebt das Umbenennen der Schicht",
+        "modifier": null
+      },
+      {
+        "name": "trennt Gruppen-Id und Anzeigetext",
+        "modifier": null
+      },
+      {
+        "name": "ordnet eine selbst angelegte Schicht keiner Alternativgruppe zu",
+        "modifier": null
+      },
+      {
+        "name": "lässt je Gruppe genau eine Schicht aktiv",
         "modifier": null
       }
     ]
@@ -5255,6 +5838,22 @@
       },
       {
         "name": "gibt die Eingabe unverändert zurück, wenn kein Bereich einschmelzbar ist",
+        "modifier": null
+      },
+      {
+        "name": "hält die Dübel-Position aus der Hauptposition, obwohl sie „Befestigung\" heißt",
+        "modifier": null
+      },
+      {
+        "name": "setzt den Ausklinkungs-Hinweis an die Leibungsdämmung, obwohl sie „Randabschluss\" heißt",
+        "modifier": null
+      },
+      {
+        "name": "fällt ohne Katalog auf den Dokumentnamen zurück — und schmilzt den Dübel ein",
+        "modifier": null
+      },
+      {
+        "name": "lässt den Namen für Komponenten ohne Katalog-Verknüpfung weiter entscheiden",
         "modifier": null
       },
       {
@@ -5646,6 +6245,77 @@
     ]
   },
   {
+    "file": "scripts/genGlossar.test.mjs",
+    "category": "Repo Tooling Tests (Vitest)",
+    "kind": "unit (Vitest)",
+    "tests": [
+      {
+        "name": "fasst die Zeilen eines Concepts zusammen",
+        "modifier": null
+      },
+      {
+        "name": "fügt eine über zwei Zeilen gebrochene Datenzeile zusammen",
+        "modifier": null
+      },
+      {
+        "name": "verwirft do-not-use und behält nur standard",
+        "modifier": null
+      },
+      {
+        "name": "findet ein Concept über sein deutsches Synonym",
+        "modifier": null
+      },
+      {
+        "name": "stellt die Fassung des Vorzugslandes voran, ohne die andere zu verwerfen",
+        "modifier": null
+      },
+      {
+        "name": "behält eine Sprache, die nur in einer Nebenländerfassung vorliegt",
+        "modifier": null
+      },
+      {
+        "name": "nimmt Substantive und Abkürzungen ab drei Zeichen",
+        "modifier": null
+      },
+      {
+        "name": "lässt Satzanfänge und Eigennamen der App-Struktur weg",
+        "modifier": null
+      },
+      {
+        "name": "lässt Normnamen und genormte Materialkürzel weg",
+        "modifier": null
+      },
+      {
+        "name": "schlägt zweibuchstabige Kürzel nicht nach",
+        "modifier": null
+      },
+      {
+        "name": "deckt einen Schlüssel, dessen Begriffe vollständig belegt sind",
+        "modifier": null
+      },
+      {
+        "name": "deckt einen Begriff nicht, der nur in einem Produktnamen vorkommt",
+        "modifier": null
+      },
+      {
+        "name": "deckt einen Schlüssel nicht, dem eine Zielsprache fehlt",
+        "modifier": null
+      },
+      {
+        "name": "lässt einen Schlüssel offen, sobald ein Begriff darin unbelegt ist",
+        "modifier": null
+      },
+      {
+        "name": "rechnet einen Begriff nicht gegen Sto, den der Bestand schon führt",
+        "modifier": null
+      },
+      {
+        "name": "zählt einen Begriff weiter, den nur zwei Zielsprachen führen",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "scripts/pruefeAdrs.test.mjs",
     "category": "Repo Tooling Tests (Vitest)",
     "kind": "unit (Vitest)",
@@ -5692,6 +6362,173 @@
       },
       {
         "name": "jede Fehlermeldung nennt einen Fix",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "scripts/pruefeI18n.test.mjs",
+    "category": "Repo Tooling Tests (Vitest)",
+    "kind": "unit (Vitest)",
+    "tests": [
+      {
+        "name": "lässt einen sauberen Stand durch",
+        "modifier": null
+      },
+      {
+        "name": "meldet einen fehlenden Schlüssel, der nicht als offen geführt ist",
+        "modifier": null
+      },
+      {
+        "name": "meldet einen übersetzten Schlüssel, der noch auf das Glossar wartet",
+        "modifier": null
+      },
+      {
+        "name": "meldet einen übersetzten Eigennamen",
+        "modifier": null
+      },
+      {
+        "name": "meldet eine Leiche in der Warteliste",
+        "modifier": null
+      },
+      {
+        "name": "meldet einen Schlüssel, den nur die Zielsprache kennt",
+        "modifier": null
+      },
+      {
+        "name": "zählt Notiz-Schlüssel (_hinweis) nicht mit",
+        "modifier": null
+      },
+      {
+        "name": "akzeptiert eine Plural-Kategorie, die Deutsch nicht kennt",
+        "modifier": null
+      },
+      {
+        "name": "meldet eine Plural-Kategorie, deren Basis Deutsch gar nicht kennt",
+        "modifier": null
+      },
+      {
+        "name": "meldet einen Schlüssel, den de.json nicht kennt",
+        "modifier": null
+      },
+      {
+        "name": "lässt vorhandene Schlüssel durch",
+        "modifier": null
+      },
+      {
+        "name": "akzeptiert den Basisnamen eines Pluralschlüssels",
+        "modifier": null
+      },
+      {
+        "name": "greift zusammengesetzte Schlüssel bewusst nicht",
+        "modifier": null
+      },
+      {
+        "name": "findet einen deutschen JSX-Textknoten",
+        "modifier": null
+      },
+      {
+        "name": "findet ein deutsches sichtbares Attribut",
+        "modifier": null
+      },
+      {
+        "name": "lässt übersetzten Text in Ruhe",
+        "modifier": null
+      },
+      {
+        "name": "greift nicht bei Klassennamen und Bausteinen ohne deutsches Merkmal",
+        "modifier": null
+      },
+      {
+        "name": "akzeptiert eine Freigabe in derselben Zeile",
+        "modifier": null
+      },
+      {
+        "name": "akzeptiert eine Freigabe bis zu drei Zeilen darüber",
+        "modifier": null
+      },
+      {
+        "name": "greift wieder, sobald die Freigabe zu weit oben steht",
+        "modifier": null
+      },
+      {
+        "name": "erkennt Anzeigetext an der Form, nicht an der Sprache",
+        "modifier": null
+      },
+      {
+        "name": "hält Ids, Zahlenformate und Einheiten heraus",
+        "modifier": null
+      },
+      {
+        "name": "sieht in Kommentaren und Regexen keinen Anzeigetext",
+        "modifier": null
+      },
+      {
+        "name": "trennt zwei aufeinanderfolgende Tabellen",
+        "modifier": null
+      },
+      {
+        "name": "lässt Zeichenketten in Ruhe, während es Kommentare entfernt",
+        "modifier": null
+      },
+      {
+        "name": "meldet eine undeklarierte Tabelle im Kern",
+        "modifier": null
+      },
+      {
+        "name": "meldet eine Leiche im Inventar",
+        "modifier": null
+      },
+      {
+        "name": "meldet einen Schlüsselraum, den de.json nicht kennt",
+        "modifier": null
+      },
+      {
+        "name": "zählt die gefundenen Tabellen in den Bericht",
+        "modifier": null
+      },
+      {
+        "name": "prüft den Kern nur, wenn Dateien mitkommen",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": ".github/workflows/ci.yml",
+    "category": "CI Pipeline Checks (GitHub Actions)",
+    "kind": "CI check (GitHub Actions)",
+    "dashboardExempt": true,
+    "tests": [
+      {
+        "name": "adr:check",
+        "modifier": null
+      },
+      {
+        "name": "typecheck",
+        "modifier": null
+      },
+      {
+        "name": "build",
+        "modifier": null
+      },
+      {
+        "name": "npm test (unit + API)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": ".github/workflows/e2e-nightly.yml",
+    "category": "CI Pipeline Checks (GitHub Actions)",
+    "kind": "CI check (GitHub Actions)",
+    "dashboardExempt": true,
+    "tests": [
+      {
+        "name": "E2E suite (Playwright, nightly)",
+        "modifier": null
+      },
+      {
+        "name": "API integration tests (nightly)",
         "modifier": null
       }
     ]

@@ -472,6 +472,8 @@ footer.foot a{color:inherit;}
       <span id="meta-generated">Loading&hellip;</span>
       <span>&middot;</span>
       <span>Source: <code style="font-family:var(--mono)">Sto-Building-Solutions/Sto-Sim</code>, branch <code style="font-family:var(--mono)">main</code></span>
+      <span id="meta-updated-sep" style="display:none">&middot;</span>
+      <span id="meta-updated"></span>
     </div>
   </header>
 
@@ -513,6 +515,7 @@ footer.foot a{color:inherit;}
 
 <script>
 const DATA_URL = 'data/test-cases.json';
+const HISTORY_URL = 'data/history.json';
 
 const SLOTS = [
   ['#2a78d6','#3987e5'],
@@ -548,32 +551,72 @@ const themeRepaintFns = [];
   });
 })();
 
-fetch(DATA_URL, {cache:'no-cache'})
-  .then(r=>{ if(!r.ok) throw new Error(r.status+' '+r.statusText); return r.json(); })
-  .then(init)
+Promise.all([
+  fetch(DATA_URL, {cache:'no-cache'})
+    .then(r=>{ if(!r.ok) throw new Error(r.status+' '+r.statusText); return r.json(); }),
+  // Optional: a missing/broken history.json shouldn't block the dashboard from loading.
+  fetch(HISTORY_URL, {cache:'no-cache'}).then(r=>r.ok ? r.json() : []).catch(()=>[]),
+])
+  .then(([tests, history])=>init(tests, history))
   .catch(err=>{
     const el = document.getElementById('load-state');
     el.classList.add('error');
     el.textContent = `Could not load ${DATA_URL} (${err.message}). If you opened this file directly (file://), serve it over http instead — see README.`;
   });
 
-function init(TESTS){
+function init(TESTS, HISTORY){
   document.getElementById('load-state').remove();
   document.getElementById('chart-panel').style.display = '';
   document.getElementById('list-panel').style.display = '';
-  document.getElementById('meta-generated').textContent = `${TESTS.length.toLocaleString('en-US')} test files loaded`;
+  // Entries flagged dashboardExempt (e.g. CI workflow checks) are searchable in the list
+  // panel below, but shouldn't skew the stat tiles/donut/kind-bar/Excel export.
+  const DASHBOARD_TESTS = TESTS.filter(f=>!f.dashboardExempt);
+  document.getElementById('meta-generated').textContent = `${DASHBOARD_TESTS.length.toLocaleString('en-US')} test files loaded`;
 
   // ---- derive categories & kinds from the data ----
   const byCat = {};
   const byKind = {};
-  TESTS.forEach(f=>{
+  DASHBOARD_TESTS.forEach(f=>{
     const c = byCat[f.category] || (byCat[f.category] = {files:0, tests:0});
     c.files += 1; c.tests += f.tests.length;
     const k = byKind[f.kind] || (byKind[f.kind] = {files:0, tests:0});
     k.files += 1; k.tests += f.tests.length;
   });
-  const totalTests = TESTS.reduce((a,f)=>a+f.tests.length,0);
-  const totalFiles = TESTS.length;
+  const totalTests = DASHBOARD_TESTS.reduce((a,f)=>a+f.tests.length,0);
+  const totalFiles = DASHBOARD_TESTS.length;
+
+  // ---- "last updated" + change summary, from the history log (see extract_tests.py) ----
+  // Dates are stored as ISO (data/history.json stays sortable/unambiguous) and only
+  // formatted as German dd.mm.yyyy for display here.
+  function formatDateDE(iso){
+    const [y,m,d] = iso.split('-');
+    return `${d}.${m}.${y}`;
+  }
+  if(Array.isArray(HISTORY) && HISTORY.length){
+    const latest = HISTORY[HISTORY.length-1];
+    const previous = HISTORY.length>1 ? HISTORY[HISTORY.length-2] : null;
+    const fmt = n => (n>0?'+':'') + n.toLocaleString('en-US');
+    const plural = (n,w) => Math.abs(n)===1 ? w : w+'s';
+    let text = `Last updated: ${formatDateDE(latest.date)}`;
+    if(previous){
+      const dFiles = latest.files - previous.files;
+      const dTests = latest.tests - previous.tests;
+      text += (dFiles===0 && dTests===0)
+        ? ' (no changes since '+formatDateDE(previous.date)+')'
+        : ` (${fmt(dTests)} ${plural(dTests,'test case')}, ${fmt(dFiles)} ${plural(dFiles,'file')} since ${formatDateDE(previous.date)})`;
+    }
+    document.getElementById('meta-updated').textContent = text;
+    document.getElementById('meta-updated-sep').style.display = '';
+  }
+
+  // Superset (includes dashboardExempt entries) so the list panel's "All types" dropdown
+  // can still filter down to them, even though they're absent from the kind-bar above.
+  const byKindAll = {};
+  TESTS.forEach(f=>{
+    const k = byKindAll[f.kind] || (byKindAll[f.kind] = {files:0, tests:0});
+    k.files += 1; k.tests += f.tests.length;
+  });
+  const ALL_KINDS = Object.entries(byKindAll).map(([name,v])=>({name, files:v.files, tests:v.tests}));
 
   const CATS = Object.entries(byCat)
     .sort((a,b)=>b[1].tests-a[1].tests)
@@ -635,7 +678,7 @@ function init(TESTS){
       return rows;
     }
 
-    const allSheet = XLSX.utils.aoa_to_sheet(testRows(TESTS, true));
+    const allSheet = XLSX.utils.aoa_to_sheet(testRows(DASHBOARD_TESTS, true));
     allSheet['!cols'] = [{wch: 6}, {wch: 34}, {wch: 40}, {wch: 70}, {wch: 10}];
     XLSX.utils.book_append_sheet(wb, allSheet, safeSheetName('All Test Cases', usedNames));
 
@@ -764,6 +807,9 @@ function init(TESTS){
     const li = document.createElement('span');
     li.innerHTML = `<span class="sw" style="background:${KIND_COLORS[k.name]||'#898781'}"></span>${escapeHtml(k.name)} &middot; ${k.tests}`;
     kindLegend.appendChild(li);
+  });
+  // dropdown covers ALL_KINDS (includes dashboardExempt kinds) so the list can filter to them
+  ALL_KINDS.slice().sort((a,b)=>b.tests-a.tests).forEach(k=>{
     const opt = document.createElement('option');
     opt.value = k.name; opt.textContent = k.name;
     kindFilterSel.appendChild(opt);

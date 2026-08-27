@@ -9,6 +9,7 @@ Usage:
 If no path is given, it defaults to ../../StoSim/Sto-Sim relative to this
 script (adjust DEFAULT_ROOT below if your checkout lives elsewhere).
 """
+import datetime
 import json
 import os
 import re
@@ -18,6 +19,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_DIR = os.path.dirname(SCRIPT_DIR)
 DEFAULT_ROOT = os.path.normpath(os.path.join(REPO_DIR, "..", "StoSim", "Sto-Sim"))
 OUT_PATH = os.path.join(REPO_DIR, "data", "test-cases.json")
+HISTORY_PATH = os.path.join(REPO_DIR, "data", "history.json")
 
 ROOT = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_ROOT
 
@@ -59,6 +61,66 @@ def categorize(rel):
     return "Repo Tooling Tests (Vitest)"
 
 
+# Client-requested addition: surface the CI pipeline's quality gates alongside the test
+# files, so they show up in the dashboard's searchable list. These aren't test()/it() cases,
+# so each entry is flagged dashboardExempt — the frontend keeps them out of the stat tiles,
+# donut chart, kind-bar and Excel export, but they stay searchable in the "Test case list"
+# panel. Curated by hand rather than parsed from the YAML: most steps in these workflows are
+# infra (checkout, npm ci, prisma generate) rather than checks worth showing to a client.
+# deploy-dev.yml and version-bump.yml are deliberately excluded — deploy/versioning, not tests.
+WORKFLOW_CHECKS = [
+    {
+        "file": ".github/workflows/ci.yml",
+        "category": "CI Pipeline Checks (GitHub Actions)",
+        "kind": "CI check (GitHub Actions)",
+        "dashboardExempt": True,
+        "tests": [
+            {"name": "adr:check", "modifier": None},
+            {"name": "typecheck", "modifier": None},
+            {"name": "build", "modifier": None},
+            {"name": "npm test (unit + API)", "modifier": None},
+        ],
+    },
+    {
+        "file": ".github/workflows/e2e-nightly.yml",
+        "category": "CI Pipeline Checks (GitHub Actions)",
+        "kind": "CI check (GitHub Actions)",
+        "dashboardExempt": True,
+        "tests": [
+            {"name": "E2E suite (Playwright, nightly)", "modifier": None},
+            {"name": "API integration tests (nightly)", "modifier": None},
+        ],
+    },
+]
+
+
+# Client-requested "last updated" + change summary on the dashboard itself. The page is
+# static and has no git access, so it needs its own tiny append-only log to diff against.
+# Counts here are dashboard-only (WORKFLOW_CHECKS excluded) to stay consistent with the
+# stat tiles shown on the page.
+def load_history():
+    if os.path.isfile(HISTORY_PATH):
+        with open(HISTORY_PATH, encoding="utf-8") as fh:
+            return json.load(fh)
+    return []
+
+
+def update_history(files, tests):
+    today = datetime.date.today().isoformat()
+    history = load_history()
+    # Re-running the same day updates today's entry in place instead of piling up duplicates;
+    # the diff baseline is still the last *different* day's entry.
+    if history and history[-1]["date"] == today:
+        previous = history[-2] if len(history) >= 2 else None
+        history[-1] = {"date": today, "files": files, "tests": tests}
+    else:
+        previous = history[-1] if history else None
+        history.append({"date": today, "files": files, "tests": tests})
+    with open(HISTORY_PATH, "w", encoding="utf-8") as fh:
+        json.dump(history, fh, ensure_ascii=False, indent=2)
+    return previous
+
+
 def find_test_files(root):
     files = []
     for d in DIRS:
@@ -95,6 +157,12 @@ def main():
             "tests": names,
         })
 
+    for entry in WORKFLOW_CHECKS:
+        if not os.path.isfile(os.path.join(ROOT, entry["file"].replace("/", os.sep))):
+            print(f"Warning: {entry['file']} not found — WORKFLOW_CHECKS may be stale")
+            continue
+        result.append(entry)
+
     os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
     with open(OUT_PATH, "w", encoding="utf-8") as fh:
         json.dump(result, fh, ensure_ascii=False, indent=2)
@@ -102,6 +170,18 @@ def main():
     total_tests = sum(len(f["tests"]) for f in result)
     print(f"Wrote {OUT_PATH}")
     print(f"{len(result)} files, {total_tests} test cases")
+
+    dashboard_result = [f for f in result if not f.get("dashboardExempt")]
+    dashboard_files = len(dashboard_result)
+    dashboard_tests = sum(len(f["tests"]) for f in dashboard_result)
+    previous = update_history(dashboard_files, dashboard_tests)
+    print(f"Wrote {HISTORY_PATH}")
+    if previous:
+        print(
+            f"Since {previous['date']}: "
+            f"{dashboard_files - previous['files']:+d} files, "
+            f"{dashboard_tests - previous['tests']:+d} test cases"
+        )
 
 
 if __name__ == "__main__":

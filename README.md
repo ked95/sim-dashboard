@@ -9,9 +9,11 @@ Live version (once GitHub Pages is enabled on this repo): `https://<user>.github
 ## How it's structured
 
 ```
-index.html              the dashboard — loads data/test-cases.json at runtime
+index.html              the dashboard — loads data/test-cases.json + data/history.json at runtime
 data/test-cases.json    the test-case data. This is the file you replace to update the dashboard.
-scripts/extract_tests.py  regenerates data/test-cases.json from a local Sto-Sim checkout
+data/history.json       append-only log of {date, files, tests} per update, for the
+                        "Last updated" line and its change summary. Maintained by extract_tests.py.
+scripts/extract_tests.py  regenerates data/test-cases.json + data/history.json from a local Sto-Sim checkout
 ```
 
 The dashboard never has data baked into it — it always reads `data/test-cases.json`
@@ -66,8 +68,23 @@ see the update.
 - `tests[].modifier` — `"skip"`, `"only"`, `"todo"`, etc., or `null`. Shown as a small tag.
 
 Categorization rules for `extract_tests.py` (which pattern maps to which category) live
-in the `RULES` list at the top of that script — this project's own categories, not
-meant to generalize to other repos.
+in the `categorize()`/`kind_of()` functions in that script — this project's own
+categories, not meant to generalize to other repos.
+
+An entry may also carry `"dashboardExempt": true` — used for the `.github/workflows`
+CI checks the client asked to have listed. These stay out of the stat tiles, donut
+chart, kind-bar and Excel export, but remain searchable in the "Test case list" panel
+(see the hand-curated `WORKFLOW_CHECKS` list in `extract_tests.py`).
+
+`data/history.json` is a plain array, oldest first:
+
+```json
+[{ "date": "2026-08-26", "files": 133, "tests": 1385 }]
+```
+
+Counts here are dashboard-only (`dashboardExempt` entries excluded), so they match the
+stat tiles. `extract_tests.py` updates it on every run — re-running the same day edits
+that day's entry in place rather than adding a duplicate.
 
 ## Viewing it locally
 
