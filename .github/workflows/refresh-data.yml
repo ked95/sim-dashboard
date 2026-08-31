@@ -1,0 +1,57 @@
+name: Refresh test data
+
+# Triggered by a `repository_dispatch` call from the Sto-Sim repo's own CI (see their
+# workflow for the trigger step) once that's set up. `workflow_dispatch` is kept as a
+# manual "run now" button in the meantime / for testing.
+on:
+  repository_dispatch:
+    types: [stosim-updated]
+  workflow_dispatch: {}
+
+# Needed so the default GITHUB_TOKEN can push the refreshed data back to this repo.
+permissions:
+  contents: write
+
+# A second dispatch while one is still running would race on the same commit/push.
+concurrency:
+  group: refresh-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout dashboard repo
+        uses: actions/checkout@v4
+
+      # Read-only fine-grained PAT scoped to just this one repo — see README for setup.
+      # Sto-Sim is private, so the default GITHUB_TOKEN (scoped to this repo only)
+      # can't check it out.
+      - name: Checkout Sto-Sim
+        uses: actions/checkout@v4
+        with:
+          repository: Sto-Building-Solutions/Sto-Sim
+          token: ${{ secrets.STOSIM_READ_TOKEN }}
+          path: sto-sim-checkout
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Extract test data
+        run: python scripts/extract_tests.py sto-sim-checkout
+
+      # Only commit if the extraction actually changed something — a rerun on an
+      # unchanged Sto-Sim checkout should be a no-op, not an empty commit.
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/test-cases.json data/history.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto-refresh test data [skip ci]"
+            git push
+          fi

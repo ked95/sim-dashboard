@@ -993,6 +993,28 @@
     ]
   },
   {
+    "file": "apps/web/e2e/bekleidung-zuweisen.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Bekleidung: nicht automatisch Fassade, aber von Hand zuweisbar (#330)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/dachterrasse.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Dachterrasse: das flache Bauteil unter offenem Himmel zählt (#342)",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/e2e/daemmdicke-aus-modell.spec.ts",
     "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
@@ -1273,6 +1295,17 @@
       },
       {
         "name": "IFC überlebt sofortigen Wechsel zur Übersicht (Autosave-Flush beim Verlassen)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/import-vorschau.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Import-Vorschau: Modell vor dem Import sichtbar, Auswahl wirkt sofort (#366)",
         "modifier": null
       }
     ]
@@ -1582,6 +1615,17 @@
     ]
   },
   {
+    "file": "apps/web/e2e/schichten-durchstich.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Mehrschichtige Wände auf Landeskoordinaten: dieselbe Menge von der Fläche bis ins GAEB",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/e2e/seitenleiste.spec.ts",
     "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
@@ -1656,6 +1700,28 @@
       },
       {
         "name": "Übersicht: Zeilentyp und Knopf-Beschriftung sind ablesbar",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/sonstiges-gruppen.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Sonstiges zerfällt in Untergruppen je Familie und ist einzeln wählbar (#371)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/sonstiges-zuweisen.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Unklassifiziertes lässt sich messen und von Hand der Fassade zuordnen (#372)",
         "modifier": null
       }
     ]
@@ -1749,6 +1815,17 @@
     ]
   },
   {
+    "file": "apps/web/e2e/traeger-stuetze.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Träger und Stütze erreichen die Fassade und laufen bis in GAEB und PDF durch (#330)",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/e2e/ui-galerie.spec.ts",
     "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
@@ -1781,7 +1858,7 @@
         "modifier": null
       },
       {
-        "name": "Varianten: erst Variante, dann IFC am Projekt — die Variante bekommt es mit",
+        "name": "Varianten: erst Variante, dann IFC am Projekt — die Variante bleibt bei ihrem Stand",
         "modifier": null
       },
       {
@@ -1810,6 +1887,17 @@
       },
       {
         "name": "Modellwechsel meldet von Hand gesetzte Mengen",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/zuordnung-aufheben.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Zuordnung prüfen: der Aufheben-Knopf löst nur die gewählte Kategorie",
         "modifier": null
       }
     ]
@@ -1952,6 +2040,38 @@
       },
       {
         "name": "ohne Plattendicke weist es den Rückfall auf die Wirtswand-Regel aus",
+        "modifier": null
+      },
+      {
+        "name": "weist Schichtenraster und Tiefentoleranz aus",
+        "modifier": null
+      },
+      {
+        "name": "weist den Orakel-Ersatzweg samt Modellschwelle aus",
+        "modifier": null
+      },
+      {
+        "name": "weist das Duplikat-Raster aus",
+        "modifier": null
+      },
+      {
+        "name": "weist die Messregel für Stützen und Träger aus",
+        "modifier": null
+      },
+      {
+        "name": "weist die Himmelskarte samt Toleranz aus",
+        "modifier": null
+      },
+      {
+        "name": "weist die Öffnungs- und Wirtswand-Regel aus",
+        "modifier": null
+      },
+      {
+        "name": "weist die Bagatellgrenze aus",
+        "modifier": null
+      },
+      {
+        "name": "verspricht keinen Ausweis, den das Blatt nicht leisten kann",
         "modifier": null
       }
     ]
@@ -2113,6 +2233,81 @@
     ]
   },
   {
+    "file": "apps/web/src/idsEntlangStrahl.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "gibt alle getroffenen Bauteile, vorderstes zuerst",
+        "modifier": null
+      },
+      {
+        "name": "führt ein Bauteil nur einmal, auch wenn mehrere seiner Flächen im Strahl liegen",
+        "modifier": null
+      },
+      {
+        "name": "gibt nichts zurück, wenn der Strahl an der Geometrie vorbeigeht",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcAussenseite.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "hält die Richtung des freistehenden Mäuerchens",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcFallback.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "lässt eine zugebaute Wand draußen, solange das Orakel im Modell trägt (#331)",
+        "modifier": null
+      },
+      {
+        "name": "misst gegen den Schwerpunkt, wenn das Orakel im ganzen Modell nichts findet (#331)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcGeoreferenz.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "liefern ursprungsnahe Koordinaten an die Messung (#327 KERN-1)",
+        "modifier": null
+      },
+      {
+        "name": "halten die Identität Welt-Elevation − centerOffsetY = Geometrie-Y (#331 OFFSET-1)",
+        "modifier": null
+      },
+      {
+        "name": "halten den Geländebezug bei einer Höhen-Georeferenz (#331 TEST-1)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcHimmelskarte.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "zählt einen allseits geschlossenen Lichtschacht zur Fassade",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/src/ifcModellstand.test.ts",
     "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
@@ -2123,6 +2318,86 @@
       },
       {
         "name": "findet den Header auch, wenn er hinter dem Lesefenster beginnt",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcOeffnungBlocker.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "ein über die Öffnung ragender Fensterrahmen kostet keine Wandfläche",
+        "modifier": null
+      },
+      {
+        "name": "misst die volle Langseite abzüglich der Öffnung",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcSonstigesMessen.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "misst eine ausgewählte Sonstiges-Gruppe",
+        "modifier": null
+      },
+      {
+        "name": "misst nicht, was nicht ausgewählt ist",
+        "modifier": null
+      },
+      {
+        "name": "schlägt eine Sonstiges-Gruppe NICHT automatisch der Fassade zu",
+        "modifier": null
+      },
+      {
+        "name": "zeigt in der Vorschau auch die zur Laufzeit gebildeten Untergruppen",
+        "modifier": null
+      },
+      {
+        "name": "trägt die Fläche in die Menge, sobald sie von Hand zugeordnet ist",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcTraegerStuetze.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "inventarisiert und klassifiziert IfcBeam und IfcColumn",
+        "modifier": null
+      },
+      {
+        "name": "misst den Unterzug über der Durchfahrt mit beiden Längsseiten und der Unterseite",
+        "modifier": null
+      },
+      {
+        "name": "liefert im Vorschau-Modus Geometrie ohne Messung",
+        "modifier": null
+      },
+      {
+        "name": "misst die Stütze in der Fassadenebene",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcWirtswand.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "nimmt die Wandstärke, nicht die Ausladung eines Vordachs darüber",
+        "modifier": null
+      },
+      {
+        "name": "bleibt ohne Vordach unverändert",
         "modifier": null
       }
     ]
@@ -2345,6 +2620,29 @@
       },
       {
         "name": "greift nicht in den API-Namensraum",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/nurDieseBauteile.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "behält nur die Dreiecke der genannten Bauteile",
+        "modifier": null
+      },
+      {
+        "name": "führt das faceId-Register in der Reihenfolge der gefilterten Dreiecke mit",
+        "modifier": null
+      },
+      {
+        "name": "teilt die Attribute, statt sie zu kopieren",
+        "modifier": null
+      },
+      {
+        "name": "liefert eine leere Geometrie, wenn nichts zugeordnet ist",
         "modifier": null
       }
     ]
@@ -4094,7 +4392,115 @@
         "modifier": null
       },
       {
+        "name": "mehrschichtige Wand: hintereinander liegende Schichten zählen einmal (#327)",
+        "modifier": null
+      },
+      {
+        "name": "teilweise überdeckte Schicht zählt anteilig weiter (#327)",
+        "modifier": null
+      },
+      {
+        "name": "deckungsgleiche Dreiecke zählen einmal (CSG-Triangulierung, #328)",
+        "modifier": null
+      },
+      {
+        "name": "dünne Putzlage verdeckt das Mauerwerk dahinter (#327 KERN-2)",
+        "modifier": null
+      },
+      {
+        "name": "Duplikate mit Rauschen unterhalb des Rasters zählen einmal (#328)",
+        "modifier": null
+      },
+      {
+        "name": "Duplikate mit gedrehter Ecken-Reihenfolge zählen einmal (#328)",
+        "modifier": null
+      },
+      {
+        "name": "mehrschichtige Wand auch schräg im Grundriss (#327)",
+        "modifier": null
+      },
+      {
+        "name": "ein schräger Vorbau maskiert die Wand nicht weg (#327)",
+        "modifier": null
+      },
+      {
+        "name": "Splitterdreieck kleiner als eine Rasterzelle zählt voll (#327)",
+        "modifier": null
+      },
+      {
+        "name": "Verdeckungsgrenze zwischen den Zellmitten wird anteilig getroffen (#327)",
+        "modifier": null
+      },
+      {
+        "name": "rechnet in ohneMaske den Orakel-Anteil mit, nicht die rohe Dreiecksfläche (#331)",
+        "modifier": null
+      },
+      {
+        "name": "meldet die Fläche vor der Verdeckungsmaske getrennt mit (#331)",
+        "modifier": null
+      },
+      {
         "name": "geschlossener Bestandsring (EIN Element): beide Achsseiten zählen — der Rückseiten-Schutz gilt nur wandartig dünnen Elementen (#213 Renovierung)",
+        "modifier": null
+      },
+      {
+        "name": "folgt dem kürzeren Weg ins Freie statt dem Schwerpunkt",
+        "modifier": null
+      },
+      {
+        "name": "lässt dem Zentrums-Test das Wort, wenn beide Seiten gleich weit sind",
+        "modifier": null
+      },
+      {
+        "name": "ändert nichts, wo eine Seite mehr freie Fläche hat",
+        "modifier": null
+      },
+      {
+        "name": "summiert sich bei der Wand exakt zur gemessenen Fläche",
+        "modifier": null
+      },
+      {
+        "name": "summiert sich beim Träger exakt zur gemessenen Fläche",
+        "modifier": null
+      },
+      {
+        "name": "lässt die verdeckte Schicht einer mehrschichtigen Wand bei 0",
+        "modifier": null
+      },
+      {
+        "name": "meldet für jedes Eingabe-Dreieck einen Eintrag",
+        "modifier": null
+      },
+      {
+        "name": "zählt bei einem freistehenden Träger beide Längsseiten, die Unterseite und die freien Stirnenden",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Oberseite außen vor",
+        "modifier": null
+      },
+      {
+        "name": "zählt die Unterseite, sobald sie in IRGENDEINER waagerechten Richtung ins Freie sieht",
+        "modifier": null
+      },
+      {
+        "name": "zählt übereinander liegende Unterseiten einmal",
+        "modifier": null
+      },
+      {
+        "name": "behält eine geneigte Fläche, die von vorn sichtbar, von unten aber verdeckt ist",
+        "modifier": null
+      },
+      {
+        "name": "meldet auch beim Träger die Fläche vor der Verdeckungsmaske getrennt mit",
+        "modifier": null
+      },
+      {
+        "name": "zählt deckungsgleiche Dreiecke eines Trägers einmal",
+        "modifier": null
+      },
+      {
+        "name": "zählt hintereinander liegende Schichten einmal",
         "modifier": null
       }
     ]
@@ -4293,6 +4699,78 @@
       },
       {
         "name": "Default-Auswahl ist fassadenrelevant; selectedIds sammelt expressIDs",
+        "modifier": null
+      },
+      {
+        "name": "trennt außen und innen über IsExternal",
+        "modifier": null
+      },
+      {
+        "name": "fällt ohne IsExternal auf den Namen zurück und im Zweifel nach innen",
+        "modifier": null
+      },
+      {
+        "name": "trennt außen und innen über IsExternal",
+        "modifier": null
+      },
+      {
+        "name": "fällt ohne IsExternal auf den Namen zurück und im Zweifel nach innen",
+        "modifier": null
+      },
+      {
+        "name": "zerlegt Sonstiges nach dem Familiennamen vor dem ersten Doppelpunkt",
+        "modifier": null
+      },
+      {
+        "name": "nimmt den PredefinedType, wo kein Familienname steht",
+        "modifier": null
+      },
+      {
+        "name": "nimmt den ganzen Namen, wo ihn kein Doppelpunkt trennt — vor dem PredefinedType",
+        "modifier": null
+      },
+      {
+        "name": "erreicht den PredefinedType nicht mehr, wo jedes Element anders heißt",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine einzige Familie als „Sonstiges\" stehen — eine Gruppe ist keine Aufteilung",
+        "modifier": null
+      },
+      {
+        "name": "deckelt die Zahl der Untergruppen NICHT",
+        "modifier": null
+      },
+      {
+        "name": "sortiert die Untergruppen alphabetisch, nicht nach Anzahl",
+        "modifier": null
+      },
+      {
+        "name": "gruppiert über den ObjectType, wo jedes Element anders heißt",
+        "modifier": null
+      },
+      {
+        "name": "zählt zweistellige Serien natürlich, nicht zeichenweise",
+        "modifier": null
+      },
+      {
+        "name": "trifft nach dem Rehydrieren dieselben Elemente",
+        "modifier": null
+      },
+      {
+        "name": "zieht eine gespeicherte «Sonstiges»-Auswahl auf die neuen Untergruppen",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine Auswahl ohne «Sonstiges» unberührt",
+        "modifier": null
+      },
+      {
+        "name": "sammelt Einzelstücke statt für jedes eine Zeile zu öffnen",
+        "modifier": null
+      },
+      {
+        "name": "ordnet die Untergruppen unter dieselbe Obergruppe wie Sonstiges ein",
         "modifier": null
       }
     ]
