@@ -6973,9 +6973,8 @@
   },
   {
     "file": ".github/workflows/ci.yml",
-    "category": "CI Pipeline Checks (GitHub Actions)",
+    "category": "Git Workflows",
     "kind": "CI check (GitHub Actions)",
-    "dashboardExempt": true,
     "tests": [
       {
         "name": "adr:check",
@@ -6997,9 +6996,8 @@
   },
   {
     "file": ".github/workflows/e2e-nightly.yml",
-    "category": "CI Pipeline Checks (GitHub Actions)",
+    "category": "Git Workflows",
     "kind": "CI check (GitHub Actions)",
-    "dashboardExempt": true,
     "tests": [
       {
         "name": "E2E suite (Playwright, nightly)",
@@ -7007,6 +7005,40 @@
       },
       {
         "name": "API integration tests (nightly)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": ".github/workflows/deploy-dev.yml",
+    "category": "Git Workflows",
+    "kind": "CI check (GitHub Actions)",
+    "tests": [
+      {
+        "name": "Azure Login (OIDC)",
+        "modifier": null
+      },
+      {
+        "name": "Build image in ACR",
+        "modifier": null
+      },
+      {
+        "name": "Apply DB schema (optional)",
+        "modifier": null
+      },
+      {
+        "name": "Update Container App",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": ".github/workflows/version-bump.yml",
+    "category": "Git Workflows",
+    "kind": "CI check (GitHub Actions)",
+    "tests": [
+      {
+        "name": "Version bump (patch increment)",
         "modifier": null
       }
     ]

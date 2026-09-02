@@ -532,6 +532,7 @@ const KIND_COLORS = {
   'unit (Vitest, Web)': '#eda100',
   'unit (Vitest, Core)': '#4a3aa7',
   'unit (Vitest)': '#898781',
+  'CI check (GitHub Actions)': '#008300',
 };
 
 // ---- theme toggle (light/dark, overrides OS preference, remembered via localStorage) ----
@@ -568,22 +569,19 @@ function init(TESTS, HISTORY){
   document.getElementById('load-state').remove();
   document.getElementById('chart-panel').style.display = '';
   document.getElementById('list-panel').style.display = '';
-  // Entries flagged dashboardExempt (e.g. CI workflow checks) are searchable in the list
-  // panel below, but shouldn't skew the stat tiles/donut/kind-bar/Excel export.
-  const DASHBOARD_TESTS = TESTS.filter(f=>!f.dashboardExempt);
-  document.getElementById('meta-generated').textContent = `${DASHBOARD_TESTS.length.toLocaleString('en-US')} test files loaded`;
+  document.getElementById('meta-generated').textContent = `${TESTS.length.toLocaleString('en-US')} test files loaded`;
 
   // ---- derive categories & kinds from the data ----
   const byCat = {};
   const byKind = {};
-  DASHBOARD_TESTS.forEach(f=>{
+  TESTS.forEach(f=>{
     const c = byCat[f.category] || (byCat[f.category] = {files:0, tests:0});
     c.files += 1; c.tests += f.tests.length;
     const k = byKind[f.kind] || (byKind[f.kind] = {files:0, tests:0});
     k.files += 1; k.tests += f.tests.length;
   });
-  const totalTests = DASHBOARD_TESTS.reduce((a,f)=>a+f.tests.length,0);
-  const totalFiles = DASHBOARD_TESTS.length;
+  const totalTests = TESTS.reduce((a,f)=>a+f.tests.length,0);
+  const totalFiles = TESTS.length;
 
   // ---- "last updated" + change summary, from the history log (see extract_tests.py) ----
   // Dates are stored as ISO (data/history.json stays sortable/unambiguous) and only
@@ -608,15 +606,6 @@ function init(TESTS, HISTORY){
     document.getElementById('meta-updated').textContent = text;
     document.getElementById('meta-updated-sep').style.display = '';
   }
-
-  // Superset (includes dashboardExempt entries) so the list panel's "All types" dropdown
-  // can still filter down to them, even though they're absent from the kind-bar above.
-  const byKindAll = {};
-  TESTS.forEach(f=>{
-    const k = byKindAll[f.kind] || (byKindAll[f.kind] = {files:0, tests:0});
-    k.files += 1; k.tests += f.tests.length;
-  });
-  const ALL_KINDS = Object.entries(byKindAll).map(([name,v])=>({name, files:v.files, tests:v.tests}));
 
   const CATS = Object.entries(byCat)
     .sort((a,b)=>b[1].tests-a[1].tests)
@@ -678,7 +667,7 @@ function init(TESTS, HISTORY){
       return rows;
     }
 
-    const allSheet = XLSX.utils.aoa_to_sheet(testRows(DASHBOARD_TESTS, true));
+    const allSheet = XLSX.utils.aoa_to_sheet(testRows(TESTS, true));
     allSheet['!cols'] = [{wch: 6}, {wch: 34}, {wch: 40}, {wch: 70}, {wch: 10}];
     XLSX.utils.book_append_sheet(wb, allSheet, safeSheetName('All Test Cases', usedNames));
 
@@ -700,8 +689,10 @@ function init(TESTS, HISTORY){
   }
 
   // ---- stat tiles ----
+  // Explicit "unit" match rather than "everything that isn't e2e" — otherwise CI-check
+  // kinds (added below) would get mislabeled as Vitest units.
   const e2e = KINDS.filter(k=>k.name.startsWith('e2e')).reduce((a,k)=>a+k.tests,0);
-  const unit = totalTests - e2e;
+  const unit = KINDS.filter(k=>k.name.startsWith('unit')).reduce((a,k)=>a+k.tests,0);
   const statRow = document.getElementById('stat-row');
   [
     [totalTests.toLocaleString('en-US'), 'test cases total'],
@@ -807,9 +798,6 @@ function init(TESTS, HISTORY){
     const li = document.createElement('span');
     li.innerHTML = `<span class="sw" style="background:${KIND_COLORS[k.name]||'#898781'}"></span>${escapeHtml(k.name)} &middot; ${k.tests}`;
     kindLegend.appendChild(li);
-  });
-  // dropdown covers ALL_KINDS (includes dashboardExempt kinds) so the list can filter to them
-  ALL_KINDS.slice().sort((a,b)=>b.tests-a.tests).forEach(k=>{
     const opt = document.createElement('option');
     opt.value = k.name; opt.textContent = k.name;
     kindFilterSel.appendChild(opt);

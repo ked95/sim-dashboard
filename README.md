@@ -71,10 +71,14 @@ Categorization rules for `extract_tests.py` (which pattern maps to which categor
 in the `categorize()`/`kind_of()` functions in that script — this project's own
 categories, not meant to generalize to other repos.
 
-An entry may also carry `"dashboardExempt": true` — used for the `.github/workflows`
-CI checks the client asked to have listed. These stay out of the stat tiles, donut
-chart, kind-bar and Excel export, but remain searchable in the "Test case list" panel
-(see the hand-curated `WORKFLOW_CHECKS` list in `extract_tests.py`).
+A handful of entries come from `.github/workflows` (all four files: `ci.yml`,
+`e2e-nightly.yml`, `deploy-dev.yml`, `version-bump.yml`) rather than test files — the
+client asked for these to appear alongside the actual tests, everywhere: stat tiles,
+donut chart, kind-bar, Excel export, and the searchable list. These are hand-curated in
+the `WORKFLOW_CHECKS` list in `extract_tests.py` rather than parsed from the YAML — most
+steps in those workflows are infra (checkout, setup-node, npm ci, prisma generate)
+rather than named, meaningful steps worth showing to a client, so only the latter are
+listed.
 
 `data/history.json` is a plain array, oldest first:
 
@@ -82,9 +86,8 @@ chart, kind-bar and Excel export, but remain searchable in the "Test case list" 
 [{ "date": "2026-08-26", "files": 133, "tests": 1385 }]
 ```
 
-Counts here are dashboard-only (`dashboardExempt` entries excluded), so they match the
-stat tiles. `extract_tests.py` updates it on every run — re-running the same day edits
-that day's entry in place rather than adding a duplicate.
+`extract_tests.py` updates it on every run — re-running the same day edits that day's
+entry in place rather than adding a duplicate.
 
 ## Viewing it locally
 

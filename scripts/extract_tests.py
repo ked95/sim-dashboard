@@ -61,19 +61,17 @@ def categorize(rel):
     return "Repo Tooling Tests (Vitest)"
 
 
-# Client-requested addition: surface the CI pipeline's quality gates alongside the test
-# files, so they show up in the dashboard's searchable list. These aren't test()/it() cases,
-# so each entry is flagged dashboardExempt — the frontend keeps them out of the stat tiles,
-# donut chart, kind-bar and Excel export, but they stay searchable in the "Test case list"
-# panel. Curated by hand rather than parsed from the YAML: most steps in these workflows are
-# infra (checkout, npm ci, prisma generate) rather than checks worth showing to a client.
-# deploy-dev.yml and version-bump.yml are deliberately excluded — deploy/versioning, not tests.
+# Client-requested addition: surface all four .github/workflows files alongside the test
+# files — including in the dashboard's stat tiles, donut chart, kind-bar and Excel export,
+# not just the searchable list. Curated by hand rather than parsed from the YAML: most
+# steps in these workflows are infra (checkout, setup-node, npm ci, prisma generate)
+# rather than checks worth showing to a client — those are skipped, only the named,
+# meaningful steps are listed.
 WORKFLOW_CHECKS = [
     {
         "file": ".github/workflows/ci.yml",
-        "category": "CI Pipeline Checks (GitHub Actions)",
+        "category": "Git Workflows",
         "kind": "CI check (GitHub Actions)",
-        "dashboardExempt": True,
         "tests": [
             {"name": "adr:check", "modifier": None},
             {"name": "typecheck", "modifier": None},
@@ -83,12 +81,30 @@ WORKFLOW_CHECKS = [
     },
     {
         "file": ".github/workflows/e2e-nightly.yml",
-        "category": "CI Pipeline Checks (GitHub Actions)",
+        "category": "Git Workflows",
         "kind": "CI check (GitHub Actions)",
-        "dashboardExempt": True,
         "tests": [
             {"name": "E2E suite (Playwright, nightly)", "modifier": None},
             {"name": "API integration tests (nightly)", "modifier": None},
+        ],
+    },
+    {
+        "file": ".github/workflows/deploy-dev.yml",
+        "category": "Git Workflows",
+        "kind": "CI check (GitHub Actions)",
+        "tests": [
+            {"name": "Azure Login (OIDC)", "modifier": None},
+            {"name": "Build image in ACR", "modifier": None},
+            {"name": "Apply DB schema (optional)", "modifier": None},
+            {"name": "Update Container App", "modifier": None},
+        ],
+    },
+    {
+        "file": ".github/workflows/version-bump.yml",
+        "category": "Git Workflows",
+        "kind": "CI check (GitHub Actions)",
+        "tests": [
+            {"name": "Version bump (patch increment)", "modifier": None},
         ],
     },
 ]
@@ -96,8 +112,6 @@ WORKFLOW_CHECKS = [
 
 # Client-requested "last updated" + change summary on the dashboard itself. The page is
 # static and has no git access, so it needs its own tiny append-only log to diff against.
-# Counts here are dashboard-only (WORKFLOW_CHECKS excluded) to stay consistent with the
-# stat tiles shown on the page.
 def load_history():
     if os.path.isfile(HISTORY_PATH):
         with open(HISTORY_PATH, encoding="utf-8") as fh:
@@ -171,16 +185,13 @@ def main():
     print(f"Wrote {OUT_PATH}")
     print(f"{len(result)} files, {total_tests} test cases")
 
-    dashboard_result = [f for f in result if not f.get("dashboardExempt")]
-    dashboard_files = len(dashboard_result)
-    dashboard_tests = sum(len(f["tests"]) for f in dashboard_result)
-    previous = update_history(dashboard_files, dashboard_tests)
+    previous = update_history(len(result), total_tests)
     print(f"Wrote {HISTORY_PATH}")
     if previous:
         print(
             f"Since {previous['date']}: "
-            f"{dashboard_files - previous['files']:+d} files, "
-            f"{dashboard_tests - previous['tests']:+d} test cases"
+            f"{len(result) - previous['files']:+d} files, "
+            f"{total_tests - previous['tests']:+d} test cases"
         )
 
 
