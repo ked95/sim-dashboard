@@ -6,7 +6,7 @@ data/test-cases.json for the dashboard (index.html) to load.
 Usage:
     python scripts/extract_tests.py [path-to-sto-sim-checkout]
 
-If no path is given, it defaults to ../../StoSim/Sto-Sim relative to this
+If no path is given, it defaults to ../../Sto-Sim relative to this
 script (adjust DEFAULT_ROOT below if your checkout lives elsewhere).
 """
 import datetime
@@ -17,7 +17,7 @@ import sys
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_DIR = os.path.dirname(SCRIPT_DIR)
-DEFAULT_ROOT = os.path.normpath(os.path.join(REPO_DIR, "..", "StoSim", "Sto-Sim"))
+DEFAULT_ROOT = os.path.normpath(os.path.join(REPO_DIR, "..", "Sto-Sim"))
 OUT_PATH = os.path.join(REPO_DIR, "data", "test-cases.json")
 HISTORY_PATH = os.path.join(REPO_DIR, "data", "history.json")
 
