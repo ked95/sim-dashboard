@@ -524,6 +524,10 @@
         "modifier": null
       },
       {
+        "name": "Kopie eines englischen Projekts: „(Kopie)\" deutsch, „– Revision 1\" englisch",
+        "modifier": null
+      },
+      {
         "name": "Kopie bekommt einen eindeutigen Namen, in doc UND Spalte",
         "modifier": null
       },
@@ -545,6 +549,14 @@
       },
       {
         "name": "Variante hängt am Projekt, trägt eigenes data und version 0",
+        "modifier": null
+      },
+      {
+        "name": "leitet den Variantennamen in der Dokumentsprache des Quellstandes ab",
+        "modifier": null
+      },
+      {
+        "name": "zählt den stammlosen Dialog-Stand in der Dokumentsprache weiter",
         "modifier": null
       },
       {
@@ -896,7 +908,7 @@
     "kind": "e2e (Playwright)",
     "tests": [
       {
-        "name": "Renovierung-Anstrich out-of-the-box: IFC → Anstrich-LV → GAEB-Export",
+        "name": "Sanierung-Anstrich out-of-the-box: IFC → Anstrich-LV → GAEB-Export",
         "modifier": null
       }
     ]
@@ -907,7 +919,7 @@
     "kind": "e2e (Playwright)",
     "tests": [
       {
-        "name": "Renovierung-Anstrich blendet WDVS-Systeme aus; Override und Settings-Wechsel zeigen sie",
+        "name": "Sanierung-Anstrich blendet WDVS-Systeme aus; Override und Settings-Wechsel zeigen sie",
         "modifier": null
       }
     ]
@@ -1031,6 +1043,10 @@
     "kind": "e2e (Playwright)",
     "tests": [
       {
+        "name": "Leistungsinhalt-Karte schaltet den Detailgrad — synchron mit den Einstellungen",
+        "modifier": null
+      },
+      {
         "name": "Detailgrad umschalten: weniger Positionen, gleiche Angebotssumme, und zurück",
         "modifier": null
       },
@@ -1048,6 +1064,37 @@
       },
       {
         "name": "Mengenregel VOB ohne Öffnungsdaten: Hinweis statt stiller Vereinbarung",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/dokumentsprache.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Dokumentsprache umschalten: unberührte Bereichsnamen folgen, umbenannte bleiben",
+        "modifier": null
+      },
+      {
+        "name": "Ein englisch angelegtes Projekt trägt englische Vorbelegungen — und die Kopfleiste bleibt schlank",
+        "modifier": null
+      },
+      {
+        "name": "Eine neue Variante eines englischen Projekts heißt „Revision n\", nicht „Variante n\"",
+        "modifier": null
+      },
+      {
+        "name": "Sto-Projektmanager: der Musterdatensatz folgt der Dokumentsprache",
+        "modifier": null
+      },
+      {
+        "name": "Zulage: Kurztext folgt der Dokumentsprache, der Hinweis nennt den Langtext",
+        "modifier": null
+      },
+      {
+        "name": "Zurückschalten übersetzt die Vorbelegungen wieder ins Deutsche",
         "modifier": null
       }
     ]
@@ -1112,6 +1159,10 @@
       },
       {
         "name": "Preis-Schranke: „ohne Preise\" sperrt den Kostenanschlag, die Umschalt-Aktion öffnet ihn",
+        "modifier": null
+      },
+      {
+        "name": "Der Optionsdialog liegt über der Seite und verschiebt die Formatliste nicht",
         "modifier": null
       },
       {
@@ -1190,6 +1241,25 @@
       {
         "name": "Grundfläche und Attika stehen als Formel-Baustein bereit und rechnen",
         "modifier": null
+      },
+      {
+        "name": "Kalkulation: eine lange Mengenformel bricht um, statt die Preisspalten zu verdrängen",
+        "modifier": null
+      },
+      {
+        "name": "Formel führt Größen als Tag — getippt entsteht sie, zerlegbar ist sie nicht",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/gelaende-durchstich.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Georeferenziert in der Höhe: die Kellerwand bleibt von der Fläche bis ins GAEB draußen",
+        "modifier": null
       }
     ]
   },
@@ -1200,6 +1270,10 @@
     "tests": [
       {
         "name": "Home: Projekt anlegen, benennen, in der Liste sehen, öffnen und löschen",
+        "modifier": null
+      },
+      {
+        "name": "Settings/Project benennt das Hauptprojekt um — für die ganze Familie",
         "modifier": null
       },
       {
@@ -1267,6 +1341,10 @@
         "modifier": null
       },
       {
+        "name": "Löschen legt die Bereiche in der Dokumentsprache neu an",
+        "modifier": null
+      },
+      {
         "name": "Löschen in einer Variante lässt das Modell der anderen stehen",
         "modifier": null
       },
@@ -1306,6 +1384,10 @@
     "tests": [
       {
         "name": "Import-Vorschau: Modell vor dem Import sichtbar, Auswahl wirkt sofort (#366)",
+        "modifier": null
+      },
+      {
+        "name": "Der Ladehinweis steht, bis das Modell da ist",
         "modifier": null
       }
     ]
@@ -1389,6 +1471,28 @@
       },
       {
         "name": "Bauteilliste zeigt die Laibungstiefe je Öffnung, nicht eine repräsentative (#269)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/lvLangtext.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "LV-Schirm zeigt den Ausschreibungstext; der Umschalter räumt ihn weg",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/lvWegweiser.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "LV-Schirm: die beiden Hinweise sind Links auf ihre Route",
         "modifier": null
       }
     ]
@@ -1513,11 +1617,31 @@
         "modifier": null
       },
       {
-        "name": "Papierkorb: der 404 einer gegenstandslosen Aktion spricht nicht von der Verbindung",
+        "name": "Papierkorb: der 404 einer gegenstandslosen Aktion meldet nichts und räumt das Phantom",
         "modifier": null
       },
       {
         "name": "Papierkorb: ein Hauptprojekt nimmt seine Varianten mit und bringt sie zurück",
+        "modifier": null
+      },
+      {
+        "name": "Papierkorb: Projekt hineinziehen und wieder herausziehen",
+        "modifier": null
+      },
+      {
+        "name": "Papierkorb: die freie Fläche holt nichts zurück",
+        "modifier": null
+      },
+      {
+        "name": "Papierkorb: ein Zug nimmt die ganze Markierung mit",
+        "modifier": null
+      },
+      {
+        "name": "Papierkorb: Stand und Wurzel in einem Zug zurück, ohne Fehlerbanner",
+        "modifier": null
+      },
+      {
+        "name": "Papierkorb: ein Zug holt Ordner und Projekt zusammen zurück",
         "modifier": null
       }
     ]
@@ -1756,7 +1880,7 @@
         "modifier": null
       },
       {
-        "name": "Export-Dialog: übersetzte Optionen, deutsche GAEB-Phasennamen",
+        "name": "Export-Dialog: übersetzte Optionen samt GAEB-Phasennamen, Normcode bleibt",
         "modifier": null
       },
       {
@@ -1765,6 +1889,18 @@
       },
       {
         "name": "IFC-Auswahlbaum: übersetzte Kategorien, heile Gruppierung",
+        "modifier": null
+      },
+      {
+        "name": "Eingangsprüfung: Stufe, Regel und Meldung folgen dem Menü",
+        "modifier": null
+      },
+      {
+        "name": "Einheiten und Rahmen: Bildschirm UND Beleg folgen dem Menü",
+        "modifier": null
+      },
+      {
+        "name": "Bauteilliste: Quelle, Nebenflächen und logische Geschosse folgen dem Menü",
         "modifier": null
       },
       {
@@ -1806,6 +1942,10 @@
       },
       {
         "name": "Top-Bar: die Werte stehen im breiten Fenster, das Zeichen erst im schmalen",
+        "modifier": null
+      },
+      {
+        "name": "Top-Bar: bei gleicher Breite entscheidet die Länge der Werte über den Umbruch",
         "modifier": null
       },
       {
@@ -1987,6 +2127,18 @@
         "modifier": null
       },
       {
+        "name": "nennt das angewandte Band unverkürzt",
+        "modifier": null
+      },
+      {
+        "name": "nennt die Herleitung, und sie passt zum Band",
+        "modifier": null
+      },
+      {
+        "name": "nennt die Größe im Blatt beim Glossarnamen",
+        "modifier": null
+      },
+      {
         "name": "sichert das Fertigmaß nicht mehr pauschal in der Mengenregel zu",
         "modifier": null
       },
@@ -2043,11 +2195,15 @@
         "modifier": null
       },
       {
+        "name": "verweist in keiner Sprache auf die Oberfläche — kein Klickweg, kein Ansichtsname",
+        "modifier": null
+      },
+      {
         "name": "weist Schichtenraster und Tiefentoleranz aus",
         "modifier": null
       },
       {
-        "name": "weist den Orakel-Ersatzweg samt Modellschwelle aus",
+        "name": "weist den Orakel-Ersatzweg samt beider Schwellen aus",
         "modifier": null
       },
       {
@@ -2059,7 +2215,35 @@
         "modifier": null
       },
       {
+        "name": "nennt beim Orakel-Ersatzweg den angewandten Zustand, nicht nur die Regel",
+        "modifier": null
+      },
+      {
+        "name": "weist die Innenwand-Auswahl aus, weil auch sie die Fassadenfläche bewegt",
+        "modifier": null
+      },
+      {
+        "name": "nennt die Öffnungs-Auswahl je Art, nicht als ein Bit",
+        "modifier": null
+      },
+      {
+        "name": "führt Öffnungs-Auswahl und Ersatzweg in jeder Sprache durch jeden Zustand",
+        "modifier": null
+      },
+      {
+        "name": "nennt die Neigungsgrenze in beiden Zeilen gleich",
+        "modifier": null
+      },
+      {
+        "name": "die Gradzahl im Blatt trennt so, wie die Messung trennt",
+        "modifier": null
+      },
+      {
         "name": "weist die Himmelskarte samt Toleranz aus",
+        "modifier": null
+      },
+      {
+        "name": "weist die Neigungsgrenze der Wandflächen aus",
         "modifier": null
       },
       {
@@ -2067,11 +2251,27 @@
         "modifier": null
       },
       {
+        "name": "nennt die von Hand gesetzten Bauteile mit ihrer GlobalId",
+        "modifier": null
+      },
+      {
         "name": "weist die Bagatellgrenze aus",
         "modifier": null
       },
       {
-        "name": "verspricht keinen Ausweis, den das Blatt nicht leisten kann",
+        "name": "sagt zu, dass der Wert den eingetretenen Fall nennt",
+        "modifier": null
+      },
+      {
+        "name": "hält auch fünf Handkorrekturen innerhalb des Satzspiegels",
+        "modifier": null
+      },
+      {
+        "name": "nennt GlobalId und die getroffene Entscheidung, beide Granularitäten zugleich",
+        "modifier": null
+      },
+      {
+        "name": "benutzt die eine Basisschrift plus courier für die GUID-Spalte",
         "modifier": null
       }
     ]
@@ -2112,6 +2312,124 @@
     ]
   },
   {
+    "file": "apps/web/src/bauteillisteHooks.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "sollte nahe beieinander liegende Geschosse zu einem Cluster zusammenfassen",
+        "modifier": null
+      },
+      {
+        "name": "legt die Bandgrenzen aus der Platzierungshöhe, nicht aus der deklarierten Elevation",
+        "modifier": null
+      },
+      {
+        "name": "sollte ein einzelnes Geschoss korrekt als E0 deklarieren",
+        "modifier": null
+      },
+      {
+        "name": "benennt Dach und Erdgeschoss in der übergebenen Sprache, die gezählten Ebenen nicht",
+        "modifier": null
+      },
+      {
+        "name": "zeigt ohne aktiven Filter alle Zeilen",
+        "modifier": null
+      },
+      {
+        "name": "filtert nach Kategorie und pflegt filterActive / filterIds nach",
+        "modifier": null
+      },
+      {
+        "name": "filtert nach Geschoss",
+        "modifier": null
+      },
+      {
+        "name": "kombiniert Kategorie- und Geschossfilter (Schnittmenge)",
+        "modifier": null
+      },
+      {
+        "name": "gruppiert die sichtbaren Zeilen mit Verwendungs-Kennzahlen",
+        "modifier": null
+      },
+      {
+        "name": "bietet als Geschoss-Optionen nur die tatsächlich belegten Geschosse plus „ohne Geschoss\"",
+        "modifier": null
+      },
+      {
+        "name": "wählt beim ersten Klick genau die geklickte Zeile",
+        "modifier": null
+      },
+      {
+        "name": "wählt bei Shift+Klick den Bereich zwischen Anker und geklickter Zeile",
+        "modifier": null
+      },
+      {
+        "name": "spannt den Bereich auch rückwärts auf (Klick unten, Shift+Klick oben)",
+        "modifier": null
+      },
+      {
+        "name": "lässt den Anker im Shift-Zweig stehen: der nächste Shift-Klick misst vom selben Punkt",
+        "modifier": null
+      },
+      {
+        "name": "vereint bei Strg+Shift+Klick den neuen Bereich mit der bestehenden Auswahl",
+        "modifier": null
+      },
+      {
+        "name": "selectGroup wählt alle Zeilen einer Kategorie",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/exportSprache.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "LV-PDF: Rahmen englisch, Positions- und Bereichstexte unverändert",
+        "modifier": null
+      },
+      {
+        "name": "LV-Excel: Blattnamen und Spaltenköpfe englisch, Zahlenformat unverändert",
+        "modifier": null
+      },
+      {
+        "name": "Aufmaßblatt-PDF: Rahmen und Methodenblatt englisch, GUID und Maßkette unverändert",
+        "modifier": null
+      },
+      {
+        "name": "LV-Excel: der Übersetzungshinweis steht in der Mappe, der Tabellenkopf rutscht mit",
+        "modifier": null
+      },
+      {
+        "name": "Aufmaßblatt-Excel: fünf Blattnamen englisch",
+        "modifier": null
+      },
+      {
+        "name": "Flächenübersicht: Rahmen englisch in PDF und Excel",
+        "modifier": null
+      },
+      {
+        "name": "Bauteilliste: Spaltenköpfe englisch, Elementname und GUID unverändert",
+        "modifier": null
+      },
+      {
+        "name": "Prüfbericht: Rahmen, Stufe und Meldung englisch",
+        "modifier": null
+      },
+      {
+        "name": "erzeugt in jeder Sprache ein Dokument ohne „undefined\"",
+        "modifier": null
+      },
+      {
+        "name": "französische Prosa kommt ohne „?\" für œ ins PDF",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/src/flaechenExport.test.ts",
     "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
@@ -2134,6 +2452,45 @@
       },
       {
         "name": "meldet bei Bestandsprojekten ohne Header „Modellstand unbekannt\"",
+        "modifier": null
+      },
+      {
+        "name": "PDF: der Vermerk steht im Dokument",
+        "modifier": null
+      },
+      {
+        "name": "Excel: der Vermerk steht in der Notes-Zelle",
+        "modifier": null
+      },
+      {
+        "name": "PDF: der Vermerk steht im Dokument",
+        "modifier": null
+      },
+      {
+        "name": "Excel: der Vermerk steht in der Notes-Zelle",
+        "modifier": null
+      },
+      {
+        "name": "benutzt nur die eine Basisschrift",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/formelText.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "hält die Formel über den Round-Trip",
+        "modifier": null
+      },
+      {
+        "name": "verliert keine Zahl, die mit dem Trennzeichen beginnt",
+        "modifier": null
+      },
+      {
+        "name": "schreibt gelesene Rechenzeichen auf die gespeicherte Form zurück",
         "modifier": null
       }
     ]
@@ -2257,7 +2614,7 @@
     "kind": "unit (Vitest, Web)",
     "tests": [
       {
-        "name": "hält die Richtung des freistehenden Mäuerchens",
+        "name": "überlässt das freistehende Mäuerchen dem Zentrums-Test — ein Marschschritt ist kein Nachweis",
         "modifier": null
       }
     ]
@@ -2278,6 +2635,41 @@
     ]
   },
   {
+    "file": "apps/web/src/ifcGelaendebezug.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "hält die Kellerwand aus der Fassade — Modell am Ursprung",
+        "modifier": null
+      },
+      {
+        "name": "hält auch eine WDVS-gedämmte Kellerwand aus der Fassade",
+        "modifier": null
+      },
+      {
+        "name": "hält sie auch, wenn dasselbe Gebäude 177 m höher steht",
+        "modifier": null
+      },
+      {
+        "name": "legt die Geschossbänder der Bauteilliste auf dieselbe Höhe",
+        "modifier": null
+      },
+      {
+        "name": "rechnet ein Millimeter-Modell wie ein Meter-Modell",
+        "modifier": null
+      },
+      {
+        "name": "nimmt die Einheit aus der Zuweisung des Projekts, nicht die erste der Datei",
+        "modifier": null
+      },
+      {
+        "name": "nimmt die ebenerdige Terrasse auch dann nicht für einen Balkon",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/src/ifcGeoreferenz.test.ts",
     "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
@@ -2287,7 +2679,7 @@
         "modifier": null
       },
       {
-        "name": "halten die Identität Welt-Elevation − centerOffsetY = Geometrie-Y (#331 OFFSET-1)",
+        "name": "halten die Identität Welt-Höhe − centerOffsetY = Geometrie-Y (#331 OFFSET-1)",
         "modifier": null
       },
       {
@@ -2308,6 +2700,57 @@
     ]
   },
   {
+    "file": "apps/web/src/ifcKlickModus.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "schaltet im Standard um — hin und zurück am vordersten Bauteil",
+        "modifier": null
+      },
+      {
+        "name": "lässt im Standard ein Bauteil ohne Messdaten unberührt",
+        "modifier": null
+      },
+      {
+        "name": "greift beim Entfernen bis zum ersten zugeordneten Bauteil durch",
+        "modifier": null
+      },
+      {
+        "name": "fügt im Entfernen-Modus nichts hinzu",
+        "modifier": null
+      },
+      {
+        "name": "greift beim Hinzufügen bis zum ersten noch nicht zählenden Bauteil durch",
+        "modifier": null
+      },
+      {
+        "name": "überspringt beim Hinzufügen, was keine Messdaten trägt",
+        "modifier": null
+      },
+      {
+        "name": "löst im Hinzufügen-Modus nichts",
+        "modifier": null
+      },
+      {
+        "name": "geht in jedem Modus von derselben Zuordnung aus",
+        "modifier": null
+      },
+      {
+        "name": "verlangt den Strahl in genau den Modi, die hinter das vorderste Bauteil greifen",
+        "modifier": null
+      },
+      {
+        "name": "ordnet jeden Modus seiner Ebene zu und nennt je Ebene den Einstieg",
+        "modifier": null
+      },
+      {
+        "name": "nimmt ohne Strahl das angeklickte Bauteil",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/src/ifcModellstand.test.ts",
     "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
@@ -2318,6 +2761,49 @@
       },
       {
         "name": "findet den Header auch, wenn er hinter dem Lesefenster beginnt",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcOeffnungAlleLeaves.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "misst ein Innenfenster, sobald das Leaf ausgewählt ist",
+        "modifier": null
+      },
+      {
+        "name": "lässt das Innenfenster unangetastet, solange das Leaf nicht ausgewählt ist",
+        "modifier": null
+      },
+      {
+        "name": "macht die Klick-Korrektur eines importierten Fensters mengenwirksam (#242 AK 2)",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Wirtswand unangetastet, wenn ihr Innenfenster mitgewählt ist (#242)",
+        "modifier": null
+      },
+      {
+        "name": "misst eine Innentür, sobald das Leaf ausgewählt ist",
+        "modifier": null
+      },
+      {
+        "name": "hält die Innentür aus der VOB-Übermessung heraus — sie riss nie ein Loch in die Fassade",
+        "modifier": null
+      },
+      {
+        "name": "gibt das Loch eines Innenfensters zurück, das WIRKLICH in der Fassadenwand sitzt (#167)",
+        "modifier": null
+      },
+      {
+        "name": "gibt KEIN Loch zurück, wenn die Wirtswand keine Fassadenwand ist — auch bei außen klassifizierter Öffnung (#167)",
+        "modifier": null
+      },
+      {
+        "name": "dichtet mit der mitgewählten Öffnung das Wandloch ab — sonst flutet die Außenluft in den Raum (#431)",
         "modifier": null
       }
     ]
@@ -2398,6 +2884,52 @@
       },
       {
         "name": "bleibt ohne Vordach unverändert",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcWirtswandFlag.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "trägt das IsExternal der Wirtswand an die Öffnung — auch wenn deren eigenes Flag innen sagt",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Wirtswand leer, wo das Modell keine Öffnungsbeziehung führt",
+        "modifier": null
+      },
+      {
+        "name": "trägt die Dämmlage aus dem IfcMaterialLayerSet an die Wand",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/kantenJeBauteil.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "führt zu jedem Segment das Bauteil mit",
+        "modifier": null
+      },
+      {
+        "name": "filtert durch Umkopieren, ohne die Kanten neu zu suchen",
+        "modifier": null
+      },
+      {
+        "name": "zählt ein Bauteil zusammen, dessen Dreiecke verstreut im Register liegen",
+        "modifier": null
+      },
+      {
+        "name": "liefert eine leere Geometrie, wenn nichts sichtbar ist",
+        "modifier": null
+      },
+      {
+        "name": "behält die Kante zwischen zwei bündig aneinanderstoßenden Bauteilen",
         "modifier": null
       }
     ]
@@ -2485,6 +3017,153 @@
       },
       {
         "name": "fällt auf einen Namen zurück, wenn nichts Verwertbares bleibt",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/mengenwirksamkeit.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "lässt die Szene unangetastet, solange nichts von Hand gewählt ist",
+        "modifier": null
+      },
+      {
+        "name": "setzt für das gewählte Bauteil die andere Lesart ein — und nur für dieses",
+        "modifier": null
+      },
+      {
+        "name": "schreibt die Farben je Dreieck auf die neue Lesart um (#365)",
+        "modifier": null
+      },
+      {
+        "name": "übergeht eine Wahl für ein Bauteil ohne Varianten (Träger, Öffnung)",
+        "modifier": null
+      },
+      {
+        "name": "zählt die Hand-Entscheidungen für Anzeige und Nachweis",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine Wand zuordnen, deren automatische Lesart leer blieb",
+        "modifier": null
+      },
+      {
+        "name": "schaltet im Kreis: automatisch → getauscht → beide → automatisch",
+        "modifier": null
+      },
+      {
+        "name": "legt die Wahl an der GlobalId ab, nicht an der expressID (ADR-0011)",
+        "modifier": null
+      },
+      {
+        "name": "findet sie wieder, auch wenn das Modell andere expressIDs vergibt",
+        "modifier": null
+      },
+      {
+        "name": "verliert still, was das Modell nicht mehr kennt — und misst dort wieder automatisch",
+        "modifier": null
+      },
+      {
+        "name": "kommt ohne abgelegte Wahl aus (Bestandsprojekte)",
+        "modifier": null
+      },
+      {
+        "name": "findet die Flächen des Bauteils aus der Szene",
+        "modifier": null
+      },
+      {
+        "name": "schaltet eine Fläche aus — Fläche und Farben folgen",
+        "modifier": null
+      },
+      {
+        "name": "schaltet eine Fläche ein, die das Orakel verworfen hatte",
+        "modifier": null
+      },
+      {
+        "name": "hält die Summe der Beiträge und die ausgewiesene Fläche zusammen (#365)",
+        "modifier": null
+      },
+      {
+        "name": "rechnet den Stirnanteil neu — eine quer stehende Fläche ist kein Langseiten-Anteil",
+        "modifier": null
+      },
+      {
+        "name": "wendet die Seitenwahl ZUERST an — die Einzelfläche korrigiert deren Ergebnis",
+        "modifier": null
+      },
+      {
+        "name": "übersetzt ein Dreieck der Szene in die Zählung seines Bauteils",
+        "modifier": null
+      },
+      {
+        "name": "weiß, ob eine Fläche gerade zählt — daran hängt, wohin der Klick schaltet",
+        "modifier": null
+      },
+      {
+        "name": "rettet die Flächenwahl über den Reload — an der GlobalId und am Flächenschlüssel",
+        "modifier": null
+      },
+      {
+        "name": "zählt Seiten- und Flächenkorrekturen als EIN Bauteil, nicht doppelt",
+        "modifier": null
+      },
+      {
+        "name": "zählt nur, was zugeordnet ist — eine gelöste Wand korrigiert keine Menge",
+        "modifier": null
+      },
+      {
+        "name": "zählt eine von Hand eingeschaltete Rückseite als Langseite, nicht als Wandende",
+        "modifier": null
+      },
+      {
+        "name": "rechnet den Stirnanteil nach der GEWÄHLTEN Lesart — die Gegenseite ist bei „beide\" eine Langseite",
+        "modifier": null
+      },
+      {
+        "name": "wirkt auch an einer verbauten Wand, die nur in den Varianten steht",
+        "modifier": null
+      },
+      {
+        "name": "zählt einen Flächenschlüssel nicht mehr, den die heutige Geometrie nicht kennt",
+        "modifier": null
+      },
+      {
+        "name": "führt die Oberseite als eigene Fläche — anklickbar, aber zunächst ungezählt",
+        "modifier": null
+      },
+      {
+        "name": "nimmt sie auf Klick in die Menge — als Fläche, nicht als Wandende",
+        "modifier": null
+      },
+      {
+        "name": "lässt das Wandende weiter eine Stirnfläche sein",
+        "modifier": null
+      },
+      {
+        "name": "geht als Hauptfläche in die Aggregation ein, sobald sie geschaltet ist",
+        "modifier": null
+      },
+      {
+        "name": "kehrt bei jedem Klick den sichtbaren Zustand um — auch unter gewählter Seite",
+        "modifier": null
+      },
+      {
+        "name": "lässt keinen Eintrag stehen, der nichts korrigiert — sonst stünde er im Aufmaßblatt",
+        "modifier": null
+      },
+      {
+        "name": "erreicht „an\" auch an einer nur ANTEILIG gezählten Fläche",
+        "modifier": null
+      },
+      {
+        "name": "unterscheidet voll, anteilig und gar nicht gezählt",
+        "modifier": null
+      },
+      {
+        "name": "nennt die Hand-Fläche einer Gruppe — 0 heißt: kein Klick kann hier etwas bewirken",
         "modifier": null
       }
     ]
@@ -2648,6 +3327,25 @@
     ]
   },
   {
+    "file": "apps/web/src/oeffnungAbgleich.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "nimmt nur, was klassifiziert UND messbar ist",
+        "modifier": null
+      },
+      {
+        "name": "lässt beim Frischimport keine Abweichung entstehen",
+        "modifier": null
+      },
+      {
+        "name": "zeigt die Abweichung weiterhin, wenn der gespeicherte Stand hinterherhinkt",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/src/pdfExporter.test.ts",
     "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
@@ -2662,6 +3360,10 @@
       },
       {
         "name": "lässt das Deckblatt ohne IFC-Mengen unverändert",
+        "modifier": null
+      },
+      {
+        "name": "trägt Gruppenüberschrift und Musterdatensatz eines englischen Projekts englisch",
         "modifier": null
       },
       {
@@ -2715,6 +3417,10 @@
       {
         "name": "druckt Attributblock und Bieterzeile, ohne Marke im ganzen Dokument",
         "modifier": null
+      },
+      {
+        "name": "benutzt nur die eine Basisschrift",
+        "modifier": null
       }
     ]
   },
@@ -2740,7 +3446,23 @@
         "modifier": null
       },
       {
+        "name": "bildet den Pfeil des Menüpfads ab — er steht im Methodenblatt in jeder Sprache",
+        "modifier": null
+      },
+      {
         "name": "normalisiert Typografie, die jsPDF sonst als UTF-16-Salat rendert",
+        "modifier": null
+      },
+      {
+        "name": "macht aus geschützten und schmalen Leerzeichen gewöhnliche",
+        "modifier": null
+      },
+      {
+        "name": "bildet das französische œ auf „oe\" ab",
+        "modifier": null
+      },
+      {
+        "name": "ersetzt die Wort-Symbole in der Sprache des Dokuments",
         "modifier": null
       }
     ]
@@ -2836,6 +3558,45 @@
       {
         "name": "sagt im Anhang, wenn die Prüfung zum Exportzeitpunkt noch lief",
         "modifier": null
+      },
+      {
+        "name": "benutzt nur die eine Basisschrift",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/pruefMeldungen.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "löst mit dem Testmodell jede Meldung und jede Regel aus",
+        "modifier": null
+      },
+      {
+        "name": "füllt jede Vorlage vollständig — in keiner Sprache bleibt ein Platzhalter im Dokument stehen",
+        "modifier": null
+      },
+      {
+        "name": "sagt in jeder Sprache am Bildschirm dasselbe wie im Dokument",
+        "modifier": null
+      },
+      {
+        "name": "führt in allen vier Sprachen dieselben Platzhalter je Meldung",
+        "modifier": null
+      },
+      {
+        "name": "beschriftet jede Regel in allen vier Sprachen — im Dokument wie am Schirm",
+        "modifier": null
+      },
+      {
+        "name": "nennt die Stufen in jeder Sprache am Bildschirm wie im Dokument",
+        "modifier": null
+      },
+      {
+        "name": "übersetzt den eigenen Abbruch-Rückfall und lässt die Ausnahme stehen",
+        "modifier": null
       }
     ]
   },
@@ -2854,6 +3615,10 @@
       },
       {
         "name": "liefert Übersicht + N/O/S/W mit benannten Ansichten",
+        "modifier": null
+      },
+      {
+        "name": "benennt die Ansichten in der gewählten Sprache — die Pose bleibt dieselbe (#411)",
         "modifier": null
       },
       {
@@ -2979,12 +3744,71 @@
     ]
   },
   {
+    "file": "apps/web/src/ifcViewer/ifcViewerKerne.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "kennt beide Schreibweisen der Hauptfläche und den Sockel",
+        "modifier": null
+      },
+      {
+        "name": "vereinigt Hauptfläche und alle Kategorien, ohne Doppelte",
+        "modifier": null
+      },
+      {
+        "name": "führt die GlobalId nur für ZUGEORDNETE Bauteile",
+        "modifier": null
+      },
+      {
+        "name": "erfindet keine GlobalId, wo das Modell keine liefert",
+        "modifier": null
+      },
+      {
+        "name": "nimmt die Handwahl an der GlobalId mit",
+        "modifier": null
+      },
+      {
+        "name": "liefert bei gleicher Eingabe zweimal dasselbe",
+        "modifier": null
+      },
+      {
+        "name": "meldet die Übernahme, sobald ein Slot gefüllt wurde",
+        "modifier": null
+      },
+      {
+        "name": "schweigt nicht, wenn nichts übernommen wurde, aber eine Dicke im Modell steht",
+        "modifier": null
+      },
+      {
+        "name": "sagt gar nichts, wo es kein Wand-Bauteil gibt, auf das sich die Dicke bezöge",
+        "modifier": null
+      },
+      {
+        "name": "meldet Uneinheitlichkeit auch dann, wenn schon alle Slots belegt sind",
+        "modifier": null
+      },
+      {
+        "name": "ist unabhängig von der Reihenfolge der Schlüssel",
+        "modifier": null
+      },
+      {
+        "name": "duldet Fließkomma-Rauschen, aber keinen echten Unterschied",
+        "modifier": null
+      },
+      {
+        "name": "erkennt einen Schlüssel, den nur eine Seite kennt — in beide Richtungen",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "packages/core/test/anwendungskontext.test.ts",
     "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
-        "name": "neubau ergibt neubau — unabhängig von der (nur bei Renovierung sichtbaren) Maßnahme",
+        "name": "neubau ergibt neubau — unabhängig von der (nur bei Sanierung sichtbaren) Maßnahme",
         "modifier": null
       },
       {
@@ -3158,11 +3982,123 @@
         "modifier": null
       },
       {
-        "name": "liefert für dieselbe Kategorie dieselbe Id, denselben Namen und dieselbe Farbe",
+        "name": "behält die Kategorie als sprachfreien Anker neben dem Namen",
         "modifier": null
       },
       {
-        "name": "behält die Kategorie als sprachfreien Anker neben dem deutschen Namen",
+        "name": "vergibt in jeder Sprache vier verschiedene Namen und dieselben vier Ids",
+        "modifier": null
+      },
+      {
+        "name": "trägt je Sprache die erwarteten Wortlaute in der erwarteten Zuordnung",
+        "modifier": null
+      },
+      {
+        "name": "legt ein englisch angelegtes Projekt englisch an — und trägt die Sprache im Dokument",
+        "modifier": null
+      },
+      {
+        "name": "ohne Angabe: deutsch, aber ohne das Feld im Dokument",
+        "modifier": null
+      },
+      {
+        "name": "übersetzt unberührte Namen und lässt umbenannte stehen",
+        "modifier": null
+      },
+      {
+        "name": "erkennt die Vorbelegung in JEDER Sprache — auch nach zwei Wechseln zurück",
+        "modifier": null
+      },
+      {
+        "name": "lässt Ids und Farben unangetastet — an der Id hängen die Hand-Eingaben",
+        "modifier": null
+      },
+      {
+        "name": "ist ohne Wirkung, wenn schon alles in der Zielsprache steht — kein Diff, kein Zähler",
+        "modifier": null
+      },
+      {
+        "name": "greift auch bei einem Bestandsprojekt ohne das Feld",
+        "modifier": null
+      },
+      {
+        "name": "übersetzt eigenen Bereich, System, Schicht, Komponente und Position",
+        "modifier": null
+      },
+      {
+        "name": "lässt selbst benannte Objekte stehen und zählt sie als behalten",
+        "modifier": null
+      },
+      {
+        "name": "zählt das wandernde Gewerk-Tag einer selbst betexteten Position",
+        "modifier": null
+      },
+      {
+        "name": "fasst katalog-abgeleitete Systeme nicht an — auch nicht ihre Schichten",
+        "modifier": null
+      },
+      {
+        "name": "erkennt die Vorbelegung in jeder Sprache und schaltet auch zurück",
+        "modifier": null
+      },
+      {
+        "name": "erkennt einen Namen aus einer dritten Sprache als Vorbelegung — der benannte Preis",
+        "modifier": null
+      },
+      {
+        "name": "benennt ein neues Projekt in der Dokumentsprache",
+        "modifier": null
+      },
+      {
+        "name": "liefert die Varianten-Vorbelegung je Sprache",
+        "modifier": null
+      },
+      {
+        "name": "erkennt die Vorbelegung in allen vier Sprachen als nichtssagend",
+        "modifier": null
+      },
+      {
+        "name": "leitet den Variantennamen in der Dokumentsprache ab, ohne über Sprachen zu stapeln",
+        "modifier": null
+      },
+      {
+        "name": "zählt einen stammlosen Variantennamen weiter, statt ihn zu stapeln",
+        "modifier": null
+      },
+      {
+        "name": "hält einen selbst vergebenen Namen weiterhin für eine Aussage",
+        "modifier": null
+      },
+      {
+        "name": "lässt Projekt- und Variantenname beim Umschalten unangetastet",
+        "modifier": null
+      },
+      {
+        "name": "legt den Musterdatensatz in der Dokumentsprache an",
+        "modifier": null
+      },
+      {
+        "name": "lässt Telefon und Mobil in jeder Sprache stehen",
+        "modifier": null
+      },
+      {
+        "name": "zieht den unberührten Musterdatensatz beim Umschalten nach",
+        "modifier": null
+      },
+      {
+        "name": "lässt eingetragene Daten unangetastet und zählt sie als behalten",
+        "modifier": null
+      },
+      {
+        "name": "zieht je Feld einzeln nach",
+        "modifier": null
+      },
+      {
+        "name": "erkennt den Musternamen einer dritten Sprache als Vorbelegung — der benannte Preis",
+        "modifier": null
+      },
+      {
+        "name": "zählt eine bereits passende Vorbelegung in keine der beiden Zahlen",
         "modifier": null
       }
     ]
@@ -3553,6 +4489,100 @@
     ]
   },
   {
+    "file": "packages/core/test/detailgradPatch.test.ts",
+    "category": "Core Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "belegt beim Wechsel auf marktüblich die Mengenregel mit VOB vor",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine selbst gewählte Mengenregel stehen — auch die, die der Vorbelegung gleicht",
+        "modifier": null
+      },
+      {
+        "name": "belegt beim Wechsel auf detailliert nichts vor",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/dokumentsprache.test.ts",
+    "category": "Core Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "setzt Kurztext und Gruppenüberschrift in der Zielsprache, den Langtext deutsch",
+        "modifier": null
+      },
+      {
+        "name": "lässt den Langtext in jeder Dokumentsprache Zeichen für Zeichen stehen",
+        "modifier": null
+      },
+      {
+        "name": "führt jede Vorlage in allen vier Sprachen, ohne Doppelnamen",
+        "modifier": null
+      },
+      {
+        "name": "trägt die erwarteten Fassungen — nicht bloß irgendeinen Text",
+        "modifier": null
+      },
+      {
+        "name": "hält die deutschen Fassungen unverändert — ein deutsches Projekt ändert sich nicht",
+        "modifier": null
+      },
+      {
+        "name": "weist den abweichenden Langtext nur in nicht-deutschen Projekten aus",
+        "modifier": null
+      },
+      {
+        "name": "zieht den unberührten Kurztext mit und lässt den Langtext deutsch",
+        "modifier": null
+      },
+      {
+        "name": "zieht die drei Gliederungs-Tags auch bei von Hand geändertem Kurztext mit — und ZÄHLT es",
+        "modifier": null
+      },
+      {
+        "name": "zieht die Tags einer Bestands-Zulage ohne vorlageId mit — der Text bleibt, gezählt wird trotzdem",
+        "modifier": null
+      },
+      {
+        "name": "übersetzt den wörtlichen Vorlagen-Kurztext einer Bestands-Zulage ohne vorlageId — und trägt die Id nach",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine freie Position mit eigenem Gewerk unangetastet",
+        "modifier": null
+      },
+      {
+        "name": "lässt ein deutsches Projekt beim Wechsel nach de unverändert",
+        "modifier": null
+      },
+      {
+        "name": "gliedert das LV eines englischen Projekts unter „Facade\"",
+        "modifier": null
+      },
+      {
+        "name": "schreibt die Gruppenüberschrift wortgleich ins GAEB",
+        "modifier": null
+      },
+      {
+        "name": "trägt eine Zulage übersetzt ins GAEB — der Langtext bleibt deutsch darin",
+        "modifier": null
+      },
+      {
+        "name": "lässt ein deutsches Projekt Zeichen für Zeichen gleich",
+        "modifier": null
+      },
+      {
+        "name": "benennt die Laibungsgruppe in der Dokumentsprache, auch ohne Öffnungs-Bereich",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "packages/core/test/einheiten.test.ts",
     "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
@@ -3567,6 +4597,45 @@
       },
       {
         "name": "ersetzt ² und ³ auch in unbekannten Einheiten über den Fallback",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/exportSprache.test.ts",
+    "category": "Core Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "setzt die Gliederungs-Beschriftung des GAEB in der Zielsprache, die Positionstexte nicht",
+        "modifier": null
+      },
+      {
+        "name": "hält die GAEB-Struktur und das Zahlenformat sprachfrei",
+        "modifier": null
+      },
+      {
+        "name": "kennzeichnet die Bedarfsposition in der Zielsprache — dort, wo das Format kein Feld dafür hat",
+        "modifier": null
+      },
+      {
+        "name": "übersetzt die Beschriftung in X31, ohne den REB-Rechenweg anzufassen",
+        "modifier": null
+      },
+      {
+        "name": "rendert Deckblatt, Spaltenköpfe und Zusammenstellung des Word-LV in der Zielsprache",
+        "modifier": null
+      },
+      {
+        "name": "deklariert die Textsprache des Word-Dokuments — im deutschen gar nicht",
+        "modifier": null
+      },
+      {
+        "name": "gibt die Vorbemerkungen als Arbeitsübersetzung MIT Hinweis aus — deutsch ohne",
+        "modifier": null
+      },
+      {
+        "name": "führt jede Sprache vollständig — keine Ausgabe fällt still auf einen leeren Text zurück",
         "modifier": null
       }
     ]
@@ -3809,6 +4878,65 @@
       },
       {
         "name": "greift nur Lücken in cm und nur solche, die eine Plattendicke benennen",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/flaechenGruppen.test.ts",
+    "category": "Core Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "fasst die Dreiecke einer Ebene zu EINER Fläche zusammen",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Unterseite weg, führt die Oberseite aber als Fläche (#412)",
+        "modifier": null
+      },
+      {
+        "name": "gibt der Oberseite eine Höhenkomponente, die sie von den Wandseiten trennt",
+        "modifier": null
+      },
+      {
+        "name": "zählt in derselben Reihenfolge wie das Beitrags-Register der Messung",
+        "modifier": null
+      },
+      {
+        "name": "die wirksame Grenze liegt bei 0,355 und ist nach unten nicht spiegelgleich",
+        "modifier": null
+      },
+      {
+        "name": "trennt an SENKRECHT_KEGEL: knapp darüber Oberseite, knapp darunter Wandseite, unten gar nicht",
+        "modifier": null
+      },
+      {
+        "name": "beantwortet die Neigungsfrage für Dreieck und Gruppe gleich — auch im Rundungsband",
+        "modifier": null
+      },
+      {
+        "name": "meldet die Höhenkomponente gerundet — sonst entschiede die Dreiecks-Reihenfolge (#412)",
+        "modifier": null
+      },
+      {
+        "name": "findet zu einem angeklickten Dreieck seine Fläche",
+        "modifier": null
+      },
+      {
+        "name": "gegen eine Verschiebung des ganzen Modells (anderes Zentrum der Szene)",
+        "modifier": null
+      },
+      {
+        "name": "gegen eine andere Dreiecksaufteilung derselben Fläche",
+        "modifier": null
+      },
+      {
+        "name": "gegen fremde Geometrie im selben Puffer (die Szene hält ALLE Bauteile)",
+        "modifier": null
+      },
+      {
+        "name": "unterscheidet aber zwei verschiedene Ebenen derselben Richtung (Schichten einer Wand)",
         "modifier": null
       }
     ]
@@ -4335,6 +5463,30 @@
       {
         "name": "schweigt ohne Mengenabgleich-Daten",
         "modifier": null
+      },
+      {
+        "name": "meldet als Warnung, wo das Flag innen sagt und die Wirtswand außen",
+        "modifier": null
+      },
+      {
+        "name": "schweigt, wo Flag und Wirtswand übereinstimmen — auch beim echten Innenfenster",
+        "modifier": null
+      },
+      {
+        "name": "weist Öffnungen ohne Wirtswand als Hinweis aus — sie bleiben aus der Fassadenrechnung",
+        "modifier": null
+      },
+      {
+        "name": "schweigt, wo die Wirtswand im ganzen Modell nichts sagt",
+        "modifier": null
+      },
+      {
+        "name": "meldet an Wänden nichts davon — die Regel gilt nur für Öffnungen",
+        "modifier": null
+      },
+      {
+        "name": "meldet Öffnungen, die als außen erkannt sind, aber nicht in den Mengen zählen",
+        "modifier": null
       }
     ]
   },
@@ -4392,6 +5544,54 @@
         "modifier": null
       },
       {
+        "name": "„getauscht\" dreht die Außenseite — gleiche Fläche, Gegenrichtung",
+        "modifier": null
+      },
+      {
+        "name": "„beide\" zählt die Gegenseite dazu — der Rückseiten-Schutz ist die einzige Differenz",
+        "modifier": null
+      },
+      {
+        "name": "setzt sich gegen das Orakel durch, wo die gewählte Seite nicht „im Freien\" liegt",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Stirnseiten auch bei Handwahl dem Orakel — ein verbautes Wandende bleibt verbaut",
+        "modifier": null
+      },
+      {
+        "name": "verwirft beim Tauschen die alte Außenseite auch an einem ausgedehnten Element",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Varianten getrennte Beitrags-Register führen",
+        "modifier": null
+      },
+      {
+        "name": "rechnet die Hand-Fläche mit der Verdeckungsmaske, nicht roh (#327)",
+        "modifier": null
+      },
+      {
+        "name": "liefert die Hand-Flächen auch, wenn das Bauteil KEINE senkrechte Fläche hat (#412)",
+        "modifier": null
+      },
+      {
+        "name": "führt in oberseitenSqm nur die Oberseiten, nicht die Wandseiten (#412)",
+        "modifier": null
+      },
+      {
+        "name": "zählt eine doppelt vorliegende Oberseite nur einmal in die Hand-Fläche (#328)",
+        "modifier": null
+      },
+      {
+        "name": "trennt an SENKRECHT_KEGEL: knapp darüber nur Hand, knapp darunter gemessen, unten verworfen",
+        "modifier": null
+      },
+      {
+        "name": "gibt der Oberseite eine Hand-Fläche, zählt sie aber in keiner Variante automatisch",
+        "modifier": null
+      },
+      {
         "name": "mehrschichtige Wand: hintereinander liegende Schichten zählen einmal (#327)",
         "modifier": null
       },
@@ -4409,6 +5609,10 @@
       },
       {
         "name": "Duplikate mit Rauschen unterhalb des Rasters zählen einmal (#328)",
+        "modifier": null
+      },
+      {
+        "name": "feinteilig triangulierte Fläche verliert nichts (#335)",
         "modifier": null
       },
       {
@@ -4440,7 +5644,7 @@
         "modifier": null
       },
       {
-        "name": "geschlossener Bestandsring (EIN Element): beide Achsseiten zählen — der Rückseiten-Schutz gilt nur wandartig dünnen Elementen (#213 Renovierung)",
+        "name": "geschlossener Bestandsring (EIN Element): beide Achsseiten zählen — der Rückseiten-Schutz gilt nur wandartig dünnen Elementen (#213 Sanierung)",
         "modifier": null
       },
       {
@@ -4449,6 +5653,14 @@
       },
       {
         "name": "lässt dem Zentrums-Test das Wort, wenn beide Seiten gleich weit sind",
+        "modifier": null
+      },
+      {
+        "name": "schluckt einen Unterschied von einem einzelnen Marschschritt, wenn der Aufrufer ihn als Rauschen ausweist",
+        "modifier": null
+      },
+      {
+        "name": "lässt zwei Marschschritte auch mit dem weiteren Band entscheiden",
         "modifier": null
       },
       {
@@ -4465,6 +5677,10 @@
       },
       {
         "name": "lässt die verdeckte Schicht einer mehrschichtigen Wand bei 0",
+        "modifier": null
+      },
+      {
+        "name": "weist den Beitrag namentlich der äußeren Schicht zu, nicht der verdeckten (#336)",
         "modifier": null
       },
       {
@@ -4501,6 +5717,14 @@
       },
       {
         "name": "zählt hintereinander liegende Schichten einmal",
+        "modifier": null
+      },
+      {
+        "name": "verteilt das Register eines Bauteils in der Reihenfolge seiner Dreiecke",
+        "modifier": null
+      },
+      {
+        "name": "lässt Dreiecke ohne Messung bei null",
         "modifier": null
       }
     ]
@@ -4611,6 +5835,30 @@
       },
       {
         "name": "trennt Außen- von Innentüren (Name + IsExternal); Default ist innen",
+        "modifier": null
+      },
+      {
+        "name": "leitet Außen/Innen aus der Wirtswand ab, wo das eigene Flag es verneint",
+        "modifier": null
+      },
+      {
+        "name": "rettet ohne Wandwirt das eigene Flag — Vereinigung, nicht Ersetzung",
+        "modifier": null
+      },
+      {
+        "name": "lässt das echte Innenfenster in der Innenwand innen (Schutzklausel)",
+        "modifier": null
+      },
+      {
+        "name": "erfindet ohne jede Angabe nichts — der Default je Art bleibt",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Flag-Evidenz den Namen stechen",
+        "modifier": null
+      },
+      {
+        "name": "entscheidet auch, wo allein die Wirtswand spricht",
         "modifier": null
       },
       {
@@ -4771,6 +6019,14 @@
       },
       {
         "name": "ordnet die Untergruppen unter dieselbe Obergruppe wie Sonstiges ein",
+        "modifier": null
+      },
+      {
+        "name": "klassifiziert Fassaden-Teilbereiche korrekt (TEST-1)",
+        "modifier": null
+      },
+      {
+        "name": "ordnet Elemente anhand der Set-Zugehörigkeiten korrekt zu",
         "modifier": null
       }
     ]
@@ -6084,6 +7340,73 @@
     ]
   },
   {
+    "file": "packages/core/test/teilbereiche.test.ts",
+    "category": "Core Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "meldet eine zugeordnete Gruppe als gemessen samt Kategorie",
+        "modifier": null
+      },
+      {
+        "name": "weist eine gemessene, aber nicht zugeordnete Gruppe mit ihrer brachliegenden Fläche aus",
+        "modifier": null
+      },
+      {
+        "name": "meldet eine importierte Gruppe ohne messbare Fläche als nicht mengenwirksam",
+        "modifier": null
+      },
+      {
+        "name": "trennt abgewählt von nicht mengenwirksam",
+        "modifier": null
+      },
+      {
+        "name": "teilt eine nur teilweise importierte Gruppe in zwei Zeilen",
+        "modifier": null
+      },
+      {
+        "name": "bleibt bei gemessen, wenn ein zugeordnetes Element keine Fläche liefert",
+        "modifier": null
+      },
+      {
+        "name": "hält die Partitionen in fester Reihenfolge, unabhängig von der Elementreihenfolge",
+        "modifier": null
+      },
+      {
+        "name": "lässt Hauptflächen und Innenbauteile außen vor",
+        "modifier": null
+      },
+      {
+        "name": "weist eine importierte Sonstiges-Untergruppe wie jeden anderen Teilbereich aus",
+        "modifier": null
+      },
+      {
+        "name": "meldet eine von Hand zugeordnete Sonstiges-Untergruppe als gemessen",
+        "modifier": null
+      },
+      {
+        "name": "behandelt die Sammelgruppe „Sonstiges\" wie ihre Untergruppen",
+        "modifier": null
+      },
+      {
+        "name": "meldet abgewählte Sonstiges-Gruppen NICHT als nicht importiert",
+        "modifier": null
+      },
+      {
+        "name": "nimmt von einer Sonstiges-Gruppe nur den importierten Teil auf",
+        "modifier": null
+      },
+      {
+        "name": "liefert für ein Modell ohne Teilbereiche eine leere Liste",
+        "modifier": null
+      },
+      {
+        "name": "überspringt leere Gruppen",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "packages/core/test/tiefenklassen.test.ts",
     "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
@@ -6918,6 +8241,34 @@
         "modifier": null
       },
       {
+        "name": "findet einen zwischen Platzhaltern zerlegten deutschen Satz",
+        "modifier": null
+      },
+      {
+        "name": "setzt dafür nur Bruchstücke DERSELBEN Zeile zusammen",
+        "modifier": null
+      },
+      {
+        "name": "findet einen zerlegten Satz, dessen letztes Bruchstück bis zum Zeilenende läuft",
+        "modifier": null
+      },
+      {
+        "name": "nimmt ein Zeilenende nur vor einem Tag als Bruchstück",
+        "modifier": null
+      },
+      {
+        "name": "erkennt die Zähl-Abkürzungen Stk und lfm als deutschen Anzeigetext",
+        "modifier": null
+      },
+      {
+        "name": "findet einen über drei Zeilen umbrochenen JSX-Textknoten",
+        "modifier": null
+      },
+      {
+        "name": "greift bei umbrochenem Text nur zwischen zwei Tags",
+        "modifier": null
+      },
+      {
         "name": "akzeptiert eine Freigabe in derselben Zeile",
         "modifier": null
       },
@@ -6967,6 +8318,70 @@
       },
       {
         "name": "prüft den Kern nur, wenn Dateien mitkommen",
+        "modifier": null
+      },
+      {
+        "name": "meldet die fehlende Sprachzeile über pruefeI18n, nicht nur über die Einzelfunktion",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine vollständige Tabelle durch",
+        "modifier": null
+      },
+      {
+        "name": "meldet einen fehlenden Platzhalter in der Zielsprache",
+        "modifier": null
+      },
+      {
+        "name": "meldet einen verschriebenen Platzhalter",
+        "modifier": null
+      },
+      {
+        "name": "lässt gleiche Platzhalter in anderer Reihenfolge zu",
+        "modifier": null
+      },
+      {
+        "name": "vergleicht eine Mehrzahlform gegen das deutsche _other",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine vollständige Tabelle durch — verschachtelt wie flach",
+        "modifier": null
+      },
+      {
+        "name": "meldet eine fehlende Sprachzeile",
+        "modifier": null
+      },
+      {
+        "name": "meldet einen Schlüssel, den nur Deutsch führt",
+        "modifier": null
+      },
+      {
+        "name": "nimmt einen nur in der Zielsprache vorhandenen Schlüssel nicht als Maßstab",
+        "modifier": null
+      },
+      {
+        "name": "meldet einen leeren Wert — auch einen, der nur aus Leerzeichen besteht",
+        "modifier": null
+      },
+      {
+        "name": "meldet einen Platzhalter, der in der Zielsprache fehlt oder anders heißt",
+        "modifier": null
+      },
+      {
+        "name": "meldet vier Zweige, die nicht dieselbe Form haben",
+        "modifier": null
+      },
+      {
+        "name": "liest die oberste Ebene, ohne sich an Verschachtelung oder Kommas zu verschlucken",
+        "modifier": null
+      },
+      {
+        "name": "greift im echten Inventar — die Vorbelegungs-Tabellen bleiben viersprachig deklariert",
+        "modifier": null
+      },
+      {
+        "name": "führt den Zulagen-Langtext weiter als einsprachige Ausnahme",
         "modifier": null
       }
     ]
