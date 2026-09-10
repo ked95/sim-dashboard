@@ -946,6 +946,14 @@
         "modifier": null
       },
       {
+        "name": "Ansichts-Raster: das gedrehte Modell weist Drehung und Drehsinn aus, das gerade „achsparallel\"",
+        "modifier": null
+      },
+      {
+        "name": "Ansichts-Raster: das achsparallele Modell nennt die Weltachsen",
+        "modifier": null
+      },
+      {
         "name": "OZ-Bindung: das Aufmaßblatt trägt die OZ der gewählten LV-Gliederung (#208)",
         "modifier": null
       }
@@ -1527,6 +1535,25 @@
       },
       {
         "name": "Ein Land ohne eigenen Markt löst keinen Hinweis aus",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/mitmessen-teilbereich.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Mitmess-Schalter: Bekleidung wird zur Orakel-Barriere und korrigiert die Menge (#345)",
+        "modifier": null
+      },
+      {
+        "name": "Mitmess-Entscheidung überlebt den Reload (#345 AK 3)",
+        "modifier": null
+      },
+      {
+        "name": "Schalter wirkt bis in LV und GAEB (#345 AK 6)",
         "modifier": null
       }
     ]
@@ -2255,7 +2282,15 @@
         "modifier": null
       },
       {
+        "name": "nennt die mitgemessenen Fassaden-Teilbereiche",
+        "modifier": null
+      },
+      {
         "name": "weist die Bagatellgrenze aus",
+        "modifier": null
+      },
+      {
+        "name": "weist den Hüllenanteil der Restgruppen aus",
         "modifier": null
       },
       {
@@ -2264,6 +2299,18 @@
       },
       {
         "name": "hält auch fünf Handkorrekturen innerhalb des Satzspiegels",
+        "modifier": null
+      },
+      {
+        "name": "nennt das Ansichts-Raster samt angewandter Gebäudedrehung",
+        "modifier": null
+      },
+      {
+        "name": "nennt „achsparallel\" nur unterhalb der Restdrehung achsparalleler Modelle (0,05°)",
+        "modifier": null
+      },
+      {
+        "name": "nennt den Drehsinn zwischen den Ansichten statt eines Vorzeichens",
         "modifier": null
       },
       {
@@ -2471,6 +2518,14 @@
         "modifier": null
       },
       {
+        "name": "PDF: der Vermerk steht im Dokument",
+        "modifier": null
+      },
+      {
+        "name": "Excel: der Vermerk steht in der Notes-Zelle",
+        "modifier": null
+      },
+      {
         "name": "benutzt nur die eine Basisschrift",
         "modifier": null
       }
@@ -2635,6 +2690,21 @@
     ]
   },
   {
+    "file": "apps/web/src/ifcGebaeudedrehung.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "misst die Drehung in Grad, Vorzeichen nach atan2(z,x), und lässt die Mengen unberührt",
+        "modifier": null
+      },
+      {
+        "name": "zählt die Tragschale hinter der WDVS-Haut nicht noch einmal zur Fassade",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/src/ifcGelaendebezug.test.ts",
     "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
@@ -2700,6 +2770,29 @@
     ]
   },
   {
+    "file": "apps/web/src/ifcHuellennah.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "nimmt die Schicht auf der Außenwand und lässt die Badewanne im Raum weg",
+        "modifier": null
+      },
+      {
+        "name": "schlägt eine Sonstiges-Gruppe unter der Hüllen-Schwelle auch geschaltet nicht der Fassade zu",
+        "modifier": null
+      },
+      {
+        "name": "nimmt das unterirdische Bauteil einer geschalteten Gruppe nicht mit in die Fassade",
+        "modifier": null
+      },
+      {
+        "name": "schaltet sich ab, wo das Modell keine Kontur hergibt",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/src/ifcKlickModus.test.ts",
     "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
@@ -2746,6 +2839,33 @@
       },
       {
         "name": "nimmt ohne Strahl das angeklickte Bauteil",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcMitmessen.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "das Einschalten korrigiert die Hauptfläche um die bezifferte Differenz, das Ausschalten stellt sie exakt wieder her",
+        "modifier": null
+      },
+      {
+        "name": "misst die Vorhangfassade als brachliegende Fläche und schlägt genau sie beim Mitmessen zu",
+        "modifier": null
+      },
+      {
+        "name": "trägt zwei gleichzeitig geschaltete Teilbereiche additiv",
+        "modifier": null
+      },
+      {
+        "name": "hebt die Ecken-Laufmeter erst, wenn die Bekleidung mitgemessen wird",
+        "modifier": null
+      },
+      {
+        "name": "misst auch das Geländer als brachliegende Fläche",
         "modifier": null
       }
     ]
@@ -2824,6 +2944,17 @@
     ]
   },
   {
+    "file": "apps/web/src/ifcOrakelTraegt.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "lässt sich von vielen unmessbaren Teilbereichen nicht kippen",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/src/ifcSonstigesMessen.test.ts",
     "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
@@ -2869,6 +3000,17 @@
       },
       {
         "name": "misst die Stütze in der Fassadenebene",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcVerdeckteSchicht.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "meldet die Schicht hinter der Haut als verdeckt und zählt sie nicht mit",
         "modifier": null
       }
     ]
@@ -3079,6 +3221,10 @@
         "modifier": null
       },
       {
+        "name": "lässt die verdeckte Rückseite verdeckt, solange die Schicht davor zählt",
+        "modifier": null
+      },
+      {
         "name": "schaltet eine Fläche ein, die das Orakel verworfen hatte",
         "modifier": null
       },
@@ -3100,6 +3246,10 @@
       },
       {
         "name": "weiß, ob eine Fläche gerade zählt — daran hängt, wohin der Klick schaltet",
+        "modifier": null
+      },
+      {
+        "name": "nimmt eine Fläche ohne Messung als ungezählt — die verbaute Wand (#369)",
         "modifier": null
       },
       {
@@ -3151,6 +3301,14 @@
         "modifier": null
       },
       {
+        "name": "bleibt über vier Klicks im Wechsel — nichts hängt fest",
+        "modifier": null
+      },
+      {
+        "name": "kehrt auch dort um, wo der Klick die Farbe NICHT bewegt",
+        "modifier": null
+      },
+      {
         "name": "lässt keinen Eintrag stehen, der nichts korrigiert — sonst stünde er im Aufmaßblatt",
         "modifier": null
       },
@@ -3164,6 +3322,102 @@
       },
       {
         "name": "nennt die Hand-Fläche einer Gruppe — 0 heißt: kein Klick kann hier etwas bewirken",
+        "modifier": null
+      },
+      {
+        "name": "gilt als ungezählt — die Register der SZENE sagen 0, nicht das fehlende Bauteil-Register",
+        "modifier": null
+      },
+      {
+        "name": "nimmt der Klick in die Menge, obwohl die Variante sie voll misst",
+        "modifier": null
+      },
+      {
+        "name": "und der Eintrag wirkt: die Wand trägt danach ihre Fläche bei",
+        "modifier": null
+      },
+      {
+        "name": "legt drei Flächen vorn an und eine hinten — der Rücksprung ist der Regelfall",
+        "modifier": null
+      },
+      {
+        "name": "zielt dorthin, wo die FARBE steht — nicht dorthin, wo irgendein Dreieck beiträgt",
+        "modifier": null
+      },
+      {
+        "name": "wiegt den Messstand je Fläche, nicht den der getroffenen",
+        "modifier": null
+      },
+      {
+        "name": "überspringt eine Fläche ohne Hand-Fläche, statt an ihr zu scheitern",
+        "modifier": null
+      },
+      {
+        "name": "bleibt bei der getroffenen Seite: ein Klick hinten lässt vorn in Ruhe",
+        "modifier": null
+      },
+      {
+        "name": "meldet, wenn die ganze Seite nichts beitragen kann",
+        "modifier": null
+      },
+      {
+        "name": "meldet die Unterseite, die keine Fläche bildet",
+        "modifier": null
+      },
+      {
+        "name": "kehrt einen bestehenden Eintrag der SEITE um, nicht nur den der getroffenen Fläche",
+        "modifier": null
+      },
+      {
+        "name": "hängt nicht an einem Eintrag fest, den der Klick gar nicht überschreibt",
+        "modifier": null
+      },
+      {
+        "name": "hängt die Klickrichtung nicht an die Reihenfolge uneiniger Alt-Einträge",
+        "modifier": null
+      },
+      {
+        "name": "wirft eine Rücknahme nicht weg, nur weil sie `null` heißt",
+        "modifier": null
+      },
+      {
+        "name": "meldet den Sprung von anteilig auf voll — nur für die getroffene Fläche",
+        "modifier": null
+      },
+      {
+        "name": "zielt dorthin, wo die Farbe steht — nicht dorthin, wo irgendein Dreieck beiträgt",
+        "modifier": null
+      },
+      {
+        "name": "liest eine verdeckt-helle Fläche als zählend — wie die Ansicht sie zeichnet",
+        "modifier": null
+      },
+      {
+        "name": "übersetzt zwischen Bauteil- und Szenen-Zählung — auch wenn ein fremdes Bauteil davor liegt",
+        "modifier": null
+      },
+      {
+        "name": "bleibt umkehrbar, auch wenn ein Klick die Farbe gar nicht bewegt",
+        "modifier": null
+      },
+      {
+        "name": "sagt, WARUM ein Klick nichts bewirkt — auch wenn die getroffene Fläche selbst nichts sagt",
+        "modifier": null
+      },
+      {
+        "name": "kippt einen Alt-Eintrag der NACHBARFLÄCHE nicht um",
+        "modifier": null
+      },
+      {
+        "name": "urteilt an jeder Fläche gleich wie die Ansicht — nicht gemessen, sondern gebaut",
+        "modifier": null
+      },
+      {
+        "name": "hält eine Fläche ohne Beitrags-Register für ungezählt — die Vorschau ist keine Menge",
+        "modifier": null
+      },
+      {
+        "name": "und die Ansicht zeichnet dieselbe Fläche dunkelrot",
         "modifier": null
       }
     ]
@@ -3322,6 +3576,22 @@
       },
       {
         "name": "liefert eine leere Geometrie, wenn nichts zugeordnet ist",
+        "modifier": null
+      },
+      {
+        "name": "lässt ohne Filter Mesh und Kanten ungefiltert durch — `undefined` heißt „nicht filtern\"",
+        "modifier": null
+      },
+      {
+        "name": "leert bei leerer Menge Mesh UND Kanten — leer heißt „nichts zeigen\", für beide",
+        "modifier": null
+      },
+      {
+        "name": "filtert Mesh und Kanten auf dieselben Bauteile",
+        "modifier": null
+      },
+      {
+        "name": "kommt ohne vorberechnete Kanten aus",
         "modifier": null
       }
     ]
@@ -3606,6 +3876,10 @@
     "kind": "unit (Vitest, Web)",
     "tests": [
       {
+        "name": "zeigt je Ansicht die Seite, die die Tabelle ihr zuordnet — auch am Gleichstand",
+        "modifier": null
+      },
+      {
         "name": "hängt an Modellmaß, Nordrichtung und Gebäudedrehung — an nichts sonst",
         "modifier": null
       },
@@ -3744,6 +4018,96 @@
     ]
   },
   {
+    "file": "apps/web/src/ifcViewer/gezaehltJeFlaeche.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "wiegt die FLÄCHE, nicht die Dreiecke: zwei große schlagen zwei kleine",
+        "modifier": null
+      },
+      {
+        "name": "und umgekehrt: drei kleine schlagen das große nicht",
+        "modifier": null
+      },
+      {
+        "name": "gibt den Gleichstand an die NICHT-Menge — strikt wie die Verdeckungsmaske (#449)",
+        "modifier": null
+      },
+      {
+        "name": "pinnt die Schwelle knapp unter der Hälfte",
+        "modifier": null
+      },
+      {
+        "name": "nimmt eine verdeckte Schicht als zählend an — wie die Einzelregel",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Ansicht ohne Beitrags-Register unangetastet",
+        "modifier": null
+      },
+      {
+        "name": "trennt Bauteile — und übersetzt dabei die Dreiecksnummer",
+        "modifier": null
+      },
+      {
+        "name": "übersetzt die Gruppennummer auf das Dreieck der Szene",
+        "modifier": null
+      },
+      {
+        "name": "hält Flächen und Gruppen in DERSELBEN Reihenfolge",
+        "modifier": null
+      },
+      {
+        "name": "entscheidet je EBENE, nicht je Bauteil",
+        "modifier": null
+      },
+      {
+        "name": "lässt ein Bauteil unverändert, dessen Flächen schon einig sind",
+        "modifier": null
+      },
+      {
+        "name": "rechnet dieselbe Geometrie nur einmal, wenn ein Schlüssel mitkommt",
+        "modifier": null
+      },
+      {
+        "name": "rechnet neu, wenn derselbe Schlüssel einen anderen Bauteilschnitt trägt",
+        "modifier": null
+      },
+      {
+        "name": "puffert ohne Schlüssel nicht",
+        "modifier": null
+      },
+      {
+        "name": "bewertet eine Fläche ohne Flächengruppe weiter je Dreieck",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcViewer/giltAlsGezaehlt.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "gezählt: Beitrag > 0",
+        "modifier": null
+      },
+      {
+        "name": "verdeckt: Beitrag 0, aber hinter einer gezählten Schicht",
+        "modifier": null
+      },
+      {
+        "name": "ungezählt: Beitrag 0 und sichtbar",
+        "modifier": null
+      },
+      {
+        "name": "ohne Verdeckt-Register zählt der Beitrag allein",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/src/ifcViewer/ifcViewerKerne.test.ts",
     "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
@@ -3766,6 +4130,18 @@
       },
       {
         "name": "nimmt die Handwahl an der GlobalId mit",
+        "modifier": null
+      },
+      {
+        "name": "hält mitgemessene Bauteile aus cls.facade heraus und führt statt dessen die LeafKeys",
+        "modifier": null
+      },
+      {
+        "name": "nimmt mitgemessene Bauteile aus JEDER Kategorie heraus, nicht nur aus der Fassade",
+        "modifier": null
+      },
+      {
+        "name": "schreibt mitgemessen nicht, wenn nichts geschaltet ist",
         "modifier": null
       },
       {
@@ -3798,6 +4174,45 @@
       },
       {
         "name": "erkennt einen Schlüssel, den nur eine Seite kennt — in beide Richtungen",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcViewer/szenenProps.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "filtert ohne Inventar nicht — `undefined` heißt „nicht filtern\"",
+        "modifier": null
+      },
+      {
+        "name": "zeigt genau das Angehakte, ohne die Menge zu kopieren",
+        "modifier": null
+      },
+      {
+        "name": "räumt die Szene, wenn nichts angehakt ist — leer heißt „nichts zeigen\"",
+        "modifier": null
+      },
+      {
+        "name": "reicht keine Fassadenhervorhebung durch — die Vorschau kennt keine Zuordnung",
+        "modifier": null
+      },
+      {
+        "name": "hebt die Auswahl hervor und filtert nicht",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Laibungs-/Sturz-Auswahl das Bild allein führen",
+        "modifier": null
+      },
+      {
+        "name": "legt auf Leertaste frei — und auf den festgestellten Haken genauso",
+        "modifier": null
+      },
+      {
+        "name": "leert die Szene bei Leertaste ohne Zuordnung (#363 AK 3)",
         "modifier": null
       }
     ]
@@ -4883,6 +5298,37 @@
     ]
   },
   {
+    "file": "packages/core/test/flaechenDerWandseite.test.ts",
+    "category": "Core Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "legt zwei Ebenen an: derselbe Blick, verschiedene Tiefe",
+        "modifier": null
+      },
+      {
+        "name": "nimmt beide Ebenen einer Wandseite, auch die zurückgesetzte",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Rückseite aus — sonst schaltete ein Klick auf die Fassade die Innenseite mit",
+        "modifier": null
+      },
+      {
+        "name": "trennt nach der VOLLEN Normale, nicht nur nach der Grundriss-Richtung",
+        "modifier": null
+      },
+      {
+        "name": "nimmt von der Rückseite aus auch nur die Rückseite",
+        "modifier": null
+      },
+      {
+        "name": "liefert die getroffene Fläche selbst, wenn die Seite nur aus ihr besteht",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "packages/core/test/flaechenGruppen.test.ts",
     "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
@@ -4937,6 +5383,30 @@
       },
       {
         "name": "unterscheidet aber zwei verschiedene Ebenen derselben Richtung (Schichten einer Wand)",
+        "modifier": null
+      },
+      {
+        "name": "wiegt die FLÄCHE, nicht die Anzahl der Dreiecke",
+        "modifier": null
+      },
+      {
+        "name": "gibt den Gleichstand an die NICHT-Menge — strikt wie die Verdeckungsmaske",
+        "modifier": null
+      },
+      {
+        "name": "zählt nichts, wenn nichts trägt — und alles, wenn alles trägt",
+        "modifier": null
+      },
+      {
+        "name": "gibt eine Fläche ohne Ausdehnung an die NICHT-Menge",
+        "modifier": null
+      },
+      {
+        "name": "misst dieselbe Größe, die die Gruppierung selbst wiegt",
+        "modifier": null
+      },
+      {
+        "name": "gibt einem entarteten Dreieck die Fläche 0",
         "modifier": null
       }
     ]
@@ -5496,11 +5966,43 @@
     "kind": "unit (Vitest, Core)",
     "tests": [
       {
-        "name": "bildet die Achsenrichtungen ab (x=Ost, z=Nord)",
+        "name": "lässt ein achsparalleles Gebäude unverändert — Sektoren und Grenzen liegen fest",
         "modifier": null
       },
       {
-        "name": "berücksichtigt die Nordrichtung",
+        "name": "legt die Sektormitten auf die Gebäudeseiten −Drehung + k·90 (Passau, 23°)",
+        "modifier": null
+      },
+      {
+        "name": "hält jede Seite eines um 45° gedrehten Gebäudes zusammen",
+        "modifier": null
+      },
+      {
+        "name": "hält koplanare Wände derselben Seite zusammen, auch wenn sie um die Grenze streuen",
+        "modifier": null
+      },
+      {
+        "name": "eine Drehung um 90° ist bei Vierfachsymmetrie keine — die Nordrichtung bleibt maßgeblich",
+        "modifier": null
+      },
+      {
+        "name": "hält die Seiten auch bei gesetzter Nordrichtung zusammen — die Invariante der ADR",
+        "modifier": null
+      },
+      {
+        "name": "gibt jeder umsortierten Wand die ihr NÄCHSTE Gebäudeseite",
+        "modifier": null
+      },
+      {
+        "name": "liegt nie mehr als 45° neben der Normale — die Gebäudeachse dagegen schon",
+        "modifier": null
+      },
+      {
+        "name": "liefert je Ansicht die Gebäudeseite, die compassFromAngle ihr zuordnet",
+        "modifier": null
+      },
+      {
+        "name": "steht bei einem achsparallelen, genordeten Gebäude auf den Achsen",
         "modifier": null
       },
       {
@@ -5601,6 +6103,42 @@
       },
       {
         "name": "deckungsgleiche Dreiecke zählen einmal (CSG-Triangulierung, #328)",
+        "modifier": null
+      },
+      {
+        "name": "meldet die Schicht hinter der gezählten als verdeckt, nicht als ungezählt",
+        "modifier": null
+      },
+      {
+        "name": "ein Duplikat erbt den Stand seines Gegenstücks (#328)",
+        "modifier": null
+      },
+      {
+        "name": "eine einschichtige Wand hat nichts Verdecktes",
+        "modifier": null
+      },
+      {
+        "name": "verdeckt entscheidet die Maske, nicht das Orakel-Urteil der hinteren Schicht (KERN-2)",
+        "modifier": null
+      },
+      {
+        "name": "hinter einer sichtbar ungezählten Fläche gilt nichts als verdeckt",
+        "modifier": null
+      },
+      {
+        "name": "eine vom Orakel verworfene Fläche ohne Schicht davor bleibt ungezählt, nicht verdeckt",
+        "modifier": null
+      },
+      {
+        "name": "die gemeinsame Fläche zweier Körper ist kein Duplikat — die Außen-Kopie wird selbst maskiert (SPEC-1)",
+        "modifier": null
+      },
+      {
+        "name": "bei gemischter Überdeckung entscheidet die Mehrheit der Zellen, nicht die größte Fläche (SPEC-3)",
+        "modifier": null
+      },
+      {
+        "name": "ein Duplikat einer verdeckten Schicht erbt auch das Verdeckt-Sein",
         "modifier": null
       },
       {
@@ -5725,6 +6263,26 @@
       },
       {
         "name": "lässt Dreiecke ohne Messung bei null",
+        "modifier": null
+      },
+      {
+        "name": "rechnet das Register je Bauteil auf die Gesamtgeometrie zurück, wie beitragJeDreieck",
+        "modifier": null
+      },
+      {
+        "name": "trägt, wenn die Wände tragen — auch wenn viele unmessbare Teilbereiche die Gesamtquote drücken",
+        "modifier": null
+      },
+      {
+        "name": "trägt, wenn das Modell insgesamt trägt — auch wenn die Wandquote durch die eigene Haut fällt",
+        "modifier": null
+      },
+      {
+        "name": "trägt nicht, wenn beide Grundmengen unter der Schwelle liegen",
+        "modifier": null
+      },
+      {
+        "name": "trägt, wo nichts zu fragen ist",
         "modifier": null
       }
     ]
@@ -6023,6 +6581,14 @@
       },
       {
         "name": "klassifiziert Fassaden-Teilbereiche korrekt (TEST-1)",
+        "modifier": null
+      },
+      {
+        "name": "leitet sich aus Teilbereich minus Wandmessung ab, für jedes Leaf",
+        "modifier": null
+      },
+      {
+        "name": "nur die Fassadenhäute können mitgemessen werden",
         "modifier": null
       },
       {
@@ -7402,6 +7968,98 @@
       },
       {
         "name": "überspringt leere Gruppen",
+        "modifier": null
+      },
+      {
+        "name": "erzeugt für eine flächenlose, nicht zugeordnete Sonstiges-Gruppe keine Zeile",
+        "modifier": null
+      },
+      {
+        "name": "behält die Zeile eines festen Leafs ohne Fläche",
+        "modifier": null
+      },
+      {
+        "name": "meldet Teilbereiche ohne Schalter als nicht mitgemessen",
+        "modifier": null
+      },
+      {
+        "name": "markiert ein mitgemessenes Leaf und lässt andere unberührt",
+        "modifier": null
+      },
+      {
+        "name": "führt in der gezählten Zeile nur, was auch in der Fassade steht",
+        "modifier": null
+      },
+      {
+        "name": "behauptet nie mehr Fläche, als die Kennzahl trägt",
+        "modifier": null
+      },
+      {
+        "name": "ignoriert eine gespeicherte Entscheidung an einem nicht mitmessbaren Leaf",
+        "modifier": null
+      },
+      {
+        "name": "behält die Zeilen-id beim Einschalten von mitmessen",
+        "modifier": null
+      },
+      {
+        "name": "nimmt eine Sonstiges-Gruppe nur auf, wenn sie ÜBERWIEGEND auf der Hülle liegt",
+        "modifier": null
+      },
+      {
+        "name": "verwirft eine von Hand zugeordnete Sonstiges-Gruppe auch fern der Kontur nicht",
+        "modifier": null
+      },
+      {
+        "name": "wendet den Ortstest nicht auf feste Leaves an",
+        "modifier": null
+      },
+      {
+        "name": "führt Balkonböden gar nicht erst als Teilbereich",
+        "modifier": null
+      },
+      {
+        "name": "nimmt ein fehlendes Feld als „nichts geschaltet\"",
+        "modifier": null
+      },
+      {
+        "name": "schaltet idempotent ein und aus",
+        "modifier": null
+      },
+      {
+        "name": "lässt die übrigen Teilbereiche unberührt",
+        "modifier": null
+      },
+      {
+        "name": "liefert eine stabile Reihenfolge",
+        "modifier": null
+      },
+      {
+        "name": "nennt nur die geschalteten Teilbereiche",
+        "modifier": null
+      },
+      {
+        "name": "nennt denselben Namen nur einmal",
+        "modifier": null
+      },
+      {
+        "name": "nennt eine geschaltete Gruppe auch, wenn keine Zeile sie zählt",
+        "modifier": null
+      },
+      {
+        "name": "schweigt über eine geschaltete Gruppe, die nicht mitmessbar ist",
+        "modifier": null
+      },
+      {
+        "name": "benennt die Richtung, nicht nur die Tatsache",
+        "modifier": null
+      },
+      {
+        "name": "folgt der gewählten Sprache",
+        "modifier": null
+      },
+      {
+        "name": "schweigt, wenn nichts geschaltet ist",
         "modifier": null
       }
     ]
