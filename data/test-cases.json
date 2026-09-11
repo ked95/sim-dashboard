@@ -428,6 +428,10 @@
         "modifier": null
       },
       {
+        "name": "PUT /projects/:id/ifc streift den Modellbezug der Anschlusspunkte ab, behält aber die Punkte",
+        "modifier": null
+      },
+      {
         "name": "PUT /projects/:id/ifc speichert den Modellstand mit",
         "modifier": null
       },
@@ -789,6 +793,14 @@
       },
       {
         "name": "erbt den Ordner der Quelle",
+        "modifier": null
+      },
+      {
+        "name": "speichert einen Schlüssel mit Unit- und Record-Separator",
+        "modifier": null
+      },
+      {
+        "name": "NUL dagegen bringt die Datenbank zu Fall — deshalb darf der Kern es nicht erzeugen",
         "modifier": null
       }
     ]
@@ -1431,6 +1443,17 @@
     ]
   },
   {
+    "file": "apps/web/e2e/konstruktionsdetails.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Detailheft: IFC → Anschlusspunkte → Zuweisung → PDF + LV-Anhang",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/e2e/kopieren.spec.ts",
     "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
@@ -1540,6 +1563,17 @@
     ]
   },
   {
+    "file": "apps/web/e2e/mengen-deeplink.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Mengen per Adresse geöffnet: das Modell lädt in die Ansicht hinein, ohne ErrorBoundary",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/e2e/mitmessen-teilbereich.spec.ts",
     "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
@@ -1569,6 +1603,61 @@
       },
       {
         "name": "Rehydrierung trägt einen fehlenden Modellstand ins Dokument nach",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/oberflaechen-bereiche.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Oberflächen werden vorgeschlagen, nach Zustimmung zu Bereichen — bis GAEB und PDF (#346)",
+        "modifier": null
+      },
+      {
+        "name": "IFC4-Konstituenten (ArchiCAD-Form) tragen dieselbe Gruppierung (#346 AK 2)",
+        "modifier": null
+      },
+      {
+        "name": "AIA-Typnamen trennen EPS und MW unter demselben Putz (#346 AK 3)",
+        "modifier": null
+      },
+      {
+        "name": "Material am Wandtyp statt am Element trägt genauso (#346, Stutensee-Fall)",
+        "modifier": null
+      },
+      {
+        "name": "Zusammenlegen ist umkehrbar — auch bis auf eine Gruppe herunter (#346)",
+        "modifier": null
+      },
+      {
+        "name": "Der Dialog merkt sich die Bearbeitung über das Schließen hinweg (#346)",
+        "modifier": null
+      },
+      {
+        "name": "Eine angenommene Aufteilung lässt sich weiter bearbeiten (#346)",
+        "modifier": null
+      },
+      {
+        "name": "Im Bearbeiten-Dialog nimmt „alles in eine Gruppe\" die Aufteilung zurück (#346)",
+        "modifier": null
+      },
+      {
+        "name": "Die Kalkulation zeigt die Bereiche, nicht eine Sammelzeile „Fassade\" (#346)",
+        "modifier": null
+      },
+      {
+        "name": "Ein Bereich ohne System wird als Bedarfsposition übernommen — bis GAEB und PDF",
+        "modifier": null
+      },
+      {
+        "name": "Die Bedarfsposition ohne System lässt sich zurücknehmen und durch ein System ersetzen",
+        "modifier": null
+      },
+      {
+        "name": "Vereinheitlichen nimmt eine Bedarfsposition ohne System mit",
         "modifier": null
       }
     ]
@@ -1733,6 +1822,10 @@
     "tests": [
       {
         "name": "Adresse: Deep-Link, Reload und Zurück führen durch die Ansichten",
+        "modifier": null
+      },
+      {
+        "name": "Adresse: ein Projekt mit hochgeladenem Modell öffnet bei den Mengen",
         "modifier": null
       },
       {
@@ -2324,6 +2417,85 @@
     ]
   },
   {
+    "file": "apps/web/src/bandGeometrie.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "Geschossfuge: nur die echte Unter-/Oberkante bekommt ein Band, nicht jede Etage",
+        "modifier": null
+      },
+      {
+        "name": "Balkon-Brüstung mittig auf der Fassade bekommt kein Band (zu wenig Fläche an ihrem Level)",
+        "modifier": null
+      },
+      {
+        "name": "zwei Flügel unterschiedlicher Höhe: beide behalten ihr Traufband",
+        "modifier": null
+      },
+      {
+        "name": "Kellerschacht zieht das Sockelband nicht in den Untergrund",
+        "modifier": null
+      },
+      {
+        "name": "zurückspringendes Geschoss an einem hohen Haus bekommt kein zweites Sockelband",
+        "modifier": null
+      },
+      {
+        "name": "Dachaufbau bekommt kein Sockelband — der Sockel liegt immer unten am Gebäude",
+        "modifier": null
+      },
+      {
+        "name": "Dachplatte knapp über der Wandkrone nimmt der Wand das Traufband nicht",
+        "modifier": null
+      },
+      {
+        "name": "bleibt nur waagerechte Geometrie an der Kante übrig, ist das Band leer (Marker-Fall)",
+        "modifier": null
+      },
+      {
+        "name": "dickeM macht die Banddicke einheitlich, unabhängig von der Elementhöhe",
+        "modifier": null
+      },
+      {
+        "name": "ohne gruppenkante bleibt der element-relative Streifen je Fenster (Fensterbank)",
+        "modifier": null
+      },
+      {
+        "name": "geclippte Dreiecke bleiben vollständig im Streifen",
+        "modifier": null
+      },
+      {
+        "name": "mit Normalen sitzt das Band ein Stück VOR der Fläche statt in ihr (kein Z-Fighting)",
+        "modifier": null
+      },
+      {
+        "name": "leere Menge und fremde ids liefern leere Dreieckslisten",
+        "modifier": null
+      },
+      {
+        "name": "ein einzelnes Element ist immer seine eigene Gruppenkante",
+        "modifier": null
+      },
+      {
+        "name": "die Bodenwand trägt den Sockel, die Kronenwand die Traufe, die mittlere keinen von beiden",
+        "modifier": null
+      },
+      {
+        "name": "ohne gruppenkante trägt jedes Element (Fensterbank: jedes Fenster ist Klickziel)",
+        "modifier": null
+      },
+      {
+        "name": "leere Menge liefert keine Klickziele",
+        "modifier": null
+      },
+      {
+        "name": "leere Öffnungs- oder Wandmengen liefern eine leere Liste",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/src/bauteillisteExport.test.ts",
     "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
@@ -2425,6 +2597,179 @@
       },
       {
         "name": "selectGroup wählt alle Zeilen einer Kategorie",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/detailheftExport.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "Deckblatt + Übersicht + alle Seiten der eingebundenen Sto-PDF",
+        "modifier": null
+      },
+      {
+        "name": "Stückzahl in der Übersicht und als Seitenstempel auf dem Blatt",
+        "modifier": null
+      },
+      {
+        "name": "Deckblatt trägt die Projektdaten, die Übersicht bricht lange Zeilen um",
+        "modifier": null
+      },
+      {
+        "name": "detailheftInfos lässt leere Stammdaten weg",
+        "modifier": null
+      },
+      {
+        "name": "Anhängen ans LV: Seiten laufen durch, Anhang wird in der Gesamtzählung nummeriert (#104)",
+        "modifier": null
+      },
+      {
+        "name": "die Anhang-Fußzeile bleibt auch bei versetzter MediaBox auf dem Blatt",
+        "modifier": null
+      },
+      {
+        "name": "leeres Heft (Anstrich-Kontext): nur das Deckblatt mit Hinweis",
+        "modifier": null
+      },
+      {
+        "name": "ein Wort breiter als die Zeile läuft auf Folgeseiten statt über den Blattrand",
+        "modifier": null
+      },
+      {
+        "name": "der Rahmen folgt der Menüsprache — en",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/detailKatalog.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "keine Katalog-id kollidiert mit dem Sentinel für „bewusst ohne Detail\"",
+        "modifier": null
+      },
+      {
+        "name": "jede datei-Referenz zeigt auf eine vorhandene PDF unter public/",
+        "modifier": null
+      },
+      {
+        "name": "jede Serie der Details ist in serienKontext eingeordnet",
+        "modifier": null
+      },
+      {
+        "name": "jede Serie trägt ihre Merkmale (Oberfläche, Bestand)",
+        "modifier": null
+      },
+      {
+        "name": "Klinkerfassade: Laibung/Sturz nur RC, die Fensterbank fällt mit Grund auf Standard",
+        "modifier": null
+      },
+      {
+        "name": "Putzfassade: die Aufdopplung erscheint erst mit Bestand „bestehendes WDVS\"",
+        "modifier": null
+      },
+      {
+        "name": "alle 21 Details des 02xx-Bereichs sind genau einem der fünf Typen zugeordnet",
+        "modifier": null
+      },
+      {
+        "name": "alle MVP-Anschlusstypen starten offen und finden ihre Pools (#102)",
+        "modifier": null
+      },
+      {
+        "name": "eine Zuweisung macht den Sockel-Slot zur Seite mit Sto-Code",
+        "modifier": null
+      },
+      {
+        "name": "kein Katalogblatt ist rotiert — sonst stimmt die Fußzeilen-Geometrie nicht mehr",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/detailMarkierung.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "legt Sockel und Traufe als Band an dieselben Bauteile, nur an andere Kanten",
+        "modifier": null
+      },
+      {
+        "name": "nimmt klassifizierte Sockel- und Dachbauteile mit auf",
+        "modifier": null
+      },
+      {
+        "name": "trennt am Fenster die Leibung (Reveal) von der Fensterbank (Unterkante)",
+        "modifier": null
+      },
+      {
+        "name": "gibt den Ecken kein Bauteil, sondern ein Overlay — je Drehrichtung ihres",
+        "modifier": null
+      },
+      {
+        "name": "kennt keinen Slot außerhalb des Katalogs",
+        "modifier": null
+      },
+      {
+        "name": "färbt Balkonplatten flächig ein",
+        "modifier": null
+      },
+      {
+        "name": "Rollladen und Systemaufbau haben bewusst keine Markierung",
+        "modifier": null
+      },
+      {
+        "name": "die drei platzierten Typen sind markierbar und verlassen das Banner",
+        "modifier": null
+      },
+      {
+        "name": "der Rollladen steht nicht im Banner — der Fenster-Dialog öffnet ihn mit",
+        "modifier": null
+      },
+      {
+        "name": "der Systemaufbau bleibt ausgewiesen — kein Slot seines Typs ist markierbar",
+        "modifier": null
+      },
+      {
+        "name": "nennt alle Slots eines Typs, den das Modell nicht zeigen kann",
+        "modifier": null
+      },
+      {
+        "name": "sammelt alle lebenden Punkte eines Typs",
+        "modifier": null
+      },
+      {
+        "name": "lässt entfernte Punkte weg",
+        "modifier": null
+      },
+      {
+        "name": "ist ohne Zuweisung falsch — der unberührte Slot ist eine Lücke, keine Wahl",
+        "modifier": null
+      },
+      {
+        "name": "ist mit einer Zuweisung aus dem Pool wahr",
+        "modifier": null
+      },
+      {
+        "name": "ist bei „bewusst ohne Detail\" wahr, obwohl der Wert in keinem Pool steht",
+        "modifier": null
+      },
+      {
+        "name": "ist bei einer pool-fremden Zuweisung falsch",
+        "modifier": null
+      },
+      {
+        "name": "wird erst grün, wenn jeder Punkt des Typs entschieden ist",
+        "modifier": null
+      },
+      {
+        "name": "ist ohne Punkte falsch, nicht wahr",
         "modifier": null
       }
     ]
@@ -2670,6 +3015,29 @@
     "tests": [
       {
         "name": "überlässt das freistehende Mäuerchen dem Zentrums-Test — ein Marschschritt ist kein Nachweis",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcEinheiten.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "rechnet die Öffnungs-Attribute in Meter um, statt sie als unplausibel zu verwerfen",
+        "modifier": null
+      },
+      {
+        "name": "löst auch Fuß auf (IfcConversionBasedUnit), nicht nur SI-Präfixe",
+        "modifier": null
+      },
+      {
+        "name": "nimmt die Flächeneinheit aus der Zuweisung, nicht aus der Länge",
+        "modifier": null
+      },
+      {
+        "name": "meldet fehlende Öffnungsmaße weiterhin — der Guard stellt die Prüfung nicht still",
         "modifier": null
       }
     ]
@@ -3000,6 +3368,17 @@
       },
       {
         "name": "misst die Stütze in der Fassadenebene",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcTypname.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "liest den Typnamen und trennt damit EPS von MW (#346 AK 3)",
         "modifier": null
       }
     ]
@@ -3472,6 +3851,22 @@
         "modifier": null
       },
       {
+        "name": "mit hochgeladenem Modell geht das Projekt bei den Mengen auf",
+        "modifier": null
+      },
+      {
+        "name": "ohne hochgeladenes Modell beim Import",
+        "modifier": null
+      },
+      {
+        "name": "im gezeichneten Pfad fällt der Einstieg auf dessen erste Unterseite zurück",
+        "modifier": null
+      },
+      {
+        "name": "die Einstiegs-Vorgabe greift nicht in andere Sektionen",
+        "modifier": null
+      },
+      {
         "name": "unbekannte Segmente führen auf den Einstieg",
         "modifier": null
       },
@@ -3620,6 +4015,10 @@
     "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
     "tests": [
+      {
+        "name": "extraSeiten erhöht das „von N\" der Fußzeile, damit der Detailheft-Anhang mitzählt",
+        "modifier": null
+      },
       {
         "name": "führt den Modellstand umgebrochen und innerhalb des Satzspiegels",
         "modifier": null
@@ -4218,6 +4617,53 @@
     ]
   },
   {
+    "file": "packages/core/test/anschlusspunkte.test.ts",
+    "category": "Core Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "schlägt aus dem vollen Befund alle Anschlusstypen in Bau-Reihenfolge vor",
+        "modifier": null
+      },
+      {
+        "name": "nicht vorhandene Kategorien werden nicht vorgeschlagen",
+        "modifier": null
+      },
+      {
+        "name": "ohne Balkonplatten im Modell entsteht kein Balkon-Anschlusspunkt",
+        "modifier": null
+      },
+      {
+        "name": "ohne konkave Grundriss-Ecken entsteht kein Innenecken-Anschlusspunkt",
+        "modifier": null
+      },
+      {
+        "name": "Sockel und Traufe folgen der Fassadenfläche, nicht klassifizierten Bauteilen",
+        "modifier": null
+      },
+      {
+        "name": "ohne Fassadenfläche gibt es keinen Fuß und keinen Abschluss zu bekleiden",
+        "modifier": null
+      },
+      {
+        "name": "ein entfernter Vorschlag bleibt entfernt (Tombstone statt Wiederauferstehung)",
+        "modifier": null
+      },
+      {
+        "name": "ein Tombstone überlebt einen Befund ohne seinen Typ und wirkt danach weiter",
+        "modifier": null
+      },
+      {
+        "name": "manuell ergänzte Anschlusspunkte überleben die Ableitung",
+        "modifier": null
+      },
+      {
+        "name": "die Anzahl der Vorschläge folgt dem neuen Befund, nicht dem alten Stand",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "packages/core/test/anwendungskontext.test.ts",
     "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
@@ -4351,6 +4797,38 @@
       },
       {
         "name": "bleibt aus, wenn nichts aufzuschlagen ist — der Regelfall des IFC-Pfads",
+        "modifier": null
+      },
+      {
+        "name": "weist je Bereich genau seine Bauteile nach — und trifft dessen LV-Menge",
+        "modifier": null
+      },
+      {
+        "name": "verweist nicht quer: gleiche Menge in zwei Gruppen bleiben zwei Nachweise",
+        "modifier": null
+      },
+      {
+        "name": "behauptet in einer Gruppe keine Abweichung für Größen, die je Gebäude gemessen sind",
+        "modifier": null
+      },
+      {
+        "name": "findet den Bereich auch im verdichteten LV — Nachweis und Farbe je Gruppe",
+        "modifier": null
+      },
+      {
+        "name": "behauptet unter VOB beim Leitbereich keine Abweichung",
+        "modifier": null
+      },
+      {
+        "name": "ohne Aufteilung bleibt der Fassaden-Nachweis unverändert",
+        "modifier": null
+      },
+      {
+        "name": "gibt jeder Gruppe im Beleg ihre Bereichsfarbe",
+        "modifier": null
+      },
+      {
+        "name": "ohne Aufteilung bleibt die Farbe die der Kennzahl",
         "modifier": null
       }
     ]
@@ -4529,6 +5007,14 @@
       },
       {
         "name": "echter katalog: das erste Sto-System konvergiert (kein Divergenz-Aufschlag)",
+        "modifier": null
+      },
+      {
+        "name": "aufgeteilte Fassade: die Kennzahl des Leitbereich-Systems rechnet mit dem Rest, nicht mit allem",
+        "modifier": null
+      },
+      {
+        "name": "aufgeteilte Fassade: die Kennzahl teilt durch die eigene Fläche des Systems",
         "modifier": null
       }
     ]
@@ -4781,6 +5267,102 @@
       {
         "name": "deaktivierte Schicht erscheint nicht",
         "modifier": null
+      },
+      {
+        "name": "benennt die Position mit dem Aufbau aus dem Modell, nicht mit dem Schlüssel",
+        "modifier": null
+      },
+      {
+        "name": "stellt den Bereichsnamen nicht vor die Bezeichnung",
+        "modifier": null
+      },
+      {
+        "name": "steht unter der Gliederung „Bauteil\" im Abschnitt ihres Bereichs",
+        "modifier": null
+      },
+      {
+        "name": "kennt kein System — genau das ist die Aussage",
+        "modifier": null
+      },
+      {
+        "name": "ist eine Bedarfsposition und trägt die Fläche als Menge in m²",
+        "modifier": null
+      },
+      {
+        "name": "bleibt eine MANUELLE Position — nur dort ist der Langtext frei",
+        "modifier": null
+      },
+      {
+        "name": "ist als Position der Zuordnung erkennbar, eine Handposition nicht",
+        "modifier": null
+      },
+      {
+        "name": "nimmt die Übernahme mit, wenn ihr Bereich verschwindet",
+        "modifier": null
+      },
+      {
+        "name": "nimmt die Übernahme mit, sobald der Bereich ein System bekommt",
+        "modifier": null
+      },
+      {
+        "name": "legt dieselbe Übernahme zweimal nicht zweimal an",
+        "modifier": null
+      },
+      {
+        "name": "nimmt die Oberfläche, wo das Material keinen Aufbau trägt",
+        "modifier": null
+      },
+      {
+        "name": "trägt ohne Materialbefund die Vorbelegung, nicht den Bereichsnamen",
+        "modifier": null
+      },
+      {
+        "name": "folgt der Dokumentsprache im Gewerk-Tag, nicht im Materialnamen",
+        "modifier": null
+      },
+      {
+        "name": "gibt jedem Nebenbereich seine gemessene Fläche",
+        "modifier": null
+      },
+      {
+        "name": "die Summe der Bereichsflächen ergibt die Gesamtfläche — kein m² doppelt, keiner verloren",
+        "modifier": null
+      },
+      {
+        "name": "die Eckprofile bleiben genau einmal im LV — beim Leitbereich",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine Pauschale beim Leitbereich, statt sie je Gruppe zu wiederholen",
+        "modifier": null
+      },
+      {
+        "name": "behält eine Komponente, deren Formel die Fläche der Gruppe nennt",
+        "modifier": null
+      },
+      {
+        "name": "jeder Bereich wird zur eigenen LV-Gruppe",
+        "modifier": null
+      },
+      {
+        "name": "eine Nebenfläche größer als das Gemessene lässt den Leitbereich nicht negativ werden",
+        "modifier": null
+      },
+      {
+        "name": "hält die Summe im LV, auch wenn die Gesamtfläche unter die Nebenflächen sinkt",
+        "modifier": null
+      },
+      {
+        "name": "zeigt auf dem Bildschirm dieselbe Fläche, die das LV abrechnet",
+        "modifier": null
+      },
+      {
+        "name": "trägt jede Bereichsmenge bis in die GAEB-Datei (AK 8)",
+        "modifier": null
+      },
+      {
+        "name": "ohne Aufteilung rechnet der Fassaden-Bereich unverändert die ganze Fläche",
+        "modifier": null
       }
     ]
   },
@@ -4918,6 +5500,233 @@
       },
       {
         "name": "belegt beim Wechsel auf detailliert nichts vor",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/detailheft.test.ts",
+    "category": "Core Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "ein unberührter Slot ist offen; die PM-Wahl macht ihn zur Seite",
+        "modifier": null
+      },
+      {
+        "name": "renovierung-anstrich: keine Detailseiten, dafür ein Hinweis",
+        "modifier": null
+      },
+      {
+        "name": "neubau: die Aufdopplung-Serie wird nicht angeboten",
+        "modifier": null
+      },
+      {
+        "name": "renovierung-wdvs: schließt die Aufdopplung-Serie ein",
+        "modifier": null
+      },
+      {
+        "name": "Fenster trägt zwei wählbare Slots: Laibung/Sturz UND Fensterbank",
+        "modifier": null
+      },
+      {
+        "name": "der Rollladen startet ohne Zuweisung als „bewusst ohne\" — weder Seite noch Lücke",
+        "modifier": null
+      },
+      {
+        "name": "eine ausdrückliche Wahl schlägt die Vorbelegung",
+        "modifier": null
+      },
+      {
+        "name": "der Sentinel gilt für JEDEN Slot",
+        "modifier": null
+      },
+      {
+        "name": "ein unbekannter Wert wird zur ausgewiesenen Lücke, der Sentinel nicht",
+        "modifier": null
+      },
+      {
+        "name": "auch der vorbelegte Slot fällt bei unbekanntem Wert in die Lücke",
+        "modifier": null
+      },
+      {
+        "name": "Traufe/Dach läuft über dieselbe Slot-Logik wie der Sockel",
+        "modifier": null
+      },
+      {
+        "name": "Außenecke bleibt ohne Default offen, der Pool steht zur PM-Auswahl bereit",
+        "modifier": null
+      },
+      {
+        "name": "detailPool filtert nach Kontext wie das Heft selbst",
+        "modifier": null
+      },
+      {
+        "name": "die PM-Zuweisung bestimmt das Blatt (#103)",
+        "modifier": null
+      },
+      {
+        "name": "die Außenecke wird durch eine Zuweisung zur Seite statt offen (#103)",
+        "modifier": null
+      },
+      {
+        "name": "eine Zuweisung außerhalb des erlaubten Pools wird zur ausgewiesenen Lücke",
+        "modifier": null
+      },
+      {
+        "name": "ein entfernter Anschlusspunkt liefert weder Seite noch offenen Slot",
+        "modifier": null
+      },
+      {
+        "name": "eine entfernte Außenecke erzeugt keine offene Lücke mehr",
+        "modifier": null
+      },
+      {
+        "name": "Innenecke und die platzierten Typen bleiben ohne Default offen",
+        "modifier": null
+      },
+      {
+        "name": "eine Zuweisung unter dem alten Sammel-Slot lässt die Außenecke offen",
+        "modifier": null
+      },
+      {
+        "name": "Anschlusspunkt ohne passendes Detail im erlaubten Pool bleibt offen",
+        "modifier": null
+      },
+      {
+        "name": "ohne Angaben gilt Putz: nur die Standard-Serie",
+        "modifier": null
+      },
+      {
+        "name": "Belag → Harte Bekleidung",
+        "modifier": null
+      },
+      {
+        "name": "bestehendes WDVS → Aufdopplung; sie schlägt auch den Belag, weil es keine RC-Aufdopplung gibt",
+        "modifier": null
+      },
+      {
+        "name": "führt die passende Serie den Slot nicht, springt der Standard ein — mit Grund",
+        "modifier": null
+      },
+      {
+        "name": "der Sockel folgt der Sockel-Oberfläche, die übrigen Slots der Fassade",
+        "modifier": null
+      },
+      {
+        "name": "der Override zeigt alles, die passende Serie vorn — pool[0] bleibt dasselbe Blatt",
+        "modifier": null
+      },
+      {
+        "name": "der Kontext filtert weiterhin vor der Serie",
+        "modifier": null
+      },
+      {
+        "name": "ein Katalog ohne Merkmale bietet den Pool ungefiltert an",
+        "modifier": null
+      },
+      {
+        "name": "eine Zuweisung aus einer anderen Serie bleibt gültig, Unbekanntes wird zur Lücke",
+        "modifier": null
+      },
+      {
+        "name": "serieLabel liest den Klartext aus dem Katalog",
+        "modifier": null
+      },
+      {
+        "name": "detailKontext: der Bestand zählt nur bei Renovierung·WDVS",
+        "modifier": null
+      },
+      {
+        "name": "liest die aktive Schlussbeschichtung je Bereich — Klinkerfassade, Putzsockel",
+        "modifier": null
+      },
+      {
+        "name": "ohne Bereich oder ohne System gilt Putz",
+        "modifier": null
+      },
+      {
+        "name": "bei mehreren aktiven Schlussbeschichtungen entscheidet die FINISH_ORDER",
+        "modifier": null
+      },
+      {
+        "name": "platzierungsVars zählt nur lebende platzierte Punkte",
+        "modifier": null
+      },
+      {
+        "name": "je platziertem Punkt eine St-Position: Menge, Gewerk, generierter Langtext mit Vermerk",
+        "modifier": null
+      },
+      {
+        "name": "ein kuratierter Katalog-Langtext ersetzt den generierten und den Vermerk",
+        "modifier": null
+      },
+      {
+        "name": "ohne Platzierung, ohne Wahl oder „bewusst ohne\" entsteht keine Position",
+        "modifier": null
+      },
+      {
+        "name": "keine eigene Position, wenn das Fassaden-System `befestigungen` verbraucht",
+        "modifier": null
+      },
+      {
+        "name": "eine Komponente in einem ANDEREN Bereich verbraucht die Variable ebenfalls",
+        "modifier": null
+      },
+      {
+        "name": "eine Teilflächen-Position verbraucht die Variable nicht — die eigene Position bleibt",
+        "modifier": null
+      },
+      {
+        "name": "aufgeteilte Fassade: det:-Positionen gehören dem System des Leitbereichs",
+        "modifier": null
+      },
+      {
+        "name": "systemLvTotal zählt det:-Positionen nur beim Fassaden-System",
+        "modifier": null
+      },
+      {
+        "name": "wartetAufPlatzierung nennt nur Platzierungs-Variablen, die selbst 0 sind",
+        "modifier": null
+      },
+      {
+        "name": "eine Komponente, die das Kategorie-Routing gar nicht erzeugt, verbraucht nichts",
+        "modifier": null
+      },
+      {
+        "name": "buildLvPositions führt die eigene Position mit Override und speist Katalogformeln",
+        "modifier": null
+      },
+      {
+        "name": "die Heftseite trägt die Stückzahl des Anschlusspunkts",
+        "modifier": null
+      },
+      {
+        "name": "der Bauteilanschluss rechnet St ohne Länge und m mit Länge",
+        "modifier": null
+      },
+      {
+        "name": "der Verbrauch unterdrückt nur die Position derselben Variable",
+        "modifier": null
+      },
+      {
+        "name": "die Systemgrenze rechnet die gezeichnete Länge als m-Position, das Heft trägt sie",
+        "modifier": null
+      },
+      {
+        "name": "detailKurztitel schneidet die datamaster-Gruppe ab",
+        "modifier": null
+      },
+      {
+        "name": "der Vorschlags-Punkt deckt den Rest, der manuelle seine Auswahl",
+        "modifier": null
+      },
+      {
+        "name": "ein doppelt beanspruchtes Element zieht nur einmal ab",
+        "modifier": null
+      },
+      {
+        "name": "die Heftseite der Gruppe trägt den Rest",
         "modifier": null
       }
     ]
@@ -7514,6 +8323,296 @@
     ]
   },
   {
+    "file": "packages/core/test/oberflaechen.test.ts",
+    "category": "Core Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "liest die äußerste Lage des LayerSets als Oberfläche und den Set-Namen als Aufbau",
+        "modifier": null
+      },
+      {
+        "name": "liest es auch über IfcMaterialLayerSetUsage → ForLayerSet",
+        "modifier": null
+      },
+      {
+        "name": "liest den Konstituenten-Satz des IFC4-Exports (ArchiCAD)",
+        "modifier": null
+      },
+      {
+        "name": "nimmt ein einzeln zugeordnetes IfcMaterial, wenn kein Satz dranhängt",
+        "modifier": null
+      },
+      {
+        "name": "fällt ohne Set-Namen auf die Namen der Lagen zurück — der Aufbau trennt weiter",
+        "modifier": null
+      },
+      {
+        "name": "liefert leeren Befund, wo das Modell keine Materialzuordnung trägt",
+        "modifier": null
+      },
+      {
+        "name": "läuft sich an einem zyklischen Objektbaum nicht fest",
+        "modifier": null
+      },
+      {
+        "name": "trennt gleiche Oberfläche mit verschiedenem Aufbau — AIA: EPS gegen MW (AK 3)",
+        "modifier": null
+      },
+      {
+        "name": "trennt zwei AIA-Systeme, deren Unterschied nur im Typnamen steht (AK 3)",
+        "modifier": null
+      },
+      {
+        "name": "lässt den Typnamen liegen, wo das Material einen Aufbau trägt",
+        "modifier": null
+      },
+      {
+        "name": "tritt der Typname an die Stelle des Materials, wo das Modell keines trägt",
+        "modifier": null
+      },
+      {
+        "name": "bleibt ohne jede Angabe leer — ein solches Element gehört in keine eigene Gruppe",
+        "modifier": null
+      },
+      {
+        "name": "enthält kein NUL — sonst lässt sich das Dokument nicht speichern",
+        "modifier": null
+      },
+      {
+        "name": "wirft Steuerzeichen aus dem Namen selbst heraus, nicht nur aus dem Trenner",
+        "modifier": null
+      },
+      {
+        "name": "lässt ein Trennzeichen im Namen keine zwei Produkte zusammenwerfen",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Wanddicke im Wandtyp-Namen nicht trennen (Stutensee)",
+        "modifier": null
+      },
+      {
+        "name": "lässt abweichende Interpunktion nicht trennen (Stutensee: „Verputz, glatt,hellgrau\")",
+        "modifier": null
+      },
+      {
+        "name": "trennt trotzdem, wo der Aufbau selbst ein anderer ist (Stutensee: Auß-WA gegen Int-WA)",
+        "modifier": null
+      },
+      {
+        "name": "trennt zwei Anstriche, die sich nur in der Farbnummer unterscheiden",
+        "modifier": null
+      },
+      {
+        "name": "fasst gleiche Oberflächen zusammen und sortiert nach Fläche",
+        "modifier": null
+      },
+      {
+        "name": "gibt jeder Gruppe genau eine Farbe aus der Farbcodetabelle (MB-A-02)",
+        "modifier": null
+      },
+      {
+        "name": "trennt NICHT nach Farbwerten: gleiche Namen, verschiedenes RGB bleiben eine Gruppe (AK 4)",
+        "modifier": null
+      },
+      {
+        "name": "trennt zwei AIA-Wandtypen unter demselben Putz (AK 3)",
+        "modifier": null
+      },
+      {
+        "name": "lässt Elemente ohne jede Angabe aus den Gruppen — sie bleiben beim Leitbereich",
+        "modifier": null
+      },
+      {
+        "name": "zählt flächenlose Elemente mit, statt sie zu verschlucken",
+        "modifier": null
+      },
+      {
+        "name": "trennt gleichnamige Gruppen über den Aufbau — sonst zwei gleiche LV-Überschriften",
+        "modifier": null
+      },
+      {
+        "name": "nimmt den Zusatz zurück, wenn der Leitname die Dublette auflöst",
+        "modifier": null
+      },
+      {
+        "name": "lässt den Zusatz stehen, wo er weiter gebraucht wird",
+        "modifier": null
+      },
+      {
+        "name": "trennt Namensvettern auch ohne Aufbau — sonst verschmelzen sie im LV",
+        "modifier": null
+      },
+      {
+        "name": "legt zwei Gruppen zu einer zusammen und rechnet Fläche und Anzahl auf",
+        "modifier": null
+      },
+      {
+        "name": "sortiert und färbt neu — die erste Gruppe wird der Leitbereich",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine Auswahl unter zwei Gruppen unverändert",
+        "modifier": null
+      },
+      {
+        "name": "führt Element-Beitrag und Materialbefund zusammen — eine Route für alle Ansichten",
+        "modifier": null
+      },
+      {
+        "name": "schlägt erst ab zwei Gruppen etwas vor — eine Gruppe IST der heutige Zustand",
+        "modifier": null
+      },
+      {
+        "name": "stellt Zusammenlegung und Namen wieder her",
+        "modifier": null
+      },
+      {
+        "name": "rechnet mit den FRISCHEN Zahlen, nicht mit denen des Entwurfs",
+        "modifier": null
+      },
+      {
+        "name": "nimmt eine Gruppe auf, die der Entwurf noch nicht kannte",
+        "modifier": null
+      },
+      {
+        "name": "verwirft, was das Modell nicht mehr trägt",
+        "modifier": null
+      },
+      {
+        "name": "ohne Entwurf bleibt der frische Vorschlag unberührt",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/oberflaechenBereiche.test.ts",
+    "category": "Core Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "legt je Gruppe einen Bereich an und lässt die übrigen Kategorien unberührt",
+        "modifier": null
+      },
+      {
+        "name": "der bestehende Fassaden-Bereich bleibt mit Id, Name und System — er wird der Leitbereich",
+        "modifier": null
+      },
+      {
+        "name": "die Nebenbereiche tragen Name, Farbe und gemessene Fläche ihrer Gruppe",
+        "modifier": null
+      },
+      {
+        "name": "jedes Element gehört genau einem Bereich — der Leitbereich trägt den Rest (AK 5)",
+        "modifier": null
+      },
+      {
+        "name": "die Summe der Bereichsflächen ergibt die Gesamtfläche (Invariante, AK 5)",
+        "modifier": null
+      },
+      {
+        "name": "gibt den Nebenbereichen das System des Leitbereichs, damit sie sofort ins LV zählen",
+        "modifier": null
+      },
+      {
+        "name": "leitet die Ids aus dem Gruppenschlüssel ab — ein erneuter Import trifft dieselben Positionen",
+        "modifier": null
+      },
+      {
+        "name": "erhält Systemwahl und Farbe einer schon angenommenen Gruppe",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine Umbenennung im Dialog durch — sonst wäre sie wirkungslos",
+        "modifier": null
+      },
+      {
+        "name": "vergibt keine Id zweimal, wenn eine andere Gruppe die größte wird",
+        "modifier": null
+      },
+      {
+        "name": "ohne Gruppen bleibt alles, wie es war",
+        "modifier": null
+      },
+      {
+        "name": "stellt den Zustand vor der Aufteilung Zeichen für Zeichen her (AK 7)",
+        "modifier": null
+      },
+      {
+        "name": "lässt ein nicht aufgeteiltes Projekt unangetastet",
+        "modifier": null
+      },
+      {
+        "name": "behält, was der Nutzer am Leitbereich selbst gesetzt hat",
+        "modifier": null
+      },
+      {
+        "name": "erkennt die Aufteilung an einem Bereich mit eigener gemessener Fläche",
+        "modifier": null
+      },
+      {
+        "name": "erhält die Aufteilungs-Bereiche beim erneuten Import",
+        "modifier": null
+      },
+      {
+        "name": "macht aus den Bereichen wieder Gruppen — Schlüssel und Name",
+        "modifier": null
+      },
+      {
+        "name": "liefert nichts, solange nicht aufgeteilt ist",
+        "modifier": null
+      },
+      {
+        "name": "führt über wendeEntwurfAn auf denselben Stand zurück",
+        "modifier": null
+      },
+      {
+        "name": "vereinheitlicht, statt eine Schein-Aufteilung anzulegen",
+        "modifier": null
+      },
+      {
+        "name": "auch aus dem unaufgeteilten Zustand heraus bleibt alles, wie es war",
+        "modifier": null
+      },
+      {
+        "name": "vergibt jedem erzeugten Bereich eine eigene Farbe aus der belegten Palette",
+        "modifier": null
+      },
+      {
+        "name": "gibt keinem Teil der Fassade den Ton, der daneben die ganze Fassade meint",
+        "modifier": null
+      },
+      {
+        "name": "wiederholt erst beim achten Nebenbereich einen Ton — der Leitbereich zählt nicht mit",
+        "modifier": null
+      },
+      {
+        "name": "gibt jedem Nebenbereich seine gemessene Fläche und dem Leitbereich den Rest",
+        "modifier": null
+      },
+      {
+        "name": "summiert sich auf die Gesamtfläche",
+        "modifier": null
+      },
+      {
+        "name": "ohne Aufteilung trägt der eine Fassaden-Bereich alles",
+        "modifier": null
+      },
+      {
+        "name": "lässt den Leitbereich nicht negativ werden",
+        "modifier": null
+      },
+      {
+        "name": "hält die Summe auch, wenn die Gesamtfläche unter die Nebenflächen sinkt",
+        "modifier": null
+      },
+      {
+        "name": "erklärt keinen Nebenbereich zum Leitbereich, wenn der Leitbereich fehlt",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "packages/core/test/openings.test.ts",
     "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
@@ -8486,6 +9585,18 @@
       },
       {
         "name": "renovierung-anstrich: WDVS-zugewiesener Bereich erscheint; sonst leer",
+        "modifier": null
+      },
+      {
+        "name": "Blechanschluss-Profile rechnen mit der platzierten Anschlusslänge",
+        "modifier": null
+      },
+      {
+        "name": "die übrigen Profil-Positionen behalten ihren Default",
+        "modifier": null
+      },
+      {
+        "name": "Bestandsfassaden-, Putzabschluss- und Putztrennprofile rechnen mit der gezeichneten Länge",
         "modifier": null
       }
     ]
