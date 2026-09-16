@@ -2152,6 +2152,17 @@
     ]
   },
   {
+    "file": "apps/web/e2e/wandart-regel.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Wandart-Regel: ein Klick je Typ nimmt den Laibungszuschlag bis ins LV zurück",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/e2e/zuordnung-aufheben.spec.ts",
     "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
@@ -2189,6 +2200,10 @@
       },
       {
         "name": "ohne Zugangsrolle: angemeldet, aber klar abgewiesen statt „Backend nicht erreichbar\"",
+        "modifier": null
+      },
+      {
+        "name": "Abmelden bringt den Nutzer zurück in die App, nicht auf Keycloaks Fehlerseite",
         "modifier": null
       },
       {
@@ -3395,6 +3410,37 @@
     ]
   },
   {
+    "file": "apps/web/src/ifcWandart.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "liest den Bauteiltyp aus IfcRelDefinesByType — ohne ihn gäbe es keinen Schlüssel",
+        "modifier": null
+      },
+      {
+        "name": "die Regel „Sockel\" verschiebt die Fläche wirklich in den Sockel",
+        "modifier": null
+      },
+      {
+        "name": "und zurück: aus dem Sockel wird wieder Fassade",
+        "modifier": null
+      },
+      {
+        "name": "die Korrektur je Bauteil schlägt die Regel, wo sie etwas anderes sagt",
+        "modifier": null
+      },
+      {
+        "name": "das Zurücknehmen auf „automatisch\" holt die Wände zurück",
+        "modifier": null
+      },
+      {
+        "name": "ohne Regel und ohne Wechsel bleibt der gespeicherte Stand Zeichen für Zeichen stehen",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/src/ifcWirtswand.test.ts",
     "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
@@ -4540,6 +4586,10 @@
         "modifier": null
       },
       {
+        "name": "führt die Wandart-Regel mit, und schreibt sie nur, wenn es eine gibt",
+        "modifier": null
+      },
+      {
         "name": "schreibt mitgemessen nicht, wenn nichts geschaltet ist",
         "modifier": null
       },
@@ -4612,6 +4662,21 @@
       },
       {
         "name": "leert die Szene bei Leertaste ohne Zuordnung (#363 AK 3)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcViewer/wandartVorschau.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "hebt genau die Bauteile des überfahrenen Typs hervor, in StoYellow und deckend",
+        "modifier": null
+      },
+      {
+        "name": "ohne Hover keine Vorschau — und ein leerer oder unbekannter Typ leuchtet nicht",
         "modifier": null
       }
     ]
@@ -7403,6 +7468,42 @@
       {
         "name": "ordnet Elemente anhand der Set-Zugehörigkeiten korrekt zu",
         "modifier": null
+      },
+      {
+        "name": "setzt die Wandart je Typ, wo der Name nichts hergibt",
+        "modifier": null
+      },
+      {
+        "name": "schlägt den Namen, aber nicht das Pset",
+        "modifier": null
+      },
+      {
+        "name": "ohne Typ keine Regel — ein Modell ohne Bauteiltypen bekommt keinen Schlüssel",
+        "modifier": null
+      },
+      {
+        "name": "leere Regeln ändern nichts an der bisherigen Klassifikation",
+        "modifier": null
+      },
+      {
+        "name": "die Typliste führt nur Außenwände und nennt Zahl und Herkunft der Wandart",
+        "modifier": null
+      },
+      {
+        "name": "bei gemischten Arten zeigt die Zeile die häufigste",
+        "modifier": null
+      },
+      {
+        "name": "ein Typname aus Leerzeichen ist kein Schlüssel",
+        "modifier": null
+      },
+      {
+        "name": "ein Typname aus der Prototypenkette ist keine Regel",
+        "modifier": null
+      },
+      {
+        "name": "setzt und nimmt zurück — die Ablage trägt nur Abweichungen",
+        "modifier": null
       }
     ]
   },
@@ -8608,6 +8709,22 @@
       },
       {
         "name": "erklärt keinen Nebenbereich zum Leitbereich, wenn der Leitbereich fehlt",
+        "modifier": null
+      },
+      {
+        "name": "summiert die Nebenflächen neu und schneidet Elemente, die die Fassade verlassen haben",
+        "modifier": null
+      },
+      {
+        "name": "gibt neue Fassaden-Elemente an den Leitbereich",
+        "modifier": null
+      },
+      {
+        "name": "hebt die Aufteilung auf, wenn kein Nebenbereich ein Element behält",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine nicht aufgeteilte Fassade unberührt",
         "modifier": null
       }
     ]
