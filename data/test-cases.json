@@ -1574,6 +1574,17 @@
     ]
   },
   {
+    "file": "apps/web/e2e/mitmess-huellenschwelle.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Mitmess-Flag unter der Hüllen-Schwelle wirkt nach einem Modellwechsel auch nicht als Barriere (#433)",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/e2e/mitmessen-teilbereich.spec.ts",
     "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
@@ -3170,6 +3181,10 @@
         "modifier": null
       },
       {
+        "name": "lässt eine geschaltete Gruppe unter der Hüllen-Schwelle auch nicht als Barriere wirken",
+        "modifier": null
+      },
+      {
         "name": "schaltet sich ab, wo das Modell keine Kontur hergibt",
         "modifier": null
       }
@@ -3451,6 +3466,18 @@
       },
       {
         "name": "bleibt ohne Vordach unverändert",
+        "modifier": null
+      },
+      {
+        "name": "erbt die Stärke der Fassade, nicht die der mitgewählten Innenwände",
+        "modifier": null
+      },
+      {
+        "name": "nimmt am Innenwandstoß die Fassadenwand, nicht die dickere Innenwand",
+        "modifier": null
+      },
+      {
+        "name": "nimmt sie auch dann, wenn die Innenwand selbst gemessen wird",
         "modifier": null
       }
     ]
