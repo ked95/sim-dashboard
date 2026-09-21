@@ -849,6 +849,10 @@
     "kind": "unit (Vitest, API)",
     "tests": [
       {
+        "name": "meldet den Schreibweg als vorhanden",
+        "modifier": null
+      },
+      {
         "name": "gültige Sprache → 204, locale steht als Attribut beim IdP",
         "modifier": null
       },
@@ -902,6 +906,10 @@
       },
       {
         "name": "das Service-Account-Token wird gecacht, nicht pro Anfrage geholt",
+        "modifier": null
+      },
+      {
+        "name": "meldet den Schreibweg als fehlend",
         "modifier": null
       },
       {
@@ -1284,6 +1292,52 @@
     ]
   },
   {
+    "file": "apps/web/e2e/gezeichnete-flaechen.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Vertikales Band über der Fassade — die Fläche wechselt den Bereich, die Summe bleibt, bis GAEB und PDF (#348)",
+        "modifier": null
+      },
+      {
+        "name": "Waagerechtes Band — Höhe aus den Klicks, Breite aus dem Modell (#348)",
+        "modifier": null
+      },
+      {
+        "name": "Umrandung — die Öffnung anklicken, die Dicke aufziehen, vier Teile um sie herum (#348)",
+        "modifier": null
+      },
+      {
+        "name": "Messwerkzeug — an Kanten und an der gezeichneten Fläche, und es folgt ihr (#348)",
+        "modifier": null
+      },
+      {
+        "name": "Die gezeichnete Fläche überlebt den Reload und gibt ihre m² beim Löschen zurück (#348)",
+        "modifier": null
+      },
+      {
+        "name": "Maße stehen beim Zeichnen im Bild und lassen sich danach tippen (#348)",
+        "modifier": null
+      },
+      {
+        "name": "Polygon — Ecken anklicken, Doppelklick schließt, die m² wechseln den Bereich (#348)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/handkorrektur-verfall.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Verfall und Rückkehr: die Drehung lässt die Korrektur verfallen, das gerade Haus bringt sie zurück",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/e2e/home.spec.ts",
     "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
@@ -1347,6 +1401,10 @@
       },
       {
         "name": "Umlaut-Escapes im Wandnamen tragen die Fassaden-Klassifikation (#279)",
+        "modifier": null
+      },
+      {
+        "name": "Die parallel zur Wand zurückspringende Laibung zählt nicht zur Fassade (#495)",
         "modifier": null
       }
     ]
@@ -1443,6 +1501,29 @@
     ]
   },
   {
+    "file": "apps/web/e2e/klick-zuweisung.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Bauteil anklicken, Bereich zuweisen — Menge folgt, Summe bleibt, bis GAEB und PDF (#347)",
+        "modifier": null
+      },
+      {
+        "name": "Die Zuweisung überlebt den Reload und lässt sich wieder entfernen (#347)",
+        "modifier": null
+      },
+      {
+        "name": "Die Auswahl aus der Bauteilliste kommt unter „Zuweisen“ an (#347)",
+        "modifier": null
+      },
+      {
+        "name": "Wandseite schalten ändert die gemessene Fläche — und die des Bereichs mit (#455)",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/e2e/konstruktionsdetails.spec.ts",
     "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
@@ -1487,6 +1568,17 @@
     "tests": [
       {
         "name": "Getrennte Laibungspositionen je Tiefe erreichen GAEB X83 und PDF",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/laibung-nicht-fassade.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Die Laibung fehlt in der Fassadenmenge — bis in GAEB X83 und PDF (#495)",
         "modifier": null
       }
     ]
@@ -1811,6 +1903,14 @@
     "tests": [
       {
         "name": "Project Configurator: Bereich-Auswahl hebt im 3D hervor",
+        "modifier": null
+      },
+      {
+        "name": "Die Legende zeigt auch Öffnungen im 3D — sie führen keine eigene Elementliste",
+        "modifier": null
+      },
+      {
+        "name": "Das Modell lässt sich groß ziehen — Bereichsliste und Werkzeuge bleiben",
         "modifier": null
       }
     ]
@@ -2224,6 +2324,17 @@
     ]
   },
   {
+    "file": "apps/web/e2e-oidc/sprachwahl.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "die Sprachwahl landet im IdP-Profil, und der Umschalter sagt das auch zu",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/src/aufmassExport.test.ts",
     "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
@@ -2342,6 +2453,10 @@
       },
       {
         "name": "verweist in keiner Sprache auf die Oberfläche — kein Klickweg, kein Ansichtsname",
+        "modifier": null
+      },
+      {
+        "name": "weist die Laibungsregel aus — in jeder Dokumentsprache",
         "modifier": null
       },
       {
@@ -2517,6 +2632,77 @@
       },
       {
         "name": "leere Öffnungs- oder Wandmengen liefern eine leere Liste",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/bandMasse.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "liefert Normale und Wandachse einer senkrechten Fläche",
+        "modifier": null
+      },
+      {
+        "name": "gibt null zurück, wenn die ersten drei Punkte auf einer Geraden liegen",
+        "modifier": null
+      },
+      {
+        "name": "misst die Ausdehnung auf der Wandachse und in der Senkrechten",
+        "modifier": null
+      },
+      {
+        "name": "umfasst alle Teile einer Gruppe — die vier Flächen einer Umrandung sind eine Spanne",
+        "modifier": null
+      },
+      {
+        "name": "schneidet den Strahl mit der Ebene der Fläche",
+        "modifier": null
+      },
+      {
+        "name": "gibt null zurück, wenn der Blick entlang der Fläche geht",
+        "modifier": null
+      },
+      {
+        "name": "ordnet die angefasste Kante eines vertikalen Bandes der näheren Seite zu",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine Kante quer zur Art nicht gelten — sonst würde das Band etwas anderes",
+        "modifier": null
+      },
+      {
+        "name": "ohne angefasste Kante wird verschoben, nicht gezogen",
+        "modifier": null
+      },
+      {
+        "name": "hält ein vertikales Band in seiner Richtung — es wandert seitlich, nicht auf und ab",
+        "modifier": null
+      },
+      {
+        "name": "hält ein waagerechtes Band in seiner Richtung",
+        "modifier": null
+      },
+      {
+        "name": "lässt die gezogene Kante nicht durch die gegenüberliegende laufen",
+        "modifier": null
+      },
+      {
+        "name": "bleibt in den Grenzen des Bereichs, dem die Fläche abgezogen ist",
+        "modifier": null
+      },
+      {
+        "name": "ohne Grenzen bleibt die Verschiebung frei — dort liegt kein Bauteil, das sie binden könnte",
+        "modifier": null
+      },
+      {
+        "name": "verschiebt beim Verschieben alle Punkte",
+        "modifier": null
+      },
+      {
+        "name": "bewegt beim Ziehen an der Kante nur die Punkte AUF ihr — das Band bleibt ein Rechteck",
         "modifier": null
       }
     ]
@@ -2843,6 +3029,129 @@
       },
       {
         "name": "französische Prosa kommt ohne „?\" für œ ins PDF",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/fassadenhoehe.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "findet das Bauteil auch mitten auf der Fläche, weit weg von jedem Eckpunkt",
+        "modifier": null
+      },
+      {
+        "name": "nimmt die ununterbrochene Kette — drei Geschosswände sind EINE Höhe",
+        "modifier": null
+      },
+      {
+        "name": "endet an der Lücke: der Dachaufbau 1 m darüber gehört nicht mehr dazu",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Wand hinter dem Balkon außen vor — sie liegt nicht in der Ebene des Klicks",
+        "modifier": null
+      },
+      {
+        "name": "ohne Normale bleibt es bei der Kette am Klickpunkt (gezeichneter Pfad ohne Trefferfläche)",
+        "modifier": null
+      },
+      {
+        "name": "zählt nur die Bauteile des Quell-Bereichs — an dessen Grenze endet das Band",
+        "modifier": null
+      },
+      {
+        "name": "überbrückt die Deckenplatte: eine Lücke unter der Toleranz trennt nicht",
+        "modifier": null
+      },
+      {
+        "name": "sieht nur die Fassade im Umkreis, nicht die 20 m entfernte",
+        "modifier": null
+      },
+      {
+        "name": "meldet null, wo kein Bauteil des Bereichs in Reichweite ist",
+        "modifier": null
+      },
+      {
+        "name": "nennt die seitlichen Ränder der Gruppe als Kanten",
+        "modifier": null
+      },
+      {
+        "name": "ohne Normale gibt es keine Kanten — ohne Richtung keine Seite",
+        "modifier": null
+      },
+      {
+        "name": "nennt die Ober- und Unterkanten der Kette als Höhenkanten",
+        "modifier": null
+      },
+      {
+        "name": "zieht auf die nahe Höhenkante und sagt es",
+        "modifier": null
+      },
+      {
+        "name": "lässt weiter entfernte Punkte in Ruhe",
+        "modifier": null
+      },
+      {
+        "name": "ohne Kanten bleibt alles, wie es ist",
+        "modifier": null
+      },
+      {
+        "name": "zieht auf die nahe Kante und sagt es",
+        "modifier": null
+      },
+      {
+        "name": "lässt weiter entfernte Punkte in Ruhe",
+        "modifier": null
+      },
+      {
+        "name": "nimmt die NÄCHSTE Kante, nicht die erste",
+        "modifier": null
+      },
+      {
+        "name": "ohne Kanten oder ohne Normale bleibt alles, wie es ist",
+        "modifier": null
+      },
+      {
+        "name": "misst Mitte und Maße je Öffnung",
+        "modifier": null
+      },
+      {
+        "name": "nimmt die Öffnung unter dem Cursor",
+        "modifier": null
+      },
+      {
+        "name": "zieht auch von daneben hinein — gemessen am Rand, nicht an der Mitte",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Öffnung an der Rückseite außen vor — sie liegt nicht in der Ebene des Klicks",
+        "modifier": null
+      },
+      {
+        "name": "meldet null, wo keine Öffnung in Reichweite ist",
+        "modifier": null
+      },
+      {
+        "name": "ist innerhalb der Öffnung 0 — die Umrandung wächst erst von ihrem Rand",
+        "modifier": null
+      },
+      {
+        "name": "misst seitlich den Abstand zum Rand und nennt den Fußpunkt",
+        "modifier": null
+      },
+      {
+        "name": "misst über der Öffnung die Höhe über ihrer Oberkante",
+        "modifier": null
+      },
+      {
+        "name": "schiebt die Öffnung auf die Ebene des Klicks — quer dazu bleibt alles",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine Öffnung in Ruhe, die schon in der Klickebene liegt",
         "modifier": null
       }
     ]
@@ -3337,6 +3646,33 @@
       },
       {
         "name": "misst die volle Langseite abzüglich der Öffnung",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcOeffnungsregister.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "markiert genau die vier Wangen — auch wenn der Rahmen flacher ist als die Wand",
+        "modifier": null
+      },
+      {
+        "name": "markiert dieselben Wangen bei einem Rahmen, der über die Wand hinausragt",
+        "modifier": null
+      },
+      {
+        "name": "findet die Wangen auch am um 30° gedrehten Haus — der Kasten reist im Gebäuderahmen",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Nachbarwand leer, obwohl sie die Öffnung an der Ecke mitbekommt",
+        "modifier": null
+      },
+      {
+        "name": "bleibt leer, wenn die Öffnung keine Geometrie trägt",
         "modifier": null
       }
     ]
@@ -3857,6 +4193,14 @@
         "modifier": null
       },
       {
+        "name": "nennt die Laibung beim Namen, statt sie hinter eine Schicht zu schieben (#495)",
+        "modifier": null
+      },
+      {
+        "name": "meldet nur das getroffene Dreieck als Laibung, nicht seine ganze Ebene",
+        "modifier": null
+      },
+      {
         "name": "kippt einen Alt-Eintrag der NACHBARFLÄCHE nicht um",
         "modifier": null
       },
@@ -3870,6 +4214,26 @@
       },
       {
         "name": "und die Ansicht zeichnet dieselbe Fläche dunkelrot",
+        "modifier": null
+      },
+      {
+        "name": "meldet einen Flächenschlüssel, den die heutige Geometrie des Bauteils nicht kennt",
+        "modifier": null
+      },
+      {
+        "name": "meldet nichts, solange jeder Schlüssel eine Fläche trifft",
+        "modifier": null
+      },
+      {
+        "name": "meldet ein Bauteil, das die Szene nicht mehr misst, mit allen seinen Flächen",
+        "modifier": null
+      },
+      {
+        "name": "meldet eine gelöste Zuordnung NICHT — sie ist zurücknehmbar, nicht verfallen",
+        "modifier": null
+      },
+      {
+        "name": "zählt je Bauteil, nicht je Schlüssel — der Anwender sieht Bauteile",
         "modifier": null
       }
     ]
@@ -4343,6 +4707,37 @@
     ]
   },
   {
+    "file": "apps/web/src/spracheUeberlebtDasGeraet.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "folgt der Zusage aus /auth/config",
+        "modifier": null
+      },
+      {
+        "name": "nimmt die Zusage nach einem 501 zurück — dieser Realm kann den Schreibweg nicht",
+        "modifier": null
+      },
+      {
+        "name": "gibt sie nach dem nächsten erfolgreichen Schreiben wieder her",
+        "modifier": null
+      },
+      {
+        "name": "lässt sie von einem Serverfehler unberührt — 502 ist eine Störung, kein Nein",
+        "modifier": null
+      },
+      {
+        "name": "holt sie ein 502 auch nicht zurück, wenn ein 501 sie vorher genommen hat",
+        "modifier": null
+      },
+      {
+        "name": "lässt sie von einem Netzfehler unberührt — die Wahl gilt, sie ist lokal gemerkt",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/src/standardAnsichten.test.ts",
     "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
@@ -4454,6 +4849,45 @@
       },
       {
         "name": "Ost heißt außer auf Deutsch E, West nur im Englischen W",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/i18n/rangfolge.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "nimmt den Claim, auch wenn eine andere Wahl gemerkt ist — der IdP führt",
+        "modifier": null
+      },
+      {
+        "name": "kürzt ein Regional-Tag auf den Kurzcode",
+        "modifier": null
+      },
+      {
+        "name": "fällt bei einer Sprache außerhalb der vier auf die gemerkte Wahl durch",
+        "modifier": null
+      },
+      {
+        "name": "nimmt ohne Claim und ohne eigene Wahl die letzte Sitzung",
+        "modifier": null
+      },
+      {
+        "name": "liest die Wahl eines anderen Nutzers nicht mit",
+        "modifier": null
+      },
+      {
+        "name": "endet bei Deutsch, wenn auch der Browser nichts Passendes meldet",
+        "modifier": null
+      },
+      {
+        "name": "nimmt die letzte Sitzung vor der Browsersprache",
+        "modifier": null
+      },
+      {
+        "name": "ignoriert die nutzergebundene Wahl — vor dem Login gibt es keinen sub",
         "modifier": null
       }
     ]
@@ -4912,6 +5346,18 @@
         "modifier": null
       },
       {
+        "name": "weist ein gezeichnetes Band nach — beim Empfänger positiv, beim Quell-Bereich als Abzug",
+        "modifier": null
+      },
+      {
+        "name": "weist jede Zeichenart mit ihrem Text nach — und nur das Rechteck mit Maßkette",
+        "modifier": null
+      },
+      {
+        "name": "weist eine gekürzte Zeichnung mit der verrechneten Menge aus, ohne Maßkette",
+        "modifier": null
+      },
+      {
         "name": "ohne Aufteilung bleibt der Fassaden-Nachweis unverändert",
         "modifier": null
       },
@@ -4948,6 +5394,10 @@
       },
       {
         "name": "erhält bestehende Zuweisung, Name und eigene Bereiche",
+        "modifier": null
+      },
+      {
+        "name": "erhält die Elementliste des Leitbereichs auch ohne Oberflächen-Schlüssel",
         "modifier": null
       },
       {
@@ -5233,6 +5683,57 @@
     ]
   },
   {
+    "file": "packages/core/test/bereichsZuweisung.test.ts",
+    "category": "Core Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "gibt dem Ziel die Elemente samt gemessener Fläche",
+        "modifier": null
+      },
+      {
+        "name": "nimmt das Element aus seinem vorherigen Bereich — der Leitbereich schreibt seine Liste aus",
+        "modifier": null
+      },
+      {
+        "name": "hält die Flächen-Invariante nach jeder Zuweisung (AK 2)",
+        "modifier": null
+      },
+      {
+        "name": "verschiebt zwischen zwei eigenen Bereichen, ohne ein Element zu doppeln",
+        "modifier": null
+      },
+      {
+        "name": "die Zuweisung an den Leitbereich nimmt sie zurück",
+        "modifier": null
+      },
+      {
+        "name": "behält die Modellreihenfolge — dieselbe Zuweisung ergibt denselben Nachweis",
+        "modifier": null
+      },
+      {
+        "name": "lässt Bauteile ohne gemessene Fassadenfläche liegen — und Bestandsprojekte unberührt (AK 4)",
+        "modifier": null
+      },
+      {
+        "name": "ohne Aufteilung ist der eine Fassaden-Bereich das Ziel — dann bleibt alles, wie es war",
+        "modifier": null
+      },
+      {
+        "name": "Vereinheitlichen führt auch aus der Hand-Zuweisung zurück",
+        "modifier": null
+      },
+      {
+        "name": "behält den von Hand angelegten Bereich mit seinen Elementen",
+        "modifier": null
+      },
+      {
+        "name": "rechnet die Gruppe ohne die von Hand vergebenen Elemente — nichts zählt doppelt",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "packages/core/test/buildingGeometry.test.ts",
     "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
@@ -5446,6 +5947,22 @@
       },
       {
         "name": "zeigt auf dem Bildschirm dieselbe Fläche, die das LV abrechnet",
+        "modifier": null
+      },
+      {
+        "name": "rechnet ein gezeichnetes Band als eigene Gruppe und nimmt es dem Quell-Bereich ab",
+        "modifier": null
+      },
+      {
+        "name": "zeigt auch mit Band auf dem Bildschirm dieselbe Fläche, die das LV abrechnet",
+        "modifier": null
+      },
+      {
+        "name": "lässt einen Nebenbereich ohne Fläche aus dem LV — und aus der GAEB-Datei",
+        "modifier": null
+      },
+      {
+        "name": "lässt den Leitbereich auch ohne Restfläche stehen",
         "modifier": null
       },
       {
@@ -5759,6 +6276,10 @@
       },
       {
         "name": "keine eigene Position, wenn das Fassaden-System `befestigungen` verbraucht",
+        "modifier": null
+      },
+      {
+        "name": "ein gezeichneter eigener Bereich verbraucht die Variable nicht — in beiden Dokumentformen",
         "modifier": null
       },
       {
@@ -6858,6 +7379,18 @@
       {
         "name": "meldet Öffnungen, die als außen erkannt sind, aber nicht in den Mengen zählen",
         "modifier": null
+      },
+      {
+        "name": "meldet als Hinweis mit Bauteil- und Flächenzahl, die betroffenen Bauteile als Treffer",
+        "modifier": null
+      },
+      {
+        "name": "zählt eine Id, die kein Element trägt, weder im Text noch bei den Treffern",
+        "modifier": null
+      },
+      {
+        "name": "schweigt ohne verfallene Korrekturen — leer wie fehlend",
+        "modifier": null
       }
     ]
   },
@@ -7184,6 +7717,66 @@
       },
       {
         "name": "trägt, wo nichts zu fragen ist",
+        "modifier": null
+      },
+      {
+        "name": "meldet die Flächen, die in einer Öffnung liegen — und nur die",
+        "modifier": null
+      },
+      {
+        "name": "meldet nichts, wenn die Wand keine Öffnung trägt",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine Fläche außen vor, die nur an der HÖHE scheitert",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine Fläche außen vor, die nur an der TIEFE scheitert",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine Fläche außen vor, die nur teilweise in der Öffnung liegt",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine Fuge von 4 cm zwischen Rahmen und Laibung zu — 6 cm nicht mehr",
+        "modifier": null
+      },
+      {
+        "name": "markiert die Wangen erst, wenn der Kasten die Wandtiefe deckt — ein flacher Rahmen reicht nicht",
+        "modifier": null
+      },
+      {
+        "name": "findet die Öffnung an einer um 30° gedrehten Wand — mit der Drehung, und ohne sie nicht",
+        "modifier": null
+      },
+      {
+        "name": "meldet die Öffnungsflächen auch ohne Orakel — der Ersatzweg misst dieselbe Wand",
+        "modifier": null
+      },
+      {
+        "name": "nimmt die Laibungsfläche aus der Fassade — um genau ihren Betrag",
+        "modifier": null
+      },
+      {
+        "name": "lässt ohne Öffnungsdaten alles, wie es war — ein Altstand rechnet weiter",
+        "modifier": null
+      },
+      {
+        "name": "entscheidet je Fläche, nicht je Dreieck — die Mehrheit trägt die ganze Ebene",
+        "modifier": null
+      },
+      {
+        "name": "wiegt die Mehrheit nach Fläche — drei schmale Streifen überstimmen das große Stück nicht",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine gleich tiefe Nische am anderen Wandende unberührt",
+        "modifier": null
+      },
+      {
+        "name": "reißt die Wandseite nicht mit, wenn der Kasten nur in sie hineinragt",
         "modifier": null
       }
     ]
@@ -8743,6 +9336,14 @@
         "modifier": null
       },
       {
+        "name": "behält einen Bereich, dessen Fläche gezeichnet ist",
+        "modifier": null
+      },
+      {
+        "name": "behält einen von Hand angelegten Bereich, der noch kein Bauteil trägt",
+        "modifier": null
+      },
+      {
         "name": "gibt neue Fassaden-Elemente an den Leitbereich",
         "modifier": null
       },
@@ -8752,6 +9353,54 @@
       },
       {
         "name": "lässt eine nicht aufgeteilte Fassade unberührt",
+        "modifier": null
+      },
+      {
+        "name": "nennt die Zeichnung mit Art, m², Quelle und Empfänger — in der Dokumentsprache",
+        "modifier": null
+      },
+      {
+        "name": "nennt die gekürzte Menge, die das LV rechnet — nicht die rohe Polygonfläche",
+        "modifier": null
+      },
+      {
+        "name": "ohne Zeichnung bleibt der Vermerk, wie er war",
+        "modifier": null
+      },
+      {
+        "name": "zieht das Band seiner Quelle ab und schlägt es dem Besitzer zu",
+        "modifier": null
+      },
+      {
+        "name": "zieht auch einem NEBENbereich ab, nicht immer dem Leitbereich",
+        "modifier": null
+      },
+      {
+        "name": "ohne Quelle verschiebt eine Zeichnung nichts — sie zählt zusätzlich (eigener Bereich)",
+        "modifier": null
+      },
+      {
+        "name": "klemmt ein Band, das größer ist als seine Quelle — die Summe bleibt",
+        "modifier": null
+      },
+      {
+        "name": "mehrere Bänder in einem Bereich summieren sich",
+        "modifier": null
+      },
+      {
+        "name": "nimmt dem Leitbereich ab, wenn die Quelle gelöscht wurde",
+        "modifier": null
+      },
+      {
+        "name": "nimmt dem Leitbereich ab, wenn die Quelle ihr letztes Bauteil abgegeben hat",
+        "modifier": null
+      },
+      {
+        "name": "kürzt zwei Bänder verschiedener Besitzer anteilig — reihenfolgenunabhängig",
+        "modifier": null
+      },
+      {
+        "name": "liest das alte Einzel-Polygon der Bestandsprojekte mit",
         "modifier": null
       }
     ]
@@ -8849,6 +9498,58 @@
       },
       {
         "name": "< 3 Punkte → 0",
+        "modifier": null
+      },
+      {
+        "name": "Breite aus den Klicks, Höhe aus der gemessenen Fassadenhöhe",
+        "modifier": null
+      },
+      {
+        "name": "projiziert den zweiten Klick auf die Wandebene des ersten",
+        "modifier": null
+      },
+      {
+        "name": "senkrecht und planar auch an einer schräg stehenden Fassade",
+        "modifier": null
+      },
+      {
+        "name": "ohne Normale trägt die Klickrichtung die Wandrichtung",
+        "modifier": null
+      },
+      {
+        "name": "vertauschte Höhen ergeben dasselbe Band",
+        "modifier": null
+      },
+      {
+        "name": "Höhe aus den Klicks, Breite aus dem Modell",
+        "modifier": null
+      },
+      {
+        "name": "vertauschte Ränder und Höhen ergeben dasselbe Band",
+        "modifier": null
+      },
+      {
+        "name": "an einer schräg stehenden Fassade bleibt es planar und senkrecht zur Wand",
+        "modifier": null
+      },
+      {
+        "name": "ohne Normale gibt es kein waagerechtes Band — die Klicks sagen nichts über die Richtung",
+        "modifier": null
+      },
+      {
+        "name": "legt sich als vier Rechtecke um die ganze Öffnung",
+        "modifier": null
+      },
+      {
+        "name": "überlappt sich nicht — oben und unten über die volle Breite, seitlich nur auf Öffnungshöhe",
+        "modifier": null
+      },
+      {
+        "name": "liegt in der Ebene der Öffnung",
+        "modifier": null
+      },
+      {
+        "name": "ohne Dicke, ohne Maß oder ohne Normale entsteht nichts",
         "modifier": null
       }
     ]
