@@ -928,7 +928,7 @@
     "kind": "e2e (Playwright)",
     "tests": [
       {
-        "name": "Sanierung-Anstrich out-of-the-box: IFC → Anstrich-LV → GAEB-Export",
+        "name": "Sanierung-Anstrich: IFC → Anstrich-LV → GAEB-Export",
         "modifier": null
       }
     ]
@@ -940,6 +940,10 @@
     "tests": [
       {
         "name": "Sanierung-Anstrich blendet WDVS-Systeme aus; Override und Settings-Wechsel zeigen sie",
+        "modifier": null
+      },
+      {
+        "name": "Ein neues Projekt startet als Sanierung · WDVS",
         "modifier": null
       }
     ]
@@ -971,6 +975,14 @@
       },
       {
         "name": "Ansichts-Raster: das achsparallele Modell nennt die Weltachsen",
+        "modifier": null
+      },
+      {
+        "name": "Nordrichtung: das Blatt nennt die Angabe des Modells, die Handeingabe und die Summe",
+        "modifier": null
+      },
+      {
+        "name": "Nordrichtung: trägt das Modell keine Angabe, sagt das Blatt das",
         "modifier": null
       },
       {
@@ -1323,6 +1335,10 @@
       {
         "name": "Polygon — Ecken anklicken, Doppelklick schließt, die m² wechseln den Bereich (#348)",
         "modifier": null
+      },
+      {
+        "name": "Freihand-Bereich — keine Nullzeile für Gebäudegrößen bis in die X83 (#477)",
+        "modifier": null
       }
     ]
   },
@@ -1352,6 +1368,14 @@
       },
       {
         "name": "Ein fehlgeschlagener Teilvorgang lässt die Liste stehen",
+        "modifier": null
+      },
+      {
+        "name": "Anlegen: eine Serverantwort ist „fehlgeschlagen\", nur ein Netzfehler ist offline",
+        "modifier": null
+      },
+      {
+        "name": "Ordner anlegen: eine Serverantwort ist „fehlgeschlagen\", nur ein Netzfehler ist offline",
         "modifier": null
       }
     ]
@@ -1762,6 +1786,18 @@
       {
         "name": "Vereinheitlichen nimmt eine Bedarfsposition ohne System mit",
         "modifier": null
+      },
+      {
+        "name": "Eine Öffnung zählt zur Gruppe ihrer Wirtswand — Übermessung, Summe, X83 und Aufmaßblatt (#463)",
+        "modifier": null
+      },
+      {
+        "name": "VOB-Preisvorschau im System-Konfigurator — unter exakt mit Kleinöffnung, unter VOB nicht",
+        "modifier": null
+      },
+      {
+        "name": "Ohne geladenes Modell meldet das LV die Bruttofläche ohne Öffnungen je Bereich",
+        "modifier": null
       }
     ]
   },
@@ -2163,6 +2199,21 @@
     ]
   },
   {
+    "file": "apps/web/e2e/testprojekt-flaechenuebersicht.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Testprojekt 1: die Flächenreferenz steht ohne Handarbeit in der Flächenübersicht",
+        "modifier": null
+      },
+      {
+        "name": "Modell-Nordrichtung: Hinweis und Richtungszeilen folgen TrueNorth",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/e2e/topbarSettings.spec.ts",
     "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
@@ -2202,7 +2253,7 @@
     "kind": "e2e (Playwright)",
     "tests": [
       {
-        "name": "UI-Katalog: jede Komponenten-Sektion ist vorhanden, die #118/#119-Zustände stehen drin",
+        "name": "UI-Katalog: jede Komponenten-Sektion ist vorhanden, jede Variante der design.md steht drin",
         "modifier": null
       }
     ]
@@ -2388,6 +2439,10 @@
         "modifier": null
       },
       {
+        "name": "nennt die Gleichstands-Toleranz der Flächen aus der rechnenden Konstante",
+        "modifier": null
+      },
+      {
         "name": "nennt die Herleitung, und sie passt zum Band",
         "modifier": null
       },
@@ -2461,6 +2516,10 @@
       },
       {
         "name": "weist Schichtenraster und Tiefentoleranz aus",
+        "modifier": null
+      },
+      {
+        "name": "weist das Konturraster mit Zelle, Deckel und Dilatation aus — in jeder Dokumentsprache",
         "modifier": null
       },
       {
@@ -2545,6 +2604,38 @@
       },
       {
         "name": "nennt den Drehsinn zwischen den Ansichten statt eines Vorzeichens",
+        "modifier": null
+      },
+      {
+        "name": "nennt die Abweichung von der Nordrichtung, sobald diese neben einer Projektachse liegt",
+        "modifier": null
+      },
+      {
+        "name": "bleibt unverändert, solange die Nordrichtung auf einer Projektachse liegt",
+        "modifier": null
+      },
+      {
+        "name": "nennt die Ansicht Nord in jeder Dokumentsprache wie unter dem Belegbild",
+        "modifier": null
+      },
+      {
+        "name": "nennt die Angabe des Modells, die Handeingabe und die wirksame Summe",
+        "modifier": null
+      },
+      {
+        "name": "bildet die Summe wie die Zuordnung und nennt sie als Richtung unter 360°",
+        "modifier": null
+      },
+      {
+        "name": "unterscheidet die fehlende Angabe von der ausdrücklichen Vorgabe",
+        "modifier": null
+      },
+      {
+        "name": "steht unmittelbar vor dem Ansichts-Raster, das mit ihr rechnet",
+        "modifier": null
+      },
+      {
+        "name": "füllt in jeder Dokumentsprache alle Platzhalter, mit und ohne Angabe des Modells",
         "modifier": null
       },
       {
@@ -3311,6 +3402,26 @@
         "modifier": null
       },
       {
+        "name": "gibt dem Nebenbereich die Öffnung seiner Wirtswand — brutto immer, die Übermessung nur unter VOB",
+        "modifier": null
+      },
+      {
+        "name": "rechnet ohne lebende Szene keine Zuschläge — auch nicht auf einem übernommenen Stand",
+        "modifier": null
+      },
+      {
+        "name": "meldet die aufgeteilte Fassade auf einem übernommenen Stand ohne Öffnungsdaten — unter jeder Mengenregel",
+        "modifier": null
+      },
+      {
+        "name": "liefert unter exakt die VOB-Übermessung, mit der das LV unter VOB rechnet — je Bereich",
+        "modifier": null
+      },
+      {
+        "name": "trägt in der VOB-Vorschau nur die Übermessung, nicht den Fertigmaß-Zuschlag",
+        "modifier": null
+      },
+      {
         "name": "entstehen auch unter der Mengenregel exakt",
         "modifier": null
       },
@@ -3399,6 +3510,14 @@
     "tests": [
       {
         "name": "misst die Drehung in Grad, Vorzeichen nach atan2(z,x), und lässt die Mengen unberührt",
+        "modifier": null
+      },
+      {
+        "name": "dreht jede Außenrichtung um genau die Drehung des Hauses mit",
+        "modifier": null
+      },
+      {
+        "name": "weist den Drehsinn so aus, wie die Nordwand gewandert ist",
         "modifier": null
       },
       {
@@ -3551,6 +3670,29 @@
     ]
   },
   {
+    "file": "apps/web/src/ifcKonturmass.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "trifft Umfang und Grundfläche des achsparallelen Hauses auf den Zentimeter",
+        "modifier": null
+      },
+      {
+        "name": "trifft sie auch am um 30° gedrehten Zwilling",
+        "modifier": null
+      },
+      {
+        "name": "trifft auch eine Form mit Innenecken",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine Wandfuge die Kontur nicht aufreißen",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/src/ifcMitmessen.test.ts",
     "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
@@ -3588,6 +3730,49 @@
       },
       {
         "name": "findet den Header auch, wenn er hinter dem Lesefenster beginnt",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcNordrichtung.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "nennt die Wände eines Modells ohne Nordangabe nach IFC +Y = Nord",
+        "modifier": null
+      },
+      {
+        "name": "liest die Nordrichtung aus TrueNorth — ohne Handkorrektur",
+        "modifier": null
+      },
+      {
+        "name": "Einzelnachweis und Ansichtskamera folgen derselben Nordrichtung",
+        "modifier": null
+      },
+      {
+        "name": "nimmt die Nordrichtung des Model-Kontexts, nicht die eines vorangestellten Plan-Kontexts",
+        "modifier": null
+      },
+      {
+        "name": "übernimmt keine Nordrichtung aus einem Plan-Kontext, wenn der Model-Kontext schweigt",
+        "modifier": null
+      },
+      {
+        "name": "eine ausdrücklich gesetzte Vorgabe (0, 1) ist eine Nordangabe, kein Fehlen",
+        "modifier": null
+      },
+      {
+        "name": "liest TrueNorth auch aus einem IFC2X3-Export",
+        "modifier": null
+      },
+      {
+        "name": "liest ein schräges TrueNorth (30°) — die Wände bleiben auf ihren Seiten",
+        "modifier": null
+      },
+      {
+        "name": "weist das schräge TrueNorth im Aufmaßblatt aus",
         "modifier": null
       }
     ]
@@ -3711,6 +3896,68 @@
       },
       {
         "name": "trägt die Fläche in die Menge, sobald sie von Hand zugeordnet ist",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcTeilbauteile.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "gibt den Dachflächen unter dem IfcRoof das Geschoss des Daches",
+        "modifier": null
+      },
+      {
+        "name": "meldet die Dachflächen nicht als „ohne Geschoss\" — Bericht und Aufmaß nennen denselben Ort",
+        "modifier": null
+      },
+      {
+        "name": "liest den Revit-Kommentar als Stichwortquelle: „Facade plinth\" macht die Wand zum Sockel",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcTestprojekt.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "misst jede Wand wie Revit, zuzüglich der beschichteten Stirnseiten",
+        "modifier": null
+      },
+      {
+        "name": "erkennt die vier Sockelwände am Revit-Kommentar „Facade plinth\"",
+        "modifier": null
+      },
+      {
+        "name": "misst die Fassadenflächen",
+        "modifier": null
+      },
+      {
+        "name": "verteilt die Fassade auf die vier Richtungen wie der Revit-Plan",
+        "modifier": null
+      },
+      {
+        "name": "misst die Kontur des Baukörpers",
+        "modifier": null
+      },
+      {
+        "name": "misst die Öffnungen",
+        "modifier": null
+      },
+      {
+        "name": "leitet Laibung, Sturz und Fensterbank aus der 0,20-m-Wirtswand ab",
+        "modifier": null
+      },
+      {
+        "name": "ordnet die Bauteile ihren Geschossen zu",
+        "modifier": null
+      },
+      {
+        "name": "findet in der Eingangsprüfung keinen Befund",
         "modifier": null
       }
     ]
@@ -4229,6 +4476,14 @@
         "modifier": null
       },
       {
+        "name": "meldet eine reine Seitenwahl an einem Bauteil, das die Szene nicht mehr misst",
+        "modifier": null
+      },
+      {
+        "name": "meldet eine Seitenwahl nicht, solange sie wirkt, und auch nicht „auto\" oder gelöst",
+        "modifier": null
+      },
+      {
         "name": "meldet eine gelöste Zuordnung NICHT — sie ist zurücknehmbar, nicht verfallen",
         "modifier": null
       },
@@ -4583,6 +4838,14 @@
         "modifier": null
       },
       {
+        "name": "ein Dokument ohne massnahme liest sich als Sanierung-WDVS",
+        "modifier": null
+      },
+      {
+        "name": "ein gespeichertes Anstrich-Projekt behält seine Maßnahme",
+        "modifier": null
+      },
+      {
         "name": "ein explizites null bei bauteile überschreibt den Default nicht",
         "modifier": null
       },
@@ -4747,7 +5010,7 @@
         "modifier": null
       },
       {
-        "name": "hängt an Modellmaß, Nordrichtung und Gebäudedrehung — an nichts sonst",
+        "name": "hängt an Modellmaß, Nordrichtung (Hand und Modell) und Gebäudedrehung — an nichts sonst",
         "modifier": null
       },
       {
@@ -4763,7 +5026,7 @@
         "modifier": null
       },
       {
-        "name": "Nord steht bei northDeg 0 auf +Z, Süd gegenüber; der Abstand fasst die Bounding-Sphäre bei fov 45",
+        "name": "Nord steht bei northDeg 0 auf −Z (IFC +Y, #526), Süd gegenüber; der Abstand fasst die Bounding-Sphäre bei fov 45",
         "modifier": null
       },
       {
@@ -5047,11 +5310,27 @@
         "modifier": null
       },
       {
-        "name": "führt die Wandart-Regel mit, und schreibt sie nur, wenn es eine gibt",
+        "name": "führt die Wandart-Regel mit, und erfindet keine, wo es keine gibt",
+        "modifier": null
+      },
+      {
+        "name": "reicht auch ein Register durch, das sie nicht kennt",
+        "modifier": null
+      },
+      {
+        "name": "teilt kein Register mit dem übergebenen Bestand",
+        "modifier": null
+      },
+      {
+        "name": "überschreibt den abgelegten Stand dort, wo sie selbst rechnet",
         "modifier": null
       },
       {
         "name": "schreibt mitgemessen nicht, wenn nichts geschaltet ist",
+        "modifier": null
+      },
+      {
+        "name": "räumt die Leer-Form weg, statt sie durchzureichen",
         "modifier": null
       },
       {
@@ -5205,6 +5484,10 @@
       {
         "name": "renovierung + wdvs ergibt renovierung-wdvs",
         "modifier": null
+      },
+      {
+        "name": "startet als Sanierung · WDVS",
+        "modifier": null
       }
     ]
   },
@@ -5322,6 +5605,14 @@
         "modifier": null
       },
       {
+        "name": "weist nur die gehaltene Nullzeile als überschrieben aus — Faktor-Formel und Teilfläche bleiben wie vorher",
+        "modifier": null
+      },
+      {
+        "name": "fragt für „gehalten\" die Halteregel der Kalkulation, nicht den Modellwert",
+        "modifier": null
+      },
+      {
         "name": "bleibt aus, wenn nichts aufzuschlagen ist — der Regelfall des IFC-Pfads",
         "modifier": null
       },
@@ -5338,11 +5629,23 @@
         "modifier": null
       },
       {
+        "name": "weist eine gehaltene Hand-Menge an der Nullzeile einer Gruppe als überschrieben aus",
+        "modifier": null
+      },
+      {
         "name": "findet den Bereich auch im verdichteten LV — Nachweis und Farbe je Gruppe",
         "modifier": null
       },
       {
         "name": "behauptet unter VOB beim Leitbereich keine Abweichung",
+        "modifier": null
+      },
+      {
+        "name": "verteilt die Öffnungen über die Wirtswand — Übermessung und Nachweis je Gruppe (#463)",
+        "modifier": null
+      },
+      {
+        "name": "lässt Öffnungen ohne Wirtswand beim Leitbereich",
         "modifier": null
       },
       {
@@ -5355,6 +5658,22 @@
       },
       {
         "name": "weist eine gekürzte Zeichnung mit der verrechneten Menge aus, ohne Maßkette",
+        "modifier": null
+      },
+      {
+        "name": "kürzt gezeichnete Flächen an Brutto-Positionen gegen die Bruttobasis (#463)",
+        "modifier": null
+      },
+      {
+        "name": "weist die Zeichnung je Flächen-Term nach — auch bei `hauptflaeche + bruttoflaeche`",
+        "modifier": null
+      },
+      {
+        "name": "gibt dem Nebenbereich brutto seine Öffnungen — LV und Nachweis (#463)",
+        "modifier": null
+      },
+      {
+        "name": "lässt das Brutto bei der Wirtswand, auch wenn die Aussparung über die Gruppengrenze reicht (#463)",
         "modifier": null
       },
       {
@@ -5558,6 +5877,10 @@
       {
         "name": "aufgeteilte Fassade: die Kennzahl teilt durch die eigene Fläche des Systems",
         "modifier": null
+      },
+      {
+        "name": "aufgeteilte Fassade mit Öffnungen im Nebenbereich: Kennzahl und LV rechnen dieselben Zuschläge (#463)",
+        "modifier": null
       }
     ]
   },
@@ -5588,6 +5911,10 @@
       },
       {
         "name": "reicht im Detailgrad detailliert keine Nebenleistungen durch",
+        "modifier": null
+      },
+      {
+        "name": "reicht die Öffnungs-Zuschläge der Nebenbereiche bis ins LV durch (#463)",
         "modifier": null
       }
     ]
@@ -5818,7 +6145,19 @@
         "modifier": null
       },
       {
-        "name": "eigener Bereich mit Freihand-Fläche: gezeichnete Fläche ersetzt hauptflaeche, übrige Größen → 0",
+        "name": "eigener Bereich mit Freihand-Fläche: gezeichnete Fläche ersetzt hauptflaeche, Sockel-/Laibungsgrößen erzeugen keine Zeile (#477)",
+        "modifier": null
+      },
+      {
+        "name": "Freihand-Bereich: keine Nullzeile für Gebäudegrößen, bis in die GAEB-Datei — die Pauschale bleibt",
+        "modifier": null
+      },
+      {
+        "name": "Freihand-Bereich: eine Formel, die dort nicht 0 rechnet, und eine Hand-Menge halten die Zeile",
+        "modifier": null
+      },
+      {
+        "name": "Freihand-Bereich: nur eine Hand-Menge ≠ 0 hält die Zeile, je Tiefenklasse — eine fehlerhafte Formel bleibt",
         "modifier": null
       },
       {
@@ -5926,6 +6265,10 @@
         "modifier": null
       },
       {
+        "name": "eine Hand-Menge hält die Zeile im Nebenbereich",
+        "modifier": null
+      },
+      {
         "name": "lässt eine Pauschale beim Leitbereich, statt sie je Gruppe zu wiederholen",
         "modifier": null
       },
@@ -5971,6 +6314,18 @@
       },
       {
         "name": "ohne Aufteilung rechnet der Fassaden-Bereich unverändert die ganze Fläche",
+        "modifier": null
+      },
+      {
+        "name": "verteilt sich mit der Öffnungsliste anders auf die Bereiche, die Summe bleibt",
+        "modifier": null
+      },
+      {
+        "name": "meldet sie, wo eine Position der aufgeteilten Fassade sie rechnet — am Nebenbereich wie am Leitbereich",
+        "modifier": null
+      },
+      {
+        "name": "schweigt, wo keine Menge daran hängt",
         "modifier": null
       }
     ]
@@ -6280,6 +6635,14 @@
       },
       {
         "name": "ein gezeichneter eigener Bereich verbraucht die Variable nicht — in beiden Dokumentformen",
+        "modifier": null
+      },
+      {
+        "name": "ein Nebenbereich verbraucht die Variable nicht — auch nicht mit gemischter Formel",
+        "modifier": null
+      },
+      {
+        "name": "ein Nebenbereich verbraucht die Variable nicht — auch nicht mit gehaltener Hand-Menge",
         "modifier": null
       },
       {
@@ -6755,6 +7118,18 @@
     "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
     "tests": [
+      {
+        "name": "zieht die Ecken der genannten Dreiecke heraus, in deren Reihenfolge",
+        "modifier": null
+      },
+      {
+        "name": "nimmt jede Aufzählung, nicht nur ein Array",
+        "modifier": null
+      },
+      {
+        "name": "liefert für ein Bauteil dieselben Gruppen wie der Index selbst",
+        "modifier": null
+      },
       {
         "name": "fasst die Dreiecke einer Ebene zu EINER Fläche zusammen",
         "modifier": null
@@ -7265,7 +7640,11 @@
         "modifier": null
       },
       {
-        "name": "nimmt Teilbauteile von der Geschossregel aus",
+        "name": "zählt das geerbte Geschoss als Ortsbezug — ein nirgends verortetes Teilbauteil bleibt kritisch",
+        "modifier": null
+      },
+      {
+        "name": "meldet das geerbte Geschoss als Ortsbezug, aber nicht als eigene Mehrdeutigkeit",
         "modifier": null
       },
       {
@@ -7286,6 +7665,10 @@
       },
       {
         "name": "schweigt, wenn OverallHeight und Typnamen-Maß übereinstimmen",
+        "modifier": null
+      },
+      {
+        "name": "schweigt, wenn das Typnamen-Maß innerhalb der Toleranz unter dem Bauteilmaß liegt",
         "modifier": null
       },
       {
@@ -7317,11 +7700,19 @@
         "modifier": null
       },
       {
+        "name": "schweigt bei den Standardnamen anderer Autorenwerkzeuge",
+        "modifier": null
+      },
+      {
         "name": "meldet Typnamen außerhalb <Funktion>_<Dicke>_<Material>_<Lage> als Hinweis",
         "modifier": null
       },
       {
         "name": "schweigt bei Typnamen nach Konvention",
+        "modifier": null
+      },
+      {
+        "name": "schweigt bei einem Revit-Typnamen mit Dicke, sobald IsExternal die Lage liefert",
         "modifier": null
       },
       {
@@ -7389,6 +7780,10 @@
         "modifier": null
       },
       {
+        "name": "meldet eine verfallene Seitenwahl getrennt von den Flächen",
+        "modifier": null
+      },
+      {
         "name": "schweigt ohne verfallene Korrekturen — leer wie fehlend",
         "modifier": null
       }
@@ -7437,6 +7832,18 @@
       },
       {
         "name": "steht bei einem achsparallelen, genordeten Gebäude auf den Achsen",
+        "modifier": null
+      },
+      {
+        "name": "nennt die Abweichung der Ansicht Nord im Uhrzeigersinn von der Nordrichtung",
+        "modifier": null
+      },
+      {
+        "name": "beschreibt genau die Seite, die compassFromAngle Nord nennt",
+        "modifier": null
+      },
+      {
+        "name": "hat ohne Nordrichtung das Vorzeichen des Drehsinns im Blatt",
         "modifier": null
       },
       {
@@ -7633,6 +8040,18 @@
       },
       {
         "name": "lässt zwei Marschschritte auch mit dem weiteren Band entscheiden",
+        "modifier": null
+      },
+      {
+        "name": "lässt einen echten Unterschied von 9 cm² entscheiden, auch gegen den Zentrums-Test",
+        "modifier": null
+      },
+      {
+        "name": "überlässt einen Unterschied im Rauschen dem Zentrums-Test",
+        "modifier": null
+      },
+      {
+        "name": "lässt das Rauschen einer großen Wandseite nicht entscheiden",
         "modifier": null
       },
       {
@@ -7861,6 +8280,30 @@
       {
         "name": "Ecke ohne nahe Vertices faellt auf die Gesamtspanne zurueck",
         "modifier": null
+      },
+      {
+        "name": "bleibt bis zu den Deckeln bei den Bodenzellen und drei Zellen Dilatation",
+        "modifier": null
+      },
+      {
+        "name": "koppelt die Dilatation an die grobe Zelle, wenn die feine Zelle mit der Spanne wächst",
+        "modifier": null
+      },
+      {
+        "name": "verbreitert die Barriere nie um weniger als eine Zelle",
+        "modifier": null
+      },
+      {
+        "name": "rückt ein Rechteck um den Saum ein: Umfang −2d je Außenecke, Fläche −Umfang·d + 4d²",
+        "modifier": null
+      },
+      {
+        "name": "zählt eine Innenecke gegen: Umfang −2d je Außen-, +2d je Innenecke",
+        "modifier": null
+      },
+      {
+        "name": "lässt den Umfang eines Hofs unverändert: der Außenring schrumpft, das Loch wächst",
+        "modifier": null
       }
     ]
   },
@@ -7875,6 +8318,14 @@
       },
       {
         "name": "IsExternal sichert die Außen/Innen-Zuordnung ab (autoritativ)",
+        "modifier": null
+      },
+      {
+        "name": "Freitext entscheidet Außen/Innen nur ohne Pset und ohne Namenssignal",
+        "modifier": null
+      },
+      {
+        "name": "liest aus dem Freitext nur Wörter, die den Sockel wirklich benennen",
         "modifier": null
       },
       {
@@ -8253,6 +8704,10 @@
       },
       {
         "name": "ohne bestätigte Breite (weder Attribut noch Geometrie) zählt der Typname nicht (#220)",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine Namenshöhe innerhalb der Toleranz die Basis nur bestätigen, nicht ersetzen",
         "modifier": null
       },
       {
@@ -8901,6 +9356,85 @@
     ]
   },
   {
+    "file": "packages/core/test/namensHeuristik.test.ts",
+    "category": "Core Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "kennt das AIA-Schema",
+        "modifier": null
+      },
+      {
+        "name": "kennt die Revit-/ArchiCAD-Standardnamen",
+        "modifier": null
+      },
+      {
+        "name": "kennt nummerierte Geschosse",
+        "modifier": null
+      },
+      {
+        "name": "kennt benannte Geschosse in vier Sprachen",
+        "modifier": null
+      },
+      {
+        "name": "kennt ausgeschriebene Ordnungszahlen, Mezzanine und die spanischen Ebenen-Namen",
+        "modifier": null
+      },
+      {
+        "name": "meldet, was keinem Muster folgt",
+        "modifier": null
+      },
+      {
+        "name": "greift nicht auf Planblatt-Namen über",
+        "modifier": null
+      },
+      {
+        "name": "kennt Etage und Étage auch ohne Ziffer",
+        "modifier": null
+      },
+      {
+        "name": "liest die AIA-Konvention vollständig",
+        "modifier": null
+      },
+      {
+        "name": "liest den Revit-Elementnamen Familie:Typ:Id",
+        "modifier": null
+      },
+      {
+        "name": "liest Zentimeter, Millimeter und freistehende Zahlen",
+        "modifier": null
+      },
+      {
+        "name": "liest dreistellige Zentimeter, statt auf dem Suffix zu greifen",
+        "modifier": null
+      },
+      {
+        "name": "koppelt Wert und Einheit am selben Treffer",
+        "modifier": null
+      },
+      {
+        "name": "nimmt weder ElementId noch Jahreszahl als Wanddicke",
+        "modifier": null
+      },
+      {
+        "name": "erkennt die Innenwand-Funktion auch ohne Lage-Stichwort",
+        "modifier": null
+      },
+      {
+        "name": "nimmt den Sockel als Funktion mit Lage außen",
+        "modifier": null
+      },
+      {
+        "name": "ist gegeben nach Schema, oder mit Dicke plus Lage — aus dem Namen oder aus IsExternal",
+        "modifier": null
+      },
+      {
+        "name": "fehlt ohne Dicke oder ohne jede Lage",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "packages/core/test/neutraleTexte.test.ts",
     "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
@@ -9401,6 +9935,38 @@
       },
       {
         "name": "liest das alte Einzel-Polygon der Bestandsprojekte mit",
+        "modifier": null
+      },
+      {
+        "name": "ordnet über die Wirtswand zu — ohne Wirt oder mit Wirt beim Leitbereich bleibt die Öffnung dort",
+        "modifier": null
+      },
+      {
+        "name": "hält eine gruppenübergreifende Aussparung beim Leitbereich zusammen",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Bruttofläche bei der Wirtswand, auch wenn die Aussparung über die Gruppengrenze reicht",
+        "modifier": null
+      },
+      {
+        "name": "gibt dem Nebenbereich brutto seine Öffnungen, unter VOB nur die Übermessung",
+        "modifier": null
+      },
+      {
+        "name": "hält die Summe, wenn ein negativer Zuschlag den Nebenbereich unter 0 drückte",
+        "modifier": null
+      },
+      {
+        "name": "reicht die Zuschläge in den Vermerk und in die Kürzung der Zeichnungen",
+        "modifier": null
+      },
+      {
+        "name": "hält eine Aussparung über zwei Nebenbereiche beim Leitbereich und kürzt Zuschläge mit",
+        "modifier": null
+      },
+      {
+        "name": "ist ohne Aufteilung leer — Zeichen für Zeichen der Stand davor",
         "modifier": null
       }
     ]
@@ -10777,6 +11343,37 @@
       },
       {
         "name": "jede Fehlermeldung nennt einen Fix",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "scripts/pruefeBundle.test.mjs",
+    "category": "Repo Tooling Tests (Vitest)",
+    "kind": "unit (Vitest)",
+    "tests": [
+      {
+        "name": "lässt einen Build ohne Merkmale durch",
+        "modifier": null
+      },
+      {
+        "name": "meldet ein Merkmal im Bundle mit Datei und Merkmal",
+        "modifier": null
+      },
+      {
+        "name": "meldet jedes Merkmal in jeder Datei, auch in Unterordnern",
+        "modifier": null
+      },
+      {
+        "name": "meldet eine IFC-Datei im Build auch ohne Merkmal im Text",
+        "modifier": null
+      },
+      {
+        "name": "findet die IFC-Kopfzeile auch, wenn der Chunk ihre Hochkommas escapt",
+        "modifier": null
+      },
+      {
+        "name": "liest Binärdateien nicht",
         "modifier": null
       }
     ]
