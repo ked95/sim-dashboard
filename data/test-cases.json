@@ -988,6 +988,14 @@
       {
         "name": "OZ-Bindung: das Aufmaßblatt trägt die OZ der gewählten LV-Gliederung (#208)",
         "modifier": null
+      },
+      {
+        "name": "Aufmaßblatt-Excel: eine überschriebene Faktor-Position rechnet ihre Kette auf ihren eigenen Text",
+        "modifier": null
+      },
+      {
+        "name": "Aufmaßblatt-Excel: das Schlitzfenster trägt seine Breite, nicht seine Blendentiefe",
+        "modifier": null
       }
     ]
   },
@@ -1030,6 +1038,10 @@
       {
         "name": "Bauteilliste: Umklassifizieren wirkt sofort bis in die LV-Menge",
         "modifier": null
+      },
+      {
+        "name": "Bauteilliste: eine Korrektur überlebt den Reload ohne erneutes Übernehmen",
+        "modifier": null
       }
     ]
   },
@@ -1051,6 +1063,41 @@
     "tests": [
       {
         "name": "Bekleidung: nicht automatisch Fassade, aber von Hand zuweisbar (#330)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/brandriegel.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Brandriegel am Modell → Lfm-Position in LV und GAEB, ziehen und tippen, Reload, Löschen (#350)",
+        "modifier": null
+      },
+      {
+        "name": "Riegellagen nach Zulassung: Vorschlag nach Bestätigung, V2 beim Verschieben, Zusatzriegel folgt der Dach-Antwort (#351)",
+        "modifier": null
+      },
+      {
+        "name": "Übergangsriegel: Klick über der Durchfahrt, Kante am Modell gemessen, Länge bis GAEB (#351)",
+        "modifier": null
+      },
+      {
+        "name": "Sturzschutz je Öffnung: Varianten a/b mit Lfm bis in den GAEB-Export, Variante c ersetzt die Zone (#352)",
+        "modifier": null
+      },
+      {
+        "name": "Sockelzone mit Systemwechsel: Teilflächen ergeben die Fassade, Löschen stellt sie exakt her (#353)",
+        "modifier": null
+      },
+      {
+        "name": "Riegel und Sockelzone: Riegel in der Zone gemeldet, Riegel an ihrer Oberkante verlangt, Vorschlag ab der Zone (#353)",
+        "modifier": null
+      },
+      {
+        "name": "Werkzeug-Panel im Großbild: über dem Bild, einklappbar, nur mit aktivem Werkzeug",
         "modifier": null
       }
     ]
@@ -1109,6 +1156,17 @@
     ]
   },
   {
+    "file": "apps/web/e2e/detailKeineSerienZeichen.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Konstruktionsdetails: keine Detail-Serien im Kontext steht als Zeichen am Titel",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/e2e/dokumentsprache.spec.ts",
     "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
@@ -1151,6 +1209,14 @@
       {
         "name": "Flächenabgleich: falsche Qto-Basismenge wird gemeldet, korrekte bestätigen die Messung (#216)",
         "modifier": null
+      },
+      {
+        "name": "Teilweise ohne Außenluft: ohne die Koplanar-Regel von #599 werden die Schachtwände gewarnt und orange (#607)",
+        "modifier": null
+      },
+      {
+        "name": "Standard: Die Koplanar-Regel zählt die Schachtwände, und das 3D bleibt grün/rot (#599, #607)",
+        "modifier": null
       }
     ]
   },
@@ -1172,6 +1238,17 @@
     "tests": [
       {
         "name": "Bauteilliste zeigt GUID und Quelle; Excel-Export enthält beide",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/erdgeschoss-name.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Erdgeschoss nach Name: die EG-Wände zählen bis ins GAEB, die Wahl steht in der Eingangsprüfung",
         "modifier": null
       }
     ]
@@ -1228,12 +1305,38 @@
     ]
   },
   {
+    "file": "apps/web/e2e/exportSprachHinweis.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Export: Dokumentsprache außerhalb des Marktes steht als Zeichen am Titel",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/e2e/fenstersitz.spec.ts",
     "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
         "name": "Mauerwerksbündiger Sitz nimmt die Leibungsdämmung aus X83 und PDF",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/festeKopfleiste.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Kleines Fenster: In Modell → Mengen scrollt der Inhalt, Kopfleisten und Seitenleiste bleiben stehen",
+        "modifier": null
+      },
+      {
+        "name": "Kleines Fenster: keine Ansicht lässt das Dokument scrollen",
         "modifier": null
       }
     ]
@@ -1288,6 +1391,10 @@
       },
       {
         "name": "Formel führt Größen als Tag — getippt entsteht sie, zerlegbar ist sie nicht",
+        "modifier": null
+      },
+      {
+        "name": "Formel-Bausteine erscheinen erst, wenn das Formelfeld gewählt ist",
         "modifier": null
       }
     ]
@@ -1377,6 +1484,22 @@
       {
         "name": "Ordner anlegen: eine Serverantwort ist „fehlgeschlagen\", nur ein Netzfehler ist offline",
         "modifier": null
+      },
+      {
+        "name": "Übersicht: ein Sichtwechsel räumt die Meldung ab",
+        "modifier": null
+      },
+      {
+        "name": "Übersicht: eine Meldung nach dem Sichtwechsel bleibt stehen",
+        "modifier": null
+      },
+      {
+        "name": "Übersicht: ein Ladefehler bleibt über den Sichtwechsel stehen",
+        "modifier": null
+      },
+      {
+        "name": "Übersicht: die Meldung überlebt die Umleitung, nicht aber ein späteres Zurück",
+        "modifier": null
       }
     ]
   },
@@ -1405,7 +1528,7 @@
     "kind": "e2e (Playwright)",
     "tests": [
       {
-        "name": "Weitere Mengen: gepaarte Reihenfolge + Reveals auswählbar, Zuordnen-Toggle ausgegraut",
+        "name": "Zuordnung prüfen: Fenster und Türen tragen ihre Nebenflächen, die nur hervorheben",
         "modifier": null
       }
     ]
@@ -1429,6 +1552,39 @@
       },
       {
         "name": "Die parallel zur Wand zurückspringende Laibung zählt nicht zur Fassade (#495)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/ifcErsetzen.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "IFC: ein zweiter Import fragt, ob das aktuelle Modell ersetzt wird",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/ifcImportEigenschaften.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "IFC-Import: die Eigenschaften eines Elements schweben über dem Modell",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/ifcLaibungstiefeZeile.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "IFC-Import: die Laibungstiefe ist eine eigene Zeile und wählt die Laibung",
         "modifier": null
       }
     ]
@@ -1461,6 +1617,17 @@
     ]
   },
   {
+    "file": "apps/web/e2e/ifcPanelsKlappen.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "IFC-Import: Geschosse klappen und drehen ihre Reihenfolge",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/e2e/ifcRehydrate.spec.ts",
     "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
@@ -1475,6 +1642,17 @@
       },
       {
         "name": "IFC überlebt sofortigen Wechsel zur Übersicht (Autosave-Flush beim Verlassen)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/ifcZusammenfassung.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "IFC-Import: die Zusammenfassung zeigt alle Bereiche, wählbar, ohne Zuweisung",
         "modifier": null
       }
     ]
@@ -1525,6 +1703,85 @@
     ]
   },
   {
+    "file": "apps/web/e2e/kalkulationEscAbwahl.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Kalkulation: Esc hebt die Auswahl der Position auf",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/kalkulationLayout.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Kalkulation: Flächen links in der Seitenleiste, Positionen im Inhalt",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/kalkulationNeuePosition.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Kalkulation: „+ Position\" am Ende einer Gruppe legt die Position in dieser Gruppe an",
+        "modifier": null
+      },
+      {
+        "name": "Kalkulation: eine neue Gruppe entsteht am Tabellenende und lässt sich im Kopf benennen",
+        "modifier": null
+      },
+      {
+        "name": "Kalkulation: Gruppennamen bleiben eindeutig, auch beim Umbenennen",
+        "modifier": null
+      },
+      {
+        "name": "Kalkulation: neue Gruppe und Zulagen-Position tragen bis ins LV und GAEB",
+        "modifier": null
+      },
+      {
+        "name": "Kalkulation: die Zulage-Auswahl wandert mit der Zulagen-Gruppe",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/kalkulationOffenHinweis.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Kalkulation: die Warnzeichen führen zum System mit den offenen Angaben",
+        "modifier": null
+      },
+      {
+        "name": "Kalkulation: ohne Geometrie führt das Warnzeichen zum IFC-Import",
+        "modifier": null
+      },
+      {
+        "name": "Kalkulation: WDVS-System bei Maßnahme Anstrich steht hinter einem Warnzeichen",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/klick-durchgriff.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Lösen und Shift greifen durch die Bekleidung, höchstens 50 cm; Zuordnen nicht durch das Zugeordnete",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/e2e/klick-zuweisung.spec.ts",
     "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
@@ -1543,6 +1800,17 @@
       },
       {
         "name": "Wandseite schalten ändert die gemessene Fläche — und die des Bereichs mit (#455)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/komponenteInSchicht.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Systeme: + Komponente steht in der Schicht und legt dort an",
         "modifier": null
       }
     ]
@@ -1623,12 +1891,46 @@
     ]
   },
   {
+    "file": "apps/web/e2e/lvHinweisZeichen.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "LV: WDVS-System bei Maßnahme Anstrich steht als Warnzeichen in der Werkzeugleiste",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/e2e/lvLangtext.spec.ts",
     "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
         "name": "LV-Schirm zeigt den Ausschreibungstext; der Umschalter räumt ihn weg",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/lvPosition.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "LV: Esc hebt die gewählte Position auf, im Suchfeld nicht",
+        "modifier": null
+      },
+      {
+        "name": "LV: Klick außerhalb der Tabelle hebt die Position auf, Klick in die Leisten nicht",
+        "modifier": null
+      },
+      {
+        "name": "LV: Ansicht umschalten behält die Position, Gliederung wechseln hebt sie auf",
+        "modifier": null
+      },
+      {
+        "name": "LV: Esc schließt erst das Hinweis-Menü, die Position bleibt",
         "modifier": null
       }
     ]
@@ -1788,7 +2090,7 @@
         "modifier": null
       },
       {
-        "name": "Eine Öffnung zählt zur Gruppe ihrer Wirtswand — Übermessung, Summe, X83 und Aufmaßblatt (#463)",
+        "name": "Eine Öffnung zählt zur Gruppe ihrer ${fall} — Übermessung, Summe, X83 und Aufmaßblatt (#463)",
         "modifier": null
       },
       {
@@ -1797,6 +2099,10 @@
       },
       {
         "name": "Ohne geladenes Modell meldet das LV die Bruttofläche ohne Öffnungen je Bereich",
+        "modifier": null
+      },
+      {
+        "name": "Ohne Wand davor meldet das LV die Öffnung ohne Gruppe — unter VOB, unter exakt erst mit Bruttofläche",
         "modifier": null
       }
     ]
@@ -1823,6 +2129,28 @@
       },
       {
         "name": "Eingangsprüfung meldet die Höhenabweichung als Hinweis (#220)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/offeneAngabenWeg.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "LV: das Warnzeichen in der Werkzeugleiste führt zum System mit den offenen Angaben",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/ohne-richtung.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Ohne Richtung: Bauteil ohne Außenwinkel einschalten, filtern, Summe und Übernahme (#563)",
         "modifier": null
       }
     ]
@@ -1942,11 +2270,11 @@
         "modifier": null
       },
       {
-        "name": "Die Legende zeigt auch Öffnungen im 3D — sie führen keine eigene Elementliste",
+        "name": "Die Mitanzeige zeigt auch Öffnungen im 3D — sie führen keine eigene Elementliste",
         "modifier": null
       },
       {
-        "name": "Das Modell lässt sich groß ziehen — Bereichsliste und Werkzeuge bleiben",
+        "name": "Das Modell lässt sich groß ziehen — beide Leisten treten zurück, die Werkzeuge bleiben",
         "modifier": null
       }
     ]
@@ -2012,6 +2340,21 @@
     "tests": [
       {
         "name": "Mehrschichtige Wände auf Landeskoordinaten: dieselbe Menge von der Fläche bis ins GAEB",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/schichtenKlappen.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Systeme: Schichten einzeln und alle zusammen ein- und ausklappen",
+        "modifier": null
+      },
+      {
+        "name": "Systeme: Doppelklick auf den Schichtkopf klappt die Schicht",
         "modifier": null
       }
     ]
@@ -2091,6 +2434,32 @@
       },
       {
         "name": "Übersicht: Zeilentyp und Knopf-Beschriftung sind ablesbar",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/seitenleisten-ziehen.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Seitenleisten aufziehen: links und rechts, über Ansichten und Reload, Doppelklick zurück, nicht in der Projektübersicht",
+        "modifier": null
+      },
+      {
+        "name": "Modellhöhe in Kalkulation und Systeme: ziehen, mitnehmen, begrenzt, Doppelklick zurück",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/seitenwahl-verfall.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Verfall und Rückkehr einer Seitenwahl: als Träger gemeldet, als Wand wieder wirksam (#547)",
         "modifier": null
       }
     ]
@@ -2177,6 +2546,17 @@
     ]
   },
   {
+    "file": "apps/web/e2e/stuetzen-drehung.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Die Loggia-Stützen bleiben am gedrehten Haus in der Fassade (#588)",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/e2e/systemAmpel.spec.ts",
     "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
@@ -2188,12 +2568,57 @@
     ]
   },
   {
+    "file": "apps/web/e2e/systemEscAbwahl.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Systeme: Esc hebt die Wahl auf und schließt die rechte Leiste",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/systemLeisteGross.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Systeme: groß geschaltet klappt die Leiste unter dem gewählten Eintrag auf",
+        "modifier": null
+      },
+      {
+        "name": "Systeme: Doppelklick auf eine Komponente klappt sie groß auf und wieder zu",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/e2e/systemlogik.spec.ts",
     "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
-        "name": "Systemlogik: Schicht-Highlight, Legende und Tooltip",
+        "name": "Systemlogik: Schicht-Highlight, Schichttabelle und Tooltip",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/systemOffenHinweis.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Systeme: das Warnzeichen führt zur ersten Komponente mit offenen Angaben",
+        "modifier": null
+      },
+      {
+        "name": "Systeme: die offene Produktwahl trägt ein Warnzeichen, bis ein Produkt gewählt ist",
+        "modifier": null
+      },
+      {
+        "name": "Systeme: die Schicht trägt ein Warnzeichen, wenn eine ihrer Komponenten offen ist",
         "modifier": null
       }
     ]
@@ -2242,7 +2667,11 @@
     "kind": "e2e (Playwright)",
     "tests": [
       {
-        "name": "Träger und Stütze erreichen die Fassade und laufen bis in GAEB und PDF durch (#330)",
+        "name": "Der Träger erreicht die Fassade und läuft bis in GAEB und PDF durch, die Stütze in der WDVS-Wand wird nur geführt (#330, #574)",
+        "modifier": null
+      },
+      {
+        "name": "Unterzug und Stütze vor der Loggia zählen, der Randbalken hinter der WDVS-Haut nicht — bis in GAEB und PDF (#574)",
         "modifier": null
       }
     ]
@@ -2314,6 +2743,36 @@
     ]
   },
   {
+    "file": "apps/web/e2e/vorhang.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Eine Vorhangfassade zählt nicht zur Fassade, schließt aber den Umriss (#592)",
+        "modifier": null
+      },
+      {
+        "name": "Eine abgewählte Vorhangfassade schließt den Umriss weiter (#592)",
+        "modifier": null
+      },
+      {
+        "name": "Abgewählte Glasplatten und Pfosten verdecken die Wand dahinter weiter (#611)",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/wandart-modellwechsel.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Wandart-Regel über den Modellwechsel: verwaist, übertragen, gelöscht",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/e2e/wandart-regel.spec.ts",
     "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
@@ -2325,12 +2784,38 @@
     ]
   },
   {
+    "file": "apps/web/e2e/wandteile.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Schichtkörper einer Wand ohne Körper zählen als die Wand, bis ins GAEB (#587)",
+        "modifier": null
+      },
+      {
+        "name": "Schichtkörper eines Trägers ohne Körper zählen als der Träger (#594)",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/e2e/zuordnung-aufheben.spec.ts",
     "category": "E2E Tests (Playwright)",
     "kind": "e2e (Playwright)",
     "tests": [
       {
         "name": "Zuordnung prüfen: der Aufheben-Knopf löst nur die gewählte Kategorie",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/e2e/zuordnungBauteilnamen.spec.ts",
+    "category": "E2E Tests (Playwright)",
+    "kind": "e2e (Playwright)",
+    "tests": [
+      {
+        "name": "Zuordnung: lange Bauteilnamen werden in der rechten Leiste gekürzt",
         "modifier": null
       }
     ]
@@ -2411,6 +2896,10 @@
         "modifier": null
       },
       {
+        "name": "druckt die Unterzeile eines Bauteils und die Fläche je Ansicht unter dem Beleg",
+        "modifier": null
+      },
+      {
         "name": "trägt den Feststellungs-Block und fortlaufende Blatt-Nummern",
         "modifier": null
       },
@@ -2424,6 +2913,14 @@
       },
       {
         "name": "Aufmaß-Blatt: Quellenspalte trägt „Modell-Attribut\" bzw. „gemessen\" (#215)",
+        "modifier": null
+      },
+      {
+        "name": "Aufmaß-Blatt: Unterzeile unter dem Bauteil, die Trennlinie darunter",
+        "modifier": null
+      },
+      {
+        "name": "Belege-Blatt: Fläche je Ansicht unter dem Namen (#529)",
         "modifier": null
       },
       {
@@ -2515,6 +3012,18 @@
         "modifier": null
       },
       {
+        "name": "weist die Brandriegel-Regeln aus — nur mit Riegeln, in jeder Dokumentsprache gefüllt",
+        "modifier": null
+      },
+      {
+        "name": "weist die Sturzschutz-Vorgaben aus — nur mit Sturzschutz, in jeder Dokumentsprache gefüllt",
+        "modifier": null
+      },
+      {
+        "name": "weist die Gruppenzuordnung der Öffnungen und die Breitenregel aus — in jeder Dokumentsprache",
+        "modifier": null
+      },
+      {
         "name": "weist Schichtenraster und Tiefentoleranz aus",
         "modifier": null
       },
@@ -2536,6 +3045,10 @@
       },
       {
         "name": "nennt beim Orakel-Ersatzweg den angewandten Zustand, nicht nur die Regel",
+        "modifier": null
+      },
+      {
+        "name": "nennt Brüstungs- und Koplanar-Regel mit ihrem angewandten Zustand",
         "modifier": null
       },
       {
@@ -2644,6 +3157,26 @@
       },
       {
         "name": "benutzt die eine Basisschrift plus courier für die GUID-Spalte",
+        "modifier": null
+      },
+      {
+        "name": "ohne Regel: der Annahme-Satz mit Zahl und Fläche",
+        "modifier": null
+      },
+      {
+        "name": "mit Regel: eine Zeile je Regel mit Typ, Wandart, Bauteilzahl und Fläche — ohne Annahme",
+        "modifier": null
+      },
+      {
+        "name": "alles erkannt und keine Regel: „keine\"",
+        "modifier": null
+      },
+      {
+        "name": "steht in allen vier Sprachen, ohne offene Platzhalter",
+        "modifier": null
+      },
+      {
+        "name": "PDF und Excel tragen dieselben Zeilen",
         "modifier": null
       }
     ]
@@ -2795,6 +3328,10 @@
       {
         "name": "bewegt beim Ziehen an der Kante nur die Punkte AUF ihr — das Band bleibt ein Rechteck",
         "modifier": null
+      },
+      {
+        "name": "nimmt die nächste Kante unter dem Anfang und über dem Ende, auch eine, auf der es sitzt",
+        "modifier": null
       }
     ]
   },
@@ -2855,6 +3392,10 @@
         "modifier": null
       },
       {
+        "name": "setzt den Filter bei neuem Import zurück, nicht bei Handkorrektur oder neuen Zeilen",
+        "modifier": null
+      },
+      {
         "name": "zeigt ohne aktiven Filter alle Zeilen",
         "modifier": null
       },
@@ -2900,6 +3441,29 @@
       },
       {
         "name": "selectGroup wählt alle Zeilen einer Kategorie",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/debugSchalter.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "gilt ohne Browser im Standard: Regeln an, Orange aus",
+        "modifier": null
+      },
+      {
+        "name": "schaltet sich mit ?debug=1 ein und übersteht die Navigation",
+        "modifier": null
+      },
+      {
+        "name": "hält die Regelschalter nur für diesen Tab, Orange dauerhaft",
+        "modifier": null
+      },
+      {
+        "name": "vergisst mit ?debug=0 alle Debug-Einstellungen",
         "modifier": null
       }
     ]
@@ -3406,6 +3970,10 @@
         "modifier": null
       },
       {
+        "name": "nimmt die Vorsatzwand, wenn die Wirtswand in keinem Bereich steht — sonst zählt es das Fenster (#546)",
+        "modifier": null
+      },
+      {
         "name": "rechnet ohne lebende Szene keine Zuschläge — auch nicht auf einem übernommenen Stand",
         "modifier": null
       },
@@ -3415,6 +3983,10 @@
       },
       {
         "name": "liefert unter exakt die VOB-Übermessung, mit der das LV unter VOB rechnet — je Bereich",
+        "modifier": null
+      },
+      {
+        "name": "zieht in der VOB-Vorschau denselben Brandriegel ab wie das LV unter VOB",
         "modifier": null
       },
       {
@@ -3431,6 +4003,26 @@
       },
       {
         "name": "bleiben beim persistierten IFC-Stand leer — er trägt nur Summen, keine Öffnungen",
+        "modifier": null
+      },
+      {
+        "name": "führt ein Bauteil ohne Außenwinkel unter „ohne“, mit Fläche in der Summe",
+        "modifier": null
+      },
+      {
+        "name": "verteilt die Fläche nach Anteilen, führt das Bauteil aber in der Ansicht seiner Wand",
+        "modifier": null
+      },
+      {
+        "name": "liefert ohne geladenes Modell überall 0 und leere Mengen",
+        "modifier": null
+      },
+      {
+        "name": "nimmt die nächste Wand MIT Richtung",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Öffnung ohne Richtung, wenn nur die Wand ohne Außenwinkel da ist",
         "modifier": null
       }
     ]
@@ -3451,6 +4043,57 @@
       {
         "name": "gibt nichts zurück, wenn der Strahl an der Geometrie vorbeigeht",
         "modifier": null
+      },
+      {
+        "name": "hält mit Tiefe beim ersten Bauteil an, wenn das nächste weiter dahinter liegt",
+        "modifier": null
+      },
+      {
+        "name": "nimmt ein Bauteil in genau 50 cm Tiefe noch mit",
+        "modifier": null
+      },
+      {
+        "name": "misst die Tiefe senkrecht zur Fläche, nicht entlang eines schrägen Strahls",
+        "modifier": null
+      },
+      {
+        "name": "greift hinter einer streifend getroffenen Kante nicht weiter als 50 cm auf eine frontale Wand",
+        "modifier": null
+      },
+      {
+        "name": "greift hinter einer frontal getroffenen Fassade nicht auf eine quer stehende Innenwand",
+        "modifier": null
+      },
+      {
+        "name": "sucht bei beidseits streifendem Treffer höchstens 2,5 m entlang des Strahls",
+        "modifier": null
+      },
+      {
+        "name": "bricht nicht an einer weiteren Fläche eines schon gefundenen Bauteils ab",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcAnsichtsanteile.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "lässt die Richtungssummen von haus-mini unverändert, je Wand zwei Stirnseiten in den Nachbaransichten",
+        "modifier": null
+      },
+      {
+        "name": "legt den Unterzug über der Durchfahrt ganz in die Ansicht seiner Seite",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Innenseite einer als Träger modellierten Wand auf ihrer Seite",
+        "modifier": null
+      },
+      {
+        "name": "verteilt die Facetten auf die Ansichten, in die sie zeigen, bei gleicher Summe",
+        "modifier": null
       }
     ]
   },
@@ -3461,6 +4104,25 @@
     "tests": [
       {
         "name": "überlässt das freistehende Mäuerchen dem Zentrums-Test — ein Marschschritt ist kein Nachweis",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcBruestung.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "öffnet den Balkon und ebenso das offene Parkdeck",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine 1,40 m hohe Wand sperren",
+        "modifier": null
+      },
+      {
+        "name": "hält eine niedrige Wand mit Wand auf der Krone für Hülle",
         "modifier": null
       }
     ]
@@ -3558,6 +4220,26 @@
       {
         "name": "nimmt die ebenerdige Terrasse auch dann nicht für einen Balkon",
         "modifier": null
+      },
+      {
+        "name": "nimmt das Geschoss namens EG, auch wenn ein anderes näher an null liegt",
+        "modifier": null
+      },
+      {
+        "name": "legt das Band E0 der Bauteilliste auf dasselbe Geschoss",
+        "modifier": null
+      },
+      {
+        "name": "meldet die Wahl in der Eingangsprüfung, ein eindeutiges Modell bleibt stumm",
+        "modifier": null
+      },
+      {
+        "name": "trägt bei absolut deklarierten Elevations das benannte EG, der Keller bleibt draußen",
+        "modifier": null
+      },
+      {
+        "name": "rechnet RefElevation mit der Längeneinheit des Projekts um",
+        "modifier": null
       }
     ]
   },
@@ -3587,6 +4269,10 @@
     "tests": [
       {
         "name": "zählt einen allseits geschlossenen Lichtschacht zur Fassade",
+        "modifier": null
+      },
+      {
+        "name": "gibt den Streifen hinter dem Stumpfstoß nicht frei",
         "modifier": null
       }
     ]
@@ -3632,23 +4318,23 @@
         "modifier": null
       },
       {
-        "name": "greift beim Entfernen bis zum ersten zugeordneten Bauteil durch",
+        "name": "greift beim Lösen bis zum ersten zugeordneten Bauteil durch",
         "modifier": null
       },
       {
-        "name": "fügt im Entfernen-Modus nichts hinzu",
+        "name": "ordnet beim Lösen nichts zu",
         "modifier": null
       },
       {
-        "name": "greift beim Hinzufügen bis zum ersten noch nicht zählenden Bauteil durch",
+        "name": "ordnet beim Zuordnen nur das vorderste Bauteil zu, auch wenn der Strahl mehr trifft",
         "modifier": null
       },
       {
-        "name": "überspringt beim Hinzufügen, was keine Messdaten trägt",
+        "name": "ordnet beim Zuordnen nichts zu, was keine Messdaten trägt",
         "modifier": null
       },
       {
-        "name": "löst im Hinzufügen-Modus nichts",
+        "name": "löst beim Zuordnen nichts",
         "modifier": null
       },
       {
@@ -3656,7 +4342,11 @@
         "modifier": null
       },
       {
-        "name": "verlangt den Strahl in genau den Modi, die hinter das vorderste Bauteil greifen",
+        "name": "greift beim Lösen höchstens 50 cm hinter das vorderste Bauteil",
+        "modifier": null
+      },
+      {
+        "name": "lässt Zuordnen und Umschalten keinen zweiten Raycast bezahlen",
         "modifier": null
       },
       {
@@ -3874,6 +4564,29 @@
     ]
   },
   {
+    "file": "apps/web/src/ifcSchlitzfenster.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "nimmt die Breite aus der Laufrichtung der Wirtswand, nicht die größere Spanne",
+        "modifier": null
+      },
+      {
+        "name": "lässt ein gewöhnliches Fenster unverändert — dort tragen beide Regeln dasselbe",
+        "modifier": null
+      },
+      {
+        "name": "nimmt ohne bekannte Wirtswand weiter die größere Spanne",
+        "modifier": null
+      },
+      {
+        "name": "liest die Breite an der Flanke eines Rund-Erkers aus der Wand an der Öffnung",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/src/ifcSonstigesMessen.test.ts",
     "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
@@ -3941,7 +4654,23 @@
         "modifier": null
       },
       {
+        "name": "nimmt eine von Hand abgeschaltete Stirnseite aus der Nachbaransicht",
+        "modifier": null
+      },
+      {
+        "name": "zählt eine von Hand mitgezählte Rückseite zur Seite ihrer Wand, nicht zur Gegenansicht",
+        "modifier": null
+      },
+      {
         "name": "misst die Kontur des Baukörpers",
+        "modifier": null
+      },
+      {
+        "name": "zieht ein Band über 0,30 m der Fassadenfläche ab, ein Band bis 0,30 m nicht",
+        "modifier": null
+      },
+      {
+        "name": "misst einen umlaufenden Brandriegel über und neben den Öffnungen",
         "modifier": null
       },
       {
@@ -3982,6 +4711,46 @@
       {
         "name": "misst die Stütze in der Fassadenebene",
         "modifier": null
+      },
+      {
+        "name": "zählt den Unterzug über der Durchfahrt zwischen zwei WDVS-Wänden zur Fassade",
+        "modifier": null
+      },
+      {
+        "name": "zählt den Unterzug vor der Loggia und nicht den Randbalken hinter der WDVS-Haut",
+        "modifier": null
+      },
+      {
+        "name": "lässt Stützen und Unterzug unter einer bündigen WDVS-Wand im OG in der Fassade",
+        "modifier": null
+      },
+      {
+        "name": "zählt eine halb in der Wand steckende Stütze bei jeder Drehung als Fassade mit 1,80 m²",
+        "modifier": null
+      },
+      {
+        "name": "lässt den Unterzug in der Fassade, wenn die OG-Haut ihn nur am oberen Rand überdeckt",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Tragschale verdeckt, wenn die WDVS-Wand aus dem Geschoss darüber 1 cm übergreift",
+        "modifier": null
+      },
+      {
+        "name": "zählt die Tragschale, wenn die WDVS-Wand nur im Geschoss darüber steht",
+        "modifier": null
+      },
+      {
+        "name": "macht die Schichten zum Körper des Unterzugs und misst ihn nach der Trägerregel",
+        "modifier": null
+      },
+      {
+        "name": "macht die Schichten zum Körper der Stütze und misst sie wie mit eigenem Körper",
+        "modifier": null
+      },
+      {
+        "name": "überträgt eine gespeicherte Zuordnung einer Trägerschicht auf den Unterzug",
+        "modifier": null
       }
     ]
   },
@@ -4008,6 +4777,68 @@
     ]
   },
   {
+    "file": "apps/web/src/ifcVorhang.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "zählt nicht zur Fassade, bleibt aber gemessen",
+        "modifier": null
+      },
+      {
+        "name": "hält den Gebäudeumriss geschlossen",
+        "modifier": null
+      },
+      {
+        "name": "hält den Umriss auch, wenn die Vorhangfassade abgewählt ist",
+        "modifier": null
+      },
+      {
+        "name": "bleiben Grenze des Außen-Orakels: Abwählen ändert die Fassade nicht",
+        "modifier": null
+      },
+      {
+        "name": "decken als Glasdach den Himmel, auch abgewählt",
+        "modifier": null
+      },
+      {
+        "name": "fallen über der Bauteil-Diagonale auch abgewählt heraus",
+        "modifier": null
+      },
+      {
+        "name": "schließen den Gebäudeumriss nicht, auch abgewählt nicht",
+        "modifier": null
+      },
+      {
+        "name": "machen die Auswahl abgewählt nicht unvollständig",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcVorsatzwand.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "ordnet das Fenster über das Loch der WDVS-Wand deren Gruppe zu",
+        "modifier": null
+      },
+      {
+        "name": "sucht die Vorsatzwand auch hinter einer klassifizierten, aber ungemessenen WDVS-Wand",
+        "modifier": null
+      },
+      {
+        "name": "ordnet nichts zu, wenn keine Wand davor ihr Loch trägt — und meldet die Öffnung",
+        "modifier": null
+      },
+      {
+        "name": "gibt der Gruppe brutto +1,20 m² und unter VOB die Übermessung — die Summe bleibt",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "apps/web/src/ifcWandart.test.ts",
     "category": "Web Unit Tests (Vitest)",
     "kind": "unit (Vitest, Web)",
@@ -4029,11 +4860,54 @@
         "modifier": null
       },
       {
+        "name": "eine von Hand in den Sockel gelegte Wand folgt der jüngeren Regel „WDVS-Wand\"",
+        "modifier": null
+      },
+      {
         "name": "das Zurücknehmen auf „automatisch\" holt die Wände zurück",
         "modifier": null
       },
       {
+        "name": "die Eingangsprüfung meldet die gedämmten Massivwände, bis eine Regel sie setzt",
+        "modifier": null
+      },
+      {
         "name": "ohne Regel und ohne Wechsel bleibt der gespeicherte Stand Zeichen für Zeichen stehen",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/ifcWandteile.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "macht die Schichten zum Körper ihrer Wand, statt sie in „Sonstiges\" fallen zu lassen",
+        "modifier": null
+      },
+      {
+        "name": "macht Schichten nur bei einer Wand OHNE eigenen Körper zu ihrem Körper, und nur bei Wänden",
+        "modifier": null
+      },
+      {
+        "name": "lässt die Teile einer Vorhangfassade eigene Bauteile bleiben",
+        "modifier": null
+      },
+      {
+        "name": "zählt je Wand nur die äußere Schicht, mit der von Hand gerechneten Fläche",
+        "modifier": null
+      },
+      {
+        "name": "überträgt eine gespeicherte Zuordnung der Außenschicht auf ihre Wand und meldet das einmal",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine Wand, deren Schichten in verschiedenen Kategorien lagen, in genau einer",
+        "modifier": null
+      },
+      {
+        "name": "nimmt als Wirtswand eines Fensters in einer Schicht die Wand",
         "modifier": null
       }
     ]
@@ -4080,6 +4954,21 @@
       },
       {
         "name": "trägt die Dämmlage aus dem IfcMaterialLayerSet an die Wand",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/importVorbelegung.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "nimmt in die Fassade nur Gemessenes auf, mitgemessene Teilbereiche eingeschlossen",
+        "modifier": null
+      },
+      {
+        "name": "belegt je Kategorie nur vor, was dort eine Fläche oder ein Maß hat",
         "modifier": null
       }
     ]
@@ -4332,6 +5221,18 @@
         "modifier": null
       },
       {
+        "name": "trägt eingeschaltet Menge, aber keine Himmelsrichtung",
+        "modifier": null
+      },
+      {
+        "name": "ordnet eine Fläche im Rundungsband um den Kegel nach der Korrektur ein wie die Messung",
+        "modifier": null
+      },
+      {
+        "name": "führt die Stirn nach einer Korrektur in jeder Dreiecks-Reihenfolge wie gemessen (#414)",
+        "modifier": null
+      },
+      {
         "name": "kehrt bei jedem Klick den sichtbaren Zustand um — auch unter gewählter Seite",
         "modifier": null
       },
@@ -4393,6 +5294,14 @@
       },
       {
         "name": "meldet, wenn die ganze Seite nichts beitragen kann",
+        "modifier": null
+      },
+      {
+        "name": "schaltet auch eine Splitter-Fläche unter 1 cm² mit aus, die die Messung mitzählt",
+        "modifier": null
+      },
+      {
+        "name": "verweist für jeden Meldegrund auf einen vorhandenen Text",
         "modifier": null
       },
       {
@@ -4489,6 +5398,18 @@
       },
       {
         "name": "zählt je Bauteil, nicht je Schlüssel — der Anwender sieht Bauteile",
+        "modifier": null
+      },
+      {
+        "name": "räumt das Register der geschalteten Fläche, an wie aus",
+        "modifier": null
+      },
+      {
+        "name": "lässt es stehen, wo die Hand nichts entschieden hat",
+        "modifier": null
+      },
+      {
+        "name": "nimmt die Wand aus der Warnung, sobald die Hand entschieden hat",
         "modifier": null
       }
     ]
@@ -4944,7 +5865,11 @@
         "modifier": null
       },
       {
-        "name": "füllt jede Vorlage vollständig — in keiner Sprache bleibt ein Platzhalter im Dokument stehen",
+        "name": "füllt jede Vorlage vollständig — in keiner Sprache bleibt ein Platzhalter oder Rohwert im Dokument stehen",
+        "modifier": null
+      },
+      {
+        "name": "schreibt am Schirm Text und Zahlen in der Oberflächensprache",
         "modifier": null
       },
       {
@@ -4960,11 +5885,272 @@
         "modifier": null
       },
       {
-        "name": "nennt die Stufen in jeder Sprache am Bildschirm wie im Dokument",
+        "name": "hat am Bildschirm für jede Stufe in jeder Sprache einen Gruppenkopf mit Zahl",
         "modifier": null
       },
       {
         "name": "übersetzt den eigenen Abbruch-Rückfall und lässt die Ausnahme stehen",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/riegelMessung.test.ts",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "misst an der Kote über ±0,00, nicht an der Szenenhöhe",
+        "modifier": null
+      },
+      {
+        "name": "übermisst das schmale Fenster in der Länge, nicht in der Fläche",
+        "modifier": null
+      },
+      {
+        "name": "ein Riegel an einer Ansicht misst nur deren Wände",
+        "modifier": null
+      },
+      {
+        "name": "Flächen ohne Richtung oder Messung zählen nur im umlaufenden Riegel",
+        "modifier": null
+      },
+      {
+        "name": "was nicht zur Fassade gehört, trägt keinen Riegel",
+        "modifier": null
+      },
+      {
+        "name": "schreibt die gerundete Messung in die Bänder",
+        "modifier": null
+      },
+      {
+        "name": "gibt dieselbe Liste zurück, wenn sich nichts bewegt hat",
+        "modifier": null
+      },
+      {
+        "name": "misst die Öffnungen der Zone am Modell: Breite plus Überstand zu beiden Seiten",
+        "modifier": null
+      },
+      {
+        "name": "eine Öffnung, die das Modell nicht mehr trägt, zählt nicht",
+        "modifier": null
+      },
+      {
+        "name": "Variante a: ein Riegel über dem Sturz, um den Überstand breiter",
+        "modifier": null
+      },
+      {
+        "name": "Variante b: oben und an beiden Seiten in Breite der Umschließung",
+        "modifier": null
+      },
+      {
+        "name": "eine Öffnung, die nicht zur Zone gehört, zeigt nichts",
+        "modifier": null
+      },
+      {
+        "name": "die Position zeigt ihre Streifen in der Zonenfarbe",
+        "modifier": null
+      },
+      {
+        "name": "schreibt nichts, solange die Zuordnung leer ist",
+        "modifier": null
+      },
+      {
+        "name": "misst 0 m, wenn der Anwender die ganze Fassade abwählt",
+        "modifier": null
+      },
+      {
+        "name": "misst 0 m, wenn eine neue Szene desselben Modells keine Fassade mehr hat",
+        "modifier": null
+      },
+      {
+        "name": "wartet bei einem anderen Modell auf dessen erste Zuordnung",
+        "modifier": null
+      },
+      {
+        "name": "führt die Messung nach, sobald die Fassade zugeordnet ist",
+        "modifier": null
+      },
+      {
+        "name": "die Unterkante rastet an der nächsten Kante ein, die Oberkante bleibt",
+        "modifier": null
+      },
+      {
+        "name": "die Oberkante hält mindestens die Mindesthöhe über der Unterkante",
+        "modifier": null
+      },
+      {
+        "name": "verschoben bleibt das Band in der Kette und behält seine Höhe",
+        "modifier": null
+      },
+      {
+        "name": "nennt die Abstände zu den Kanten — sitzt das Band auf einer, gibt es dort kein Maß",
+        "modifier": null
+      },
+      {
+        "name": "ein getippter Abstand setzt die Unterkante, geklemmt an die Kette",
+        "modifier": null
+      },
+      {
+        "name": "misst die Kante zur Untersicht: Kote, Breite und die Fläche des Riegels darauf",
+        "modifier": null
+      },
+      {
+        "name": "wo die Wand auf ihrem Fuß steht, entsteht nichts",
+        "modifier": null
+      },
+      {
+        "name": "Satteldach: der Dachanschluss ist die Traufe, die Oberkante die Giebelspitze",
+        "modifier": null
+      },
+      {
+        "name": "Flachdach: Dachanschluss und Oberkante fallen zusammen",
+        "modifier": null
+      },
+      {
+        "name": "ein Fenster im Giebel verschiebt den Dachanschluss nicht",
+        "modifier": null
+      },
+      {
+        "name": "eine Geschossnaht ist kein Dachanschluss",
+        "modifier": null
+      },
+      {
+        "name": "mehrere Oberkanten: die längste ist der Dachanschluss",
+        "modifier": null
+      },
+      {
+        "name": "nennt die Ansichten, an denen die Fassade Fläche trägt",
+        "modifier": null
+      },
+      {
+        "name": "schreibt Kote, Länge und Fläche der Kante in den Riegel",
+        "modifier": null
+      },
+      {
+        "name": "gibt dieselbe Liste zurück, wenn sich nichts bewegt hat",
+        "modifier": null
+      },
+      {
+        "name": "der Hook misst eine Zone nach, die nur Übergangsriegel trägt",
+        "modifier": null
+      },
+      {
+        "name": "zählt die Fassade die Wand nicht mehr, misst der Riegel 0 — die Kote bleibt stehen",
+        "modifier": null
+      },
+      {
+        "name": "misst das Band über die ganze Fassade",
+        "modifier": null
+      },
+      {
+        "name": "ohne die Bauteile anderer Nebenbereiche",
+        "modifier": null
+      },
+      {
+        "name": "der Hook misst die Zone nach einer getippten Oberkante neu",
+        "modifier": null
+      },
+      {
+        "name": "eine gezeichnete Fläche des Leitbereichs im Band gehört nicht zur Zone",
+        "modifier": null
+      },
+      {
+        "name": "der Hook misst die Zone nach, wenn eine Zeichnung dazukommt",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/RiegelPanel.test.tsx",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "Esc verwirft die Eingabe, übernimmt nichts und lässt das Werkzeug offen",
+        "modifier": null
+      },
+      {
+        "name": "Enter übernimmt die Eingabe",
+        "modifier": null
+      },
+      {
+        "name": "schreibt eine gerundete Null-Kote mit „+“",
+        "modifier": null
+      },
+      {
+        "name": "nennt das Paar als Warnung",
+        "modifier": null
+      },
+      {
+        "name": "Esc schließt nur den Dialog, nicht das Werkzeug dahinter",
+        "modifier": null
+      },
+      {
+        "name": "nennt die offene Durchfahrten-Frage am Vorschlag — beantwortet nicht mehr",
+        "modifier": null
+      },
+      {
+        "name": "V2 zur Oberkante der Fassade spricht von der Oberkante, nicht von einer zweiten Lage",
+        "modifier": null
+      },
+      {
+        "name": "nennt die Ansichten und gibt sie an den Zusatzriegel weiter",
+        "modifier": null
+      },
+      {
+        "name": "V1 an der Sockelzone fügt an ihrer Kote ein — an den genannten Ansichten",
+        "modifier": null
+      },
+      {
+        "name": "V14 entfernt die Riegel in der Sockelzone",
+        "modifier": null
+      },
+      {
+        "name": "kennzeichnet einen Übergangsriegel über 0,30 m als Abzug",
+        "modifier": null
+      },
+      {
+        "name": "schreibt eine gerundete Null-Kote mit „+“",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "apps/web/src/SockelzonePanel.test.tsx",
+    "category": "Web Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Web)",
+    "tests": [
+      {
+        "name": "schreibt eine gerundete Null-Kote im Anlegen-Knopf mit „+“",
+        "modifier": null
+      },
+      {
+        "name": "warnt, solange die Zone kein System trägt",
+        "modifier": null
+      },
+      {
+        "name": "übernimmt getippte Koten und verwirft eine Unterkante über der Oberkante",
+        "modifier": null
+      },
+      {
+        "name": "nennt die Grenzen der Zulassung an den Koten",
+        "modifier": null
+      },
+      {
+        "name": "der Hinweis auf ein brennbares System nennt die Fundstelle",
+        "modifier": null
+      },
+      {
+        "name": "V16 nennt die EPS-Bereiche, die die Zone nicht deckt",
+        "modifier": null
+      },
+      {
+        "name": "V8 nennt die Fundstelle in der Sprache der Oberfläche",
+        "modifier": null
+      },
+      {
+        "name": "Singular bei einer Lage, Plural bei mehreren",
         "modifier": null
       }
     ]
@@ -5007,6 +6193,10 @@
     "tests": [
       {
         "name": "zeigt je Ansicht die Seite, die die Tabelle ihr zuordnet — auch am Gleichstand",
+        "modifier": null
+      },
+      {
+        "name": "trägt je Ansicht ihre Himmelsrichtung, die Übersicht keine",
         "modifier": null
       },
       {
@@ -5183,6 +6373,14 @@
       {
         "name": "behält das Vorzeichen",
         "modifier": null
+      },
+      {
+        "name": "schreibt eine gerundete Null ohne Minus, echte negative Werte mit",
+        "modifier": null
+      },
+      {
+        "name": "setzt an einer Kote „+\" vor alles, was gerundet kein Minus trägt",
+        "modifier": null
       }
     ]
   },
@@ -5249,6 +6447,18 @@
       },
       {
         "name": "bewertet eine Fläche ohne Flächengruppe weiter je Dreieck",
+        "modifier": null
+      },
+      {
+        "name": "färbt die ganze Fläche TEILWEISE, auch die Dreiecke, die voll zählen",
+        "modifier": null
+      },
+      {
+        "name": "bleibt bei der Mehrheit, wo der eingeschlossene Rest klein ist",
+        "modifier": null
+      },
+      {
+        "name": "färbt eine Fläche, die gar nicht zählt, weiter als ungezählt",
         "modifier": null
       }
     ]
@@ -5363,6 +6573,42 @@
       },
       {
         "name": "erkennt einen Schlüssel, den nur eine Seite kennt — in beide Richtungen",
+        "modifier": null
+      },
+      {
+        "name": "schreibt eine Umsortierung: Fassade → Sockel",
+        "modifier": null
+      },
+      {
+        "name": "schweigt bei gleichem Stand — ein fehlendes `balkon` ist kein Unterschied",
+        "modifier": null
+      },
+      {
+        "name": "schreibt nicht in ein Dokument, zu dem die Szene nicht gehört",
+        "modifier": null
+      },
+      {
+        "name": "erkennt einen neuen Export gleichen Namens ohne Prüfsumme am Kopf",
+        "modifier": null
+      },
+      {
+        "name": "vor dem ersten Import gibt es nichts zu ergänzen",
+        "modifier": null
+      },
+      {
+        "name": "bildet über die GlobalId auf die expressIDs der Szene ab",
+        "modifier": null
+      },
+      {
+        "name": "lässt GlobalId-Duplikate beim Reload desselben Modells unverändert",
+        "modifier": null
+      },
+      {
+        "name": "schlüsselt nicht über eine doppelte GlobalId um — das Ziel wäre geraten",
+        "modifier": null
+      },
+      {
+        "name": "ohne GlobalId gilt die expressID weiter; eine verschwundene GlobalId fällt heraus",
         "modifier": null
       }
     ]
@@ -5601,15 +6847,23 @@
         "modifier": null
       },
       {
-        "name": "gezeichnete Teilflächen bekommen keinen Modell-Nachweis (custom-Bereich)",
+        "name": "gezeichnete Teilflächen bekommen keinen Modell-Nachweis (Freihand-Bereich)",
         "modifier": null
       },
       {
-        "name": "weist nur die gehaltene Nullzeile als überschrieben aus — Faktor-Formel und Teilfläche bleiben wie vorher",
+        "name": "weist jede überschriebene Position mit Modell-Herleitung und beiden Hinweisen aus",
         "modifier": null
       },
       {
-        "name": "fragt für „gehalten\" die Halteregel der Kalkulation, nicht den Modellwert",
+        "name": "zeigt die Modell-Herleitung auch bei Faktor-Formel und Gebäudegröße in einer Gruppe",
+        "modifier": null
+      },
+      {
+        "name": "erkennt die Überschreibung auch an einer Formel ohne Wert",
+        "modifier": null
+      },
+      {
+        "name": "weist auch eine überschriebene det:-Position mit Modell-Herleitung aus",
         "modifier": null
       },
       {
@@ -5677,6 +6931,10 @@
         "modifier": null
       },
       {
+        "name": "meldet keine Abweichung, wenn die Fenster einer Aussparung kleiner sind als ihre Kästen (#548)",
+        "modifier": null
+      },
+      {
         "name": "ohne Aufteilung bleibt der Fassaden-Nachweis unverändert",
         "modifier": null
       },
@@ -5686,6 +6944,26 @@
       },
       {
         "name": "ohne Aufteilung bleibt die Farbe die der Kennzahl",
+        "modifier": null
+      },
+      {
+        "name": "führt das ganze Bauteil und nennt die Teile der Nachbaransichten",
+        "modifier": null
+      },
+      {
+        "name": "schweigt bei einem Bauteil, das ganz in seiner Ansicht liegt",
+        "modifier": null
+      },
+      {
+        "name": "schreibt die Richtungen in der Dokumentsprache aus",
+        "modifier": null
+      },
+      {
+        "name": "verschweigt Anteile, die gerundet null sind",
+        "modifier": null
+      },
+      {
+        "name": "trägt die Unterzeile auch im Sockel-Nachweis",
         "modifier": null
       }
     ]
@@ -5785,6 +7063,10 @@
       },
       {
         "name": "zählt das wandernde Gewerk-Tag einer selbst betexteten Position",
+        "modifier": null
+      },
+      {
+        "name": "übersetzt die Tags neuer Gruppen je Gliederung, mit Zähler",
         "modifier": null
       },
       {
@@ -6061,6 +7343,237 @@
     ]
   },
   {
+    "file": "packages/core/test/brandriegel.test.ts",
+    "category": "Core Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "ein gezeichneter Riegel erscheint als Lfm-Position in der Gruppe der Fassade",
+        "modifier": null
+      },
+      {
+        "name": "mehrere Lagen sind EINE Position mit der Summe ihrer Längen",
+        "modifier": null
+      },
+      {
+        "name": "die Riegel-Position steht nicht zusätzlich bei der Fassade",
+        "modifier": null
+      },
+      {
+        "name": "die WDVS-Fläche ist mit und ohne Riegel bis 30 cm identisch",
+        "modifier": null
+      },
+      {
+        "name": "ein Band über 30 cm wird der Fassade abgezogen",
+        "modifier": null
+      },
+      {
+        "name": "ohne abzuziehendes Band bleibt der Variablensatz dasselbe Objekt",
+        "modifier": null
+      },
+      {
+        "name": "eine Zone ohne Band steht nicht im LV",
+        "modifier": null
+      },
+      {
+        "name": "ein 0 m messendes Band behält seine Position nur mit Hand-Menge",
+        "modifier": null
+      },
+      {
+        "name": "ohne Band verschwindet die Position auch mit Hand-Menge",
+        "modifier": null
+      },
+      {
+        "name": "die offenen Ausschreibungstext-Angaben stehen unter den Ids der erzeugten Positionen",
+        "modifier": null
+      },
+      {
+        "name": "die Zone trägt keine eigene Fläche — der Riegel liegt in der Fassade",
+        "modifier": null
+      },
+      {
+        "name": "der Riegel geht mit seiner Lfm-Menge in den GAEB-Export",
+        "modifier": null
+      },
+      {
+        "name": "zählt in die Riegel-Größen der Zone, neben den Bändern",
+        "modifier": null
+      },
+      {
+        "name": "eine Zone nur mit Übergangsriegel steht mit seiner Länge im LV",
+        "modifier": null
+      },
+      {
+        "name": "über 0,30 m Höhe wird er der Fassade abgezogen wie ein Band — bis 0,30 m übermessen",
+        "modifier": null
+      },
+      {
+        "name": "der Baustein trägt die Summe aller Bänder — ohne Zone bleibt der Variablensatz dasselbe Objekt",
+        "modifier": null
+      },
+      {
+        "name": "eine Komponente mit der Brandriegel-Fläche ist EINE Position in der Gruppe der Fassade",
+        "modifier": null
+      },
+      {
+        "name": "erkennt die Mischung, nicht die reine Riegel- oder Fassadenformel",
+        "modifier": null
+      },
+      {
+        "name": "die Zone verbraucht keine Platzierungs-Variable — sie rechnet sie dort als 0",
+        "modifier": null
+      },
+      {
+        "name": "die Riegel-Position rechnet weiter mit ihrer Katalog-Vorbelegung bei der Fassade",
+        "modifier": null
+      },
+      {
+        "name": "stellt nur die waagerechten Riegel des Katalogs um, keine Zulagen, keine senkrechten",
+        "modifier": null
+      },
+      {
+        "name": "gibt ein schon umgestelltes System unverändert zurück",
+        "modifier": null
+      },
+      {
+        "name": "eine von Hand angelegte Komponente ohne Katalog-Id bleibt unberührt",
+        "modifier": null
+      },
+      {
+        "name": "eine Hand-Formel am Katalog-Riegel bleibt bei der Fassade und überlebt Einfügen + Löschen",
+        "modifier": null
+      },
+      {
+        "name": "weist jede Lage mit Kote und Verlauf aus und führt exakt auf die LV-Menge",
+        "modifier": null
+      },
+      {
+        "name": "schreibt eine gerundete Null-Kote mit „+\"",
+        "modifier": null
+      },
+      {
+        "name": "weist den Abzug eines Bands über 30 cm an der Fassaden-Position aus",
+        "modifier": null
+      },
+      {
+        "name": "weist gestapelte Bänder im Abzug mit ihrer durchgehenden Höhe aus",
+        "modifier": null
+      },
+      {
+        "name": "belegt die Riegelfläche je Lage, mit Maßkette nur wo Länge × Höhe die Fläche ist",
+        "modifier": null
+      },
+      {
+        "name": "weist den Übergangsriegel mit Wand und Kote aus, in Länge und Fläche",
+        "modifier": null
+      },
+      {
+        "name": "weist den Abzug eines Übergangsriegels über 30 cm an der Fassaden-Position aus",
+        "modifier": null
+      },
+      {
+        "name": "eine unberührte Zone wird übersetzt, eine umbenannte bleibt",
+        "modifier": null
+      },
+      {
+        "name": "summiert die gemessenen Bänder; ungemessene zählen 0",
+        "modifier": null
+      },
+      {
+        "name": "das erste Band legt die Zone hinter die Fassade und stellt die Katalog-Riegel um",
+        "modifier": null
+      },
+      {
+        "name": "Einfügen und Löschen des letzten Bands geben dasselbe LV wie vorher — die Zone geht mit",
+        "modifier": null
+      },
+      {
+        "name": "Preis, Text und Bedarf ziehen mit in die Zone und zurück, die Hand-Menge nicht",
+        "modifier": null
+      },
+      {
+        "name": "eine Hand-Menge der Zone kehrt mit dem nächsten Band nicht zurück",
+        "modifier": null
+      },
+      {
+        "name": "das letzte Band nimmt jede Hand-Eingabe der Zone mit, auch die einer nicht umgestellten Zulage",
+        "modifier": null
+      },
+      {
+        "name": "ein weiteres Band bleibt in derselben Zone, nur das letzte nimmt sie mit",
+        "modifier": null
+      },
+      {
+        "name": "ein Übergangsriegel hält die Zone, bis auch er gelöscht ist (#351)",
+        "modifier": null
+      },
+      {
+        "name": "einziger Zusatzriegel, Antwort „nein\": Bereiche, Bauteile und LV wie vorher",
+        "modifier": null
+      },
+      {
+        "name": "Antwort „brennbar\" legt den Zusatzriegel zu den Lagen, eine unveränderte Antwort lässt alles stehen",
+        "modifier": null
+      },
+      {
+        "name": "Antwort „brennbar\" legt keinen Zusatzriegel in eine Sockelzone bis an den Dachanschluss",
+        "modifier": null
+      },
+      {
+        "name": "der übernommene Vorschlag ersetzt die vorhandenen Lagen (#351)",
+        "modifier": null
+      },
+      {
+        "name": "bekommt die Fassade ein anderes System, zieht die Zone mit, und dessen Riegel rechnen mit den Bändern",
+        "modifier": null
+      },
+      {
+        "name": "beim Systemwechsel rechnet das verlassene System seine Katalog-Riegel wieder mit der Vorbelegung",
+        "modifier": null
+      },
+      {
+        "name": "Umstellen an einer bestehenden Zone stellt die Katalog-Riegel um, ein zweites Mal nichts",
+        "modifier": null
+      },
+      {
+        "name": "erneutes Übernehmen aus dem IFC behält Zone, Lagen und Riegel-Position",
+        "modifier": null
+      },
+      {
+        "name": "erneutes Übernehmen gibt einer Zone ohne System das der Fassade",
+        "modifier": null
+      },
+      {
+        "name": "der Kontext-Hinweis nennt die Fassade, nicht die Zone",
+        "modifier": null
+      },
+      {
+        "name": "zwei aneinanderstoßende 20-cm-Bänder werden abgezogen wie ein 40-cm-Band",
+        "modifier": null
+      },
+      {
+        "name": "eine Fuge unter einem halben Zentimeter trennt zwei Bänder nicht",
+        "modifier": null
+      },
+      {
+        "name": "Bänder mit Abstand oder an verschiedenen Ansichten bleiben je eine Unterbrechung",
+        "modifier": null
+      },
+      {
+        "name": "nennt überlappende Bänder an einer gemeinsamen Ansicht",
+        "modifier": null
+      },
+      {
+        "name": "nennt eine Lage, die auf der Kante eines Übergangsriegels liegt — an dessen Ansicht",
+        "modifier": null
+      },
+      {
+        "name": "behält die Brandschutz-Zonen samt Bändern",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "packages/core/test/buildingGeometry.test.ts",
     "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
@@ -6325,6 +7838,10 @@
         "modifier": null
       },
       {
+        "name": "meldet Öffnungen ohne Gruppe unter VOB immer, unter „exakt\" nur mit Bruttoflächen-Position",
+        "modifier": null
+      },
+      {
         "name": "schweigt, wo keine Menge daran hängt",
         "modifier": null
       }
@@ -6357,6 +7874,26 @@
       },
       {
         "name": "läuft sich an einem zyklischen Objektbaum nicht fest",
+        "modifier": null
+      },
+      {
+        "name": "erkennt den Dämmstoff am Material, auch unter IfcMaterialLayerSetUsage",
+        "modifier": null
+      },
+      {
+        "name": "erkennt ihn an Name oder Kategorie der Lage, wo das Material schweigt",
+        "modifier": null
+      },
+      {
+        "name": "erkennt Kurzzeichen zwischen Unterstrichen und Ziffern und die Handelsnamen",
+        "modifier": null
+      },
+      {
+        "name": "Dämmziegel, Dämmputz und Abdichtungen sind keine Dämmlage",
+        "modifier": null
+      },
+      {
+        "name": "die Wand selbst ist keine Dämmlage: einlagiges Set, KS + Putz, Mauerwerk namens MW",
         "modifier": null
       },
       {
@@ -6802,6 +8339,77 @@
     ]
   },
   {
+    "file": "packages/core/test/erdgeschoss.test.ts",
+    "category": "Core Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "nimmt das Geschoss mit EG-Namen, auch wenn ein anderes näher an null liegt",
+        "modifier": null
+      },
+      {
+        "name": "ist eindeutig, wenn Name und Elevation dasselbe Geschoss wählen",
+        "modifier": null
+      },
+      {
+        "name": "fällt ohne EG-Namen auf die Elevation zurück und nennt die Wahl uneindeutig",
+        "modifier": null
+      },
+      {
+        "name": "nennt zwei gleich nah an null liegende EG-Kandidaten uneindeutig",
+        "modifier": null
+      },
+      {
+        "name": "zieht die Grenze für „gleich nah“ bei einem Zentimeter",
+        "modifier": null
+      },
+      {
+        "name": "nimmt einen Gleichstand mit unbenannten Geschossen nicht als Widerspruch der Elevation",
+        "modifier": null
+      },
+      {
+        "name": "behandelt absolut deklarierte Elevations über den Namen, ohne Namen nur gemeldet",
+        "modifier": null
+      },
+      {
+        "name": "lässt eine Bezugsebene auf das EG nicht gegen das EG gewinnen",
+        "modifier": null
+      },
+      {
+        "name": "wählt unter mehreren EG-Namen das nächst an null",
+        "modifier": null
+      },
+      {
+        "name": "liefert ohne Geschosse nichts",
+        "modifier": null
+      },
+      {
+        "name": "erkennt die Erdgeschoss-Namen der Kundenmodelle, aber nicht ihre Nachbarn",
+        "modifier": null
+      },
+      {
+        "name": "meldet, wenn Name und Elevation verschiedene Geschosse wählen, mit RefElevation als Hinweis",
+        "modifier": null
+      },
+      {
+        "name": "schreibt die Höhen im Dokument nach dem Markt, mit Komma",
+        "modifier": null
+      },
+      {
+        "name": "meldet die Wahl nach der Elevation, wenn kein Name das Erdgeschoss ausweist",
+        "modifier": null
+      },
+      {
+        "name": "meldet zwei gleich nahe Kandidaten",
+        "modifier": null
+      },
+      {
+        "name": "schweigt bei eindeutiger Wahl",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "packages/core/test/exportSprache.test.ts",
     "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
@@ -7132,6 +8740,14 @@
       },
       {
         "name": "fasst die Dreiecke einer Ebene zu EINER Fläche zusammen",
+        "modifier": null
+      },
+      {
+        "name": "führt nx/nz in jeder Dreiecks-Reihenfolge gleich (#414)",
+        "modifier": null
+      },
+      {
+        "name": "führt nx, ny, nz in derselben Auflösung wie den Richtungsschlüssel",
         "modifier": null
       },
       {
@@ -7504,6 +9120,149 @@
     ]
   },
   {
+    "file": "packages/core/test/hoehenbaender.test.ts",
+    "category": "Core Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "rastet den interpolierten Schnittpunkt auf die Grenze ein",
+        "modifier": null
+      },
+      {
+        "name": "Band unterhalb der Öffnung: volle Länge, volle Fläche",
+        "modifier": null
+      },
+      {
+        "name": "Band in Öffnungshöhe, Öffnung breiter als 1,0 m: die Öffnung wird abgezogen",
+        "modifier": null
+      },
+      {
+        "name": "Band in Öffnungshöhe, Öffnung bis 1,0 m: die Länge läuft durch (übermessen)",
+        "modifier": null
+      },
+      {
+        "name": "genau 1,0 m gilt noch als übermessen",
+        "modifier": null
+      },
+      {
+        "name": "Grenze 0: auch die schmale Öffnung wird abgezogen",
+        "modifier": null
+      },
+      {
+        "name": "ein Band, das die Öffnung nur zur Hälfte schneidet, läuft über ihrem Sturz durch",
+        "modifier": null
+      },
+      {
+        "name": "eine Öffnung außerhalb des Bandes zählt nicht",
+        "modifier": null
+      },
+      {
+        "name": "zwei schmale Öffnungen werden einzeln beurteilt, nicht in Summe",
+        "modifier": null
+      },
+      {
+        "name": "ein Band an der Geschossdecke misst die ganze Wandlänge, nicht die halbe",
+        "modifier": null
+      },
+      {
+        "name": "zwei Wandstreifen übereinander sind EINE Lauflänge",
+        "modifier": null
+      },
+      {
+        "name": "zwei Wandebenen hintereinander zählen beide",
+        "modifier": null
+      },
+      {
+        "name": "eine Nische ≤ 1,0 m wird nicht übermessen — die Abwicklung läuft um die Ecke",
+        "modifier": null
+      },
+      {
+        "name": "ein Durchgang ohne ansetzende Wand bleibt eine übermessene Unterbrechung",
+        "modifier": null
+      },
+      {
+        "name": "ein Beitrag über der Dreiecksfläche zählt in der Länge höchstens voll",
+        "modifier": null
+      },
+      {
+        "name": "eine geneigte Wandseite trägt mehr Fläche, aber dieselbe waagerechte Länge",
+        "modifier": null
+      },
+      {
+        "name": "ein nicht mengenwirksamer Wandteil trägt weder Fläche noch Länge",
+        "modifier": null
+      },
+      {
+        "name": "das Register entscheidet, nicht die Geometrie",
+        "modifier": null
+      },
+      {
+        "name": "ein abgewählter Wandteil bis 1,0 m ist eine übermessene Unterbrechung, ein breiterer nicht",
+        "modifier": null
+      },
+      {
+        "name": "ein anteilig gezählter Wandteil zählt anteilig",
+        "modifier": null
+      },
+      {
+        "name": "eine schmale Öffnung in einer abgewählten Wand trägt keine Länge",
+        "modifier": null
+      },
+      {
+        "name": "eine übermessene Öffnung trägt den kleineren Anteil ihrer beiden Nachbarn",
+        "modifier": null
+      },
+      {
+        "name": "die Übermessung zählt anteilig wie die Wand, in der die Öffnung sitzt",
+        "modifier": null
+      },
+      {
+        "name": "nur die genannten Dreiecke zählen",
+        "modifier": null
+      },
+      {
+        "name": "waagerechte Flächen tragen keine Länge; ihre Fläche zählt, wie das Register sie zählt",
+        "modifier": null
+      },
+      {
+        "name": "zählt eine von Hand eingeschaltete Mauerkrone zur Bandfläche, nicht zur Länge",
+        "modifier": null
+      },
+      {
+        "name": "eine Fläche außerhalb des Wandseiten-Kegels trägt Fläche, aber keine Länge",
+        "modifier": null
+      },
+      {
+        "name": "zwei Dreiecke derselben Wand mit entgegengesetzter Winding sind eine Ebene",
+        "modifier": null
+      },
+      {
+        "name": "misst die Länge auf der Laufachse der Wand, nicht auf x",
+        "modifier": null
+      },
+      {
+        "name": "liefert die geschnittenen Dreiecke für die Anzeige — bei voll gezählten Flächen die Menge",
+        "modifier": null
+      },
+      {
+        "name": "zeichnet anteilig gezählte Flächen ganz, während die Menge den Anteil trägt",
+        "modifier": null
+      },
+      {
+        "name": "nennt je geschnittenem Dreieck das Eingabedreieck, aus dem es stammt",
+        "modifier": null
+      },
+      {
+        "name": "ein Band ohne Höhe misst nichts",
+        "modifier": null
+      },
+      {
+        "name": "bündelt Hilfsebenen und legt die Grenzen aus der Platzierungshöhe",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "packages/core/test/ifcAggregation.test.ts",
     "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
@@ -7537,6 +9296,14 @@
         "modifier": null
       },
       {
+        "name": "teilt Laibung und Sturz nach Fenster und Tür, die Fensterbank bleibt beim Fenster",
+        "modifier": null
+      },
+      {
+        "name": "teilt nach Art auch, wenn die Laibung in der Dämmebene liegt",
+        "modifier": null
+      },
+      {
         "name": "fällt für Öffnungen ohne Wirtswand-Treffer auf repThicknessM zurück",
         "modifier": null
       },
@@ -7550,6 +9317,10 @@
       },
       {
         "name": "führt GlobalId, Name, Geschoss und Richtung am Beitrag mit",
+        "modifier": null
+      },
+      {
+        "name": "ordnet die Nachbaransichten im Raster des gedrehten Gebäudes zu",
         "modifier": null
       },
       {
@@ -7732,6 +9503,14 @@
         "modifier": null
       },
       {
+        "name": "warnt mit Anzahl und eingeschlossener Fläche, auch ohne NetSideArea",
+        "modifier": null
+      },
+      {
+        "name": "schweigt, wo der eingeschlossene Rest nur ein kleiner Teil der Wand ist",
+        "modifier": null
+      },
+      {
         "name": "Umfang × Höhe ist eine obere Schranke: reale Unterschreitung (Rücksprünge, UG) ist still",
         "modifier": null
       },
@@ -7745,6 +9524,10 @@
       },
       {
         "name": "schweigt ohne Mengenabgleich-Daten",
+        "modifier": null
+      },
+      {
+        "name": "rundet auf eine Stelle und schreibt im Dokument mit Komma",
         "modifier": null
       },
       {
@@ -7784,7 +9567,51 @@
         "modifier": null
       },
       {
+        "name": "meldet Wände, deren Handkorrekturen von ihren Schichten übernommen wurden",
+        "modifier": null
+      },
+      {
         "name": "schweigt ohne verfallene Korrekturen — leer wie fehlend",
+        "modifier": null
+      },
+      {
+        "name": "meldet beratend mit Zahl und Fläche",
+        "modifier": null
+      },
+      {
+        "name": "schweigt, sobald eine Regel greift — auch die Regel „Massivwand\"",
+        "modifier": null
+      },
+      {
+        "name": "schweigt ohne Dämmstoff, bei erkannter WDVS-Wand, beim Sockel, ohne Fläche und außerhalb der Fassade",
+        "modifier": null
+      },
+      {
+        "name": "trennt Wände ohne Bauteiltyp in eine eigene Meldung",
+        "modifier": null
+      },
+      {
+        "name": "schreibt eine PruefZahl in der Schreibweise des Lesers und lässt Text und ganze Zahlen stehen",
+        "modifier": null
+      },
+      {
+        "name": "rundet halbe Werte auf der Dezimaldarstellung, auch negative und binär knappe",
+        "modifier": null
+      },
+      {
+        "name": "schreibt die Dämmlage-Fläche je Leser",
+        "modifier": null
+      },
+      {
+        "name": "schreibt eine gerundete Null ohne Minus, echte negative Werte mit",
+        "modifier": null
+      },
+      {
+        "name": "schreibt auch die exakte −0 ohne Minus und −∞ mit",
+        "modifier": null
+      },
+      {
+        "name": "setzt „+\" vor alles ohne Minus",
         "modifier": null
       }
     ]
@@ -7975,6 +9802,10 @@
         "modifier": null
       },
       {
+        "name": "eine Probe behält ihre eigenen Ecken und wird hinter der Außenseite verdeckt",
+        "modifier": null
+      },
+      {
         "name": "bei gemischter Überdeckung entscheidet die Mehrheit der Zellen, nicht die größte Fläche (SPEC-3)",
         "modifier": null
       },
@@ -8079,7 +9910,15 @@
         "modifier": null
       },
       {
+        "name": "eine Probe behält ihre eigenen Ecken und wird hinter der Außenseite verdeckt",
+        "modifier": null
+      },
+      {
         "name": "zählt bei einem freistehenden Träger beide Längsseiten, die Unterseite und die freien Stirnenden",
+        "modifier": null
+      },
+      {
+        "name": "zählt ganz zur Gebäudeseite, an der er liegt",
         "modifier": null
       },
       {
@@ -8120,6 +9959,62 @@
       },
       {
         "name": "rechnet das Register je Bauteil auf die Gesamtgeometrie zurück, wie beitragJeDreieck",
+        "modifier": null
+      },
+      {
+        "name": "führt den nicht freien Teil der Außenseite, wenn davor keine Außenluft liegt",
+        "modifier": null
+      },
+      {
+        "name": "bleibt leer, wo ein Bauteil davorsteht",
+        "modifier": null
+      },
+      {
+        "name": "bleibt leer, wo die Hand die Seite entschieden hat",
+        "modifier": null
+      },
+      {
+        "name": "ändert die Menge nicht",
+        "modifier": null
+      },
+      {
+        "name": "verlangt gezählte Fläche und einen absolut wie relativ nennenswerten Rest",
+        "modifier": null
+      },
+      {
+        "name": "zählt den eingeschlossenen Rest einer nennenswert freien Ebene voll",
+        "modifier": null
+      },
+      {
+        "name": "greift nicht unter den Schwellen: ein 5 cm freier Streifen ist Rauschen",
+        "modifier": null
+      },
+      {
+        "name": "gibt nichts frei, was ein fremdes Bauteil verdeckt (Stumpfstoß)",
+        "modifier": null
+      },
+      {
+        "name": "steckt keine andere Ebene an: 5 cm Versatz trennen",
+        "modifier": null
+      },
+      {
+        "name": "hält eine Ebene nach −Z zusammen, auch wenn das Vorzeichen von nx rauscht",
+        "modifier": null
+      },
+      {
+        "name": "zerlegt ein Dreieck in n² gleich große Teildreiecke",
+        "modifier": null
+      },
+      {
+        "name": "hält je Probe fest, was das Orakel am Schwerpunkt ihres Teildreiecks sagte",
+        "modifier": null
+      },
+      {
+        "name": "sammelt keine Proben, wenn niemand sie verlangt",
+        "modifier": null
+      },
+      {
+        "name": "rechnet die Proben je Bauteil auf die Gesamtgeometrie zurück, wie beitragJeDreieck",
         "modifier": null
       },
       {
@@ -8373,6 +10268,10 @@
         "modifier": null
       },
       {
+        "name": "eine Vorhangfassade ist nie eine Wand, mit und ohne IsExternal",
+        "modifier": null
+      },
+      {
         "name": "Balkongeländer bleiben Fassade trotz IsExternal=false (Revit-Default unzuverlässig)",
         "modifier": null
       },
@@ -8575,6 +10474,50 @@
       {
         "name": "setzt und nimmt zurück — die Ablage trägt nur Abweichungen",
         "modifier": null
+      },
+      {
+        "name": "meldet einen Schlüssel ohne Treffer als verwaist — als eigene Menge, nicht als Fehler",
+        "modifier": null
+      },
+      {
+        "name": "ein Typ, der nur an Innenwänden vorkommt, trägt die Regel auch nicht",
+        "modifier": null
+      },
+      {
+        "name": "überträgt auf den neuen Typ: der alte Schlüssel verschwindet, der neue greift",
+        "modifier": null
+      },
+      {
+        "name": "ein Ziel mit eigener Regel wird nicht still überschrieben",
+        "modifier": null
+      },
+      {
+        "name": "ohne Regel am Quellschlüssel überträgt es nichts",
+        "modifier": null
+      },
+      {
+        "name": "ohne Regel: die Annahme nennt Zahl und Fläche der nicht erkannten Außenwände mit Fläche",
+        "modifier": null
+      },
+      {
+        "name": "mit Regel: eine Zeile je Regel, die Annahme schrumpft um die abgedeckten Wände",
+        "modifier": null
+      },
+      {
+        "name": "die Fläche je Typ ist dieselbe wie in der Wandarten-Liste",
+        "modifier": null
+      },
+      {
+        "name": "eine Regel „Massivwand\" ist eine Entscheidung, keine Annahme",
+        "modifier": null
+      },
+      {
+        "name": "die Annahme zählt nur Wände der Hauptfläche",
+        "modifier": null
+      },
+      {
+        "name": "sind alle Außenwände erkannt, gibt es keine Annahme",
+        "modifier": null
       }
     ]
   },
@@ -8752,6 +10695,58 @@
       },
       {
         "name": "meldet ohne jede Wand null, statt eine Tiefe zu erfinden",
+        "modifier": null
+      },
+      {
+        "name": "liest an einer geraden Wand die Laufrichtung, auch wenn das Fenster flacher ist als die Wand",
+        "modifier": null
+      },
+      {
+        "name": "folgt an einem Rund-Erker der Wand an der Öffnung, nicht ihrer ganzen Box",
+        "modifier": null
+      },
+      {
+        "name": "meldet ohne Wandfläche im Umkreis null",
+        "modifier": null
+      },
+      {
+        "name": "nimmt das ungefüllte Loch einer Wand mit Fassadenfläche",
+        "modifier": null
+      },
+      {
+        "name": "lässt ein gefülltes Loch weg, auch wenn seine Wand gemessen wird",
+        "modifier": null
+      },
+      {
+        "name": "lässt das Loch einer Wand ohne Fassadenfläche weg, auch wenn es ungefüllt ist",
+        "modifier": null
+      },
+      {
+        "name": "nimmt das Loch der Wand davor",
+        "modifier": null
+      },
+      {
+        "name": "verwirft ein Loch dahinter, auch wenn es näher liegt als die Vorsatzwand",
+        "modifier": null
+      },
+      {
+        "name": "verwirft die gegenüberliegende Fassade über den Abstand, 0,50 m gelten noch",
+        "modifier": null
+      },
+      {
+        "name": "verlangt die halbe Überdeckung — das Loch des Nachbarfensters zählt nicht",
+        "modifier": null
+      },
+      {
+        "name": "nimmt unter mehreren das nächste, bei gleichem Abstand das deckendere",
+        "modifier": null
+      },
+      {
+        "name": "meldet ohne Loch null, statt eine Wand zu erfinden",
+        "modifier": null
+      },
+      {
+        "name": "findet die Wand auch, wenn der Kasten tiefer als breit ist",
         "modifier": null
       }
     ]
@@ -9328,6 +11323,14 @@
       },
       {
         "name": "erkennt die Wandebene an der bekannten Breite, nicht an der größeren Spanne",
+        "modifier": null
+      },
+      {
+        "name": "rechnet eine zusammengefasste Aussparung mit den gewählten Maßen, nicht mit den Kästen",
+        "modifier": null
+      },
+      {
+        "name": "vereinigt überlappende Maß-Rechtecke und setzt sie mittig in ihren Kasten",
         "modifier": null
       },
       {
@@ -9942,6 +11945,14 @@
         "modifier": null
       },
       {
+        "name": "nimmt die Vorsatzwand, wenn die Wirtswand in keinem Bereich steht (#546)",
+        "modifier": null
+      },
+      {
+        "name": "meldet nichts, wenn nur ein gezeichneter Bereich die Fassade teilt (#546)",
+        "modifier": null
+      },
+      {
         "name": "hält eine gruppenübergreifende Aussparung beim Leitbereich zusammen",
         "modifier": null
       },
@@ -10248,6 +12259,248 @@
     ]
   },
   {
+    "file": "packages/core/test/richtungsAnteile.test.ts",
+    "category": "Core Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "summiert je Normalenrichtung und lässt die Summe unverändert",
+        "modifier": null
+      },
+      {
+        "name": "gibt Ober- und Unterseiten die Richtung des Bauteils, an der Grenze der Messung",
+        "modifier": null
+      },
+      {
+        "name": "legt die Rückseite zur Richtung des Bauteils, die Stirnseite nicht",
+        "modifier": null
+      },
+      {
+        "name": "ordnet eine Fläche an der Sektorgrenze genau wie ihre Wand ein",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/riegelRegeln.test.ts",
+    "category": "Core Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "vier Geschosse: die drei Pflichtlagen an den erwarteten Koten",
+        "modifier": null
+      },
+      {
+        "name": "Nr. 1 bleibt an der UK des WDVS, solange Nr. 2 höchstens 3 m darüber liegt",
+        "modifier": null
+      },
+      {
+        "name": "acht Geschosse: über Nr. 3 nur dort eine Lage, wo sonst 8 m überschritten würden",
+        "modifier": null
+      },
+      {
+        "name": "drei Geschosse: keine Nr. 3 — die Decke über dem 3. Geschoss ist das Dach",
+        "modifier": null
+      },
+      {
+        "name": "eingeschossig: nur Nr. 1",
+        "modifier": null
+      },
+      {
+        "name": "nennt die Fakten, die das Modell nicht kennt, als offene Fragen",
+        "modifier": null
+      },
+      {
+        "name": "brennbares Dach: ein Zusatzriegel höchstens 1,0 m unter dem Dachanschluss",
+        "modifier": null
+      },
+      {
+        "name": "WDVS ab dem Obergeschoss: die Lagen beginnen an seiner Unterkante, keine darunter oder doppelt",
+        "modifier": null
+      },
+      {
+        "name": "liegt schon eine Lage unter dem Dachanschluss, ist sie der Zusatzriegel — keine zweite",
+        "modifier": null
+      },
+      {
+        "name": "hohes Erdgeschoss: Nr. 2 höchstens 3 m über Nr. 1, und der Vorschlag löst keinen Hinweis aus",
+        "modifier": null
+      },
+      {
+        "name": "Nr. 3 über 8 m von Nr. 2: die höchste Ebene, die den Abstand hält",
+        "modifier": null
+      },
+      {
+        "name": "Nr. 3 ohne Ebene innerhalb 8 m: 8 m über Nr. 2",
+        "modifier": null
+      },
+      {
+        "name": "über der letzten Lage ohne Ebene innerhalb 8 m: eine Lage 8 m darüber",
+        "modifier": null
+      },
+      {
+        "name": "eine Ebene auf Höhe der Fassaden-Oberkante trägt keine Lage",
+        "modifier": null
+      },
+      {
+        "name": "Satteldach: Zusatzriegel 1,0 m unter der Traufe, die Dachebene trägt keine Lage",
+        "modifier": null
+      },
+      {
+        "name": "V2 und V13 an den Ansichten ohne das Süd-Band, nicht an der Südseite",
+        "modifier": null
+      },
+      {
+        "name": "V1, wenn Nr. 1 nur an einer Ansicht liegt",
+        "modifier": null
+      },
+      {
+        "name": "nur umlaufende Bänder: ein Stapel, kein Hinweis trägt Ansichten",
+        "modifier": null
+      },
+      {
+        "name": "die Pflichtlagen nach Zulassung lösen keinen Hinweis aus",
+        "modifier": null
+      },
+      {
+        "name": "V1 — ohne Riegel an der Unterkante des WDVS",
+        "modifier": null
+      },
+      {
+        "name": "V1 — an der 0,90-m-Grenze",
+        "modifier": null
+      },
+      {
+        "name": "V2 — fehlt Nr. 1, misst das unterste Paar gegen 8 m",
+        "modifier": null
+      },
+      {
+        "name": "V2 — mehr als 8 m von der obersten Lage bis zur Oberkante der Fassade",
+        "modifier": null
+      },
+      {
+        "name": "V2 — Nr. 2 mehr als 3 m über Nr. 1; zurückgeschoben verschwindet er",
+        "modifier": null
+      },
+      {
+        "name": "V2 — misst zwischen den Achsen, nicht zwischen den Unterkanten",
+        "modifier": null
+      },
+      {
+        "name": "V2 — darüber mehr als 8 m Abstand",
+        "modifier": null
+      },
+      {
+        "name": "V6 — ein Band unter 200 mm",
+        "modifier": null
+      },
+      {
+        "name": "V10 — Mineralwolle-System mit gezeichneten Riegeln: kein Riegel erforderlich",
+        "modifier": null
+      },
+      {
+        "name": "ohne EPS-System auch mit mehreren Bändern kein V2",
+        "modifier": null
+      },
+      {
+        "name": "V13 — die Dach-Frage offen; „nicht brennbar\" nimmt ihn, „brennbar\" macht ihn konkret",
+        "modifier": null
+      },
+      {
+        "name": "ohne EPS-System keine Pflichtlagen: kein V1, V2, V13",
+        "modifier": null
+      },
+      {
+        "name": "jeder Hinweis nennt Regel und Fundstelle",
+        "modifier": null
+      },
+      {
+        "name": "„brennbar\" legt ihn 1,0 m unter dem Dachanschluss an",
+        "modifier": null
+      },
+      {
+        "name": "„nicht brennbar\" und „offen\" nehmen ihn wieder heraus",
+        "modifier": null
+      },
+      {
+        "name": "ein von Hand gesetztes Band unter dem Dach bleibt — und ersetzt den Zusatzriegel",
+        "modifier": null
+      },
+      {
+        "name": "Vorschlag: an der Oberkante der Zone und an der Decke über dem 3. Geschoss, keine Lage darunter",
+        "modifier": null
+      },
+      {
+        "name": "mehr als 3 m bis zur Decke über dem 3. Geschoss: zusätzliche Lagen dazwischen",
+        "modifier": null
+      },
+      {
+        "name": "reicht die Zone über die Decke über dem 3. Geschoss, entfällt diese Lage",
+        "modifier": null
+      },
+      {
+        "name": "der Vorschlag löst keinen Hinweis aus",
+        "modifier": null
+      },
+      {
+        "name": "V1 — ohne Riegel an der Oberkante der Zone, mit ihrer Kote als Vorschlag",
+        "modifier": null
+      },
+      {
+        "name": "V1 — trägt nur eine Ansicht den Riegel an der Oberkante, fehlt er an den übrigen",
+        "modifier": null
+      },
+      {
+        "name": "V14 — Riegel in der Zone, mit ihren Ids zum Entfernen",
+        "modifier": null
+      },
+      {
+        "name": "V2 zählt ab dem Riegel an der Zone — 3 m bis zum nächsten, Nummern wie in der Liste",
+        "modifier": null
+      },
+      {
+        "name": "V2 — die 3-m-Grenze gilt bis zur Decke über dem 3. Geschoss, nicht nur für das erste Paar",
+        "modifier": null
+      },
+      {
+        "name": "V2 — reicht die Zone bis an oder über die Decke über dem 3. Geschoss, löst der Vorschlag nichts aus",
+        "modifier": null
+      },
+      {
+        "name": "V2 — eine Lücke über die Decke über dem 3. Geschoss hinweg verletzt die 3 m",
+        "modifier": null
+      },
+      {
+        "name": "V2 — ohne Geschossebenen bleibt das erste Paar über der Zone bei 3 m",
+        "modifier": null
+      },
+      {
+        "name": "Zone bis zur Traufe eines Flachdachs: kein Zusatzriegel in der Zone, keine Knöpfe gegeneinander",
+        "modifier": null
+      },
+      {
+        "name": "Satteldach: im Giebel liegt über der Zone noch EPS — Riegel an ihrer Oberkante",
+        "modifier": null
+      },
+      {
+        "name": "Kniestock: Der Zusatzriegel kommt auf die Oberkante der Zone statt in sie",
+        "modifier": null
+      },
+      {
+        "name": "V15 — eine abgezogene Kette über die Oberkante der Zone steht mit dem Streifen darunter doppelt im LV",
+        "modifier": null
+      },
+      {
+        "name": "reicht die Zone bis an den Dachanschluss, verlangt nichts einen Riegel über ihr",
+        "modifier": null
+      },
+      {
+        "name": "EPS schwer entflammbar, Mineralwolle, andere",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "packages/core/test/roofGeometry.test.ts",
     "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
@@ -10372,6 +12625,304 @@
       },
       {
         "name": "lässt je Gruppe genau eine Schicht aktiv",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/sockelzone.test.ts",
+    "category": "Core Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "Oberkante: Decke über dem 2. Geschoss",
+        "modifier": null
+      },
+      {
+        "name": "niedrige Geschosse: die 6-m-Untergrenze greift",
+        "modifier": null
+      },
+      {
+        "name": "Unterkante höchstens 0,90 m",
+        "modifier": null
+      },
+      {
+        "name": "nie über die Fassade hinaus",
+        "modifier": null
+      },
+      {
+        "name": "erscheint ohne Zone und verschwindet mit ihr",
+        "modifier": null
+      },
+      {
+        "name": "still bis 300 mm und ohne EPS-System",
+        "modifier": null
+      },
+      {
+        "name": "V16 — nennt die EPS-Bereiche mit eigenen Bauteilen, die die Zone nicht deckt",
+        "modifier": null
+      },
+      {
+        "name": "V16 nennt keinen Bereich, der nur aus einer Zeichnung besteht",
+        "modifier": null
+      },
+      {
+        "name": "nennt die Fundstelle",
+        "modifier": null
+      },
+      {
+        "name": "das LV zeigt zwei Systeme, deren Mengen zusammen die Fassade ergeben",
+        "modifier": null
+      },
+      {
+        "name": "Zone löschen stellt die ursprüngliche Menge exakt wieder her",
+        "modifier": null
+      },
+      {
+        "name": "bis in den GAEB-Export: eine Gruppe der Fassade, die Zone an ihrem Namen erkennbar",
+        "modifier": null
+      },
+      {
+        "name": "marktüblich: die Hauptposition der Zone nennt sie neben der Fassade",
+        "modifier": null
+      },
+      {
+        "name": "Nachführen nach einer Messung lässt ihre Fläche stehen",
+        "modifier": null
+      },
+      {
+        "name": "eine Klick-Zuweisung fasst sie nicht an",
+        "modifier": null
+      },
+      {
+        "name": "Vereinheitlichen der Oberflächen-Aufteilung behält sie",
+        "modifier": null
+      },
+      {
+        "name": "eine Aufteilung übernehmen behält sie genau einmal — kein m² doppelt",
+        "modifier": null
+      },
+      {
+        "name": "die Zone weist ihr Band nach, die Fassade die Abgabe — beide ohne Abweichung",
+        "modifier": null
+      },
+      {
+        "name": "nennt das Band „umlaufend\" nur ohne Gruppe mit eigenen Bauteilen",
+        "modifier": null
+      },
+      {
+        "name": "trägt brutto und unter VOB die Öffnungen ihres Bands, die Fassade den Rest",
+        "modifier": null
+      },
+      {
+        "name": "eine Öffnung einer Gruppe bleibt bei ihr; ohne Wirtswand entscheidet die Kote nur ohne Gruppen",
+        "modifier": null
+      },
+      {
+        "name": "das Aufmaßblatt weist sie bei der Zone nach, die Fassade den Rest — ohne Abweichung",
+        "modifier": null
+      },
+      {
+        "name": "ein 0,20-m-Band an der Oberkante mindert nichts — EPS 210, MW 40, Riegel als eigene Position",
+        "modifier": null
+      },
+      {
+        "name": "ein 0,40-m-Band über der Zone mindert nur den EPS-Bereich — das Aufmaßblatt ohne Abweichung",
+        "modifier": null
+      },
+      {
+        "name": "eine unberührte Zone wird übersetzt, eine umbenannte bleibt",
+        "modifier": null
+      },
+      {
+        "name": "mit dem ersten Mineralwolle-System, hinter dem letzten Fassaden-Bereich, in ihrer Farbe",
+        "modifier": null
+      },
+      {
+        "name": "ohne Mineralwolle-System mit dem System der Fassade — das Werkzeug warnt dann",
+        "modifier": null
+      }
+    ]
+  },
+  {
+    "file": "packages/core/test/sturzschutz.test.ts",
+    "category": "Core Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "Variante a: Breite plus Überstand zu beiden Seiten",
+        "modifier": null
+      },
+      {
+        "name": "Variante b: oben über die Umschließung hinweg, dazu beide Seiten auf Öffnungshöhe",
+        "modifier": null
+      },
+      {
+        "name": "summiert die Öffnungen der Zone und meldet verwaiste Bezüge benannt",
+        "modifier": null
+      },
+      {
+        "name": "die Zone rechnet mit ihrer gespeicherten Messung",
+        "modifier": null
+      },
+      {
+        "name": "die Maß-Vorgaben sind benannt",
+        "modifier": null
+      },
+      {
+        "name": "mit Auswahl die gewählten",
+        "modifier": null
+      },
+      {
+        "name": "ohne Auswahl und ohne Sturzschutz die oberhalb von Riegel Nr. 3",
+        "modifier": null
+      },
+      {
+        "name": "ohne Riegel Nr. 3 keine — nicht alle Öffnungen der Fassade",
+        "modifier": null
+      },
+      {
+        "name": "besteht Sturzschutz, genau dessen Öffnungen — eine herausgenommene bleibt draußen",
+        "modifier": null
+      },
+      {
+        "name": "V3 — ungeschützte Öffnung oberhalb Riegel Nr. 3 bei EPS > 100 mm, benannt",
+        "modifier": null
+      },
+      {
+        "name": "V3 still bei EPS bis 100 mm",
+        "modifier": null
+      },
+      {
+        "name": "V3 still für Öffnungen bis Riegel Nr. 3",
+        "modifier": null
+      },
+      {
+        "name": "V3 still, wenn die Öffnung eine Zone trägt",
+        "modifier": null
+      },
+      {
+        "name": "V3 still, wenn ein umlaufender Riegel höchstens 0,5 m über dem Sturz liegt",
+        "modifier": null
+      },
+      {
+        "name": "V3 als offene Frage, wenn die Dämmdicke unbekannt ist — nur bei EPS und mit Öffnungen über Riegel Nr. 3",
+        "modifier": null
+      },
+      {
+        "name": "V3 still ohne EPS-System",
+        "modifier": null
+      },
+      {
+        "name": "V4 — Variante c: Riegel mehr als 0,5 m über dem Sturz, die Öffnung benannt; V3 schweigt dann",
+        "modifier": null
+      },
+      {
+        "name": "Variante c wie erzeugt: still — jeder Riegel schützt nur die Stürze seines Geschosses",
+        "modifier": null
+      },
+      {
+        "name": "V3 auch bei Variante c: zwei Geschosse mit Öffnungen in Folge ohne Riegel, über dem obersten benannt",
+        "modifier": null
+      },
+      {
+        "name": "Variante c ohne Geschossebenen: V3 und V4 schweigen, statt zu raten",
+        "modifier": null
+      },
+      {
+        "name": "V7 — Überstand unter 300 mm (a) bzw. Umschließung unter 200 mm (b)",
+        "modifier": null
+      },
+      {
+        "name": "jeder Hinweis nennt seine Fundstelle",
+        "modifier": null
+      },
+      {
+        "name": "stellt beim Anlegen nur die Katalog-Vorbelegung der laufenden Sturzschutz-Position um",
+        "modifier": null
+      },
+      {
+        "name": "weiß, ob das System eine Position für die Zone trägt",
+        "modifier": null
+      },
+      {
+        "name": "Löschen stellt die Brandschott-Position zurück an die Fassade — sie fehlt nicht still im LV",
+        "modifier": null
+      },
+      {
+        "name": "Preis und Text am Brandschott ziehen in die Zone und beim Löschen zurück; die Hand-Menge nicht",
+        "modifier": null
+      },
+      {
+        "name": "die letzte herausgenommene Öffnung nimmt die Zone rückstandsfrei mit",
+        "modifier": null
+      },
+      {
+        "name": "a und b an einem Gebäude: die gewählte Öffnung wechselt in die Zone ihrer Variante, die übrigen bleiben",
+        "modifier": null
+      },
+      {
+        "name": "der Kurztext nennt Variante und Maß der Zone; nach dem Löschen steht das Schott ohne Zusatz",
+        "modifier": null
+      },
+      {
+        "name": "nur umstellen behält Id und Hand-Eingaben der Zone",
+        "modifier": null
+      },
+      {
+        "name": "schrittweise umstellen: die bleibende Zone erbt die Hand-Eingaben, das Löschen bringt sie zur Fassade zurück",
+        "modifier": null
+      },
+      {
+        "name": "herausnehmen lässt die übrigen Öffnungen samt Variante stehen",
+        "modifier": null
+      },
+      {
+        "name": "Variante c ersetzt die Zone rückstandsfrei durch Riegel; zurück auf a räumt die c-Riegel samt leerer Riegel-Zone ab",
+        "modifier": null
+      },
+      {
+        "name": "der übernommene Riegel-Vorschlag ersetzt die Lagen, nicht die Riegel der Variante c",
+        "modifier": null
+      },
+      {
+        "name": "die Zone zieht mit dem System der Fassade um; das verlassene rechnet wieder mit der Vorbelegung",
+        "modifier": null
+      },
+      {
+        "name": "die Zone trägt ihre Lfm-Position bis in den GAEB-Export; die Fassade trägt sie nicht mehr",
+        "modifier": null
+      },
+      {
+        "name": "trägt die laufende Sturzschutz-Position in der Zone; Löschen stellt das LV wieder her",
+        "modifier": null
+      },
+      {
+        "name": "eine Zeile je Öffnung mit GUID, Geschoss und Kette — exakt auf die LV-Menge",
+        "modifier": null
+      },
+      {
+        "name": "Variante b und die Stück-Position: Kette mit beiden Seiten, je Öffnung eine Stück-Zeile",
+        "modifier": null
+      },
+      {
+        "name": "eine Öffnung, die das Modell nicht mehr trägt, hat keine Zeile — die Abweichung steht im Blatt",
+        "modifier": null
+      },
+      {
+        "name": "auf Höhe des höchsten Sturzes, je zweites Geschoss ab Riegel Nr. 3",
+        "modifier": null
+      },
+      {
+        "name": "ein Geschoss ohne Öffnung zählt mit — sein Riegel liegt auf der Sturzlage darunter",
+        "modifier": null
+      },
+      {
+        "name": "zwei Geschosse in Folge ohne Riegel meldet V3 auch, wenn eines davon fensterlos ist",
+        "modifier": null
+      },
+      {
+        "name": "ein Sturz über der Geschossdecke hebt den Riegel nicht ins Geschoss darüber — V4 nennt genau dieses Fenster",
         "modifier": null
       }
     ]
@@ -10946,6 +13497,33 @@
     ]
   },
   {
+    "file": "packages/core/test/wandebene.test.ts",
+    "category": "Core Unit Tests (Vitest)",
+    "kind": "unit (Vitest, Core)",
+    "tests": [
+      {
+        "name": "die Kante zur Untersicht: ihre Höhe und wie weit sie läuft",
+        "modifier": null
+      },
+      {
+        "name": "wo die Wand auf ihrem Fuß steht, ist keine Durchfahrt",
+        "modifier": null
+      },
+      {
+        "name": "der Riegel darauf: die Breite der Kante mal seine Höhe",
+        "modifier": null
+      },
+      {
+        "name": "zählt den Anteil aus dem Beitrags-Register, nicht die bloße Geometrie",
+        "modifier": null
+      },
+      {
+        "name": "ein Rücksprung hinter der Wandebene zählt nicht in den Streifen",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "packages/core/test/wdvsHeuristics.test.ts",
     "category": "Core Unit Tests (Vitest)",
     "kind": "unit (Vitest, Core)",
@@ -11226,6 +13804,61 @@
     ]
   },
   {
+    "file": "scripts/anonymisiereIfc.test.mjs",
+    "category": "Repo Tooling Tests (Vitest)",
+    "kind": "unit (Vitest)",
+    "tests": [
+      {
+        "name": "leert Kopf, Personen, Büro, Adressen, Projekt, Grundstück, Gebäude und Landeskoordinaten",
+        "modifier": null
+      },
+      {
+        "name": "lässt den Hersteller der Software und jede Geometrie byte-gleich",
+        "modifier": null
+      },
+      {
+        "name": "leert Property-Werte, die einen entfernten Text enthalten, in jeder Sprache",
+        "modifier": null
+      },
+      {
+        "name": "meldet einen entfernten Namen, der an anderer Stelle stehen bleibt",
+        "modifier": null
+      },
+      {
+        "name": "leert die Projektinformationen in Property-Sätzen an Projekt, Grundstück und Gebäude",
+        "modifier": null
+      },
+      {
+        "name": "meldet eine E-Mail-Adresse und eine Telefonnummer, die sonst niemand entfernt hat",
+        "modifier": null
+      },
+      {
+        "name": "entfernt Kommentare im Kopf und im Datenteil, auch mit Apostroph, und lässt `/*` in Zeichenketten stehen",
+        "modifier": null
+      },
+      {
+        "name": "anonymisiert den Kopf auch mit `);` oder `DATA;` in seinen Zeichenketten",
+        "modifier": null
+      },
+      {
+        "name": "entfernt den Projektstandort aus der Kopfbeschreibung",
+        "modifier": null
+      },
+      {
+        "name": "findet Reste als Pfadsegment, in Großbuchstaben und in anderer Kodierung",
+        "modifier": null
+      },
+      {
+        "name": "hält eine Ziffernfolge in der Geometrie nicht für einen Rest",
+        "modifier": null
+      },
+      {
+        "name": "schreibt reproduzierbar, läuft auf dem eigenen Ergebnis und schreibt bei einem Rest nichts",
+        "modifier": null
+      }
+    ]
+  },
+  {
     "file": "scripts/genGlossar.test.mjs",
     "category": "Repo Tooling Tests (Vitest)",
     "kind": "unit (Vitest)",
@@ -11469,6 +14102,10 @@
       },
       {
         "name": "erkennt die Zähl-Abkürzungen Stk und lfm als deutschen Anzeigetext",
+        "modifier": null
+      },
+      {
+        "name": "liest einen Feldzugriff nicht als deutsches Funktionswort",
         "modifier": null
       },
       {
